@@ -1,0 +1,49 @@
+
+.main_div{
+    margin: 0px 5%;
+}
+.product_div{
+    border: 1px solid black;
+    display: flex;
+  height: 90vh;
+   
+}
+.product_img{
+    border: 1px solid black;
+    width: 40%;
+
+}
+.sale_card {
+    width: 60px;
+    height: 60px;
+    font-size: small;
+    margin: 10px;
+}
+.sale_card :first-child{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #662C90;
+    color: white;
+    text-align: center;
+    margin-bottom: 1px;
+}
+.sale_card :last-child{
+    border: 2px solid #662C90;
+height: 80%;
+padding: 5px;
+text-align: center;
+cursor: pointer;
+overflow-wrap: break-word;
+}
+.price_tag{
+    display: flex;
+    margin: 20px 0px;
+
+}
+.price_tag> h3{
+    font-size: 25px;
+}
+.price_tag> h1{
+    font-size: 45px;
+}
