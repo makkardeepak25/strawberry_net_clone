@@ -41,14 +41,15 @@
 .close_modal{
     position: absolute;
      top: -18px;
-    right:-18px;
+    right:-11px;
     z-index:2;
     cursor: pointer;
-    width: 36px;
-    height: 36px;
-   border-radius: 18px;
+    /* width: 36px;
+    height: 36px; */
+   /* border-radius: 18px; */
    border:none;
-   background-color: darkturquoise;
+   background: none;
+   /* background-color: darkturquoise; */
   
     
     
@@ -56,5 +57,5 @@
 }
 .close_modal:focus{
     outline: none;
-    background-color: red;
+    /* background-color: red; */
 }

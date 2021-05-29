@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import styles from './Signup.module.css';
 import ReCAPTCHA from "react-google-recaptcha";
+import Checkbox from '@material-ui/core/Checkbox';
+
 const AuthInput = styled.input`
     background: none;
     width: 100%;
@@ -47,8 +49,13 @@ export const Signup = () => {
             </p>
             </p>
             <div className={styles.subscription_div}>
-            <input type="checkbox" name="" id="" />
-                <div>
+           <div> 
+           <Checkbox color="#6d1b7b"
+  value="checkedA"
+  inputProps={{ 'aria-label': 'Checkbox A' }}
+/>
+           </div>
+                <div style={{fontSize:'15px',fontWeight:'normal'}}>
                     
                 Subscribe to our exclusive email offers
                 </div>
