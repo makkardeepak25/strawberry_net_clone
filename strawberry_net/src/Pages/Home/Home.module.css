@@ -1,0 +1,106 @@
+.dailyspecial {
+  padding-top: 25px;
+  width: 80%;
+  margin: auto;
+}
+.promopadding {
+  margin-top: 30px;
+  margin-bottom: 35px;
+}
+.promotitleline {
+  border-bottom: 5px solid #0b0b0b;
+  margin: 0 0 -15px;
+}
+.promotitle {
+  text-align: center;
+  font-size: 19px;
+  color: #2b2b2b;
+  font-weight: 700;
+  margin: 0;
+  margin-top: -20px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+  
+.promotitle h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.promotitlediv {
+  padding: 0 20px;
+  display: inline-block;
+  background-color: #fff;
+}
+.dailymessage {
+  font-size: 19px;
+  letter-spacing: 1px;
+  color: #2b2b2b;
+  text-transform: none;
+  display: inline-block;
+  font-weight: 700;
+  font-family: Lato, sans-serif;
+}
+.textright {
+  text-align: right;
+}
+.maxitem {
+  margin-top: -10px;
+  display: block;
+  letter-spacing: 0.015em;
+  font-weight: 700;
+  font-family: Lato, sans-serif;
+}
+.productgridlist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  margin: auto;
+  gap: 40px;
+  font-family: Lato, sans-serif;
+}
+.containerfluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+.promoblockpicks {
+  margin: 35px -7.5px 0;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-color: #ebe5f1;
+}
+.container {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.promotitlepad {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+.promotitleline {
+  border-color: #65318f;
+  /* border-bottom: 5px solid #0b0b0b; */
+  margin: 0 0 -15px;
+}
+.promotitle {
+  color: #65318f;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+.promotitledeals {
+  padding: 0 20px;
+  display: inline-block;
+  background-color: #ebe5f1;
+}
+.promotitle h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
