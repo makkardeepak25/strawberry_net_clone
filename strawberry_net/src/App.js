@@ -1,18 +1,15 @@
+import { Authentication } from "./Pages/Authentication/Authentication";
 
-import { Authentication } from './Pages/Authentication/Authentication';
-
-
-import './App.css';
-import Product from "./Pages/Product_Page/Product"
+import Product from "./Pages/Product_Page/Product";
+import { Home } from "./Pages/Home/Home";
 function App() {
   return (
+    <div>
+      
+      <Home />
+      <Product />
 
-    <div >
-<Product/>
-
-  
-      <Authentication/>
-
+      <Authentication />
     </div>
   );
 }

@@ -1,0 +1,9 @@
+.banner{
+    width:80%;
+    margin:50px auto;
+}
+
+.imgHt{
+    height: 300px;
+    border: .5px solid black;
+}
