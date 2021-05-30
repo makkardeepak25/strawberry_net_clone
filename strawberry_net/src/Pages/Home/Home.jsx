@@ -53,7 +53,7 @@ export const Home = () => {
               </div>
               <div className={styles.textright}>
                 <button className={styles.bestbtn}>
-                  View All <span className={styles.arrclr}>></span>
+                  View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
                 </button>
               </div>
             </div>
@@ -75,7 +75,7 @@ export const Home = () => {
           </div>
           <div className={styles.textright}>
             <button className={styles.bestbtn}>
-              View All <span className={styles.arrclr}>></span>
+              View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
             </button>
           </div>
         </div>
@@ -115,7 +115,7 @@ export const Home = () => {
           </div>
           <div className={styles.textright}>
             <button className={styles.bestbtn}>
-              View All <span className={styles.arrclr}>></span>
+              View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
             </button>
           </div>
         </div>

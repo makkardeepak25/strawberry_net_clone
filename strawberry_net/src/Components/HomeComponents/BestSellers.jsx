@@ -28,7 +28,7 @@ export const BestSellers = () => {
                     <div className={styles.prodprice}>Rs&nbsp;{el.size[0].price}</div>
                     <button className={styles.bagbtn}>Add to bag</button>
                         <div className={styles.extraoff}>Extra 8% Off on US$80</div>
-                        {/* <div style={{background:"red"}}>Deepak{FavoriteBorderIcon}</div> */}
+                        <div><FavoriteBorderIcon/></div>
                   </div>
                 })}
         
