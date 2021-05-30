@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+
 import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
+import {AiFillHeart} from "react-icons/ai"
+import {GiShoppingBag} from "react-icons/gi"
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
@@ -29,14 +31,45 @@ export const NavBar = () => {
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
                   <IconContext.Provider
-                    value={{ color: "blue", height:"50px",width:"5px", className: "global-class-name" }}
+                    value={{ color: "#b53788",size:"3.2em" }}
                   >
-                    <div>
+                   
                       < FaUserCircle />
-                    </div>
+                   
                   </IconContext.Provider>
+                  <span className={styles.aaccname}>Sign in</span>
                 </a>
               </li>
+
+
+              <li className={styles.loginlinks}>
+                <a className={styles.accname} href="#">
+                  <IconContext.Provider
+                    value={{ color: "#b53788",size:"3.2em" }}
+                  >
+                   
+                      < AiFillHeart />
+                   
+                  </IconContext.Provider>
+                  <span className={styles.aaccname}>Wishlist</span>
+                </a>
+              </li>
+
+
+              <li className={styles.loginlinks}>
+                <a className={styles.accname} href="#">
+                  <IconContext.Provider
+                    value={{ color: "#b53788",size:"3.2em" }}
+                  >
+                   
+                      < GiShoppingBag />
+                   
+                  </IconContext.Provider>
+                  <span className={styles.aaccname}>Bag</span>
+                </a>
+              </li>
+
+
             </ul>
           </div>
           <div className={styles.navform}>

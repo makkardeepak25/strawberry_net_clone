@@ -181,21 +181,18 @@
 
 .menunavright {
   font-size: 12px;
-  margin-top: 0;
-  margin-bottom: 15px;
   position: relative;
   padding: 0;
   color: #b53788;
   float: right !important;
   list-style: none;
-  display: block;
+  display: flex;
   list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
   letter-spacing: 0.015em;
+  justify-content: space-between;
+  width: 98%;
+  margin:0;
+  
 }
 
 .loginlinks {
@@ -220,4 +217,23 @@
   text-decoration: none;
   font-weight: 700;
   list-style: none;
+  position: relative;
+  
+
+  
+ 
+
+}
+
+.aaccname{
+    color: #b53788;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: .015em;
+    position: absolute;
+    width: 70px;
+    top: 30%;
+    left: 110%;
+    font-size:14px ;
 }
