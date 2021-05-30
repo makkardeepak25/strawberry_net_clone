@@ -55,7 +55,7 @@
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
   margin: auto;
-  gap: 40px;
+  gap: 20px;
   font-family: Lato, sans-serif;
 }
 .containerfluid {
@@ -103,4 +103,37 @@
 .promotitle h3 {
   margin-top: 0;
   margin-bottom: 0;
+}
+.bestbtn {
+  border: 1px solid #d4d2d2;
+  color: #0b0b0b;
+  background-color: #fff;
+  font-size: 14px;
+  padding: 5px 10px;
+  letter-spacing: 0.015em;
+  font-weight: 700;
+  font-family: Lato, sans-serif;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.bestbtn>.arrclr{
+  color: #e82e74;
+  font-size: 85%;
+}
+.promotitleln {
+  border-color: #09030e;
+  /* border-bottom: 5px solid #0b0b0b; */
+  margin: 0 0 -15px;
+}
+
+.promotitledeal{
+  padding: 0 20px;
+  display: inline-block;
+  background-color: white;
 }
