@@ -33,12 +33,21 @@ const Product = () => {
     const activeDetails = activeTab == "details" ? { fontWeight: "600" } : {}
     const activeReview = activeTab == "review" ? { fontWeight: "600" } : {}
 
+    const [image,setImage]=useState(0)
+
     return (
         <div className={styles.main_div}>
             <div className={styles.product_div}>
 
                 <div className={styles.product_img}>
-
+                   <div>
+                       <img src={product.images[image]} alt="product image" />
+                   </div>
+                   <div>
+                       {
+                           product.images.map((img,index)=> <img src={img} onClick={()=>setImage(index)} />)
+                       }
+                   </div>
                 </div>
                 <div className={styles.product_info}>
                     <h1>{product.prod_name}</h1>

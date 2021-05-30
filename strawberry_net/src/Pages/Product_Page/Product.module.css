@@ -158,3 +158,25 @@ margin: 0px;
 .helpful{
     color: gray;
 }
+/* Product images */
+.product_img :first-child{
+    display: grid;
+    place-items: center;
+}
+.product_img :first-child > img{
+border: 1px solid black;
+align-items: center;
+}
+.product_img :nth-child(2){
+    display: flex;
+   justify-content: center;
+}
+.product_img :nth-child(2) > img{
+    width: 100px;
+    border: 1px solid gray;
+    margin: 10px;
+    cursor: pointer;
+}
+.product_img :nth-child(2) > img:hover{
+    box-shadow: 1px 2px 5px 2px gray;
+}
