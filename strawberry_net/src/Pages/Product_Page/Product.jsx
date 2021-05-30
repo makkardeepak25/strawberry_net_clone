@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import styles from "./Product.module.css"
+import OfferTag from '../../Components/offer_lable/OfferTag';
 const Product = () => {
     const product = {
         id: "1",
@@ -24,7 +25,8 @@ const Product = () => {
             "https://a.cdnsbn.com/images/products/20937521339.jpg",
             "https://a.cdnsbn.com/images/products/20937521339-1.jpg",
             "https://a.cdnsbn.com/images/products/20937521339-2.jpg"
-        ]
+        ],
+        offer:14
     }
     let array = new Array(30).fill(0)
 
@@ -33,12 +35,26 @@ const Product = () => {
     const activeDetails = activeTab == "details" ? { fontWeight: "600" } : {}
     const activeReview = activeTab == "review" ? { fontWeight: "600" } : {}
 
+    const [image,setImage]=useState(0)
+
     return (
         <div className={styles.main_div}>
             <div className={styles.product_div}>
-
+               
                 <div className={styles.product_img}>
-
+                   <div className={styles.preview}>
+                  {
+                     <div className={styles.offer_tag}>
+                          <OfferTag lable={product.offer}/>
+                     </div>
+                  }
+                       <img src={product.images[image]} alt="product image" />
+                   </div>
+                   <div className={styles.all_img}>
+                       {
+                           product.images.map((img,index)=> <img src={img} onClick={()=>setImage(index)} />)
+                       }
+                   </div>
                 </div>
                 <div className={styles.product_info}>
                     <h1>{product.prod_name}</h1>
