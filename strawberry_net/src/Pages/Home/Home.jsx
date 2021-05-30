@@ -9,6 +9,7 @@ import { BestDeals } from "../../Components/HomeComponents/BestDeals";
 import { Top40 } from "../../Components/HomeComponents/Top40";
 import { BestSellers } from "../../Components/HomeComponents/BestSellers";
 import { NewArrivals } from "../../Components/HomeComponents/NewArrivals";
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 export const Home = () => {
   return (
     <div>
@@ -94,7 +95,7 @@ export const Home = () => {
           </div>
           <div className={styles.textright}>
             <button className={styles.bestbtn}>
-              View All <span className={styles.arrclr}>></span>
+              View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
             </button>
           </div>
         </div>
