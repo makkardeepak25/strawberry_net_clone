@@ -161,23 +161,19 @@
 }
 .navbarmenu {
   background: #623381;
-  display: block;
+  width: 100%;
 }
 .menucont {
-  max-width: 1200px;
-  margin: 0px auto;
+  width: 95%;
+  margin: auto;
   position: relative;
   display: flex;
   justify-content: space-between !important;
-  padding: 0;
+  padding: 10px 0;
   float: none;
   text-align: center;
   list-style: none;
-}
-.menucont > li:first-child {
-  position: relative;
-  display: inline-block;
-  text-align: -webkit-match-parent;
+  font-weight: 600;
 }
 
 .menunavright {
@@ -192,8 +188,7 @@
   letter-spacing: 0.015em;
   justify-content: space-between;
   width: 98%;
-  margin:0;
-  
+  margin: 0;
 }
 
 .loginlinks {
@@ -219,22 +214,28 @@
   font-weight: 700;
   list-style: none;
   position: relative;
-  
-
-  
- 
-
 }
 
-.aaccname{
-    color: #b53788;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .015em;
-    position: absolute;
-    width: 70px;
-    top: 30%;
-    left: 110%;
-    font-size:14px ;
+.aaccname {
+  color: #b53788;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.015em;
+  position: absolute;
+  width: 70px;
+  top: 30%;
+  left: 110%;
+  font-size: 14px;
+}
+.clrspn {
+  color: white;
+}
+.clrspns {
+  color: white;
+}
+
+.lil {
+  display: flex;
+  color: white;
 }
