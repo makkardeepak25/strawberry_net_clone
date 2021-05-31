@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import styles from "./Product.module.css"
 import OfferTag from '../../Components/offer_lable/OfferTag';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 const Product = () => {
-    const product = {
-        id: "1",
-        prod_name: "ACADEMIE",
-        prod_description: "Men Eye Contour Gel",
-        size: [["15ml/0.5oz", 1300]],
-        prod_details: ["Formulated from unique blend of oak & birch natural extracts",
-            "  Offers tonifying, moisturizing calming & anti-oxydizing properties",
-            "Eliminates appearance of fine lines & wrinkles",
-            "Yeast extracts & acid complex enhance blood capillary network",
-            "Reduces puffiness & dark circles",
-            "Leaves eye zone velvety smooth & radiant"],
-        reviews: [{
-            title: "Nice",
-            body: "I love this product",
-            rating: 5,
-            date: "05-05-2021"
-        }],
-        ratings: 5,
-        images: [
-            "https://a.cdnsbn.com/images/products/20937521339.jpg",
-            "https://a.cdnsbn.com/images/products/20937521339-1.jpg",
-            "https://a.cdnsbn.com/images/products/20937521339-2.jpg"
-        ],
-        offer:14
-    }
+    const {id}=useParams();
+    console.log(id)
+    // const product = {
+    //     id: "1",
+    //     prod_name: "ACADEMIE",
+    //     prod_description: "Men Eye Contour Gel",
+    //     size: [{size:"15ml/0.5oz",price:1300}],
+    //     prod_details: ["Formulated from unique blend of oak & birch natural extracts",
+    //         "  Offers tonifying, moisturizing calming & anti-oxydizing properties",
+    //         "Eliminates appearance of fine lines & wrinkles",
+    //         "Yeast extracts & acid complex enhance blood capillary network",
+    //         "Reduces puffiness & dark circles",
+    //         "Leaves eye zone velvety smooth & radiant"],
+    //     reviews: [{
+    //         title: "Nice",
+    //         rev_desc: "I love this product",
+    //         rating: 5,
+    //         date: "05-05-2021"
+    //     }],
+    //     ratings: 5,
+    //     images: [
+    //         "https://a.cdnsbn.com/images/products/20937521339.jpg",
+    //         "https://a.cdnsbn.com/images/products/20937521339-1.jpg",
+    //         "https://a.cdnsbn.com/images/products/20937521339-2.jpg"
+    //     ],
+    //     offer:14
+    // }
     let array = new Array(30).fill(0)
 
     const [activeTab, setActiveTab] = useState("details")
@@ -36,8 +40,22 @@ const Product = () => {
     const activeReview = activeTab == "review" ? { fontWeight: "600" } : {}
 
     const [image,setImage]=useState(0)
+    const [product,setProduct]=useState({})
+
+    const GetProduct=()=>{
+        axios.get(`https://6wwnt.sse.codesandbox.io/products/${id}`)
+        .then(res=>{
+           console.log(res.data);
+           setProduct(res.data)
+        })
+    }
+useEffect(()=>{
+GetProduct()
+},[id])
 
     return (
+        <>
+        { product.images&&
         <div className={styles.main_div}>
             <div className={styles.product_div}>
                
@@ -59,15 +77,15 @@ const Product = () => {
                 <div className={styles.product_info}>
                     <h1>{product.prod_name}</h1>
                     <h3>{product.prod_description}</h3>
-                    <p>Size: {product.size[0][0]}</p>
+                    <p>Size: {product.size[0].size}</p>
                     <div className={styles.sale_card}>
 
                         <div>sale</div>
-                        <div>{product.size[0][0]}</div>
+                        <div>{product.size[0].size}</div>
                     </div>
                     <div className={styles.price_tag}>
                         <h3>Rs.</h3>
-                        <h1>{product.size[0][1]}</h1>
+                        <h1>{product.size[0].price}</h1>
                         <h3>.00</h3>
                     </div>
                     <div className={styles.select_tag_btn_div}>
@@ -123,11 +141,11 @@ const Product = () => {
                                  <div className={styles.reviews}>
                                      <div >
                                      <h5>Rating star</h5>
-                                 <p>{object.date}</p>
+                                 <p>{object.date&&object.date}</p>
                                      </div>
                                      <div>
                                          <h5>{object.title}</h5>
-                                         <p>{object.body}</p>
+                                         <p>{object.rev_desc}</p>
                                          <p className={styles.helpful}>is this helpful? </p>
                                      </div>
                                 
@@ -142,6 +160,8 @@ const Product = () => {
                 </div>
             </div>
         </div>
+        }
+        </>
     );
 };
 
