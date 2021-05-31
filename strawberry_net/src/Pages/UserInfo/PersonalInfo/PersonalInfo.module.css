@@ -1,0 +1,73 @@
+.mainCont{
+    width: 60%;
+    margin: 2% auto;
+    /* background-color: blanchedalmond; */
+}
+.UploadButton{
+    width: 25%;
+    margin: auto;
+     
+ }
+
+
+.customeFileInput {
+    color: transparent;
+  }
+.customeFileInput::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .customeFileInput::before {
+
+    margin:1% 18%;
+ 
+      color: white;
+    content: 'Upload a profile photo';
+    display: inline-block;
+    background: #623381;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+  
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 14px;
+  }
+ 
+@media only screen and (max-width: 960px) {
+  
+    .mainCont{
+        margin: 2% auto;
+      
+    }
+    .UploadButton>button{
+        width: 150px;
+        margin: auto;
+    }
+  }
+
+
+
+  .labelCont{
+    width: 20%;
+  }
+  .labelCont label{
+    font-size: 21px;
+    color: #414141;
+  }
+
+  .inputCont{
+    width: 70%;
+  }
+
+  .inputCont input{
+    font-size: 18px;
+    color: #414141;
+  }
+  .userCont{
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+  }

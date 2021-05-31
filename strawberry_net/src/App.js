@@ -1,13 +1,14 @@
 import { Gradient } from './Pages/UserInfo/Gradient';
-import { Authentication } from './Pages/Authentication/Authentication';
-import { Bag } from './Pages/Bag/Bag';
-
+import Routes from "./Pages/Routes/Routes";
 function App() {
   return (
     <div>
+
       <Gradient/>
-      {/* <Authentication/> */}
-    {/* <Bag/> */}
+
+      
+    {/* <Routes/> */}
+
     </div>
   );
 }

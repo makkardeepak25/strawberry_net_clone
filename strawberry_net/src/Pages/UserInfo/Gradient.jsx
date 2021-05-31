@@ -7,7 +7,8 @@ import LoyaltyOutlinedIcon from '@material-ui/icons/LoyaltyOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import Container from '@material-ui/core/Container';
+
+import { Setting } from './Settings/Setting';
 
 export const Gradient = () => {
     return (
@@ -43,10 +44,7 @@ export const Gradient = () => {
             
             
         </div>
-        <Container maxWidth="lg" style={{borderBottom:'2px solid black'}}>
-
-
-        </Container>
+            <Setting/>
 
         </div>  )
 }
