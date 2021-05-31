@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import styles from './PersonalInfo.module.css';
 import styled from 'styled-components';
-
+import {countries} from '../countries';
 
 
 const UserInput = styled.input`
@@ -70,7 +70,13 @@ export const PersonalInfo = () => {
                 </div>
                 <div className={styles.inputCont}>
                         <label htmlFor="">Country Code</label>
-                        <input type="text" />
+                        <select name="" id="">
+                {
+                    countries.map(item=>
+                        <option value="">{item.label} +{item.phone}</option>
+                        )
+                }
+                    </select>
                         <label htmlFor="">Number</label>
                         <input type="text" />
 
@@ -111,7 +117,15 @@ export const PersonalInfo = () => {
                 <div className={styles.labelCont}>
                     <label htmlFor="">Location</label>
                 </div>
-                <div className={styles.inputCont}><UserInput></UserInput></div>
+                <div className={styles.inputCont}> 
+                <select name="" id="">
+                {
+                    countries.map(item=>
+                        <option value="">{item.label}</option>
+                        )
+                }
+                    </select>
+                </div>
                 
             </div>
         </div>
