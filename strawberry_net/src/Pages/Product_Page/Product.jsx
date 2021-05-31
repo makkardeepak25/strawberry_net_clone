@@ -40,6 +40,7 @@ const Product = () => {
     const activeReview = activeTab == "review" ? { fontWeight: "600" } : {}
 
     const [image,setImage]=useState(0)
+    const [size,setSize]=useState(0)
     const [product,setProduct]=useState({})
 
     const GetProduct=()=>{
@@ -77,15 +78,22 @@ GetProduct()
                 <div className={styles.product_info}>
                     <h1>{product.prod_name}</h1>
                     <h3>{product.prod_description}</h3>
-                    <p>Size: {product.size[0].size}</p>
-                    <div className={styles.sale_card}>
+                    <p>Size: {product.size[size].size}</p>
+                    <div className={styles.sale_card_div}>
+                        {
+                            product.size.map((obj,i)=> 
+                            <div onClick={()=>setSize(i)} className={size===i? styles.active_sale_card:styles.sale_card}>
 
-                        <div>sale</div>
-                        <div>{product.size[0].size}</div>
+                            <div>sale</div>
+                            <div>{obj.size}</div>
+                        </div>
+                            )
+                        }
                     </div>
+                
                     <div className={styles.price_tag}>
                         <h3>Rs.</h3>
-                        <h1>{product.size[0].price}</h1>
+                        <h1>{product.size[size].price}</h1>
                         <h3>.00</h3>
                     </div>
                     <div className={styles.select_tag_btn_div}>

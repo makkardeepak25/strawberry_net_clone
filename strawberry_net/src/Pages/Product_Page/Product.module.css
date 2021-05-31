@@ -6,7 +6,8 @@
 .product_div{
   
     display: flex;
-  height: 100vh;
+
+  border: 1px solid black;
 
 }
 .product_img{
@@ -16,6 +17,9 @@
 }
 .product_info{
     width: 60%;
+}
+.sale_card_div{
+    display: flex;
 }
 .sale_card {
     width: 60px;
@@ -27,12 +31,31 @@
     width: 100%;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    background-color: #662C90;
+    background-color: gray;
     color: white;
     text-align: center;
     margin-bottom: 1px;
 }
 .sale_card :last-child{
+    border: 2px solid gray;
+height: 80%;
+padding: 5px;
+text-align: center;
+cursor: pointer;
+overflow-wrap: break-word;
+}
+
+/* active sale card */
+.active_sale_card :first-child{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #662C90;
+    color: white;
+    text-align: center;
+    margin-bottom: 1px;
+}
+.active_sale_card :last-child{
     border: 2px solid #662C90;
 height: 80%;
 padding: 5px;
@@ -40,6 +63,14 @@ text-align: center;
 cursor: pointer;
 overflow-wrap: break-word;
 }
+
+.active_sale_card {
+    width: 60px;
+    height: 60px;
+    font-size: small;
+    margin: 10px;
+}
+/* end */
 .price_tag{
     display: flex;
     margin: 20px 0px;
