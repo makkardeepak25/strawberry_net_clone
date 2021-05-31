@@ -12,9 +12,8 @@ import { NewArrivals } from "../../Components/HomeComponents/NewArrivals";
 export const Home = () => {
   return (
     <div>
-      <NavBar />
-      <br />
-      <br />
+      {/* <NavBar /> */}
+    
       <Banner />
       <div className={styles.dailyspecial}>
         <div className={styles.promopadding}>
