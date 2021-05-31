@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import styles from "./Product.module.css"
 import OfferTag from '../../Components/offer_lable/OfferTag';
+import { useParams } from 'react-router-dom';
 const Product = () => {
+    const {id}=useParams();
+    console.log(id)
     const product = {
         id: "1",
         prod_name: "ACADEMIE",

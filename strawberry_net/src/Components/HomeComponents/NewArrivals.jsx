@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "axios"
 import styles from "./Card.module.css"
+import { Link } from "react-router-dom"
 export const NewArrivals = () => {
     const [data, setData] = React.useState([]);
     const getData = () => {
@@ -15,7 +16,7 @@ export const NewArrivals = () => {
     return (
         <>
         {data.slice(12,16).map(el => {
-                    return <div className={styles.prodDiv}>
+                    return <Link to={`/products/${el.id}`}><div className={styles.prodDiv}>
                     <a>
                       <span className={styles.prodname}>{el.prod_name}</span>
                       <p className={styles.desc}>
@@ -27,7 +28,7 @@ export const NewArrivals = () => {
                     <div className={styles.prodprice}>Rs&nbsp;{el.size[0].price}</div>
                     <button className={styles.bagbtn}>Add to bag</button>
                     <div className={styles.extraoff}>Extra 8% Off on US$80</div>
-                  </div>
+                  </div></Link>
                 })}
         
         </>
