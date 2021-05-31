@@ -31,6 +31,23 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 export const PersonalInfo = () => {
+    let days = new Array(31)
+    days= days.fill(0,0,31)
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+      ];
+    
     const classes = useStyles();
     return (
         <div className={classes.root,styles.mainCont}>
@@ -70,7 +87,7 @@ export const PersonalInfo = () => {
                 </div>
                 <div className={styles.inputCont}>
                         <label htmlFor="">Country Code</label>
-                        <select name="" id="">
+                        <select name="" id="" style={{width:'120px'}} className={styles.selectBox}>
                 {
                     countries.map(item=>
                         <option value="">{item.label} +{item.phone}</option>
@@ -78,7 +95,7 @@ export const PersonalInfo = () => {
                 }
                     </select>
                         <label htmlFor="">Number</label>
-                        <input type="text" />
+                        <UserInput style={{width:'200px'}}></UserInput>
 
                 </div>
                 
@@ -98,9 +115,18 @@ export const PersonalInfo = () => {
                 </div>
                 <div className={styles.inputCont}>
                 <label htmlFor="">Day</label>
-                        <input type="text" />
+                        <select name="" id="" style={{width:'120px'}} className={styles.selectBox}>
+                            {
+                                 days.map((item,i)=><option value="">{i+1}</option>)
+                            }
+                        </select>
                         <label htmlFor="">Month</label>
-                        <input type="text" />
+                        <select name="" id="" style={{width:'120px'}} className={styles.selectBox}>
+                            
+                            {
+                                months.map((item)=><option value="">{item}</option>)
+                            }
+                        </select>
                 </div>
                 
             </div>
@@ -117,8 +143,8 @@ export const PersonalInfo = () => {
                 <div className={styles.labelCont}>
                     <label htmlFor="">Location</label>
                 </div>
-                <div className={styles.inputCont}> 
-                <select name="" id="">
+                <div className={styles.inputCont} > 
+                <select name="" id="" style={{width:'100%'}} className={styles.selectBox}>
                 {
                     countries.map(item=>
                         <option value="">{item.label}</option>

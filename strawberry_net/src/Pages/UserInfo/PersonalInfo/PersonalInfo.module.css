@@ -1,11 +1,15 @@
 .mainCont{
     width: 60%;
+    min-width: 500px;
     margin: 2% auto;
     /* background-color: blanchedalmond; */
 }
 .UploadButton{
-    width: 25%;
+    width: 18%;
     margin: auto;
+  
+    margin-top:1%;
+ 
      
  }
 
@@ -18,7 +22,8 @@
   }
   .customeFileInput::before {
 
-    margin:1% 18%;
+   
+    /* width: 100%; */
  
       color: white;
     content: 'Upload a profile photo';
@@ -46,6 +51,12 @@
         width: 150px;
         margin: auto;
     }
+    .UploadButton{
+      width: 30%;
+      /* background-color: cadetblue; */
+   
+       
+   }
   }
 
 
@@ -70,4 +81,8 @@
       display: flex;
       align-items: center;
       margin-top: 20px;
+  }
+  .selectBox{
+    height: 34px;
+     border: 1px solid #623381;
   }
