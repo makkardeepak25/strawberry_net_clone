@@ -13,9 +13,8 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 export const Home = () => {
   return (
     <div>
-      <NavBar />
-      <br />
-      <br />
+      {/* <NavBar /> */}
+    
       <Banner />
       <div className={styles.dailyspecial}>
         <div className={styles.promopadding}>
