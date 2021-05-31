@@ -1,240 +1,291 @@
-.footer{
-    margin-top: 50px;
-    letter-spacing: .09em;
-    font-size: 14px;
-    font-family: Lato,sans-serif;
-    display: block;
-    font-family: Lato,sans-serif;
+.footer {
+  margin-top: 50px;
+  letter-spacing: 0.09em;
+  font-size: 14px;
+  font-family: Lato, sans-serif;
+  display: block;
+  font-family: Lato, sans-serif;
 }
-.socialMedia{
-    background: url(https://a.cdnsbn.com/images/common/2016footer.jpg) center top no-repeat #702f80;
-    color: #fff;
-    padding: 32px 0;
+.socialMedia {
+  background: url(https://a.cdnsbn.com/images/common/2016footer.jpg) center top
+    no-repeat #702f80;
+  color: #fff;
+  padding: 32px 0;
 }
-.container{
-    max-width: 1200px;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    display: block;
+.container {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: block;
 }
-.row{
-    margin-left: -7.5px;
-    margin-right: -7.5px;
-    /* display: block; */
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 100px;
+.row {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+  /* display: block; */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 100px;
 }
-.connect{
-    font-size: 24px;
-    margin: 5px 0 25px;
-    letter-spacing: 0.015em;
-    font-family: Lato,sans-serif;
-    font-weight: 500;
-    line-height: 1.1;
-    color: inherit;
-    margin-block-start: 1.67em;
-    margin-block-end: 1.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    text-align: left;
+.connect {
+  font-size: 24px;
+  margin: 5px 0 25px;
+  letter-spacing: 0.015em;
+  font-family: Lato, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  text-align: left;
 }
-.signup{
-    text-align: left;
-    color: #fff;
+.signup {
+  text-align: left;
+  color: #fff;
 }
-.inputGp{
-    margin-bottom: 25px;
-    padding-top: 14px;
-    position: relative;
-    display: table;
-    border-collapse: separate;
-    position:relative;
+.inputGp {
+  margin-bottom: 25px;
+  padding-top: 14px;
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  position: relative;
+}
+.signupInp {
+  height: 50px;
+  font-size: 16px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 90%;
+  margin-bottom: 0;
+  display: table-cell;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #623380;
+  box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  cursor: text;
+}
+.signBut {
+  position: absolute;
+  top: 20%;
+  left: 99%;
+  margin-top: 0;
+  font-size: 0;
+  white-space: nowrap;
+  width: 1%;
+  display: table-cell;
+  border-collapse: separate;
+  text-align: left;
+}
+.signupbtnref {
+  position: relative;
+  background-color: #52246d;
+  color: #fff;
+  height: 52px;
+  padding: 4px 10px;
+  line-height: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  font-size: 13px;
+  border-radius: 4px;
+  user-select: none;
+  text-decoration: none;
+  text-align: left;
+}
+.signupbtnref:hover {
+  background-color: #fff;
+  color: #52246d;
+}
+.btnfb {
+  background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -36px -478px
+    no-repeat;
+  width: 31px;
+  padding-top: 31px;
+  vertical-align: middle;
+  margin-right: 20px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+.btntweet {
+  background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -213px -478px
+    no-repeat;
+  width: 31px;
+  padding-top: 31px;
+  vertical-align: middle;
+  margin-right: 20px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+.btnpint {
+  background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -107px -478px
+    no-repeat;
+  width: 31px;
+  padding-top: 31px;
+  vertical-align: middle;
+  margin-right: 20px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+.btninsta {
+  background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -142px -478px
+    no-repeat;
+  width: 31px;
+  padding-top: 31px;
+  vertical-align: middle;
+  margin-right: 20px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+  /* color: transparent; */
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+.btnyoutube {
+  background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -153px -112px
+    no-repeat;
+  width: 31px;
+  padding-top: 31px;
+  vertical-align: middle;
+  margin-right: 20px;
+  text-indent: -9999px;
+  line-height: 0;
+  font-size: 0;
+  color: transparent;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
+.bannerbot {
+  padding-left: 120px;
+  position: relative;
+  font-size: 18px;
+  line-height: 1em;
+  font-weight: 300;
+  margin-top: 40px;
+  text-align: left;
+}
+.imgbot {
+  font-size: 12px;
+  line-height: 0.1em;
+  width: 75px;
+  height: 95px;
+  background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -89px -381px
+    no-repeat;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: block;
+}
+.adv {
+  line-height: 1.28;
+}
+.bannerplane {
+  padding-left: 100px;
+  padding-top: 20px;
+  position: relative;
+  font-size: 28px;
+  font-weight: 300;
+  margin-top: 20px;
+  text-align: left;
+}
+.imgplane {
+  width: 84px;
+  height: 91px;
+  background: url(https://a.cdnsbn.com/images/English/shippingicon_1.png) -10px -5px
+    no-repeat;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  display: block;
+}
+.fs15 {
+  font-size: 15px;
+}
+.footercontainer {
+  background-color: #52246d;
+  color: #fff;
+  padding: 30px 0;
+}
+.rowcont {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+  display: grid;
+  grid-template-columns: 66% 33%;
+  gap: 1%;
+}
 
+
+.textsz {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  -webkit-text-size-adjust: 100%;
 }
-.signupInp{
-    height: 50px;
-    font-size: 16px;
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
+.textsz  li {
+  display: inline-block;
+  padding-right: 20px;
+  color: #fff;
+  font-size: 16px;
+font-weight: 700;
+}
+.colrght{
+
     position: relative;
-    z-index: 2;
-    float: left;
-    width: 90%;
-    margin-bottom: 0;
-    display: table-cell;
-    padding: 6px 12px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #623380;
-    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    cursor: text;
-}
-.signBut{
-    position: absolute;
-    top: 20%;
-    left: 99%;
-    margin-top: 0;
-    font-size: 0;
-    white-space: nowrap;
-    width: 1%;
-    display: table-cell;
-    border-collapse: separate;
-    text-align: left;
-}
-.signupbtnref{
-   
-  
-    position: relative;
-    background-color: #52246d;
-    color: #fff;
-    height: 52px;
-    padding: 4px 10px;
-    line-height: 50px;
-    font-weight: 700;
+    min-height: 1px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
     text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 0;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    font-size: 13px;
-    border-radius: 4px;
-    user-select: none;
-    text-decoration: none;
-    text-align: left;
-}
-.signupbtnref:hover{
-    background-color: #fff;
-    color: #52246d;
-}
-.btnfb{
-    background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -36px -478px no-repeat;
-    width: 31px;
-    padding-top: 31px;
-    vertical-align: middle;
-    margin-right: 20px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    color: transparent;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 0px 0px 0px;
-    cursor: pointer;
-}
-.btntweet{
-    background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -213px -478px no-repeat;
-    width: 31px;
-    padding-top: 31px;
-    vertical-align: middle;
-    margin-right: 20px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    color: transparent;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 0px 0px 0px;
-    cursor: pointer;
-
-}
-.btnpint{
-    background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -107px -478px no-repeat;
-    width: 31px;
-    padding-top: 31px;
-    vertical-align: middle;
-    margin-right: 20px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    color: transparent;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 0px 0px 0px;
-    cursor: pointer;
-}
-.btninsta{
-    background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -142px -478px no-repeat;
-    width: 31px;
-    padding-top: 31px;
-    vertical-align: middle;
-    margin-right: 20px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    /* color: transparent; */
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 0px 0px 0px;
-    cursor: pointer;
-}
-.btnyoutube{
-    background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -153px -112px no-repeat;
-    width: 31px;
-    padding-top: 31px;
-    vertical-align: middle;
-    margin-right: 20px;
-    text-indent: -9999px;
-    line-height: 0;
-    font-size: 0;
-    color: transparent;
-    text-decoration: none;
-    display: inline-block;
-    padding: 0px 0px 0px 0px;
-    cursor: pointer;
-}
-.bannerbot{
-    padding-left: 120px;
     position: relative;
-    font-size: 18px;
-    line-height: 1em;
-    font-weight: 300;
-    margin-top: 40px;
-    text-align: left;
+    margin-left: 15%;
 }
-.imgbot{
-    font-size: 12px;
-    line-height: .1em;
-    width: 75px;
-    height: 95px;
-    background: url(https://a.cdnsbn.com/images/common/2016CommonSprite.png) -89px -381px no-repeat;
+.country{
     position: absolute;
-    left: 20px;
-    top: 20px;
-    display: block;
+    top: 25%;
+    left: 15%;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+}
 
-}
-.adv{
- line-height: 1.28;
-}
-.bannerplane{
-    padding-left: 100px;
-    padding-top: 20px;
-    position: relative;
-    font-size: 28px;
-    font-weight: 300;
-    margin-top: 20px;
-    text-align: left;
-}
-.imgplane{
-    width: 84px;
-    height: 91px;
-    background: url(https://a.cdnsbn.com/images/English/shippingicon_1.png) -10px -5px no-repeat;
-    position: absolute;
-    left: 0;
-    top: 20px;
-    display: block;
-}
-.fs15{
-    font-size: 15px;
-}
+
 
