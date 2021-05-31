@@ -4,6 +4,8 @@ import styles from "./Product.module.css"
 import OfferTag from '../../Components/offer_lable/OfferTag';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import SimpleRating from "../../Components/Rating/ReadRating"
+import {Rating} from "@material-ui/lab";
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -78,7 +80,11 @@ GetProduct()
                 <div className={styles.product_info}>
                     <h1>{product.prod_name}</h1>
                     <h3>{product.prod_description}</h3>
+                    <div >
                     <p>Size: {product.size[size].size}</p>
+                    <SimpleRating value="2"/>
+                    </div>
+                    
                     <div className={styles.sale_card_div}>
                         {
                             product.size.map((obj,i)=> 
@@ -118,13 +124,14 @@ GetProduct()
                                 <p style={activeDetails}>PRODUCT DETAILS</p>
                             </div>
                             <div onClick={() => setActiveTab("review")} className={activeTab === "review" && styles.active_tab}>
-                                <p style={activeReview} >REVIEWS</p>
+                                <p style={activeReview} >REVIEWS </p>
                             </div>
                             <div>
-                                <p >Ratings</p>
+                            {/* <Rating name="read-only" value={2} readOnly /> */}
+                            <SimpleRating value="2"/>
                             </div>
                             <div>
-                                <p>Add to wishlist</p>
+                                <p>ADD TO WISHLIST</p>
                             </div>
                             <div className={styles.write}>
                                 <button>Write Review</button>
