@@ -4,6 +4,8 @@ import { NavBar } from '../../Components/HomeComponents/NavBar';
 import { Authentication } from '../Authentication/Authentication';
 import { Home } from '../Home/Home';
 import Product from '../Product_Page/Product';
+import { Gradient } from '../UserInfo/Gradient';
+
 const Routes = () => {
    
     return (
@@ -21,7 +23,11 @@ const Routes = () => {
            <Route exact path="/signin">
              <Authentication/>
            </Route>
+           <Route exact path="/userinfo">
+          <Gradient/>
+           </Route>
 
+       
            </Switch>
 
 
