@@ -111,7 +111,7 @@ export const NavBar = () => {
               <span className={styles.clrspn}>HAIRCARE</span>
             </div>
           </Link>
-          <Link to={"/perfume"}>
+          <Link to={"/perfumes"}>
             {" "}
             <div>
               <span className={styles.clrspn}>PERFUME</span>
