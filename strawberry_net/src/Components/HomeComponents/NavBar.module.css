@@ -17,6 +17,7 @@
     center no-repeat #fff;
   letter-spacing: 0.015em;
   display: block;
+  height: 90px;
 }
 .container {
   max-width: 1200px;
