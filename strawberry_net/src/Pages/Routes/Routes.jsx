@@ -10,13 +10,14 @@ const Routes = () => {
            <Route exact path="/">
            <Home/>
            </Route>
-           <Route exact path="/product">
+           <Route exact path="/product/:id">
              <Product/>
            </Route>
 
            <Route exact path="/signin">
              <Authentication/>
            </Route>
+
         </div>
     );
 };
