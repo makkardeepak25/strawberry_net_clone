@@ -14,14 +14,18 @@ const Routes = () => {
            <Route exact path="/">
            <Home/>
            </Route>
-           <Route exact path="/product">
+           <Route exact path="/products/:id">
              <Product/>
            </Route>
 
            <Route exact path="/signin">
              <Authentication/>
            </Route>
+
            </Switch>
+
+
+
         </div>
     );
 };

@@ -1,17 +1,21 @@
 
 .main_div{
     margin: 0px 5%;
+
 }
 .product_div{
   
     display: flex;
   height: 100vh;
-   
+
 }
 .product_img{
    
     width: 40%;
 
+}
+.product_info{
+    width: 60%;
 }
 .sale_card {
     width: 60px;
