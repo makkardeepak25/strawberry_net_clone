@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
-
+import {GiHamburgerMenu} from "react-icons/gi"
 import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import {AiFillHeart} from "react-icons/ai"
 import {GiShoppingBag} from "react-icons/gi"
+import {Link} from "react-router-dom"
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
@@ -89,7 +90,13 @@ export const NavBar = () => {
       </div>
       <div className={styles.navbarmenu}>
         <ul className={styles.menucont}>
-          <li></li>
+         <Link> <li><span><IconContext.Provider
+                    value={{ color: "white",size:"2em" }}
+                  >
+                   
+                      < GiHamburgerMenu />
+                   
+                  </IconContext.Provider></span><span>Shop by brand</span></li></Link>
         </ul>
       </div>
     </div>
