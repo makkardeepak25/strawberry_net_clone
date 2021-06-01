@@ -253,7 +253,6 @@
   gap: 1%;
 }
 
-
 .textsz {
   list-style: none;
   padding: 0;
@@ -261,31 +260,128 @@
   text-transform: uppercase;
   -webkit-text-size-adjust: 100%;
 }
-.textsz  li {
+.textsz li {
   display: inline-block;
   padding-right: 20px;
   color: #fff;
   font-size: 16px;
-font-weight: 700;
+  font-weight: 700;
 }
-.colrght{
-
-    position: relative;
-    min-height: 1px;
-    padding-left: 7.5px;
-    padding-right: 7.5px;
-    text-transform: uppercase;
-    position: relative;
-    margin-left: 15%;
+.colrght {
+  position: relative;
+  min-height: 1px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  text-transform: uppercase;
+  position: relative;
+  margin-left: 15%;
 }
-.country{
-    position: absolute;
-    top: 25%;
-    left: 15%;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
+.country {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+.hr1 {
+  border-color: #75508a;
+  margin: 30px 0;
+  width: 100%;
+  border-top: 1px solid #fff;
+  display: block;
+  height: 0px;
+}
+.textsz li>span{
+  color: #ee2c72;
+}
+.textsz li:hover{
+  color: #e1b9f5;
+}
+.country:hover{
+  color: #e1b9f5;
 }
 
+.gridmainbox {
+  display: grid;
+  grid-template-columns: 18% 15% 15% 15% 25%;
+  letter-spacing: 0.09em;
+  font-size: 14px;
+  gap: 4%;
+}
 
+.gridmainbox1grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
 
+.gridmainbox1grid > img {
+  width: 62px;
+  aspect-ratio: auto 62 / 43;
+  height: 43px;
+}
+.gridmainbox2 {
+  font-size: 20px;
+  line-height: 22px;
+}
+
+.gridmainbox2margin {
+  margin-bottom: 8px;
+  font-weight: 300;
+  letter-spacing: .09em;
+    font-size: 14px;
+    font-family: Lato,sans-serif;
+
+}
+.gridmainbox2margin:hover{
+  color: #e1b9f5;
+}
+
+.gridmainbox2 > h6 {
+  margin: 15px 0px 17px 0px;
+  font-size: 17px;
+  line-height: 18px;
+}
+.gridmainbox4grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 40px;
+}
+
+.gridmainbox4 > h6 {
+  margin: 15px 0px 17px 0px;
+  font-size: 17px;
+  line-height: 18px;
+}
+.gridmainbox4grid > img {
+  width: 120px;
+  height: 43px;
+}
+
+.gridmainbox5grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.gridmainbox1grid > img {
+  width: 62px;
+  aspect-ratio: auto 62 / 43;
+  height: 43px;
+}
+
+.hr2 {
+  background-color: #ee2c72;
+  border-width: 5px;
+  margin: 30px 0;
+  width: 100%;
+  margin: 30px 0;
+  display: block;
+  height: 5px;
+  width: 100%;
+}
+
+.bottomline{
+  letter-spacing: .09em;
+}
