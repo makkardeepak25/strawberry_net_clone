@@ -73,18 +73,18 @@ export const Footer = () => {
               <ul className={styles.textsz}>
                 <Link>
                   {" "}
-                  <li>Shipping&tax&emsp;|&ensp;</li>
+                  <li>Shipping&tax&emsp;<span>|</span>&ensp;</li>
                 </Link>
                 <Link>
-                  <li>Returns Policy&emsp;|&ensp;</li>
-                </Link>
-                <Link>
-                  {" "}
-                  <li>FAQ&emsp;|&ensp;</li>
+                  <li>Returns Policy&emsp;<span>|</span>&ensp;</li>
                 </Link>
                 <Link>
                   {" "}
-                  <li>Contact us&emsp;|&ensp;</li>
+                  <li>FAQ&emsp;<span>|</span>&ensp;</li>
+                </Link>
+                <Link>
+                  {" "}
+                  <li>Contact us&emsp;<span>|</span>&ensp;</li>
                 </Link>
               </ul>
             </div>
@@ -100,7 +100,7 @@ export const Footer = () => {
                     </IconContext.Provider>
                   </span>
                   <span className={styles.country}>
-                    Change COuntry/currency
+                    Change Country/currency
                   </span>
                 </>
               </Link>
