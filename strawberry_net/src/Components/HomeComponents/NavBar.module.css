@@ -106,7 +106,7 @@
 }
 .navform {
   border-color: #101010;
-  padding-top: 25px;
+  padding-top: 30px;
   padding-bottom: 10px;
   margin-right: 22px;
   display: block;
@@ -128,7 +128,7 @@
 }
 .inpsearch {
   width: auto;
-  min-width: 200px;
+  min-width: 400px;
   background-color: transparent;
   border: 0;
   box-shadow: none;
@@ -161,24 +161,23 @@
 }
 .navbarmenu {
   background: #623381;
-  display: block;
+  width: 100%;
 }
 .menucont {
-  max-width: 1200px;
-  margin: 0px auto;
+  width: 90%;
+  margin: auto;
   position: relative;
-  display: flex;
-  justify-content: space-between !important;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 12% 5.25% 5.25% 5.25% 5.25% 6.25% 10.25% 7.25% 7.25% 11.25% 4% ;
+  gap: 1.5%;
+  text-align: center;
+  /* justify-content: space-between !important; */
+  padding: 10px 0;
   float: none;
   text-align: center;
   list-style: none;
-}
-.menucont > li:first-child {
-  position: relative;
-  display: inline-block;
-  text-align: -webkit-match-parent;
-}
+  font-weight: 600;
+  }
 
 .menunavright {
   font-size: 12px;
@@ -192,8 +191,7 @@
   letter-spacing: 0.015em;
   justify-content: space-between;
   width: 98%;
-  margin:0;
-  
+  margin: 0;
 }
 
 .loginlinks {
@@ -219,22 +217,38 @@
   font-weight: 700;
   list-style: none;
   position: relative;
-  
-
-  
- 
-
 }
 
-.aaccname{
-    color: #b53788;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: .015em;
-    position: absolute;
-    width: 70px;
-    top: 30%;
-    left: 110%;
-    font-size:14px ;
+.aaccname {
+  color: #b53788;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.015em;
+  position: absolute;
+  width: 70px;
+  top: 30%;
+  left: 110%;
+  font-size: 14px;
+}
+.clrspn {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  position: absolute;
+  top: 38%;
+
+}
+.clrspns {
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top:35%;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.lil {
+  color: white;
+  position: relative;
 }
