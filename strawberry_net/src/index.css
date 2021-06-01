@@ -2,6 +2,10 @@ body {
   margin: 0;
   font-family: Lato,sans-serif;
 }
+button,input:focus{
+  outline: none;
+}
+
 
 code {
   font-family: Lato,sans-serif;
