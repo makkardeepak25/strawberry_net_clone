@@ -106,6 +106,113 @@ export const Footer = () => {
               </Link>
             </div>
           </div>
+          <div className={styles.hr1}></div>
+          <div className={styles.gridmainbox}>
+            <div className={styles.gridmainbox1}>
+              <h3>PAY WITH:</h3>
+              <div className={styles.gridmainbox1grid}>
+                <img
+                  src="https://a.cdnsbn.com/images/common/Visa_16.png"
+                  alt="img"
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/Master_16.png"
+                  alt=""
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/Paypal_16.png"
+                  alt=""
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/JCB_16.png"
+                  alt=""
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/AmericanExpress_16.png"
+                  alt=""
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/Discover_16.png"
+                  alt=""
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/DiscoverMore.png"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <div className={styles.gridmainbox2}>
+              <h6>MY ACCOUNT</h6>
+              <div className={styles.gridmainbox2margin}>Track Order</div>
+              <div className={styles.gridmainbox2margin}>Order History</div>
+              <div className={styles.gridmainbox2margin}>My Reviews</div>
+              <div className={styles.gridmainbox2margin}>
+                Birthday Treat Program
+              </div>
+            </div>
+
+            <div className={styles.gridmainbox2}>
+              <h6>Our Company</h6>
+              <div className={styles.gridmainbox2margin}>About Us</div>
+              <div className={styles.gridmainbox2margin}>
+                Point Rewards Program
+              </div>
+              <div className={styles.gridmainbox2margin}>Contact Us</div>
+              <div className={styles.gridmainbox2margin}>Affiliates</div>
+
+              <div className={styles.gridmainbox2margin}>Partners</div>
+              <div className={styles.gridmainbox2margin}>Student Discount</div>
+            </div>
+
+            <div className={styles.gridmainbox4}>
+              <h6>Download</h6>
+              <div className={styles.gridmainbox4grid}>
+                <img
+                  src="https://blitzkidsradio.com/wp-content/uploads/2021/02/APPLE-APP-1.png"
+                  alt=""
+                />
+                <img
+                  src="https://www.maketecheasier.com/assets/uploads/2015/03/playstoreerrors-featured.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+
+            <div className={styles.gridmainbox1}>
+              <h3>RATED EXCELLENT</h3>
+              <div className={styles.gridmainbox5grid}>
+                <img
+                  src="https://medals.bizrate.com/medals/dynamic/27609_medal.gif"
+                  alt="img"
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/HK-Trust-Mark_resize.png"
+                  alt=""
+                />
+              </div>
+              <h3>9.0 out of 10!</h3>
+              <div className={styles.gridmainbox5grid}>
+                <img
+                  src="https://a.cdnsbn.com/images/common/2021Premiumeshop.png"
+                  alt="img"
+                />
+                <img
+                  src="https://a.cdnsbn.com/images/common/2021TRUSTeshop.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+          <div className={styles.hr2}></div>
+          <div  className={styles.bottomline}>
+          <p>
+              Privacy & Security | Terms & Conditions | Point Rewards Program
+              Terms & Conditions{" "}
+            </p>
+            <p>
+            1998 - 2021 © StrawberryNET.com All Rights Reserved.</p>
+          </div>
         </div>
       </div>
     </div>
