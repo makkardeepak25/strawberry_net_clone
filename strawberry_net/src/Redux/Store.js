@@ -1,14 +1,6 @@
 import { authReducer } from "./Auth/authReducer";
 import { createStore, applyMiddleware, compose,combineReducers } from 'redux'
-
-
-
-
-
-
-const customMiddleware = (store) => (next) => (action) => {
-    return typeof action == "function" ? action(store.dispatch, store.getState) : next(action)
-}
+import thunk from "redux-thunk";
 
 
 const rootReducer = combineReducers({
@@ -17,8 +9,4 @@ const rootReducer = combineReducers({
    
 
   });
-export const store = createStore(rootReducer,
-
-    compose(applyMiddleware(customMiddleware), reactReduxFirebase(firebase),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    ));
+export const store  = createStore(rootReducer, applyMiddleware(thunk));
