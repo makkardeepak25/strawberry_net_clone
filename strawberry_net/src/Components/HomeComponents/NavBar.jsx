@@ -85,9 +85,11 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
+
                 <MenuIcon style={{width:"30px",height:"15px",color:"white"}}/>
               </span>
               <span className={styles.clrspn}>SHOP BY BRAND</span>
+
             </li>
           </Link>
           <Link to={"/skincare"}>
@@ -141,7 +143,9 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
+
                <CardGiftcardIcon style={{width:"30px",height:"15px",color:"white"}}/>
+
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
@@ -150,7 +154,9 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
+
                <StarIcon style={{width:"30px",height:"15px",color:"white"}}/>
+
               </span>
               <span className={styles.clrspns}>NEW</span>
             </li>

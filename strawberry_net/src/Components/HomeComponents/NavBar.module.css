@@ -162,6 +162,7 @@
   width: 100%;
 }
 .menucont {
+
   width: 95%;
   margin: 0px auto;
   position: relative;
@@ -236,6 +237,7 @@
   text-decoration: none;
 }
 .li1 {
+
   color: white;
   display: flex;
   justify-content: space-between;
