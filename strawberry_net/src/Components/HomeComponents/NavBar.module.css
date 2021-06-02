@@ -9,7 +9,7 @@
   font-family: Lato, sans-serif;
   letter-spacing: 0.03em;
   font-size: 14px;
-  color: #2c2c2c;
+  color: #2C2C2C;
   background: white;
 }
 .headerbg {
@@ -70,7 +70,7 @@
   margin-inline-end: 0px;
   padding-inline-start: 40px;
   text-align: right;
-  color: #b53788;
+  color: #B53788;
   list-style: none;
   width: 100%;
 }
@@ -84,7 +84,6 @@
 .addnavlang > li:first-child {
   cursor: auto !important;
 }
-
 .glyphicon {
   font-size: 9px;
   position: relative;
@@ -120,7 +119,7 @@
   background-color: #fff;
   border-radius: 4px;
   display: flex;
-  border: 2px solid #521b76;
+  border: 2px solid #521B76;
   text-align: center;
   justify-content: space-evenly;
   width: 100%;
@@ -131,7 +130,7 @@
   border-radius: 4px;
   display: flex;
   justify-content: space-evenly;
-  border: 2px solid #521b76;
+  border: 2px solid #521B76;
   text-align: center;
   width: 100%;
   padding: 0px 3px;
@@ -169,7 +168,7 @@
 .searchbtn1 {
   height: 33px;
   font-size: 18px;
-  color: #521b76;
+  color: #521B76;
   /* padding: 0 10px; */
   background-color: #fff;
   display: inline-block;
@@ -187,7 +186,7 @@
 .searchbtn2 {
   height: 33px;
   font-size: 18px;
-  color: #521b76;
+  color: #521B76;
   /* padding: 0 10px; */
   background-color: #fff;
   display: inline-block;
@@ -226,12 +225,11 @@
   list-style: none;
   padding: 10px 0px;
 }
-
 .menunavright {
   font-size: 12px;
   position: relative;
   padding: 0;
-  color: #b53788;
+  color: #B53788;
   float: right !important;
   list-style: none;
   display: flex;
@@ -241,7 +239,6 @@
   width: 98%;
   margin: 0;
 }
-
 .loginlinks {
   cursor: auto !important;
   position: relative;
@@ -250,13 +247,12 @@
   font-weight: 700;
   text-align: -webkit-match-parent;
   font-size: 12px;
-  color: #b53788;
+  color: #B53788;
   list-style: none;
   letter-spacing: 0.015em;
 }
-
 .accname {
-  color: #b53788;
+  color: #B53788;
   padding: 0;
   position: relative;
   display: block;
@@ -265,9 +261,8 @@
   list-style: none;
   position: relative;
 }
-
 .aaccname {
-  color: #b53788;
+  color: #B53788;
   cursor: pointer;
   font-weight: 700;
   font-size: 12px;
@@ -291,7 +286,6 @@
   font-weight: 500;
   text-decoration: none;
 }
-
 .li1 {
   color: white;
   display: flex;
@@ -301,10 +295,8 @@
   .li1 {
     display: grid;
     grid-template-columns: repeat(1,1fr);
-
   }
 }
-
 @media (max-width: 1100px) {
   .container{
     display: flex;

@@ -42,25 +42,23 @@ export const NavBar = () => {
             <ul className={styles.menunavright}>
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#b53788", size: "3.2em" }}>
+                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
                 </a>
               </li>
-
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#b53788", size: "3.2em" }}>
+                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <AiFillHeart />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Wishlist</span>
                 </a>
               </li>
-
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#b53788", size: "3.2em" }}>
+                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <GiShoppingBag />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Bag</span>
@@ -150,7 +148,6 @@ export const NavBar = () => {
       </div>
       <div className={styles.navbarmenu2}>
         <MenuIcon style={{ width: "50px", height: "50px", color: "white",cursor:"pointer" }} />
-
         <div className={styles.navform2}>
           <div>
             <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch2} />
