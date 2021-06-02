@@ -12,11 +12,11 @@
 }
 .product_img{
    
-    width: 40%;
+    width: 35%;
 
 }
 .product_info{
-    width: 60%;
+    width: 65%;
 }
 .sale_card_div{
     display: flex;

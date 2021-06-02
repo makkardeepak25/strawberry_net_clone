@@ -35,7 +35,7 @@ const Product = () => {
     //     offer:14
     // }
     let array = new Array(30).fill(0)
-
+    
     const [activeTab, setActiveTab] = useState("details")
 
     const activeDetails = activeTab == "details" ? { fontWeight: "600" } : {}
@@ -52,6 +52,8 @@ const Product = () => {
            setProduct(res.data)
         })
     }
+    let avr_rating=product.reviews && product.reviews
+    console.log(avr_rating);
 useEffect(()=>{
 GetProduct()
 },[id])
@@ -124,7 +126,7 @@ GetProduct()
                                 <p style={activeDetails}>PRODUCT DETAILS</p>
                             </div>
                             <div onClick={() => setActiveTab("review")} className={activeTab === "review" && styles.active_tab}>
-                                <p style={activeReview} >REVIEWS </p>
+                                <p style={activeReview} >REVIEWS ({product.reviews.length}) </p>
                             </div>
                             <div>
                             {/* <Rating name="read-only" value={2} readOnly /> */}
