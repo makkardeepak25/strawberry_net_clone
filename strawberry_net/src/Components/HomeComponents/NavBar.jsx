@@ -35,29 +35,27 @@ export const NavBar = () => {
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
                   <IconContext.Provider
-                    value={{ color: "#b53788", size: "3.2em" }}
+                    value={{ color: "#B53788", size: "3.2em" }}
                   >
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
                 </a>
               </li>
-
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
                   <IconContext.Provider
-                    value={{ color: "#b53788", size: "3.2em" }}
+                    value={{ color: "#B53788", size: "3.2em" }}
                   >
                     <AiFillHeart />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Wishlist</span>
                 </a>
               </li>
-
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
                   <IconContext.Provider
-                    value={{ color: "#b53788", size: "3.2em" }}
+                    value={{ color: "#B53788", size: "3.2em" }}
                   >
                     <GiShoppingBag />
                   </IconContext.Provider>
@@ -87,10 +85,11 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-                <MenuIcon style={{width:"20px",height:"15px",color:"white"}}/>
+
+                <MenuIcon style={{width:"30px",height:"15px",color:"white"}}/>
               </span>
               <span className={styles.clrspn}>SHOP BY BRAND</span>
-              
+
             </li>
           </Link>
           <Link to={"/skincare"}>
@@ -144,7 +143,9 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-               <CardGiftcardIcon style={{width:"20px",height:"15px",color:"white"}}/>
+
+               <CardGiftcardIcon style={{width:"30px",height:"15px",color:"white"}}/>
+
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
@@ -153,7 +154,9 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-               <StarIcon style={{width:"20px",height:"15px",color:"white"}}/>
+
+               <StarIcon style={{width:"30px",height:"15px",color:"white"}}/>
+
               </span>
               <span className={styles.clrspns}>NEW</span>
             </li>

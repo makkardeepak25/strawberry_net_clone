@@ -9,7 +9,7 @@
   font-family: Lato, sans-serif;
   letter-spacing: 0.03em;
   font-size: 14px;
-  color: #2c2c2c;
+  color: #2C2C2C;
   background: white;
 }
 .headerbg {
@@ -73,7 +73,7 @@
   margin-inline-end: 0px;
   padding-inline-start: 40px;
   text-align: right;
-  color: #b53788;
+  color: #B53788;
   list-style: none;
 }
 .addnavlang li {
@@ -86,7 +86,6 @@
 .addnavlang > li:first-child {
   cursor: auto !important;
 }
-
 .glyphicon {
   font-size: 9px;
   position: relative;
@@ -122,7 +121,7 @@
   background-color: #fff;
   border-radius: 4px;
   display: inline-block;
-  border: 2px solid #521b76;
+  border: 2px solid #521B76;
   text-align: center;
 }
 .inpsearch {
@@ -143,7 +142,7 @@
 .searchbtn {
   height: 33px;
   font-size: 18px;
-  color: #521b76;
+  color: #521B76;
   padding: 0 10px;
   background-color: #fff;
   display: inline-block;
@@ -163,7 +162,8 @@
   width: 100%;
 }
 .menucont {
-  width: 83%;
+
+  width: 95%;
   margin: 0px auto;
   position: relative;
   display: flex;
@@ -176,12 +176,11 @@
   font-weight: 600;
   padding: 10px 0px;
   }
-
 .menunavright {
   font-size: 12px;
   position: relative;
   padding: 0;
-  color: #b53788;
+  color: #B53788;
   float: right !important;
   list-style: none;
   display: flex;
@@ -191,9 +190,7 @@
   width: 98%;
   margin: 0;
 }
-
 .loginlinks {
-  content: "";
   cursor: auto !important;
   position: relative;
   margin-left: 10px;
@@ -201,13 +198,12 @@
   font-weight: 700;
   text-align: -webkit-match-parent;
   font-size: 12px;
-  color: #b53788;
+  color: #B53788;
   list-style: none;
   letter-spacing: 0.015em;
 }
-
 .accname {
-  color: #b53788;
+  color: #B53788;
   padding: 0;
   position: relative;
   display: block;
@@ -216,9 +212,8 @@
   list-style: none;
   position: relative;
 }
-
 .aaccname {
-  color: #b53788;
+  color: #B53788;
   cursor: pointer;
   font-weight: 700;
   font-size: 12px;
@@ -231,23 +226,18 @@
 }
 .clrspn {
   color: white;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
-
-
 }
 .clrspns {
   color: white;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
-
-
 }
+.li1 {
 
-
-.lil {
   color: white;
   display: flex;
   justify-content: space-between;
