@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route,Switch} from 'react-router-dom';
+import { Footer } from '../../Components/HomeComponents/Footer';
 import { NavBar } from '../../Components/HomeComponents/NavBar';
 import { Authentication } from '../Authentication/Authentication';
 import { Home } from '../Home/Home';
@@ -29,7 +30,7 @@ const Routes = () => {
 
        
            </Switch>
-
+<Footer/>
 
 
         </div>
