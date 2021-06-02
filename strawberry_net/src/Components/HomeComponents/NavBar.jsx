@@ -10,7 +10,6 @@ import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import MediaQuery from "react-responsive";
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
@@ -57,12 +56,12 @@ export const NavBar = () => {
                 </a>
               </li>
               <li className={styles.loginlinks}>
-                <a className={styles.accname} href="#">
+                <Link to={"/bag"} className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <GiShoppingBag />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Bag</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -73,75 +72,75 @@ export const NavBar = () => {
           <Link to={"/brands"}>
             {" "}
             <li className={styles.li1}>
-              <span>
-                <MenuIcon style={{ width: "30px", height: "15px", color: "white" }} />
-              </span>
-              <span className={styles.clrspns}>SHOP BY BRAND</span>
+              <div>
+                <MenuIcon className={styles.matui} style={{ width: "30px", height: "15px", color: "white" }} />
+              </div>
+              <div className={styles.clrspns}>SHOP BY BRAND</div>
             </li>
           </Link>
           <Link to={"/skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>SKINCARE</span>
+              <div className={styles.clrspn}>SKINCARE</div>
             </li>
           </Link>
           <Link>
             <li to={"/makeup"}>
-              <span className={styles.clrspn}>MAKEUP</span>
+              <div className={styles.clrspn}>MAKEUP</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/haircare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>HAIRCARE</span>
+              <div className={styles.clrspn}>HAIRCARE</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/perfumes"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>PERFUME</span>
+              <div className={styles.clrspn}>PERFUME</div>
             </li>
           </Link>
           <Link to={"/men-skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>MEN'S SKINCARE</span>
+              <div className={styles.clrspn}>MEN'S SKINCARE</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/men-cologne"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>MEN'S COLOGNE</span>
+              <div className={styles.clrspn}>MEN'S COLOGNE</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/home-scents"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>HOME SCENTS</span>
+              <div className={styles.clrspn}>HOME SCENTS</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/natural-beauty"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>NATURAL BEAUTY</span>
+              <div className={styles.clrspn}>NATURAL BEAUTY</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/specials"}>
             {" "}
             <li className={styles.li1}>
-              <span>
+              <div>
                 <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
-              </span>
-              <span className={styles.clrspn}>SPECIALS</span>
+              </div>
+              <div className={styles.clrspn}>SPECIALS</div>
             </li>
           </Link>
           <Link style={{ textDecoration: "none" }} to={"/new-products"}>
             {" "}
             <li className={styles.li1}>
-              <span>
+              <div>
                 <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
-              </span>
-              <span className={styles.clrspns}>NEW</span>
+              </div>
+              <div className={styles.clrspns}>NEW</div>
             </li>
           </Link>
         </ul>
