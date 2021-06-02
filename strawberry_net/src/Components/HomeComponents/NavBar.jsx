@@ -10,7 +10,6 @@ import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import MediaQuery from "react-responsive";
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
