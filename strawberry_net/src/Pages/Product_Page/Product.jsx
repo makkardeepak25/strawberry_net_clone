@@ -4,6 +4,8 @@ import styles from "./Product.module.css"
 import OfferTag from '../../Components/offer_lable/OfferTag';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import SimpleRating from "../../Components/Rating/ReadRating"
+import {Rating} from "@material-ui/lab";
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -33,13 +35,14 @@ const Product = () => {
     //     offer:14
     // }
     let array = new Array(30).fill(0)
-
+    
     const [activeTab, setActiveTab] = useState("details")
 
     const activeDetails = activeTab == "details" ? { fontWeight: "600" } : {}
     const activeReview = activeTab == "review" ? { fontWeight: "600" } : {}
 
     const [image,setImage]=useState(0)
+    const [size,setSize]=useState(0)
     const [product,setProduct]=useState({})
 
     const GetProduct=()=>{
@@ -49,6 +52,8 @@ const Product = () => {
            setProduct(res.data)
         })
     }
+    let avr_rating=product.reviews && product.reviews
+    console.log(avr_rating);
 useEffect(()=>{
 GetProduct()
 },[id])
@@ -77,15 +82,26 @@ GetProduct()
                 <div className={styles.product_info}>
                     <h1>{product.prod_name}</h1>
                     <h3>{product.prod_description}</h3>
-                    <p>Size: {product.size[0].size}</p>
-                    <div className={styles.sale_card}>
-
-                        <div>sale</div>
-                        <div>{product.size[0].size}</div>
+                    <div >
+                    <p>Size: {product.size[size].size}</p>
+                    <SimpleRating value="2"/>
                     </div>
+                    
+                    <div className={styles.sale_card_div}>
+                        {
+                            product.size.map((obj,i)=> 
+                            <div onClick={()=>setSize(i)} className={size===i? styles.active_sale_card:styles.sale_card}>
+
+                            <div>sale</div>
+                            <div>{obj.size}</div>
+                        </div>
+                            )
+                        }
+                    </div>
+                
                     <div className={styles.price_tag}>
                         <h3>Rs.</h3>
-                        <h1>{product.size[0].price}</h1>
+                        <h1>{product.size[size].price}</h1>
                         <h3>.00</h3>
                     </div>
                     <div className={styles.select_tag_btn_div}>
@@ -110,13 +126,14 @@ GetProduct()
                                 <p style={activeDetails}>PRODUCT DETAILS</p>
                             </div>
                             <div onClick={() => setActiveTab("review")} className={activeTab === "review" && styles.active_tab}>
-                                <p style={activeReview} >REVIEWS</p>
+                                <p style={activeReview} >REVIEWS ({product.reviews.length}) </p>
                             </div>
                             <div>
-                                <p >Ratings</p>
+                            {/* <Rating name="read-only" value={2} readOnly /> */}
+                            <SimpleRating value="2"/>
                             </div>
                             <div>
-                                <p>Add to wishlist</p>
+                                <p>ADD TO WISHLIST</p>
                             </div>
                             <div className={styles.write}>
                                 <button>Write Review</button>
