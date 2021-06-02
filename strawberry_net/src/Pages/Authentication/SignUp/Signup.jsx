@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { getSignIn } from '../../../Redux/Auth/authAction';
 import { useDispatch } from "react-redux";
 import {v4 as uuid} from 'uuid'
+import { Signin } from '../SignIn/Signin';
 
 const AuthInput = styled.input`
     background: none;
@@ -24,38 +25,39 @@ const AuthButton = styled.button`
     
 `
 
-
-
-// {
-//     id:"",
-//     name:"",
-//     email:"",
-//     phone:"",
-//     birth_date:"",
-//     avatar:"",
-//     gender:"",
-//     points:0,
-//     addresses:[{}], // Addresses can be multiple thats why I took array
-//     wishlisht:[{}],
-//     bag:[{}],
-//     orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
-//     saved_cards:[{}]
-// }
 const iniState ={
     id:uuid(),
     f_name:"",
     l_name:"",
     email:"",
     password:"",
+    phone:"",
+    birth_date:"",
+    avatar:"",
+    gender:"",
+    points:0,
+    addresses:[],
+    wishlisht:[],
+    bag:[],
+    orders:[], 
+    saved_cards:[]           
 }
 
 
 
 export const Signup = () => {
     const [sigupData,setSignUpdata]=React.useState(iniState)
-    const {f_name,l_name,email,password} = sigupData
+    const [isMatched,SetIsMatched]=React.useState(true)
+    const [hasregistered,setHasRegistered] = React.useState(false)
+    const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards} = sigupData
     const handleOnchange=e=>{
         setSignUpdata({...sigupData,[e.target.name]:e.target.value})
+        if(password=="secret-1"){
+            SetIsMatched(true)
+        }
+        else{
+                SetIsMatched(false)
+        }
 
     }
 
@@ -64,10 +66,24 @@ export const Signup = () => {
         e.preventDefault()
 
         dispatch(getSignIn(sigupData))
+        hasregistered(true)
+        
     }
     function onChange(value) {
         console.log("Captcha value:", value)
       }
+
+    const [isPasswordMatching,setIsPasswordMatching]=React.useState(true)
+    function handleMatch(e){
+        if(e.target.value==password){
+            setIsPasswordMatching(true)
+        }
+        else{
+            setIsPasswordMatching(false)
+        }
+      
+
+    }
     return (
         <form className={styles.signupform}>
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
@@ -75,11 +91,20 @@ export const Signup = () => {
            
             <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Password" name="password" value={password} onChange={handleOnchange}></AuthInput>
+            {/* {
+            isMatched? 
+            ( */}
             <p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5"}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
             </p>
-            <AuthInput placeholder="  Re-enter your Password"></AuthInput>
-            
+            {/* ):
+            (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
+            Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
+            </p>)} */}
+            <AuthInput placeholder="  Re-enter your Password"  onChange={handleMatch}></AuthInput>
+            {
+                !isPasswordMatching && <div style={{color:'red'}}>The passwords do not match.</div>
+            }
             <ReCAPTCHA sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" onChange={onChange} />
             <p style={{marginTop:'0',marginBottom:'0'}}>
             By creating your account, you agree to our 

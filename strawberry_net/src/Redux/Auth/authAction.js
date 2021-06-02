@@ -61,13 +61,15 @@ export const getSignIn =(payload)=>(dispatch)=>{
 
 }
 
-export const getLogin =(payload)=>(dispatch)=>{
-    dispatch(signinRequest())
-    return axios.get('',payload).then((res)=>{
-        dispatch(signinSuccess(res))
+export const getLogin =({email,password})=>(dispatch)=>{
+    dispatch(loginRequest())
+    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles?email=${email}`,{email,password}).then((res)=>{
+        console.log(res.data[0]);
+        dispatch(loginSuccess(res.data[0]))
+        
     })
     .catch(err=>
-        dispatch(signINFailure(err))
+        dispatch(loginFailure(err))
         )
 
 
