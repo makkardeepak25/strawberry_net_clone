@@ -15,7 +15,7 @@ export function Bag() {
               </span>
             </div>
             <div className={styles.bagData}>
-              <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.00.​</p>
+              <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
               <div className={styles.shipBar}>
                 <div className={styles.shipAmt} style={{ width: "44%" }}></div>
                 
