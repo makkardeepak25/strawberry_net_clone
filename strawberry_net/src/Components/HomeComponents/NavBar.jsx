@@ -40,12 +40,12 @@ export const NavBar = () => {
             </nav>
             <ul className={styles.menunavright}>
               <li className={styles.loginlinks}>
-                <a className={styles.accname} href="#">
+                <Link to={"/signin"} className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
-                </a>
+                </Link>
               </li>
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
@@ -56,12 +56,12 @@ export const NavBar = () => {
                 </a>
               </li>
               <li className={styles.loginlinks}>
-                <a className={styles.accname} href="#">
+               <Link to={"/bag"} className={styles.accname}>
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <GiShoppingBag />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Bag</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
