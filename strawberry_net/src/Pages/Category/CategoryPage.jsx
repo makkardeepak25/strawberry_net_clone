@@ -1,9 +1,22 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import ProductCard from '../../Components/Horizontal card/ProductCard';
 import styles from "./CategoryPage.module.css"
 const CategoryPage = () => {
     const {category}= useParams()
-  
+    const [product,setProduct]=useState([])
+   function getProduct(){
+    axios.get(`https://6wwnt.sse.codesandbox.io/products`)
+    .then(res=>{
+       console.log(res.data);
+       setProduct(res.data)
+    })
+   }
+
+   useEffect(()=>{
+  getProduct()
+   },[])
     return (
         <div className={styles.main_div}>
             <div className={styles.category_title}>
@@ -47,6 +60,17 @@ const CategoryPage = () => {
              </div>
 
              <div className={styles.divider}></div>
+
+
+             <div className={styles.brand_title}>
+                 <h4>{category.toUpperCase()}</h4>
+             </div>
+
+             <div>
+                 {
+                     product.length>0&& product.map((prod)=> <ProductCard key={prod.id} {...prod}/> )
+                 }
+             </div>
              </div>
             </div>
         </div>

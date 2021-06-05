@@ -20,7 +20,7 @@ export const DailySpecial = () => {
     <>
       {data.slice(0, 8).map(el => {
         return (
-          <Link to={`/products/${el.id}`}>
+          <Link to={`${el.category}/products/${el.id}`}>
             {" "}
             <div className={styles.prodDiv}>
               <a>

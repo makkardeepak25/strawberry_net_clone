@@ -52,6 +52,8 @@
    
 }
 
+
+
 .top_brands > table > tbody > tr > td{
 
    font-size: 16px ;
@@ -78,4 +80,14 @@ td:hover{
 .divider{
     background-color: gray;
     height: 2px;
+    margin: 20px 0px;
+}
+
+.brand_title{
+    background-image: linear-gradient(to right,#623381  40%, #C42F7A 100%);
+    padding: 5px;
+}
+.brand_title > h4{
+    margin: 0px;
+    color: white;
 }

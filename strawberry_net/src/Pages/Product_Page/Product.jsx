@@ -56,6 +56,7 @@ const Product = () => {
     console.log(avr_rating);
 useEffect(()=>{
 GetProduct()
+window.scrollTo(0, 0);
 },[id])
 
     return (
