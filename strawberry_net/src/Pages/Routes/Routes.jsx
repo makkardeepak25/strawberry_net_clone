@@ -37,8 +37,10 @@ const Routes = () => {
            <Route exact path="/bag">
           <Bag/>
            </Route>
-
-       
+              <Route>
+                <h1>404 | Product Not Found</h1>
+              </Route>
+        
            </Switch>
 <Footer/>
 

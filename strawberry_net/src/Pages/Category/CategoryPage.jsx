@@ -1,20 +1,26 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import ProductCard from '../../Components/Horizontal card/ProductCard';
 import styles from "./CategoryPage.module.css"
 const CategoryPage = () => {
     const {category}= useParams()
     const [product,setProduct]=useState([])
+    const history=useHistory()
    function getProduct(){
     axios.get(`https://6wwnt.sse.codesandbox.io/products?category=${category}`)
     .then(res=>{
        console.log(res.data);
        setProduct(res.data)
+       res.data.length<1&&history.push("/404/product-not-available")
+    })
+    .catch(err=>{
+          history.push("/404/product-not-available")
     })
    }
 
    useEffect(()=>{
+    
   getProduct()
    },[category])
     return (
@@ -68,7 +74,8 @@ const CategoryPage = () => {
 
              <div>
                  {
-                     product.length>0&& product.map((prod)=> <ProductCard key={prod.id} {...prod}/> )
+                     product.length>0 && product.map((prod)=> <ProductCard key={prod.id} {...prod}/> )
+                     
                  }
              </div>
              </div>
