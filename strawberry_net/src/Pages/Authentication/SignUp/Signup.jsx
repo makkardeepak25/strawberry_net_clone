@@ -26,44 +26,63 @@ const AuthButton = styled.button`
 
 
 
-// {
-//     id:"",
-//     name:"",
-//     email:"",
-//     phone:"",
-//     birth_date:"",
-//     avatar:"",
-//     gender:"",
-//     points:0,
-//     addresses:[{}], // Addresses can be multiple thats why I took array
-//     wishlisht:[{}],
-//     bag:[{}],
-//     orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
-//     saved_cards:[{}]
-// }
-const iniState ={
-    id:uuid(),
+const user={
+    id:"",
     f_name:"",
     l_name:"",
     email:"",
+    phone:"",
     password:"",
+    birth_date:"",
+    avatar:"",
+    gender:"",
+    points:0,
+    addresses:[{}], // Addresses can be multiple thats why I took array
+    wishlisht:[{}],
+    bag:[{}],
+    orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
+    saved_cards:[{}]
 }
 
 
 
+
 export const Signup = () => {
+    const iniState ={
+        id:uuid(),
+        f_name:"",
+        l_name:"",
+        email:"",
+        phone:"",
+        password:"",
+        birth_date:"",
+        avatar:"",
+        gender:"",
+        points:0,
+        addresses:[{}], // Addresses can be multiple thats why I took array
+        wishlisht:[{}],
+        bag:[{}],
+        orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
+        saved_cards:[{}]
+    }
     const [sigupData,setSignUpdata]=React.useState(iniState)
     const {f_name,l_name,email,password} = sigupData
     const handleOnchange=e=>{
-        setSignUpdata({...sigupData,[e.target.name]:e.target.value})
+        const data={
+         ...sigupData,
+         [e.target.name]:e.target.value
+        }
+        console.log(data);
+        setSignUpdata(data)
 
     }
-
+    
     const dispatch = useDispatch()
     const handleClick = e=>{
         e.preventDefault()
 
         dispatch(getSignIn(sigupData))
+
     }
     function onChange(value) {
         console.log("Captcha value:", value)

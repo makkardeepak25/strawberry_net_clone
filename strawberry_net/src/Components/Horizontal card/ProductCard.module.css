@@ -31,6 +31,7 @@
     border: 0px;
     background-color: orange;
     margin-left: 15%;
+    cursor: pointer;
 }
 .prod_price{
     background-image: url(https://a.cdnsbn.com/images/common/oitem_bg.gif);
