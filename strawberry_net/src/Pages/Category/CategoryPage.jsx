@@ -7,7 +7,7 @@ const CategoryPage = () => {
     const {category}= useParams()
     const [product,setProduct]=useState([])
    function getProduct(){
-    axios.get(`https://6wwnt.sse.codesandbox.io/products`)
+    axios.get(`https://6wwnt.sse.codesandbox.io/products?category=${category}`)
     .then(res=>{
        console.log(res.data);
        setProduct(res.data)
@@ -16,7 +16,7 @@ const CategoryPage = () => {
 
    useEffect(()=>{
   getProduct()
-   },[])
+   },[category])
     return (
         <div className={styles.main_div}>
             <div className={styles.category_title}>
