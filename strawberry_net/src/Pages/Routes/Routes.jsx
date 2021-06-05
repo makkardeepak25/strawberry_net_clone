@@ -23,14 +23,14 @@ const Routes = () => {
            <Route exact path="/category">
              <CategoryPage/>
            </Route>
-           <Route exact path="/products/:id">
+           <Route exact path="/:category/products/:id">
              <Product/>
            </Route>
 
-           <Route exact path="/signin">
+           <Route exact path="/:category/signin">
              <Authentication/>
            </Route>
-           <Route exact path="/userinfo">
+           <Route exact path="/:category/userinfo">
           <Gradient/>
            </Route>
 

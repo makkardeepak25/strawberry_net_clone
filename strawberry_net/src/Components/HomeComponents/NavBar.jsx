@@ -40,7 +40,7 @@ export const NavBar = () => {
             </nav>
             <ul className={styles.menunavright}>
               <li className={styles.loginlinks}>
-                <Link to={"/signin"} className={styles.accname} href="#">
+                <Link to={"/user/signin"} className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
