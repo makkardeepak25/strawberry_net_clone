@@ -1,9 +1,10 @@
-import React from "react"
-import axios from "axios"
-import styles from "./Card.module.css"
-import { Link } from "react-router-dom"
+import React from "react";
+import axios from "axios";
+import styles from "./Card.module.css";
+import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getProdData } from "../../Redux/Products/productAction";
 
 export const BestDeals = () => {
     const [data, setData] = React.useState([]);
