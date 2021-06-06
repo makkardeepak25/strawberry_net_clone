@@ -1,6 +1,11 @@
 .main_div{
-    border: 1px solid black;
+  
     padding: 0px 40px
+}
+.category_title{
+   
+    width: 98%;
+  
 }
 .category_title> p{
     color: #C7007D;
@@ -13,6 +18,7 @@
 }
 .category_title > div{
     display: flex;
+ 
     justify-content: space-between;
 }
 .category_title > div > img{
@@ -126,8 +132,12 @@ td:hover{
     margin: 0px ;
 }
 .by_list{
-    border: 1px solid red;
+   
     
+}
+.by_list > h6{
+    margin: 0px;
+    text-align: center;
 }
 .list{
     border: 1px solid #70378D;
@@ -145,3 +155,4 @@ td:hover{
     margin: 0px 10px;
     font-weight: 600;
 }
+
