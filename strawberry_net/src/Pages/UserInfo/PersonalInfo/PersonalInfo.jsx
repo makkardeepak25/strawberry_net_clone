@@ -68,7 +68,7 @@ export const PersonalInfo = ({onChange}) => {
    
     const {f_name,l_name,email,password,phone,birth_date,avatar,gender,points,addresses,wishlisht,bag,orders,saved_cards } =initUser
     console.log(formData)
-=======
+
   
 export const PersonalInfo = ({onChange}) => {
 
