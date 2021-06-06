@@ -41,15 +41,18 @@ const useStyles = makeStyles((theme) => ({
 
 
       
-        // f_name,l_name,email,password,phone,birth_date,avatar,gender,points,addresses,wishlisht,bag,orders,saved_cards           
+                
   
 
 
   
+
 export const PersonalInfo = ({onChange}) => { 
+
     const initUser = useSelector((state)=>state.auth.user)
     console.log(initUser)
    
+
     const [formData,setFormData] =React.useState()
     React.useEffect(() =>{
         
@@ -63,6 +66,7 @@ export const PersonalInfo = ({onChange}) => {
      console.log(formData)
     const {f_name,l_name,email,password,countryCode,phone,birth_date,birth_month,avatar,gender,points,location,addresses,wishlisht,bag,orders,saved_cards } =initUser
    
+
     const [showButton,setShowButton] =React.useState(false)
     const [newPassword,setnewPassword] = React.useState(false)
 
