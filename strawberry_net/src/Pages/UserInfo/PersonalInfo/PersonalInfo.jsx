@@ -46,27 +46,26 @@ const useStyles = makeStyles((theme) => ({
 
 
   
- export const PersonalInfo = ({onChange}) => {
-    
-    const dispatch =useDispatch()
-   
-    const userID = useSelector((state)=>state.auth.userId)
-    // console.log(userID)
 
-    React.useEffect(() => {
-        dispatch(getUserDetails(userID))
-    },[userID])
-   
+export const PersonalInfo = ({onChange}) => { 
+
     const initUser = useSelector((state)=>state.auth.user)
     console.log(initUser)
-
-    const [formData,setFormData] =React.useState({...initUser})
    
-    const {f_name,l_name,email,password,phone,birth_date,avatar,gender,points,addresses,wishlisht,bag,orders,saved_cards } =initUser
-    console.log(formData)
 
-  
-
+    const [formData,setFormData] =React.useState()
+    React.useEffect(() =>{
+        
+           setFormData(initUser)
+            
+    
+        
+    },[initUser])
+   
+    
+     console.log(formData)
+    const {f_name,l_name,email,password,countryCode,phone,birth_date,birth_month,avatar,gender,points,location,addresses,wishlisht,bag,orders,saved_cards } =initUser
+   
 
     const [showButton,setShowButton] =React.useState(false)
     const [newPassword,setnewPassword] = React.useState(false)
@@ -103,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
 
         
         <div className={classes.root,styles.mainCont}>
-            <Avatar className={classes.large}  alt="" src={"https://s.cdnsbn.com/images/profile/10364147.jpg?t=1622449131812"} />
+            <Avatar className={classes.large}  alt="" src={avatar} />
             <div className={styles.UploadButton}>
             <input type="file" className={styles.customeFileInput} onFocus={handleOnFocus} />
            
@@ -115,14 +114,14 @@ const useStyles = makeStyles((theme) => ({
                 <div className={styles.labelCont}>
                     <label htmlFor="">First name</label>
                 </div>
-                <div className={styles.inputCont} ><UserInput value={f_name} name="f_name" onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
+                <div className={styles.inputCont} ><UserInput defaultValue={f_name} name="f_name" onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
                 <div className={styles.labelCont}>
                     <label htmlFor="">Surname</label>
                 </div>
-                <div className={styles.inputCont}><UserInput onFocus={handleOnFocus} value={l_name}></UserInput></div>
+                <div className={styles.inputCont}><UserInput onFocus={handleOnFocus} defaultValue={l_name} name="l_name" onChange={handleOnChange} ></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
@@ -130,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
                     <label htmlFor="">NickName</label>
                     <div>(Optional)</div>
                 </div>
-                <div className={styles.inputCont}><UserInput placeholder="" onFocus={handleOnFocus}></UserInput></div>
+                <div className={styles.inputCont}><UserInput placeholder="" name="nickname" onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
@@ -139,16 +138,16 @@ const useStyles = makeStyles((theme) => ({
                 </div>
                 <div className={styles.inputCont} style={{display:'flex',alignItems:'center'}}>
                         <label htmlFor="" style={{width:'120px'}} >Country Code</label>
-                        <select name="" id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus}>
+                        <select name="countryCode" value={countryCode} id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                 {
                     countries.map(item=>
-                        <option value="">{item.label} +{item.phone}</option>
+                        <option value={`+${item.phone}`}>{item.label} +{item.phone}</option>
                         )
                 }
                     </select>
                     <div style={{width:'10%'}} ></div>
                         <label htmlFor="" style={{width:'70px'}} >Number</label>
-                        <UserInput style={{width:'35%'}} onFocus={handleOnFocus} ></UserInput>
+                        <UserInput style={{width:'35%'}} onFocus={handleOnFocus} name="phone" defaultValue={phone} onChange={handleOnChange} ></UserInput>
 
                 </div>
                 
@@ -159,10 +158,10 @@ const useStyles = makeStyles((theme) => ({
                     <div>(Optional)</div>
                 </div>
                 <div className={styles.inputCont}>
-                    <select name="" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus}>
-                    <option value="">Please Select</option>
-                        <option value="">Male</option>
-                        <option value="">Female</option>
+                    <select defaultValue={gender} name="" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                    <option value="Please Select">Please Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                         
                     </select>
                 </div>
@@ -175,17 +174,17 @@ const useStyles = makeStyles((theme) => ({
                 </div>
                 <div className={styles.inputCont} style={{display:'flex',alignContent:'space-between',alignItems:'center',}}>
                 <label htmlFor="" style={{width:'70px'}}>Day</label>
-                        <select name="" id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnFocus}>
+                        <select name="birth_date" value={birth_date}  id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                             {
-                                 days.map((item,i)=><option value="">{i+1}</option>)
+                                 days.map((item,i)=><option value={i+1}>{i+1}</option>)
                             }
                         </select>
                         <div style={{width:'25%'}} ></div>
                         <label htmlFor="" style={{width:'60px'}} >Month</label>
-                        <select name="" id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnFocus}>
+                        <select name="birth_month" value={birth_month}  defaultValue={birth_date} id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                             
                             {
-                                months.map((item)=><option value="">{item}</option>)
+                                months.map((item)=><option value={item}>{item}</option>)
                             }
                         </select>
                 </div>
@@ -199,12 +198,12 @@ const useStyles = makeStyles((theme) => ({
                 </div>
                 {!newPassword?(<div className={styles.inputCont} style={{display:'flex'}}>
                     <div className={styles.passwordSpan}>{"**********"}</div>
-                    <button className={styles.passwordBtn}  onClick={()=>setnewPassword(true)}>Change</button>
+                    <button className={styles.passwordBtn}  onClick={()=>setnewPassword(true)} >Change</button>
                     </div>):(
                      
                            <div className={styles.inputCont}>
-                                <input className={styles.inputpassword} placeholder="Enter your password" type="password" name="" id="" />
-                                <input className={styles.inputpassword} placeholder="Re-Enter your password"  type="password" name="" id="" />
+                                <input className={styles.inputpassword} placeholder="Enter your password" type="password" name="password" defaultValue={password} onChange={handleOnChange} onFocus={handleOnFocus}  id="" />
+                                <input className={styles.inputpassword} placeholder="Re-Enter your password"  type="password" name="password" defaultValue={password} onChange={handleOnChange} onFocus={handleOnFocus}  id="" />
                            </div>
                           
                     )}
@@ -215,10 +214,10 @@ const useStyles = makeStyles((theme) => ({
                     <label htmlFor="">Location</label>
                 </div>
                 <div className={styles.inputCont} > 
-                <select name="" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus}>
+                <select name="location" value={location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                 {
                     countries.map(item=>
-                        <option value="">{item.label}</option>
+                        <option value={item.label}>{item.label}</option>
                         )
                 }
                     </select>
