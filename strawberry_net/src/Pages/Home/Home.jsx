@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Banner } from "../../Components/HomeComponents/Banner";
 import { Footer } from "../../Components/HomeComponents/Footer";
@@ -11,6 +11,12 @@ import { BestSellers } from "../../Components/HomeComponents/BestSellers";
 import { NewArrivals } from "../../Components/HomeComponents/NewArrivals";
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 export const Home = () => {
+
+useEffect(()=>{
+document.title= "Strawberrynet.com"
+window.scrollTo(0,0);
+},[])
+
   return (
     <div>
       {/* <NavBar /> */}
@@ -133,7 +139,6 @@ export const Home = () => {
         </div>
       </div>
 
-      <Footer />
     </div>
   );
 };

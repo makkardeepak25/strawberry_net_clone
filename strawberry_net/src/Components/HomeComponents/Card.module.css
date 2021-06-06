@@ -128,3 +128,16 @@
   text-align: right;
 }
 
+.wishlist{
+  position: absolute;
+  top: 5%;
+  left: 85%;
+}
+.offers{
+  position: absolute;
+  top: 67%;
+  font-size: 14px;
+  font-weight: 500;
+  left: 8%;
+  color: #ee2c72;
+}

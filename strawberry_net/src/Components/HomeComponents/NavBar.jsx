@@ -2,20 +2,28 @@ import React from "react";
 import styles from "./NavBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
+import MenuIcon from "@material-ui/icons/Menu";
+import StarIcon from "@material-ui/icons/Star";
+import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link } from "react-router-dom";
-import { BsFillGiftFill } from "react-icons/bs";
-import { AiFillStar } from "react-icons/ai";
 export const NavBar = () => {
   return (
     <div className={styles.navbar}>
       <div className={styles.headerbg}>
         <div className={styles.container}>
-          <a className={styles.navbrand}></a>
+          <a className={styles.navbrand} />
+          <div className={styles.navform1}>
+            <div>
+              <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch1} />
+              <a className={styles.searchbtn1} href="#">
+                <BsSearch />
+              </a>
+            </div>
+          </div>
           <div className={styles.navright}>
             <nav className={styles.addnav}>
               <ul className={styles.addnavlang}>
@@ -32,137 +40,120 @@ export const NavBar = () => {
             </nav>
             <ul className={styles.menunavright}>
               <li className={styles.loginlinks}>
-                <a className={styles.accname} href="#">
-                  <IconContext.Provider
-                    value={{ color: "#b53788", size: "3.2em" }}
-                  >
+                <Link to={"/user/signin"} className={styles.accname} href="#">
+                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
-                </a>
+                </Link>
               </li>
-
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
-                  <IconContext.Provider
-                    value={{ color: "#b53788", size: "3.2em" }}
-                  >
+                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <AiFillHeart />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Wishlist</span>
                 </a>
               </li>
-
               <li className={styles.loginlinks}>
-                <a className={styles.accname} href="#">
-                  <IconContext.Provider
-                    value={{ color: "#b53788", size: "3.2em" }}
-                  >
+               <Link to={"/bag"} className={styles.accname}>
+                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <GiShoppingBag />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Bag</span>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
-          <div className={styles.navform}>
-            <div>
-              <input
-                type="text"
-                placeholder="SEARCH BRAND / PRODUCT"
-                autocomplete="off"
-                className={styles.inpsearch}
-              />
-              <a className={styles.searchbtn} href="#">
-                <BsSearch />
-              </a>
-            </div>
-          </div>
         </div>
       </div>
-      <div className={styles.navbarmenu}>
-        <div className={styles.menucont}>
+      <div className={styles.navbarmenu1}>
+        <ul className={styles.menucont}>
           <Link to={"/brands"}>
             {" "}
-            <div className={styles.li1}>
+            <li className={styles.li1}>
               <span>
-                <IconContext.Provider value={{ color: "white", size: "2em" }}>
-                  <GiHamburgerMenu />
-                </IconContext.Provider>
+                <MenuIcon style={{ width: "30px", height: "15px", color: "white" }} />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
-            </div>
+            </li>
           </Link>
           <Link to={"/skincare"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>SKINCARE</span>
-            </div>
+            </li>
           </Link>
           <Link>
-            {" "}
-            <div to={"/makeup"}>
+            <li to={"/makeup"}>
               <span className={styles.clrspn}>MAKEUP</span>
-            </div>
+            </li>
           </Link>
-          <Link to={"/haircare"}>
+          <Link style={{ textDecoration: "none" }} to={"/haircare"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>HAIRCARE</span>
-            </div>
+            </li>
           </Link>
-          <Link to={"/perfumes"}>
+          <Link style={{ textDecoration: "none" }} to={"/perfumes"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>PERFUME</span>
-            </div>
+            </li>
           </Link>
           <Link to={"/men-skincare"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>MEN'S SKINCARE</span>
-            </div>
+            </li>
           </Link>
-          <Link to={"/men-cologne"}>
+          <Link style={{ textDecoration: "none" }} to={"/men-cologne"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>MEN'S COLOGNE</span>
-            </div>
+            </li>
           </Link>
-          <Link to={"/home-scents"}>
+          <Link style={{ textDecoration: "none" }} to={"/home-scents"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>HOME SCENTS</span>
-            </div>
+            </li>
           </Link>
-          <Link to={"/natural-beauty"}>
+          <Link style={{ textDecoration: "none" }} to={"/natural-beauty"}>
             {" "}
-            <div>
+            <li>
               <span className={styles.clrspn}>NATURAL BEAUTY</span>
-            </div>
+            </li>
           </Link>
-          <Link to={"/specials"}>
+          <Link style={{ textDecoration: "none" }} to={"/specials"}>
             {" "}
-            <div className={styles.li1}>
+            <li className={styles.li1}>
               <span>
-                <IconContext.Provider value={{ color: "white", size: "2em" }}>
-                  <BsFillGiftFill />
-                </IconContext.Provider>
+                <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
               </span>
-              <span className={styles.clrspns}>SPECIALS</span>
-            </div>
+              <span className={styles.clrspn}>SPECIALS</span>
+            </li>
           </Link>
-          <Link to={"/new-products"}>
+          <Link style={{ textDecoration: "none" }} to={"/new-products"}>
             {" "}
-            <div className={styles.li1}>
+            <li className={styles.li1}>
               <span>
-                <IconContext.Provider value={{ color: "white", size: "2em" }}>
-                  <AiFillStar />
-                </IconContext.Provider>
+                <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
               </span>
               <span className={styles.clrspns}>NEW</span>
-            </div>
+            </li>
           </Link>
+        </ul>
+      </div>
+      <div className={styles.navbarmenu2}>
+        <MenuIcon style={{ width: "50px", height: "50px", color: "white",cursor:"pointer" }} />
+        <div className={styles.navform2}>
+          <div>
+            <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch2} />
+            <a className={styles.searchbtn2} href="#">
+              <BsSearch />
+            </a>
+          </div>
         </div>
       </div>
     </div>

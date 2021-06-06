@@ -25,32 +25,70 @@ const AuthButton = styled.button`
     
 `
 
+<<<<<<< HEAD
 const iniState ={
     id:uuid(),
+=======
+
+
+const user={
+    id:"",
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
     f_name:"",
     l_name:"",
     email:"",
-    password:"",
     phone:"",
+    password:"",
+<<<<<<< HEAD
+    phone:"",
+=======
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
     birth_date:"",
     avatar:"",
     gender:"",
     points:0,
+<<<<<<< HEAD
     addresses:[],
     wishlisht:[],
     bag:[],
     orders:[], 
     saved_cards:[]           
+=======
+    addresses:[{}], // Addresses can be multiple thats why I took array
+    wishlisht:[{}],
+    bag:[{}],
+    orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
+    saved_cards:[{}]
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
 }
 
 
 
+
 export const Signup = () => {
+    const iniState ={
+        id:uuid(),
+        f_name:"",
+        l_name:"",
+        email:"",
+        phone:"",
+        password:"",
+        birth_date:"",
+        avatar:"",
+        gender:"",
+        points:0,
+        addresses:[{}], // Addresses can be multiple thats why I took array
+        wishlisht:[{}],
+        bag:[{}],
+        orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
+        saved_cards:[{}]
+    }
     const [sigupData,setSignUpdata]=React.useState(iniState)
     const [isMatched,SetIsMatched]=React.useState(true)
     const [hasregistered,setHasRegistered] = React.useState(false)
     const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards} = sigupData
     const handleOnchange=e=>{
+<<<<<<< HEAD
         setSignUpdata({...sigupData,[e.target.name]:e.target.value})
         if(password=="secret-1"){
             SetIsMatched(true)
@@ -58,16 +96,28 @@ export const Signup = () => {
         else{
                 SetIsMatched(false)
         }
+=======
+        const data={
+         ...sigupData,
+         [e.target.name]:e.target.value
+        }
+        console.log(data);
+        setSignUpdata(data)
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
 
     }
-
+    
     const dispatch = useDispatch()
     const handleClick = e=>{
         e.preventDefault()
 
         dispatch(getSignIn(sigupData))
+<<<<<<< HEAD
         hasregistered(true)
         
+=======
+
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
     }
     function onChange(value) {
         console.log("Captcha value:", value)

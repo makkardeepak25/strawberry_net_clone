@@ -1,0 +1,93 @@
+.main_div{
+    border: 1px solid black;
+    padding: 0px 40px
+}
+.category_title> p{
+    color: #C7007D;
+    font-size: 12px;
+    margin: 0px;
+}
+.category_title > h1{
+    margin: 5px 0px;
+    font-size: 35px;
+}
+.category_title > div{
+    display: flex;
+    justify-content: space-between;
+}
+.category_title > div > img{
+    height: 60px;
+    padding-top: 18px;
+}
+
+.container{
+    display: flex;
+
+}
+.filter_container{
+    width: 25%;
+    border: 1px solid black;
+}
+.product_container{
+    width: 74%;
+    /* border: 1px solid black; */
+    padding: 1% 0% 1% 1%
+}
+.top_brands{
+    height: 180px;
+  
+    width: 100%;
+    background-color: #70378D;
+    color: white;
+  margin-bottom: 20px;
+}
+.top_brand_title{
+    padding: 10px 0px;
+    text-align: center;
+    font-weight: 600;
+    background-color: #52246D;
+}
+.top_brands > table{
+    width: 100%;
+   
+}
+
+
+
+.top_brands > table > tbody > tr > td{
+
+   font-size: 16px ;
+    cursor: pointer;
+    padding: 7px;
+}
+td:hover{
+    color:#C7007D;
+}
+.all_brand_btn {
+    text-align: right;
+}
+.all_brand_btn > button{
+    margin: 0px 10px;
+    border-radius: 5px;
+    border: 0px;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+.all_brand_btn > button:hover{
+    background-color: rgb(233, 226, 226);
+}
+.divider{
+    background-color: gray;
+    height: 2px;
+    margin: 20px 0px;
+}
+
+.brand_title{
+    background-image: linear-gradient(to right,#623381  40%, #C42F7A 100%);
+    padding: 5px;
+}
+.brand_title > h4{
+    margin: 0px;
+    color: white;
+}
