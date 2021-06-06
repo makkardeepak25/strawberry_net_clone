@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SimpleRating from "../../Components/Rating/ReadRating"
 import {Rating} from "@material-ui/lab";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -57,6 +58,7 @@ const Product = () => {
 useEffect(()=>{
 GetProduct()
 window.scrollTo(0, 0);
+console.log("Product page");
 },[id])
 
     return (
@@ -134,7 +136,7 @@ window.scrollTo(0, 0);
                             <SimpleRating value="2"/>
                             </div>
                             <div>
-                                <p>ADD TO WISHLIST</p>
+                                <div className={styles.wish_list}> <FavoriteBorderIcon className={styles.wish_icon} /><p>ADD TO WISHLIST</p></div>
                             </div>
                             <div className={styles.write}>
                                 <button>Write Review</button>

@@ -120,6 +120,7 @@ td:hover{
     height: 80px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .sort_by{
@@ -138,12 +139,14 @@ td:hover{
 .by_list > h6{
     margin: 0px;
     text-align: center;
+    color: #70378D;
 }
 .list{
     border: 1px solid #70378D;
     margin: 2px 10px 6px 10px; 
     font-size: 26px;
     color: #70378D;
+    cursor: pointer;
 }
 .sort_by :nth-child(1){
  

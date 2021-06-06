@@ -10,7 +10,11 @@ import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
 export const NavBar = () => {
+
+  const user =useSelector((state)=>state.auth)
+ 
   return (
     <div className={styles.navbar}>
       <div className={styles.headerbg}>

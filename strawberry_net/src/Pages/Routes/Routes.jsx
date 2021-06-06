@@ -3,15 +3,25 @@ import {Route,Switch} from 'react-router-dom';
 import { Footer } from '../../Components/HomeComponents/Footer';
 import { NavBar } from '../../Components/HomeComponents/NavBar';
 import { Authentication } from '../Authentication/Authentication';
+import { getUser } from '../Authentication/localstorage_s';
 import { Bag } from '../Bag/Bag';
 import CategoryPage from '../Category/CategoryPage';
 import { Home } from '../Home/Home';
 import Product from '../Product_Page/Product';
 import { Gradient } from '../UserInfo/Gradient';
-
+import { useDispatch, useSelector } from "react-redux";
+import { getUserDetails } from '../../Redux/Auth/authAction';
 
 const Routes = () => {
-   
+ 
+  const userid =useSelector((state)=>state.auth.userId)
+  const dispatch=useDispatch()
+   React.useEffect(()=>{
+    
+
+ dispatch(getUserDetails(userid))
+
+   },[])
     return (
         <div>
           <NavBar/>
