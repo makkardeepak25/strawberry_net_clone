@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router';
 import ProductCard from '../../Components/Horizontal card/ProductCard';
 import styles from "./CategoryPage.module.css"
+import ReorderIcon from '@material-ui/icons/Reorder';
+import AppsIcon from '@material-ui/icons/Apps';
 const CategoryPage = () => {
     const {category}= useParams()
     const [product,setProduct]=useState([])
@@ -34,7 +36,19 @@ const CategoryPage = () => {
               
             </div>
             <div className={styles.container}>
-            <div className={styles.filter_container}></div>
+            <div className={styles.filter_container}>
+                <div>
+
+                </div>
+                <div className={styles.by_brand}>
+                    <h3>Refine By Brand</h3>
+                    <div className={styles.checkbox}>
+                        {
+                            product.map((object)=> <div> <input type="checkbox" id={object.id}/> <label htmlFor={object.id} >{object.prod_name}</label> </div>)
+                        }
+                    </div>
+                </div>
+            </div>
             <div className={styles.product_container}>
              <div className={styles.top_brands}>
                  <div className={styles.top_brand_title}>TOP {category.toUpperCase()} BRANDS</div>
@@ -64,9 +78,26 @@ const CategoryPage = () => {
                      <button>VIEW ALL {category.toUpperCase()} BRANDS {`>`}</button>
                  </div>
              </div>
-
+             <div>
+                 <h4>{product.length} results for <span style={{color:"#C7007D"}}>{category}</span></h4>
+             </div>
              <div className={styles.divider}></div>
-
+           
+           <div className={styles.view}>
+               <div></div>
+                 <div className={styles.sort_by}>
+                     <h6>View</h6>
+                     <div> <div><ReorderIcon className={styles.list} /></div>
+                     <div className={styles.by_list}>list</div> </div>
+                     <div><div> <AppsIcon className={styles.list}/></div> <div className={styles.by_list}>grid</div></div>
+                     <select>
+                         <option value="lower"> SORT BY POPULARITY</option>
+                         <option value="lower"> SORT BY LOWEST PRICE</option>
+                         <option value="lower"> SORT BY BRAND A-Z</option>
+                         <option value="lower"> SORT BY BRAND Z-A</option>
+                     </select>
+                 </div>
+           </div>
 
              <div className={styles.brand_title}>
                  <h4>{category.toUpperCase()}</h4>

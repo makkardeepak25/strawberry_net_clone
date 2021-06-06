@@ -41,12 +41,12 @@ const useStyles = makeStyles((theme) => ({
 
 
       
-        // f_name,l_name,email,password,phone,birth_date,avatar,gender,points,addresses,wishlisht,bag,orders,saved_cards           
+                
   
 
 
   
-export const PersonalInfo = ({onChange}) => {
+ export const PersonalInfo = ({onChange}) => {
     
     const dispatch =useDispatch()
    
@@ -64,6 +64,10 @@ export const PersonalInfo = ({onChange}) => {
    
     const {f_name,l_name,email,password,phone,birth_date,avatar,gender,points,addresses,wishlisht,bag,orders,saved_cards } =initUser
     console.log(formData)
+
+  
+
+
     const [showButton,setShowButton] =React.useState(false)
     const [newPassword,setnewPassword] = React.useState(false)
 
