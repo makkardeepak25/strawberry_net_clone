@@ -158,7 +158,8 @@ window.scrollTo(0, 0);
                                  product.reviews.map((object)=>
                                  <div className={styles.reviews}>
                                      <div >
-                                     <h5>Rating star</h5>
+                                         
+                                    <SimpleRating value={2}/>
                                  <p>{object.date&&object.date}</p>
                                      </div>
                                      <div>
