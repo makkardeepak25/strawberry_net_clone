@@ -106,6 +106,7 @@ export const getUserDetails = (id)=>(dispatch)=>{
     dispatch(userDataRequest())
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id}`).then((res)=>{
         // console.log(`https://6wwnt.sse.codesandbox.io/profiles/${id}`)
+        // console.log(res.data)
         dispatch(userDataSuccess(res.data))
         
     })
