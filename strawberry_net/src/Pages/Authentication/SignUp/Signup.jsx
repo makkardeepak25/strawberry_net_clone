@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { getSignIn } from '../../../Redux/Auth/authAction';
 import { useDispatch } from "react-redux";
 import {v4 as uuid} from 'uuid'
+import { Signin } from '../SignIn/Signin';
 
 const AuthInput = styled.input`
     background: none;
@@ -24,24 +25,41 @@ const AuthButton = styled.button`
     
 `
 
+<<<<<<< HEAD
+const iniState ={
+    id:uuid(),
+=======
 
 
 const user={
     id:"",
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
     f_name:"",
     l_name:"",
     email:"",
     phone:"",
     password:"",
+<<<<<<< HEAD
+    phone:"",
+=======
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
     birth_date:"",
     avatar:"",
     gender:"",
     points:0,
+<<<<<<< HEAD
+    addresses:[],
+    wishlisht:[],
+    bag:[],
+    orders:[], 
+    saved_cards:[]           
+=======
     addresses:[{}], // Addresses can be multiple thats why I took array
     wishlisht:[{}],
     bag:[{}],
     orders:[{}], // indiside individual orders we will also save reviews of that order // Order Id
     saved_cards:[{}]
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
 }
 
 
@@ -66,14 +84,26 @@ export const Signup = () => {
         saved_cards:[{}]
     }
     const [sigupData,setSignUpdata]=React.useState(iniState)
-    const {f_name,l_name,email,password} = sigupData
+    const [isMatched,SetIsMatched]=React.useState(true)
+    const [hasregistered,setHasRegistered] = React.useState(false)
+    const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards} = sigupData
     const handleOnchange=e=>{
+<<<<<<< HEAD
+        setSignUpdata({...sigupData,[e.target.name]:e.target.value})
+        if(password=="secret-1"){
+            SetIsMatched(true)
+        }
+        else{
+                SetIsMatched(false)
+        }
+=======
         const data={
          ...sigupData,
          [e.target.name]:e.target.value
         }
         console.log(data);
         setSignUpdata(data)
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
 
     }
     
@@ -82,11 +112,28 @@ export const Signup = () => {
         e.preventDefault()
 
         dispatch(getSignIn(sigupData))
+<<<<<<< HEAD
+        hasregistered(true)
+        
+=======
 
+>>>>>>> bd757cb9ac323356e3deb0967a778115b3a1a74e
     }
     function onChange(value) {
         console.log("Captcha value:", value)
       }
+
+    const [isPasswordMatching,setIsPasswordMatching]=React.useState(true)
+    function handleMatch(e){
+        if(e.target.value==password){
+            setIsPasswordMatching(true)
+        }
+        else{
+            setIsPasswordMatching(false)
+        }
+      
+
+    }
     return (
         <form className={styles.signupform}>
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
@@ -94,11 +141,20 @@ export const Signup = () => {
            
             <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Password" name="password" value={password} onChange={handleOnchange}></AuthInput>
+            {/* {
+            isMatched? 
+            ( */}
             <p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5"}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
             </p>
-            <AuthInput placeholder="  Re-enter your Password"></AuthInput>
-            
+            {/* ):
+            (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
+            Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
+            </p>)} */}
+            <AuthInput placeholder="  Re-enter your Password"  onChange={handleMatch}></AuthInput>
+            {
+                !isPasswordMatching && <div style={{color:'red'}}>The passwords do not match.</div>
+            }
             <ReCAPTCHA sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" onChange={onChange} />
             <p style={{marginTop:'0',marginBottom:'0'}}>
             By creating your account, you agree to our 
