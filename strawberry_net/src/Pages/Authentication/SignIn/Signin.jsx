@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import styles from './SignIn.module.css';
-import { useDispatch } from "react-redux";
-import { getLogin, signinRequest } from '../../../Redux/Auth/authAction';
+import { useDispatch, useSelector } from "react-redux";
+import { getLogin, getUserDetails, signinRequest } from '../../../Redux/Auth/authAction';
+import { getUser, setUser } from '../localstorage_s';
 const AuthInput = styled.input`
     background: none;
     width: 100%;
@@ -25,15 +26,31 @@ const initSignIn ={
 
 
 export const Signin = () => {
+  
     const [signInForm,setsignInForm] = React.useState(initSignIn)
     const {email,password} = signInForm
     const handleChange =(e)=>{
         setsignInForm({...signInForm,[e.target.name]:e.target.value})
     }
+    const isAuth =useSelector((state)=>state.auth.isAuth)
+   
+    const isLoading =useSelector((state)=>state.auth.isLoading)
+    const user =useSelector((state)=>state.auth)
+    console.log(isAuth)
+    console.log(user); 
+    const userDetails =useSelector((state)=>state.auth.user)
+    console.log(userDetails)
+
+//    console.log(localStorage.getItem('userId'))
+  
     const dispatch = useDispatch()
     const handleClick=(e)=>{
         e.preventDefault()
-            dispatch(getLogin(signInForm))   
+            dispatch(getLogin(signInForm)) 
+            console.log(user); 
+            // dispatch(getUserDetails(user.userId))
+            
+            
             
     }
     

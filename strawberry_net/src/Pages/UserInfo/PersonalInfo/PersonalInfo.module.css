@@ -80,7 +80,7 @@
 
   .inputCont input{
     font-size: 18px;
-    color: #414141;
+    color: black;
   }
   .userCont{
       display: flex;
@@ -145,3 +145,22 @@
     z-index: 1;
    
   }
+
+
+
+  .inputpassword{
+   
+    margin-top: 2px;
+    background: none;
+    width: 100%;
+    height: 34px;
+    border: 1px solid #623381;
+    
+  }
+
+  
+  input[type="password"]::-webkit-input-placeholder{
+    font-size: 14px !important;
+    color: #808080c3;
+  }
+ 
