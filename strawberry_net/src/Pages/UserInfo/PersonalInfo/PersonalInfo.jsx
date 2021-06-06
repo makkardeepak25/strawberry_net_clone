@@ -64,13 +64,10 @@ const useStyles = makeStyles((theme) => ({
    
     const {f_name,l_name,email,password,phone,birth_date,avatar,gender,points,addresses,wishlisht,bag,orders,saved_cards } =initUser
     console.log(formData)
-<<<<<<< HEAD
 
   
 
 
-=======
->>>>>>> 3701c1af4274175a669627ab4de5804d11bf39aa
     const [showButton,setShowButton] =React.useState(false)
     const [newPassword,setnewPassword] = React.useState(false)
 
