@@ -1,0 +1,35 @@
+.mainCont{
+  
+    margin: auto;
+    width: 80%;
+    border-bottom: 3px solid #6b3a87;
+    display: flex;
+    gap: 6%;
+}
+@media only screen and (max-width: 960px) {
+  
+    .mainCont{
+        margin: auto;
+        width: 80%;
+        border-bottom: 5px solid #6b3a87;
+        display: flex;
+        flex-direction: column;
+    }
+  }
+
+
+.userinfobtn{
+    background: none;
+    border: none;
+   color: #6b3a87;
+   height: 50px;
+   font-size: 15px;
+   font-weight: 100;
+   letter-spacing: .005em;
+   cursor: pointer;
+   margin-bottom: -1px;
+}
+.userinfobtn:focus{
+    font-weight: 700;
+    border-bottom: 2px solid #6b3a87;
+}

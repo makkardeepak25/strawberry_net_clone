@@ -1,0 +1,143 @@
+.extDiv {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 85%;
+  margin: auto;
+  gap: 40px;
+  font-family: Lato, sans-serif;
+}
+.prodDiv {
+  width: 270px;
+  height: 500px;
+  position: relative;
+  padding: 10px;
+  margin: 50px auto;
+  display: block;
+  font-family: Lato, sans-serif;
+  letter-spacing: 0.03em;
+}
+.prodDeals {
+  width: 270px;
+  height: 500px;
+  position: relative;
+  padding: 10px;
+  margin: 50px auto;
+  display: block;
+  font-family: Lato, sans-serif;
+  letter-spacing: 0.03em;
+  border-top: 8px solid #662d91;
+  border-bottom: 8px solid #e2195c;
+  background-image: linear-gradient(#662d91, #e2195c), linear-gradient(#662d91, #e2195c);
+  background-size: 8px 100%;
+  background-position: 0 0, 100% 0;
+  background-repeat: no-repeat;
+}
+.prodDiv:hover {
+  box-shadow: 0 2px 5px 2px rgb(0 0 0 / 18%);
+  z-index: 1024;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: #fff;
+}
+.imgProd {
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 200px;
+  margin: auto;
+}
+.prodname {
+  color: #0e0e0e;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  max-height: 36px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  position: absolute;
+  left: 7%;
+  top: 50%;
+}
+.desc {
+  color: #0e0e0e;
+  font-size: 11px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  max-height: 36px;
+  text-align: left;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  position: absolute;
+  left: 7%;
+  top: 53%;
+}
+.prodprice {
+  color: #363636;
+  font-weight: 900;
+  font-size: 22px;
+  display: block;
+  position: absolute;
+  top: 70%;
+  left: 7%;
+}
+.extraoff {
+  height: 33px;
+  overflow: hidden;
+  color: #ee2c72;
+  position: absolute;
+  text-align: center;
+  font-weight: 700;
+  display: block;
+  top: 92%;
+  left: 20%;
+}
+.bagbtn {
+  font-size: 16px;
+  padding: 5px;
+  color: #fff;
+  background-color: #00a69c;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  position: absolute;
+  top: 82%;
+  left: 30%;
+  border-radius: 4px;
+}
+.bagbtn:hover {
+  opacity: 0.8;
+}
+.textright {
+  text-align: right;
+}
+
+.wishlist{
+  position: absolute;
+  top: 5%;
+  left: 85%;
+}
+.offers{
+  position: absolute;
+  top: 67%;
+  font-size: 14px;
+  font-weight: 500;
+  left: 8%;
+  color: #ee2c72;
+}

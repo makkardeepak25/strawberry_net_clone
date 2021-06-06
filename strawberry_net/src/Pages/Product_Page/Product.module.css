@@ -1,0 +1,224 @@
+
+.main_div{
+    margin: 0px 5%;
+
+}
+.product_div{
+  
+    display: flex;
+
+  border: 1px solid black;
+
+}
+.product_img{
+   
+    width: 35%;
+
+}
+.product_info{
+    width: 65%;
+}
+.sale_card_div{
+    display: flex;
+}
+.sale_card {
+    width: 60px;
+    height: 60px;
+    font-size: small;
+    margin: 10px;
+}
+.sale_card :first-child{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: gray;
+    color: white;
+    text-align: center;
+    margin-bottom: 1px;
+}
+.sale_card :last-child{
+    border: 2px solid gray;
+height: 80%;
+padding: 5px;
+text-align: center;
+cursor: pointer;
+overflow-wrap: break-word;
+}
+
+/* active sale card */
+.active_sale_card :first-child{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #662C90;
+    color: white;
+    text-align: center;
+    margin-bottom: 1px;
+}
+.active_sale_card :last-child{
+    border: 2px solid #662C90;
+height: 80%;
+padding: 5px;
+text-align: center;
+cursor: pointer;
+overflow-wrap: break-word;
+}
+
+.active_sale_card {
+    width: 60px;
+    height: 60px;
+    font-size: small;
+    margin: 10px;
+}
+/* end */
+.price_tag{
+    display: flex;
+    margin: 20px 0px;
+
+}
+.price_tag> h3{
+    font-size: 25px;
+}
+.price_tag> h1{
+    font-size: 45px;
+}
+.select_tag_btn_div :first-child{
+    width: 70px;
+    padding: 5px;
+}
+.select_tag_btn_div :nth-child(2){
+
+    padding: 7px 25px;
+    margin-left: 10px;
+    background-color: #00A69C;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-size: 15px;
+    box-shadow: 2px 1px 5px 1px gray;
+}
+.select_tag_btn_div> h5{
+    margin: 0px;
+    color: red;
+    font-weight: 600;
+}
+.offers{
+    display: flex;
+}
+.offers > h6{
+    color: #EB4684;
+    font-size: 12px;
+}
+.tag{
+    margin: 23px 5px;
+    font-size: 22px;
+    color: #EB4684;
+    padding: 0px;
+}
+
+.tabs{
+    display: flex;
+
+}
+.tabs > div > p{
+  
+    color: #662C90;
+    font-weight: 500;
+    font-size: 15px;
+}
+.tabs > div{
+    padding: 5px 0px;
+   margin: 0px 10px;
+  height: 25px;
+  cursor: pointer;
+}
+/* .tabs > div:hover>p{
+font-weight: 600;
+
+}
+.tabs> div:hover{
+    border-bottom: 2px solid #662C90;
+} */
+.active_tab{
+   font-weight: 600;
+    border-bottom: 2px solid #662C90;
+}
+.bold{
+    font-weight: 600;
+}
+
+.divider{
+    height: 2px;
+    background-color: #662C90;
+}
+.tabs :last-child {
+
+margin: 0px;
+
+}
+.write{
+   
+
+}
+.tabs :last-child > button{
+    padding: 5px 10px;
+    margin-left: 40px;
+   background-color: #662C90;
+   color: white;
+   border: 0px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+
+.prod_details{
+    margin: 20px 0px;
+}
+.prod_details > li{
+    margin: 5px;
+}
+.reviews {
+    border-bottom: 1px solid gray;
+}
+.reviews :first-child {
+    display: flex;
+    justify-content: space-between;
+
+}
+.reviews :first-child >p{
+    color: gray;
+}
+.reviews :nth-child(2)> h5{
+    margin: 0px;
+}
+.helpful{
+    color: gray;
+}
+/* Product images */
+.preview{
+    display: grid;
+    place-items: center;
+}
+.preview>img{
+
+align-items: center;
+}
+.all_img {
+    display: flex;
+   justify-content: center;
+}
+.all_img> img{
+    width: 100px;
+    border: 1px solid gray;
+    margin: 10px;
+    cursor: pointer;
+}
+.product_img :nth-child(2) > img:hover{
+    box-shadow: 1px 2px 5px 2px gray;
+}
+
+/* offer tag */
+
+.offer_tag{
+    position: absolute;
+    left: 12%;
+}

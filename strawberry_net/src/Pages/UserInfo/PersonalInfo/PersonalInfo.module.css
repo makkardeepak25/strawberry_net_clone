@@ -1,0 +1,147 @@
+.fullmainCont{
+  width: 100%;
+}
+.mainCont{
+    width: 50%;
+    min-width: 500px;
+    margin: 2% auto;
+    /* background-color: blanchedalmond; */
+}
+
+
+.UploadButton{
+    width: 18%;
+    margin: auto;
+  
+    margin-top:1%;
+ 
+     
+ }
+
+
+.customeFileInput {
+    color: transparent;
+  }
+.customeFileInput::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .customeFileInput::before {
+
+   
+    /* width: 100%; */
+ 
+      color: white;
+    content: 'Upload a profile photo';
+    display: inline-block;
+    background: #623381;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+  
+    -webkit-user-select: none;
+    cursor: pointer;
+
+    font-weight: 600;
+    font-size: 14px;
+  }
+ 
+@media only screen and (max-width: 960px) {
+  
+    .mainCont{
+        margin: 2% auto;
+      
+    }
+    .UploadButton>button{
+        width: 150px;
+        margin: auto;
+    }
+    .UploadButton{
+      width: 30%;
+      /* background-color: cadetblue; */
+   
+       
+   }
+  }
+
+
+
+  .labelCont{
+    width: 20%;
+  }
+  .labelCont label{
+    font-size: 21px;
+    color: #414141;
+  }
+
+  .inputCont{
+    width: 70%;
+  }
+
+  .inputCont input{
+    font-size: 18px;
+    color: #414141;
+  }
+  .userCont{
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+  }
+  .selectBox{
+    height: 34px;
+     border: 1px solid #623381;
+     font-size: 18px;
+     color: grey;
+     text-align: center;
+  }
+  .passwordSpan{
+    width: 100%;
+    /* background-color: red; */
+  }
+  .passwordBtn{
+    border: none;
+    border-radius: 3px;
+    background:#623381;
+    color: white;
+    /* width: 10%; */
+    
+
+    
+  }
+  .passwordBtn:hover{
+    background: #c0a7cf;
+  }
+  .passwordBtn:focus{
+    outline: none;
+    background: #50057e;
+  }
+
+  .saveButton{
+    width: 100%;
+    height: 80px;
+    background-color: #f6f6f6;
+    /* opacity: 0.8; */
+    position: fixed;
+    bottom: 0;
+    opacity: 0.9;
+  }
+  .saveButton>div{
+    width: 10%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .saveButton>div>button{
+    width: 100px;
+    margin: auto;
+    background-color: #f22971;
+    color: white;
+    height: 40px;
+    border: none;
+    border-radius: 3px;
+    opacity: 1;
+    z-index: 1;
+   
+  }
