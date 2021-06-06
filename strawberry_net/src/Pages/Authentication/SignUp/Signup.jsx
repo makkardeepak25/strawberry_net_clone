@@ -49,13 +49,15 @@ const iniState ={
 
 export const Signup = () => {
     const iniState ={
-        id:uuid(),
+        id:"", 
         f_name:"",
-        l_name:"",
-        email:"",
-        phone:"",
+        l_name:"", 
+        email:"", 
         password:"",
-        birth_date:"",
+        countryCode:"", 
+        phone:"", 
+        birth_date:"", 
+        birth_month:"", 
         avatar:"",
         gender:"",
         points:0,

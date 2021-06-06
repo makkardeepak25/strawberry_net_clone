@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {Route,Switch} from 'react-router-dom';
 import { Footer } from '../../Components/HomeComponents/Footer';
 import { NavBar } from '../../Components/HomeComponents/NavBar';
+import { getUserDetails } from '../../Redux/Auth/authAction';
 import { Authentication } from '../Authentication/Authentication';
 import { getUser } from '../Authentication/localstorage_s';
 import { Bag } from '../Bag/Bag';
@@ -13,15 +15,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails } from '../../Redux/Auth/authAction';
 
 const Routes = () => {
- 
-  const userid =useSelector((state)=>state.auth.userId)
-  const dispatch=useDispatch()
-   React.useEffect(()=>{
-    
+  const userid = useSelector(state => state.auth.userId)
+  //console.log(userid,"ROutes")
+  const dispatch = useDispatch()
+  React.useEffect(()=>{
+   dispatch(getUserDetails(userid))
+  },[userid])
 
- dispatch(getUserDetails(userid))
+  // const user = useSelector(state => state.auth.user)
+  // console.log(user)
 
-   },[])
+   
     return (
         <div>
           <NavBar/>
