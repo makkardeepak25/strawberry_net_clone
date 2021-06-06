@@ -8,9 +8,10 @@ import AppsIcon from '@material-ui/icons/Apps';
 const CategoryPage = () => {
     const {category}= useParams()
     const [product,setProduct]=useState([])
+    const [sort,setSort]=useState("")
     const history=useHistory()
    function getProduct(){
-    axios.get(`https://6wwnt.sse.codesandbox.io/products?category=${category}`)
+    axios.get(`https://6wwnt.sse.codesandbox.io/products?category=${category}&_sort=prod_name&_order=${sort}`)
     .then(res=>{
        console.log(res.data);
        setProduct(res.data)
@@ -21,10 +22,13 @@ const CategoryPage = () => {
     })
    }
 
+   function sortby(){
+
+   }
    useEffect(()=>{
     
   getProduct()
-   },[category])
+   },[category,sort])
     return (
         <div className={styles.main_div}>
             <div className={styles.category_title}>
@@ -88,13 +92,13 @@ const CategoryPage = () => {
                  <div className={styles.sort_by}>
                      <h6>View</h6>
                      <div> <div><ReorderIcon className={styles.list} /></div>
-                     <div className={styles.by_list}>list</div> </div>
-                     <div><div> <AppsIcon className={styles.list}/></div> <div className={styles.by_list}>grid</div></div>
-                     <select>
-                         <option value="lower"> SORT BY POPULARITY</option>
-                         <option value="lower"> SORT BY LOWEST PRICE</option>
-                         <option value="lower"> SORT BY BRAND A-Z</option>
-                         <option value="lower"> SORT BY BRAND Z-A</option>
+                     <div className={styles.by_list}><h6>list</h6></div> </div>
+                     <div><div> <AppsIcon className={styles.list}/></div> <div className={styles.by_list}><h6>grid</h6></div></div>
+                     <select onChange={(e)=> setSort(e.target.value)}>
+                         <option value=""> SORT BY POPULARITY</option>
+                         <option value=""> SORT BY LOWEST PRICE</option>
+                         <option value="asc"> SORT BY BRAND A-Z</option>
+                         <option value="desc"> SORT BY BRAND Z-A</option>
                      </select>
                  </div>
            </div>
