@@ -32,7 +32,7 @@
     background: none;
     font-size: 20px;
     font-weight: 700;
-    height: 99%;
+    height: 100%;
 }
 .auth_modal_form_div>button:focus{
     border-bottom: 3px solid rgb(107, 58, 135);
@@ -58,4 +58,4 @@
 .close_modal:focus{
     outline: none;
     /* background-color: red; */
-}
+}   
