@@ -50,15 +50,17 @@ const GreenCheckbox = withStyles({
 export const DeliveryAddress = () => {
     const classes = useStyles();
     const [state, setState] = React.useState({});
+    const [showAddressform,setShowAddressForm] = React.useState(false);
     
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
-    return (
+    return showAddressform?(<div><AddressForm/></div>):
+    (
         <div className={styles.billingAddress}> 
          
          <div className={styles.left}>
-             <button className={styles.addBtn} ><AddIcon fontSize="large"/><p className={styles.hideme}>Add New Address</p></button>
+             <button className={styles.addBtn} onClick={()=>setShowAddressForm(true)}><AddIcon fontSize="large"/><p className={styles.hideme}>Add New Address</p></button>
              
          </div>
 

@@ -1,6 +1,43 @@
 .addressForm{
-    width:80%;
-    margin:auto;
+  
+    width:45%;
+    margin-left:25%;
     height: 1000px;
-    background-color: aqua;
+    /* background-color: red; */
+    margin-top: 10px;
+    display:flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.addressForm input{
+   margin-left: 2px;
+    width:98%;
+    height:30px;
+    border: 1px solid #623381;
+    padding-left: 10px;
+}
+.addressForm>div>select{
+    margin-left: 2px;
+    width:100%;
+    height:30px;
+    border: 1px solid #623381;
+}
+
+
+.lastone{
+    display:flex;
+}
+.lastone>div:nth-child(1){
+    width:19%;
+   
+}
+.lastone>div:nth-child(2){
+    width:20%;
+ 
+
+ 
+}
+.lastone>div:nth-child(3){
+    width:60%;
 }

@@ -94,7 +94,7 @@ export const getSignIn =(payload)=>(dispatch)=>{
 export const getLogin =({email,password})=>(dispatch)=>{
     dispatch(loginRequest())
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles?email=${email}`,{email,password}).then((res)=>{
-        // console.log(res.data[0])
+        console.log(res.data[0])
         // console.log(res.data[0].email===email && res.data[0].password===password);
         dispatch(loginSuccess(res.data[0]))
         
@@ -112,7 +112,7 @@ export const getUserDetails = (id)=>(dispatch)=>{
     dispatch(userDataRequest())
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id}`).then((res)=>{
         // console.log(`https://6wwnt.sse.codesandbox.io/profiles/${id}`)
-        // console.log(res.data)
+        // console.log(res)
         dispatch(userDataSuccess(res.data))
         
     })
