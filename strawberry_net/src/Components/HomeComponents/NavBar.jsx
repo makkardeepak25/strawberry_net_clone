@@ -27,6 +27,7 @@ export const NavBar = () => {
 
     
   }
+
   return (
     <div className={styles.navbar}>
       <div className={styles.headerbg}>

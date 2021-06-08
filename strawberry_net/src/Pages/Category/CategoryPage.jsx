@@ -5,6 +5,7 @@ import ProductCard from '../../Components/Horizontal card/ProductCard';
 import styles from "./CategoryPage.module.css"
 import ReorderIcon from '@material-ui/icons/Reorder';
 import AppsIcon from '@material-ui/icons/Apps';
+
 const CategoryPage = () => {
     const {category}= useParams()
     const [product,setProduct]=useState([])

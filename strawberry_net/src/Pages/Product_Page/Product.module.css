@@ -222,3 +222,13 @@ align-items: center;
     position: absolute;
     left: 12%;
 }
+.wish_icon{
+ color: #662C90;
+  
+}
+.wish_list{
+    padding-top: 5px;
+    justify-content: center;
+   display: flex;
+   color: #662C90;
+}
