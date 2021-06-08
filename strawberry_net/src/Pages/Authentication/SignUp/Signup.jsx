@@ -59,14 +59,13 @@ export const Signup = () => {
         birth_date:"", 
         birth_month:"", 
         avatar:"",
-        gender:"", 
-        points:0, 
-        location:"", 
-        addresses: [],
-        wishlisht: [],
-        bag: [],
-        orders: [],
-        saved_cards: []
+        gender:"",
+        points:0,
+        addresses:[], // Addresses can be multiple thats why I took array
+        wishlisht:[],
+        bag:[],
+        orders:[], // indiside individual orders we will also save reviews of that order // Order Id
+        saved_cards:[]
     }
     const [sigupData,setSignUpdata]=React.useState(iniState)
     const [isMatched,SetIsMatched]=React.useState(true)

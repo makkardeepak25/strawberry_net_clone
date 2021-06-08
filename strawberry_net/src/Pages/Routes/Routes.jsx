@@ -5,23 +5,29 @@ import { Footer } from '../../Components/HomeComponents/Footer';
 import { NavBar } from '../../Components/HomeComponents/NavBar';
 import { getUserDetails } from '../../Redux/Auth/authAction';
 import { Authentication } from '../Authentication/Authentication';
+import { getUser } from '../Authentication/localstorage_s';
 import { Bag } from '../Bag/Bag';
 import CategoryPage from '../Category/CategoryPage';
 import { Home } from '../Home/Home';
 import Product from '../Product_Page/Product';
+import { Searchbar } from '../Searchbar/Searchbar';
 import { Gradient } from '../UserInfo/Gradient';
+
 
 
 const Routes = () => {
   const userid = useSelector(state => state.auth.userId)
-  console.log(userid,"ROutes")
+  //console.log(userid,"ROutes")
   const dispatch = useDispatch()
+
+
   React.useEffect(()=>{
    dispatch(getUserDetails(userid))
+
   },[userid])
 
-  const user = useSelector(state => state.auth.user)
-  console.log(user)
+  // const user = useSelector(state => state.auth.user)
+  // console.log(user)
 
    
     return (
@@ -32,6 +38,16 @@ const Routes = () => {
            <Route exact path="/">
            <Home/>
            </Route>
+           <Route exact path="/signin">
+             <Authentication/>
+           </Route>
+           <Route exact path="/userinfo">
+          <Gradient/>
+           </Route>
+
+           <Route path="/:category/bag">
+          <Bag/>
+           </Route>
            <Route exact path="/:category">
              <CategoryPage/>
            </Route>
@@ -39,16 +55,11 @@ const Routes = () => {
              <Product/>
            </Route>
 
-           <Route exact path="/:category/signin">
-             <Authentication/>
-           </Route>
-           <Route exact path="/:category/userinfo">
-          <Gradient/>
-           </Route>
-
-           <Route path="/:category/bag">
-          <Bag/>
-           </Route>
+          
+           
+        
+      
+     
               <Route>
                 <h1>404 | Product Not Found</h1>
               </Route>

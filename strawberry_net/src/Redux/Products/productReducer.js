@@ -1,4 +1,5 @@
 import { GET_PROD_FAILURE, GET_PROD_REQ, GET_PROD_SUCCESS, ITEM_PRICE_QUANTITY } from "./productActionTypes";
+import { GET_PROD_FAILURE, GET_PROD_REQ, GET_PROD_SUCCESS, GET_SEARCH_FAILURE, GET_SEARCH_REQUEST, GET_SEARCH_SUCCESS } from "./productActionTypes";
 
 let initState = {
   products: [],
@@ -37,7 +38,8 @@ let initState = {
     quantity: 2,
     pr:2880,
     images:["https://a.cdnsbn.com/images/products/24425699239.jpg"]
-  }]
+  }],
+  searchProd:[]
 };
 
 export const prodReducer = (state = initState, { type, payload }) => {
@@ -62,6 +64,25 @@ export const prodReducer = (state = initState, { type, payload }) => {
       };
     }
 
+    case GET_SEARCH_REQUEST: {
+      return {
+        ...state
+      };
+    }
+    case GET_SEARCH_SUCCESS: {
+      return {
+        ...state,
+        searchProd: payload,
+        isloading: false
+      };
+    }
+    case GET_SEARCH_FAILURE: {
+      return {
+        ...state,
+        isError: true,
+        isloading: false
+      };
+    }
     default: {
       return {
         ...state
