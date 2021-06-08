@@ -1,0 +1,81 @@
+.billingAddress{
+ 
+    width:80%;
+    margin: auto;
+    display:flex;
+    margin-top: 20px;
+}
+
+.left{
+    width:25%;
+    
+}
+.right{
+
+width:75%;
+
+border-left: 1px solid #e5e6e6;
+}
+
+.addBtn{
+    border:none;
+    background-color: #623381;
+    color: white;
+    width:220px;
+    height:44px;
+    font-size:18px;
+    letter-spacing: 0.05em;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+.addressCont{
+    border-bottom: 1px solid #e5e6e6;
+    width:60%;
+    margin-left: 10%;
+
+}
+.lineone{
+    display: flex;
+    color: #623381;
+    font-size:20px;
+    align-items: center;
+    align-content: center;
+    line-height:1;
+}
+
+.linetwo{
+   
+    margin-top: -48px;
+    line-height:1;
+}
+.linetwo h5{
+    font-size:20px;
+   
+}
+.linetwo p{
+    font-size:18px; 
+}
+
+.linefour{
+    width:10%;
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 40px;
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+    .addBtn {
+        width:50px;
+    }
+    .hideme{
+        display:none;
+   
+       
+    }
+  }

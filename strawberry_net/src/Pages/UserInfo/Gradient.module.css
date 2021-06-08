@@ -4,7 +4,7 @@
 }
 
 .gradeHeader{
-    margin-top: -9px;
+    margin-top: -22px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -60,5 +60,8 @@
     gap: 20px;
     padding-bottom: 20px;
    
+}
+.gradeHeader{
+    margin-top: 0px;
 }
 }
