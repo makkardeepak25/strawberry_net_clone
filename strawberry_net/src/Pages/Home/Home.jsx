@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Banner } from "../../Components/HomeComponents/Banner";
-import { Footer } from "../../Components/HomeComponents/Footer";
-import { NavBar } from "../../Components/HomeComponents/NavBar";
+// import { Footer } from "../../Components/HomeComponents/Footer";
+// import { NavBar } from "../../Components/HomeComponents/NavBar";
 import styles from "./Home.module.css";
 import { DailySpecial } from "../../Components/HomeComponents/DailySpecial";
 import { BestDeals } from "../../Components/HomeComponents/BestDeals";
