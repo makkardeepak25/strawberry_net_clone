@@ -10,6 +10,7 @@ import { Bag } from '../Bag/Bag';
 import CategoryPage from '../Category/CategoryPage';
 import { Home } from '../Home/Home';
 import Product from '../Product_Page/Product';
+import { Searchbar } from '../Searchbar/Searchbar';
 import { Gradient } from '../UserInfo/Gradient';
 
 
@@ -51,7 +52,12 @@ const Routes = () => {
           <Gradient/>
            </Route>
 
+           <Route exact path="/search/product-search">
+          <Searchbar/>
+           </Route>
+
            <Route exact path="/:category/bag">
+
           <Bag/>
            </Route>
               <Route>
