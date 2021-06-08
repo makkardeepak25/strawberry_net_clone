@@ -56,7 +56,7 @@ export const NavBar = () => {
                 </a>
               </li>
               <li className={styles.loginlinks}>
-               <Link to={"/bag"} className={styles.accname}>
+               <Link to={"/user/bag"} className={styles.accname}>
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <GiShoppingBag />
                   </IconContext.Provider>

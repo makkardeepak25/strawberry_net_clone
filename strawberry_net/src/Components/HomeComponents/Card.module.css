@@ -62,6 +62,7 @@
   position: absolute;
   left: 7%;
   top: 50%;
+  text-transform: uppercase;
 }
 .desc {
   color: #0e0e0e;

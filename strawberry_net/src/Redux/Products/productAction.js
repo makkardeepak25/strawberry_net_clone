@@ -1,5 +1,5 @@
 import Axios from "axios"
-import { GET_PROD_REQ, GET_PROD_SUCCESS, GET_PROD_FAILURE} from "./productActionTypes"
+import { GET_PROD_REQ, GET_PROD_SUCCESS, GET_PROD_FAILURE, ITEM_PRICE_QUANTITY} from "./productActionTypes"
 
 
 export const getProdRequest =(payload)=>{
@@ -18,6 +18,12 @@ export const getProdFailure =(payload)=>{
     return {
         type:GET_PROD_FAILURE,
         payload
+    }
+}
+export const itemPriceTotal =(id)=>{
+    return {
+        type:ITEM_PRICE_QUANTITY,
+        payload:id
     }
 }
 export const getProdData = () => dispatch => {
