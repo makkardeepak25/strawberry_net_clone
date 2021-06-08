@@ -91,20 +91,48 @@ export const PersonalInfo = ({onChange}) => {
 
     const handleOnFocus=()=>{
         setShowButton(true)
+   
     }
 
     const handleOnChange=(e)=>{
+      
         setFormData({...formData,[e.target.name]:e.target.value})
+      
+  
     }
+
+    const imageRef = React.useRef();
+    const [imageurl, setImageURL] = React.useState(null);
+    const ShowUrlImage = () => {
+       
+        // imageRef.current.click()
+        if (!imageRef.current.files[0]) {
+        return;
+        }
+        const img = URL.createObjectURL(imageRef.current.files[0]);
+        setImageURL(img);
+       
+    
+        
+      
+    };
+
+
+    React.useEffect(()=>{
+        setFormData({...formData,"avatar":imageurl})
+        
+    },[imageurl])
 
     return (
         <div className={styles.fullmainCont}>
 
         
         <div className={classes.root,styles.mainCont}>
-            <Avatar className={classes.large}  alt="" src={avatar} />
+          <Avatar className={classes.large}  alt="" src={imageurl}/>
+       
             <div className={styles.UploadButton}>
-            <input type="file" className={styles.customeFileInput} onFocus={handleOnFocus} />
+            <input type="file" style={{display:'none'}} className={styles.customeFileInput} onChange={ShowUrlImage}  ref={imageRef} />
+            <button onClick={()=>{imageRef.current.click()}}>Upload profile photo</button>
            
            
             </div>
