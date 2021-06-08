@@ -1,6 +1,6 @@
 import { getUser, setUser } from "../../Pages/Authentication/localstorage_s"
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS,SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS, 
-    USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE} from "./authActionTypes"
+    USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, USERDATA_UPDATE} from "./authActionTypes"
 
 
 let initState ={
@@ -79,6 +79,14 @@ export const authReducer=(state=initState,{type,payload})=>{
             return{
                  ...state
                 
+            }
+        }
+        case USERDATA_UPDATE:{
+            alert("Product Added To bag")
+            return {
+                ...state,
+                user:payload,
+                isLoading:false
             }
         }
         default:{

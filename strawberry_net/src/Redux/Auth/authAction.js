@@ -1,5 +1,5 @@
 import axios from "axios"
-import { LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE,} from "./authActionTypes"
+import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE,} from "./authActionTypes"
 
 
 export const loginRequest =(payload)=>{
@@ -44,6 +44,12 @@ export const signINFailure =(payload)=>{
     }
 }
 
+export const userdataUpdate=(payload)=>{
+  return{
+      type:USERDATA_UPDATE,
+      payload
+  }
+}
 
 
 
@@ -115,7 +121,17 @@ export const getUserDetails = (id)=>(dispatch)=>{
         )
 }
 
+export const userUpdate =(id,payload)=>(dispatch)=>{
+    dispatch(signinRequest())
+    return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id}`,payload).then((res)=>{
+        dispatch(userdataUpdate(res))
+       
+    })
+    .catch(err=>
+        dispatch(signINFailure(err))
+        )
 
+}
 
 
 
