@@ -11,15 +11,18 @@ import CategoryPage from '../Category/CategoryPage';
 import { Home } from '../Home/Home';
 import Product from '../Product_Page/Product';
 import { Gradient } from '../UserInfo/Gradient';
-import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails } from '../../Redux/Auth/authAction';
+
+
 
 const Routes = () => {
   const userid = useSelector(state => state.auth.userId)
   //console.log(userid,"ROutes")
   const dispatch = useDispatch()
+
+
   React.useEffect(()=>{
    dispatch(getUserDetails(userid))
+
   },[userid])
 
   // const user = useSelector(state => state.auth.user)
@@ -48,7 +51,7 @@ const Routes = () => {
           <Gradient/>
            </Route>
 
-           <Route exact path="/bag">
+           <Route exact path="/:category/bag">
           <Bag/>
            </Route>
               <Route>

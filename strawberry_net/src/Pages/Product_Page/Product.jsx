@@ -7,6 +7,9 @@ import axios from 'axios';
 import SimpleRating from "../../Components/Rating/ReadRating"
 import {Rating} from "@material-ui/lab";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
+import {useDispatch,useSelector} from "react-redux"
+import { userUpdate } from '../../Redux/Auth/authAction';
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -35,6 +38,7 @@ const Product = () => {
     //     ],
     //     offer:14
     // }
+
     let array = new Array(30).fill(0)
     
     const [activeTab, setActiveTab] = useState("details")
@@ -45,21 +49,51 @@ const Product = () => {
     const [image,setImage]=useState(0)
     const [size,setSize]=useState(0)
     const [product,setProduct]=useState({})
+    const [qty,setQty]=useState("1")
+
 
     const GetProduct=()=>{
         axios.get(`https://6wwnt.sse.codesandbox.io/products/${id}`)
         .then(res=>{
-           console.log(res.data);
+        //    console.log(res.data);
            setProduct(res.data)
         })
     }
-    let avr_rating=product.reviews && product.reviews
-    console.log(avr_rating);
+    const addProduct={
+        ...product,
+        size: [{size:product.size?product.size[size].size:"",price:product.size?product.size[size].price:"0"}],
+       qty:qty
+    }
+
+    const user= useSelector((state)=>state.auth.user)
+    const dispatch=useDispatch()
+   
+  
+   user&&console.log(user.bag);;
+    const AddToCard=(product)=>{
+        
+        const id=product.id
+     console.log(id,product);
+     dispatch(userUpdate(id,product))
+
+    }
+    const addtoBag=()=>{
+        const bag=user.bag
+        const userdata={
+
+            ...user,
+           bag:[...bag,addProduct]
+        }
+         AddToCard(userdata)
+    }
+   
+
+
 useEffect(()=>{
 GetProduct()
 window.scrollTo(0, 0);
 console.log("Product page");
-},[id])
+},[id,user])
 
     return (
         <>
@@ -108,14 +142,14 @@ console.log("Product page");
                         <h3>.00</h3>
                     </div>
                     <div className={styles.select_tag_btn_div}>
-                        <select >
+                        <select onChange={(e)=>setQty(e.target.value)} >
 
                             {
-                                array.map((el, i) => <option value="">{i + 1}</option>)
+                                array.map((el, i) => <option value={i+1}>{i + 1}</option>)
                             }
                         </select>
 
-                        <button >Add to bag</button>
+                        <button onClick={addtoBag} >Add to bag</button>
                         <h5>Low in Stock</h5>
 
                     </div>
