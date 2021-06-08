@@ -55,6 +55,10 @@ const Routes = () => {
              <Product/>
            </Route>
 
+           <Route exact path="/search/product-search">
+             <Searchbar/>
+           </Route>
+
           
            
         
