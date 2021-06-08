@@ -37,6 +37,16 @@ const Routes = () => {
            <Route exact path="/">
            <Home/>
            </Route>
+           <Route exact path="/signin">
+             <Authentication/>
+           </Route>
+           <Route exact path="/userinfo">
+          <Gradient/>
+           </Route>
+
+           <Route exact path="/bag">
+          <Bag/>
+           </Route>
            <Route exact path="/:category">
              <CategoryPage/>
            </Route>
@@ -44,16 +54,11 @@ const Routes = () => {
              <Product/>
            </Route>
 
-           <Route exact path="/:category/signin">
-             <Authentication/>
-           </Route>
-           <Route exact path="/:category/userinfo">
-          <Gradient/>
-           </Route>
-
-           <Route exact path="/:category/bag">
-          <Bag/>
-           </Route>
+          
+           
+        
+      
+     
               <Route>
                 <h1>404 | Product Not Found</h1>
               </Route>
