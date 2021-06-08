@@ -9,8 +9,24 @@ import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getSearchData } from "../../Redux/Products/productAction";
 export const NavBar = () => {
+  const[brand,setBrand]= React.useState({})
+  const dispatch=useDispatch()
+ 
+
+
+  const handleChange=(e)=>{
+    setBrand(e.target.value)
+  }
+
+  const handleClick=()=>{
+    dispatch(getSearchData(brand))
+
+    
+  }
   return (
     <div className={styles.navbar}>
       <div className={styles.headerbg}>
@@ -18,10 +34,10 @@ export const NavBar = () => {
           <a className={styles.navbrand} />
           <div className={styles.navform1}>
             <div>
-              <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch1} />
-              <a className={styles.searchbtn1} href="#">
-                <BsSearch />
-              </a>
+              <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch1} onChange={handleChange} />
+              <Link to={"/search/product-search"} className={styles.searchbtn1} >
+                <BsSearch onClick={handleClick} />
+              </Link>
             </div>
           </div>
           <div className={styles.navright}>
