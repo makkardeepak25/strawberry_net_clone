@@ -1,5 +1,4 @@
 import Axios from "axios"
-import { GET_PROD_REQ, GET_PROD_SUCCESS, GET_PROD_FAILURE, ITEM_PRICE_QUANTITY} from "./productActionTypes"
 import { GET_PROD_REQ, GET_PROD_SUCCESS, GET_PROD_FAILURE, GET_SEARCH_REQUEST, GET_SEARCH_SUCCESS, GET_SEARCH_FAILURE} from "./productActionTypes"
 
 
@@ -21,12 +20,7 @@ export const getProdFailure =(payload)=>{
         payload
     }
 }
-export const itemPriceTotal =(id)=>{
-    return {
-        type:ITEM_PRICE_QUANTITY,
-        payload:id
-    }
-}
+
 export const getProdData = () => dispatch => {
     dispatch(getProdRequest());
     Axios.get("https://6wwnt.sse.codesandbox.io/products")

@@ -1,12 +1,22 @@
 import React from "react";
 import styles from "./Bag.module.css";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export function Bag() {
-  const bagProds = useSelector(state => state.prod.cartProd);
-  // console.log(bagProds)
- 
+  const user = useSelector(state => state.auth.user);
+  const cart = user.bag
+  const name=user.f_name
+  console.log(user)
+  let total=0
+  cart.map(el=>{
+    total=total+(Number(parseInt(el.size[0].price.replace(/,/g, ''))))
+  })
+  let newCustomeroff = .1 * total
+  let standardShip = (757.30)
+  let frieghtSurcharge = Number(0.035 * total).toFixed(2)
+  let orderTotal = (Number(total) + Number(standardShip) +Number(frieghtSurcharge)) -Number (newCustomeroff)
+  console.log(orderTotal)
+  // let
   const [quant, setQuant] = React.useState("");
   const handleChange = (e) => {
     setQuant(e.target.value)
@@ -30,17 +40,17 @@ export function Bag() {
               <p>INR758.00 delivery fee for order below INR7,579.90.​ Free standard shipping for order above INR11,369.80.</p>
               <p style={{ marginTop: "25px" }}>Goods shipped from Strawberrynet</p>
               <div className={styles.bordbot} />
-              {bagProds.map(el => {
+              {cart.map(el => {
                 return (
                   <div className={styles.prodbag}>
                     <img src={el.images[0]} alt="product" />
-                    <div>
+                    <div style={{ width:"45%" }}>
                       <div>
                         <strong style={{ textTransform: "uppercase" }}>{el.prod_name}</strong>
                       </div>
-                      <div style={{ width: "200px" }}>{el.prod_description}</div>
+                      <div>{el.prod_description}</div>
                       <div>{el.size[0].size}</div>
-                      <div>{el.size[0].price}</div>
+                      <div>{Number(parseInt(el.size[0].price.replace(/,/g, '')))}</div>
                     </div>
                     <select
                       onChange={handleChange}
@@ -56,7 +66,7 @@ export function Bag() {
                       <option value={9}>Qty.9</option>
                       <option value={10}>Qty.10</option>
                     </select>
-                    <div>{Number(el.size[0].price)*Number(el.quantity)}</div>
+                    <div style={{marginLeft:"10%"}}>{Number(parseInt(el.size[0].price.replace(/,/g, '')))*Number(el.qty)}</div>
                     <br />
                     <div className={styles.bordbott} />
                   </div>
@@ -66,29 +76,29 @@ export function Bag() {
               <div className={styles.bordbot} />
               <div className={styles.summary}>
                 <div className={`${styles.flexsum} ${styles.bolditem}`}>
-                  <div>Item Total: 1 item(s)‎</div>
-                  <div>INR 5912.50</div>
+                  <div>Item Total: {cart.length} item(s)‎</div>
+                  <div>INR {total}</div>
                 </div>
                 <div className={`${styles.flexsum} ${styles.extraoff}`}>
                   <div>Extra 10% Off (New Customer)</div>
-                  <div>-INR 591.30</div>
+                  <div>-INR {newCustomeroff}</div>
                 </div>
-                <div className={`${styles.flexsum} ${styles.extraoff}`}>
+                {/* <div className={`${styles.flexsum} ${styles.extraoff}`}>
                   <div>Extra 5% Off Sitewide (Summer Sale)</div>
                   <div>-INR 295.60</div>
-                </div>
+                </div> */}
                 <div className={`${styles.flexsum}`}>
                   <div>Standard Shipping (Signature)</div>
-                  <div>INR 758.00</div>
+                  <div>{standardShip}</div>
                 </div>
                 <div className={`${styles.flexsum}`}>
-                  <div>Extra 5% Off Sitewide (Summer Sale)</div>
-                  <div>INR 206.90</div>
+                  <div>Freight Surcharge</div>
+                  <div>{frieghtSurcharge}</div>
                 </div>
                 <div className={styles.bordbott} />
                 <div className={`${styles.flexsum} ${styles.bolditems}`}>
                   <div>Order Total: 1 item(s)‎</div>
-                  <div>INR 5990.50</div>
+                  <div>INR {orderTotal}</div>
                 </div>
               </div>
             </div>
@@ -113,12 +123,12 @@ export function Bag() {
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
-              <p>Checkout as Deepak?</p>
+              <p style={{width:"100px",margin:"auto",lineHeight:"1.5"}}>Checkout as {name}?</p>
               <button>Check Out</button>
             </div>
             <div className={styles.bordbotcheck} />
             <div className={styles.checkoutbag}>
-              <p>Not Deepak?</p>
+              <p>Not {name}?</p>
               <button>Sign Out</button>
             </div>
           </div>
