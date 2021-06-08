@@ -1,0 +1,44 @@
+.Maindiv{
+    width: 90%;
+    margin: auto;
+}
+
+
+
+.Div1{
+    color:#e82e74 ;
+    margin-bottom: 6px;
+}
+
+
+.Search{
+  
+   padding: 0px;
+   display: flex;
+   justify-content: space-between;
+   width: 30%;
+   letter-spacing: 5px;
+
+
+}
+
+.Div3{
+    font-size: 30px;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+}
+
+.Div4{
+    margin-top: 30px;
+}
+
+.Div5{
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-family: Lato,sans-serif;
+    background-color: #662d91;
+    color: #fff;
+    margin: 20px 0;
+    text-transform: uppercase;
+}

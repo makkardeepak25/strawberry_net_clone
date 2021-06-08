@@ -26,7 +26,7 @@
 .navbrand {
   margin-top: 15px;
   margin-bottom: 15px;
-  margin-left: 15px;
+  margin-left: 20px;
   color: #fff;
   width: 250px;
   height: 63px;
@@ -103,12 +103,13 @@
 }
 .navform1 {
   border-color: #101010;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin-right: 22px;
   display: block;
   text-align: center;
-  width: 24%;
+  width: 25%;
+  margin-top: 18px;
 }
 .navform2 {
   border-color: #101010;
@@ -123,7 +124,8 @@
   text-align: center;
   justify-content: space-evenly;
   width: 100%;
-  padding: 5px 3px 3px 3px;
+  padding: 2px 2px 0px 2px;
+  height: 32px;
 }
 .navform2 > div {
   background-color: #fff;
@@ -139,15 +141,20 @@
   width: 80%;
   background-color: transparent;
   border: 0;
+  padding: 0px;
   box-shadow: none;
   line-height: 14px;
   display: inline-block;
   vertical-align: middle;
-  height: 33px;
+  height: 30px;
   font-size: 13px;
   color: #555;
   outline: none;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.inpsearch1::placeholder{
+  color: #521B76;
 }
 .inpsearch2 {
   width: 80%;
@@ -166,7 +173,7 @@
   padding: 5px;
 }
 .searchbtn1 {
-  height: 33px;
+  height: 26px;
   font-size: 18px;
   color: #521B76;
   /* padding: 0 10px; */
@@ -181,7 +188,7 @@
   white-space: nowrap;
   font-weight: bold;
   border-radius: 4px;
-  margin-top: 7px;
+  margin-top: 4px;
 }
 .searchbtn2 {
   height: 33px;

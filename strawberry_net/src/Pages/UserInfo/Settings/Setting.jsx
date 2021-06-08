@@ -2,6 +2,8 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import styles from './Setting.module.css'
 import { PersonalInfo } from '../PersonalInfo/PersonalInfo';
+import { BillingAddress } from '../BillingAddress/BillingAddress';
+import { DeliveryAddress } from '../DeliverAddress/DeliveryAddress';
 export const Setting = () => {
     const [toRender,setToRender] = React.useState("personalinfo")
     return (
@@ -19,10 +21,10 @@ export const Setting = () => {
         } 
 
         {
-                    toRender==="billingadd" && <div>2</div>
+                    toRender==="billingadd" && <div><BillingAddress/></div>
         } 
         {
-                    toRender==="deliveryaddadd" && <div>3</div>
+                    toRender==="deliveryaddadd" && <div><DeliveryAddress/></div>
         } 
 
         </div>
