@@ -67,6 +67,7 @@
   .prodbag {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
   }
   .prodbag > select {
     height: 20px;

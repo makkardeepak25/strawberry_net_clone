@@ -45,7 +45,7 @@ const Routes = () => {
           <Gradient/>
            </Route>
 
-           <Route exact path="/bag">
+           <Route path="/:category/bag">
           <Bag/>
            </Route>
            <Route exact path="/:category">

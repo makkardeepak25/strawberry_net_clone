@@ -20,6 +20,7 @@ export const getProdFailure =(payload)=>{
         payload
     }
 }
+
 export const getProdData = () => dispatch => {
     dispatch(getProdRequest());
     Axios.get("https://6wwnt.sse.codesandbox.io/products")
