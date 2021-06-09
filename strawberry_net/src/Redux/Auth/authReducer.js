@@ -66,7 +66,8 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case SIGNIN_REQUEST:{
             return {
-
+                isLoading:true,
+                ...state
             }
         }
         case SIGNIN_SUCCESS:{

@@ -44,12 +44,24 @@ export const signINFailure =(payload)=>{
     }
 }
 
+export const userdataUpdateRequest=(payload)=>{
+    return{
+        type:USERDATA_UPDATE,
+        payload
+    }
+  }
 export const userdataUpdate=(payload)=>{
   return{
       type:USERDATA_UPDATE,
       payload
   }
 }
+export const userdataUpdateFailure=(payload)=>{
+    return{
+        type:USERDATA_UPDATE,
+        payload
+    }
+  }
 export const removeFromCart = payload => {
     return {
       type: REMOVE_FROM_CART,
@@ -131,9 +143,10 @@ export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
 
 export const userUpdate =(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
-    return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id}`,payload).then((res)=>{
-        dispatch(userdataUpdate(res))
+    return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
+        // dispatch(userdataUpdate(res))
         // dispatch(getUserDetails(id))
+        console.log(res.data)
         dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
