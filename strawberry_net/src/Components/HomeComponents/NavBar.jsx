@@ -18,12 +18,14 @@ export const NavBar = () => {
   const dispatch=useDispatch()
 
   const auth= useSelector((state)=>state.auth)
-  const user= useSelector((state)=>state.auth.user)
+  const user = useSelector((state) => state.auth.user)
+  const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
    const bag=user&&auth.user.bag
   console.log("bag",bag);
-
+console.log("user",user)
  const cart = user.bag
- const name=user.f_name
+  const name = user.f_name
+  console.log(name)
 
 
   const handleChange=(e)=>{
