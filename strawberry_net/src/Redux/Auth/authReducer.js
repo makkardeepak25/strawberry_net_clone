@@ -6,8 +6,8 @@ import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS,SIGNIN_FAILURE, SIGNIN_REQU
 let initState ={
     isLoading: false,
     isError: false,
-    isAuth:getUser("userId")?true:false,
-    userId:getUser("userId") ||"",
+    isAuth:localStorage.getItem("userId")?true:false,
+    userId:localStorage.getItem("userId") ||"",
     user:{}
 }
 
@@ -82,7 +82,7 @@ export const authReducer=(state=initState,{type,payload})=>{
             }
         }
         case USERDATA_UPDATE:{
-            alert("Product Added To bag")
+         
             return {
                 ...state,
                 user:payload,
