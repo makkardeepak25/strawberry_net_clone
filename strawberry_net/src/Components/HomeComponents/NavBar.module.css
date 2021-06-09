@@ -95,6 +95,12 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
 }
+.logimg{
+  margin-left: 5%;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
 .ordertrack {
   text-decoration: none;
   display: inline-block;
