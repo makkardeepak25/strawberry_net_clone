@@ -123,11 +123,12 @@ export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
         )
 }
 
-export const userUpdate =(id,payload)=>(dispatch)=>{
+export const userUpdate =(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
     return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id}`,payload).then((res)=>{
         dispatch(userdataUpdate(res))
-        dispatch(getUserDetails(id))
+        // dispatch(getUserDetails(id))
+        dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
         dispatch(signINFailure(err))

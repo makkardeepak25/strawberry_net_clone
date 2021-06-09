@@ -50,8 +50,8 @@ export const authReducer=(state=initState,{type,payload})=>{
                 ...state,
                 user:payload,
                
-              
-                 isLoading:false,
+                  isAuth:true,
+                 isLoading:false
 
 
             }
@@ -86,7 +86,8 @@ export const authReducer=(state=initState,{type,payload})=>{
             return {
                 ...state,
                 user:payload,
-                isLoading:false
+                isLoading:false,
+             
             }
         }
         default:{
