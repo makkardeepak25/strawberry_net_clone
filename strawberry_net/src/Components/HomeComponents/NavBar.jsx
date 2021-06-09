@@ -10,33 +10,30 @@ import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
-import Badge from '@material-ui/core/Badge';
+import Badge from "@material-ui/core/Badge";
 export const NavBar = () => {
-  const[brand,setBrand]= React.useState({})
-  const dispatch=useDispatch()
+  const [brand, setBrand] = React.useState({});
+  const dispatch = useDispatch();
 
-  const auth= useSelector((state)=>state.auth)
-  const user = useSelector((state) => state.auth.user)
-  const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
-   const bag=user&&auth.user.bag
-  console.log("bag",bag);
-console.log("user",user)
- const cart = user.bag
-  const name = user.f_name
-  console.log(name)
+  const auth = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.auth.user);
+  const isAuth = useSelector((state) => state.auth.isAuth); //dont change this
+  const bag = user && auth.user.bag;
+  console.log("bag", bag);
+  console.log("user", user);
+  const cart = user.bag;
+  const name = user.f_name;
+  console.log(name);
 
+  const handleChange = (e) => {
+    setBrand(e.target.value);
+  };
 
-  const handleChange=(e)=>{
-    setBrand(e.target.value)
-  }
-
-  const handleClick=()=>{
-    dispatch(getSearchData(brand))
-
-    
-  }
+  const handleClick = () => {
+    dispatch(getSearchData(brand));
+  };
 
   return (
     <div className={styles.navbar}>
@@ -45,8 +42,14 @@ console.log("user",user)
           <a className={styles.navbrand} />
           <div className={styles.navform1}>
             <div>
-              <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch1} onChange={handleChange} />
-              <Link to={"/search/product-search"} className={styles.searchbtn1} >
+              <input
+                type="text"
+                placeholder="SEARCH BRAND / PRODUCT"
+                autocomplete="off"
+                className={styles.inpsearch1}
+                onChange={handleChange}
+              />
+              <Link to={"/search/product-search"} className={styles.searchbtn1}>
                 <BsSearch onClick={handleClick} />
               </Link>
             </div>
@@ -64,45 +67,65 @@ console.log("user",user)
                   <a className={styles.ordertrack}> Order Tracking</a>
                 </li>
               </ul>
-            </nav>
-            <ul className={styles.menunavright}>
-              {!isAuth?<li className={styles.loginlinks}>
-                <Link to={"/signin"} className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
-                    <FaUserCircle />
-                  </IconContext.Provider>
-                  <span className={styles.aaccname}>Sign in</span>
-                </Link>
-              </li> : <li className={styles.loginlinks}>
-              <Link  className={styles.accname} >
-              <img className={styles.logimg} src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"} alt="strawlog"/>
-                    <span className={styles.aaccname}>{name}</span>
-                </Link>
-              </li>}
-              
-              
-              <li className={styles.loginlinks}>
-                <a className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
-                    <AiFillHeart />
-                  </IconContext.Provider>
-                  <span className={styles.aaccname}>Wishlist</span>
-                </a>
-              </li>
-              <li className={styles.loginlinks}>
-               <Link to={"/user/bag"} className={styles.accname}>
-                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
-                  <Badge badgeContent={bag&&bag.length} color="secondary"   anchorOrigin={{
-    vertical: 'top',
-    horizontal: 'left',
-  }}>
-                    <GiShoppingBag />
-                    </Badge>
-                  </IconContext.Provider>
-                  <span className={styles.aaccname}>Bag</span>
-                </Link>
-              </li>
-            </ul>
+              </nav>
+              <ul className={styles.menunavright}>
+                {!isAuth ? (
+                  <li className={styles.loginlinks}>
+                    <Link to={"/signin"} className={styles.accname} href="#">
+                      <IconContext.Provider
+                        value={{ color: "#B53788", size: "3.2em" }}
+                      >
+                        <FaUserCircle />
+                      </IconContext.Provider>
+                      <span className={styles.aaccname}>Sign in</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <li className={styles.loginlinks}>
+                    <Link className={styles.accname}>
+                      <img
+                        className={styles.logimg}
+                        src={
+                          "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
+                        }
+                        alt="strawlog"
+                      />
+                      <span className={styles.aaccname}>{name}</span>
+                    </Link>
+                  </li>
+                )}
+
+                <li className={styles.loginlinks}>
+                  <a className={styles.accname} href="#">
+                    <IconContext.Provider
+                      value={{ color: "#B53788", size: "3.2em" }}
+                    >
+                      <AiFillHeart />
+                    </IconContext.Provider>
+                    <span className={styles.aaccname}>Wishlist</span>
+                  </a>
+                </li>
+                <li className={styles.loginlinks}>
+                  <Link to={"/user/bag"} className={styles.accname}>
+                    <IconContext.Provider
+                      value={{ color: "#B53788", size: "3.2em" }}
+                    >
+                      <Badge
+                        badgeContent={bag && bag.length}
+                        color="secondary"
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                      >
+                        <GiShoppingBag />
+                      </Badge>
+                    </IconContext.Provider>
+                    <span className={styles.aaccname}>Bag</span>
+                  </Link>
+                </li>
+              </ul>
+            
           </div>
         </div>
       </div>
@@ -112,7 +135,9 @@ console.log("user",user)
             {" "}
             <li className={styles.li1}>
               <span>
-                <MenuIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <MenuIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
@@ -168,7 +193,9 @@ console.log("user",user)
             {" "}
             <li className={styles.li1}>
               <span>
-                <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <CardGiftcardIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
@@ -177,7 +204,9 @@ console.log("user",user)
             {" "}
             <li className={styles.li1}>
               <span>
-                <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <StarIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspns}>NEW</span>
             </li>
@@ -185,10 +214,22 @@ console.log("user",user)
         </ul>
       </div>
       <div className={styles.navbarmenu2}>
-        <MenuIcon style={{ width: "50px", height: "50px", color: "white",cursor:"pointer" }} />
+        <MenuIcon
+          style={{
+            width: "50px",
+            height: "50px",
+            color: "white",
+            cursor: "pointer",
+          }}
+        />
         <div className={styles.navform2}>
           <div>
-            <input type="text" placeholder="SEARCH BRAND / PRODUCT" autocomplete="off" className={styles.inpsearch2} />
+            <input
+              type="text"
+              placeholder="SEARCH BRAND / PRODUCT"
+              autocomplete="off"
+              className={styles.inpsearch2}
+            />
             <a className={styles.searchbtn2} href="#">
               <BsSearch />
             </a>
