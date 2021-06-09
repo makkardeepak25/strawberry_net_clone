@@ -36,22 +36,20 @@
   text-indent: -9999px;
   line-height: 0;
   font-size: 0;
-  float: left;
   text-decoration: none;
   padding: 0px 0px 0px 0px;
   cursor: pointer;
 }
 .navright {
-  float: right !important;
   margin-bottom: 0;
-  padding-left: 0;
+  margin: 0px;
   list-style: none;
+  height: 40px;
 }
 .addnav {
   position: relative;
   padding: 0;
   font-size: 12px;
-  margin-bottom: 10px;
   text-align: right;
   display: block;
 }
@@ -60,15 +58,10 @@
   position: relative;
   padding: 0;
   font-size: 14px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   margin-top: 0;
   display: block;
   list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
   text-align: right;
   color: #B53788;
   list-style: none;
@@ -178,6 +171,7 @@
   margin-top: 5px;
   padding: 5px;
 }
+
 .searchbtn1 {
   height: 26px;
   font-size: 18px;
@@ -236,27 +230,25 @@
   float: none;
   text-align: center;
   list-style: none;
-  padding: 10px 0px;
+}
+li{
+  padding: 5px 0px;
 }
 .menunavright {
   font-size: 12px;
-  position: relative;
   padding: 0;
   color: #B53788;
-  float: right !important;
   list-style: none;
   display: flex;
-  list-style-type: disc;
   letter-spacing: 0.015em;
-  justify-content: space-between;
-  width: 98%;
-  margin: 0;
-}
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+  margin: 0px;
+  padding-left: 14%;
+  }
 .loginlinks {
   cursor: auto !important;
-  position: relative;
-  margin-left: 10px;
-  margin-right: 10px;
   font-weight: 700;
   text-align: -webkit-match-parent;
   font-size: 12px;
@@ -267,12 +259,12 @@
 .accname {
   color: #B53788;
   padding: 0;
-  position: relative;
   display: block;
   text-decoration: none;
   font-weight: 700;
   list-style: none;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
 }
 .aaccname {
   color: #B53788;
@@ -280,11 +272,10 @@
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.015em;
-  position: absolute;
   width: 70px;
-  top: 30%;
-  left: 110%;
   font-size: 14px;
+  margin-top: 10px;
+  margin-left: 5px;
 }
 .clrspn {
   color: white;
@@ -299,9 +290,21 @@
   text-decoration: none;
 }
 .li1 {
-  color: white;
+  color: rgb(163, 114, 114);
   display: flex;
   justify-content: space-evenly;
+}
+
+li:hover{
+  background: #fff;
+  color: #521B76;
+}
+li>span{
+  padding:0px 2px;
+}
+li>span:hover{
+  color: #521B76;
+  background-color: #fff;
 }
 @media (max-width: 1174px) {
   .li1 {
