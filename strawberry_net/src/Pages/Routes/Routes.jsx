@@ -22,6 +22,7 @@ const Routes = () => {
 
 
   React.useEffect(()=>{
+    console.log("route",userid);
    dispatch(getUserDetails(userid))
 
   },[userid])
