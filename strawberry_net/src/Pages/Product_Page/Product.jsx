@@ -9,7 +9,7 @@ import {Rating} from "@material-ui/lab";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import {useDispatch,useSelector} from "react-redux"
-import { userUpdate } from '../../Redux/Auth/authAction';
+import { getUserDetails, userUpdate } from '../../Redux/Auth/authAction';
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -66,10 +66,11 @@ const Product = () => {
     }
 
     const user= useSelector((state)=>state.auth.user)
+    const userid= useSelector((state)=>state.auth.userId)
     const dispatch=useDispatch()
    
   
-   user&&console.log(user.bag);;
+ 
     const AddToCard=(product)=>{
         
         const id=product.id
@@ -78,11 +79,11 @@ const Product = () => {
 
     }
     const addtoBag=()=>{
-        const bag=user.bag
+        const bag=user&&user.bag
         const userdata={
 
             ...user,
-           bag:[...bag,addProduct]
+            bag:bag.length>0?[...bag,addProduct]:[addProduct]
         }
          AddToCard(userdata)
     }
@@ -92,8 +93,13 @@ const Product = () => {
 useEffect(()=>{
 GetProduct()
 window.scrollTo(0, 0);
-console.log("Product page");
-},[id,user])
+
+
+},[])
+useEffect(()=>{
+    dispatch(getUserDetails(userid))
+
+},[])
 
     return (
         <>

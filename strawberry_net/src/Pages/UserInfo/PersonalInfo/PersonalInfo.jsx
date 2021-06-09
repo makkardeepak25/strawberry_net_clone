@@ -6,7 +6,7 @@ import styles from './PersonalInfo.module.css';
 import styled from 'styled-components';
 import {countries} from '../countries';
 import { useDispatch,useSelector } from 'react-redux';
-import { getUserDetails } from '../../../Redux/Auth/authAction';
+import { getUserDetails, userUpdate } from '../../../Redux/Auth/authAction';
 
 
 const UserInput = styled.input`
@@ -45,34 +45,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 
-  
-
-export const PersonalInfo = ({onChange}) => { 
-
-    const initUser = useSelector((state)=>state.auth.user)
-    console.log(initUser)
-   
-
-    const [formData,setFormData] =React.useState()
-    React.useEffect(() =>{
-        
-           setFormData(initUser)
-            
-    
-        
-    },[initUser])
-   
-    
-     console.log(formData)
-    const {f_name,l_name,email,password,countryCode,phone,birth_date,birth_month,avatar,gender,points,location,addresses,wishlisht,bag,orders,saved_cards } =initUser
-   
-
-    const [showButton,setShowButton] =React.useState(false)
-    const [newPassword,setnewPassword] = React.useState(false)
-
-    let days = new Array(31)
-    days= days.fill(0,0,31)
-    const months = [
+   const months = [
         'January',
         'February',
         'March',
@@ -85,24 +58,46 @@ export const PersonalInfo = ({onChange}) => {
         'October',
         'November',
         'December',
-      ];
-    
+      ];  
+      
+    var days = new Array(31)
+    days= days.fill(0,0,31)
+
+export const PersonalInfo = ({onChange}) => { 
     const classes = useStyles();
-
-    const handleOnFocus=()=>{
-        setShowButton(true)
-   
-    }
-
-    const handleOnChange=(e)=>{
-      
-        setFormData({...formData,[e.target.name]:e.target.value})
-      
-  
-    }
-
-    const imageRef = React.useRef();
+    const [formData,setFormData] =React.useState()
+    const [showButton,setShowButton] =React.useState(false)
+    const [newPassword,setnewPassword] = React.useState(false)  
     const [imageurl, setImageURL] = React.useState(null);
+   
+    const imageRef = React.useRef();
+
+    const dispatch = useDispatch()
+
+    const initUser = useSelector((state)=>state.auth.user)
+    const userId = useSelector((state)=>state.auth.userId)
+    
+    console.log(userId,"Inside Personal Info")
+    console.log(initUser)
+   
+    
+    
+
+  
+    React.useEffect(() =>{   
+           setFormData(initUser)
+    },[initUser])
+
+    React.useEffect(()=>{
+        setFormData({...formData,"avatar":imageurl})
+        
+    },[imageurl])
+   
+    
+    console.log(formData)
+    const {f_name,l_name,email,password,countryCode,phone,birth_date,birth_month,avatar,gender,points,location,addresses,wishlisht,bag,orders,saved_cards } =initUser
+   
+
     const ShowUrlImage = () => {
        
         // imageRef.current.click()
@@ -116,13 +111,38 @@ export const PersonalInfo = ({onChange}) => {
         
       
     };
+   
+  
+    
+    
+
+    const handleOnFocus=()=>{
+        setShowButton(true)
+   
+    }
+
+    const handleOnChange=(e)=>{
+      
+        setFormData({...formData,[e.target.name]:e.target.value})
+      
+  
+    }
+
+    const handleSubmit =()=>{
+        dispatch(userUpdate(userId,formData))
+    }
+
+    
+  
+    
 
 
-    React.useEffect(()=>{
-        setFormData({...formData,"avatar":imageurl})
-        
-    },[imageurl])
+   
 
+
+  
+
+    
     return (
         <div className={styles.fullmainCont}>
 
@@ -186,7 +206,7 @@ export const PersonalInfo = ({onChange}) => {
                     <div>(Optional)</div>
                 </div>
                 <div className={styles.inputCont}>
-                    <select defaultValue={gender} name="" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                    <select defaultValue={gender} name="gender" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                     <option value="Please Select">Please Select</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
@@ -257,7 +277,7 @@ export const PersonalInfo = ({onChange}) => {
         </div>
             {showButton && <div className={styles.saveButton}>
                 <div>
-                    <button>Save</button>
+                    <button onClick={handleSubmit}>Save</button>
                 </div>
             </div>}
         </div>
