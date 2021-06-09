@@ -152,6 +152,7 @@ export const PersonalInfo = () => {
         
            
         dispatch(userUpdate(userId,formData))
+        alert(`Hello ${User.f_name} your details saved successFully`)
 
        
     }
