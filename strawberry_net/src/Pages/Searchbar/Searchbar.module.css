@@ -1,3 +1,47 @@
+.Maindiv{
+    width: 90%;
+    margin: auto;
+}
+
+
+
+.Div1{
+    color:#e82e74 ;
+    margin-bottom: 6px;
+}
+
+
+.Search{
+  
+   padding: 0px;
+   display: flex;
+   justify-content: space-between;
+   width: 28%;
+   letter-spacing: 5px;
+
+
+}
+
+.Div3{
+    font-size: 30px;
+    font-family: Lato,sans-serif;
+    font-weight: 700;
+}
+
+.Div4{
+    margin-top: 30px;
+}
+
+.Div5{
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-family: Lato,sans-serif;
+    background-color: #662d91;
+    color: #fff;
+    margin: 20px 0;
+    text-transform: uppercase;
+}
 .main_div{
   
     padding: 0px 40px
@@ -132,10 +176,7 @@ td:hover{
     
     margin: 0px ;
 }
-.by_list{
-   
-    
-}
+
 .by_list > h6{
     margin: 0px;
     text-align: center;
@@ -148,9 +189,9 @@ td:hover{
     color: #70378D;
     cursor: pointer;
 }
-.sort_by :nth-child(1){
+/* .sort_by :nth-child(1){
  
-}
+} */
 .sort_by > select {
     color: #70378D;
     border: 1px solid #52246D;

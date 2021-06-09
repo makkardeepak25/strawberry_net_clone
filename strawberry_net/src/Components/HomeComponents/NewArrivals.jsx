@@ -20,7 +20,7 @@ export const NewArrivals = () => {
       {data.slice(12, 16).map(el => {
         return (
           <div className={styles.prodDiv}>
-          <Link to={`/products/${el.id}`}>  <>
+          <Link to={`${el.category}/products/${el.id}`}>  <>
             <a>
               <span className={styles.prodname}>{el.prod_name}</span>
               <p className={styles.desc}>

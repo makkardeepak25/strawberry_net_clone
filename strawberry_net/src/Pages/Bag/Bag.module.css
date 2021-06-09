@@ -46,6 +46,12 @@
   .bagData > p {
     margin: 0 0 10px;
   }
+  .removeprod{
+    top: 1%;
+    position: absolute;
+    left: 96%;
+    cursor: pointer;
+  }
   .shipBar {
     background-color: #e5e5e5;
     border-radius: 10px;
@@ -67,6 +73,8 @@
   .prodbag {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
+    position: relative;
   }
   .prodbag > select {
     height: 20px;

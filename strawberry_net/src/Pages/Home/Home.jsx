@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { Banner } from "../../Components/HomeComponents/Banner";
 // import { Footer } from "../../Components/HomeComponents/Footer";
@@ -9,12 +9,18 @@ import { BestDeals } from "../../Components/HomeComponents/BestDeals";
 import { Top40 } from "../../Components/HomeComponents/Top40";
 import { BestSellers } from "../../Components/HomeComponents/BestSellers";
 import { NewArrivals } from "../../Components/HomeComponents/NewArrivals";
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { Timer } from "../../Components/HomeComponents/Timer";
 export const Home = () => {
+  useEffect(() => {
+    document.title = "Strawberrynet.com";
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <div>
+    <div className={styles.home}>
       {/* <NavBar /> */}
-    
+
       <Banner />
       <div className={styles.dailyspecial}>
         <div className={styles.promopadding}>
@@ -23,7 +29,12 @@ export const Home = () => {
             <div className={styles.promotitlediv}>
               <h3>Daily Specials</h3>
               <div className={styles.dailymessage}>
-                <span className={styles.dailypromocounter}>Ends in</span>
+                <span className={styles.dailypromocounter}>
+                  Ends in{" "}
+                  <strong style={{ color: "hotpink" }}>
+                    <Timer />
+                  </strong>
+                </span>
               </div>
             </div>
           </div>
@@ -52,7 +63,10 @@ export const Home = () => {
               </div>
               <div className={styles.textright}>
                 <button className={styles.bestbtn}>
-                  View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
+                  View All{" "}
+                  <span className={styles.arrclr}>
+                    <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
+                  </span>
                 </button>
               </div>
             </div>
@@ -74,7 +88,10 @@ export const Home = () => {
           </div>
           <div className={styles.textright}>
             <button className={styles.bestbtn}>
-              View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
+              View All{" "}
+              <span className={styles.arrclr}>
+                <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
+              </span>
             </button>
           </div>
         </div>
@@ -94,7 +111,10 @@ export const Home = () => {
           </div>
           <div className={styles.textright}>
             <button className={styles.bestbtn}>
-              View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
+              View All{" "}
+              <span className={styles.arrclr}>
+                <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
+              </span>
             </button>
           </div>
         </div>
@@ -114,12 +134,15 @@ export const Home = () => {
           </div>
           <div className={styles.textright}>
             <button className={styles.bestbtn}>
-              View All <span className={styles.arrclr}>< ArrowForwardIosIcon/></span>
+              View All{" "}
+              <span className={styles.arrclr}>
+                <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
+              </span>
             </button>
           </div>
         </div>
-          </div>
-          <div className={styles.container}>
+      </div>
+      <div className={styles.container}>
         <div className={styles.promblock}>
           <div className={styles.promotitlepad}>
             <div className={styles.promotitleline} />
@@ -129,10 +152,8 @@ export const Home = () => {
               </div>
             </div>
           </div>
-         
         </div>
       </div>
-
     </div>
   );
 };

@@ -10,7 +10,7 @@
 
 
 .UploadButton{
-    width: 18%;
+    width: 20%;
     margin: auto;
   
     margin-top:1%;
@@ -18,34 +18,16 @@
      
  }
 
-
-.customeFileInput {
-    color: transparent;
-  }
-.customeFileInput::-webkit-file-upload-button {
-    visibility: hidden;
-  }
-  .customeFileInput::before {
-
-   
-    /* width: 100%; */
- 
-      color: white;
-    content: 'Upload a profile photo';
-    display: inline-block;
-    background: #623381;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 8px;
-    outline: none;
-  
-    -webkit-user-select: none;
-    cursor: pointer;
-
-    font-weight: 600;
-    font-size: 14px;
-  }
- 
+.UploadButton button{
+  border:none; 
+  background-color:#623381 ;
+  height:22px;
+   color:white;
+   width:160px;
+   border-radius: 3px;
+   font-weight: 600;
+   font-size:14px;
+}
 @media only screen and (max-width: 960px) {
   
     .mainCont{
@@ -80,7 +62,7 @@
 
   .inputCont input{
     font-size: 18px;
-    color: #414141;
+    color: black;
   }
   .userCont{
       display: flex;
@@ -145,3 +127,22 @@
     z-index: 1;
    
   }
+
+
+
+  .inputpassword{
+   
+    margin-top: 2px;
+    background: none;
+    width: 100%;
+    height: 34px;
+    border: 1px solid #623381;
+    
+  }
+
+  
+  input[type="password"]::-webkit-input-placeholder{
+    font-size: 14px !important;
+    color: #808080c3;
+  }
+ 
