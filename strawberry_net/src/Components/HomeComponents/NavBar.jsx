@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./NavBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
@@ -12,29 +12,38 @@ import { GiShoppingBag } from "react-icons/gi";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
-import Badge from "@material-ui/core/Badge";
+import Badge from '@material-ui/core/Badge';
+import { useState } from "react";
+import { getUserDetails } from "../../Redux/Auth/authAction";
 export const NavBar = () => {
   const [brand, setBrand] = React.useState({});
   const dispatch = useDispatch();
 
-  const auth = useSelector((state) => state.auth);
-  const user = useSelector((state) => state.auth.user);
-  const isAuth = useSelector((state) => state.auth.isAuth); //dont change this
-  const bag = user && auth.user.bag;
-  console.log("bag", bag);
-  console.log("user", user);
-  const cart = user.bag;
-  const name = user.f_name;
-  console.log(name);
+
+ 
+  const user= useSelector((state)=>state.auth.user)
+  const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
+  const [userAuth,setUserAuth]=useState(isAuth)
+   const bag=user&&user.bag
+  console.log("bag",bag);
+
+ //const cart = user&&user.bag
+ const name=user&&user.f_name
 
   const handleChange = (e) => {
     setBrand(e.target.value);
   };
 
-  const handleClick = () => {
-    dispatch(getSearchData(brand));
-  };
 
+  const handleClick=()=>{
+    dispatch(getSearchData(brand))
+
+    
+  }
+  useEffect(()=>{
+    const id=localStorage.getItem("userId")
+ id&&dispatch(getUserDetails(id))
+  },[])
   return (
     <div className={styles.navbar}>
       <div className={styles.headerbg}>

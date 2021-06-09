@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { countries } from '../countries';
 import styles from './AddressForm.module.css'
-import { states } from './states';
 
+import { states } from './states';
+import { countries } from '../countries';
 const initAddress ={
     address_tittle:"",
     f_name:"",
