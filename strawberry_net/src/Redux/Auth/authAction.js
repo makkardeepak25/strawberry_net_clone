@@ -117,8 +117,8 @@ export const getLogin =({email,password})=>(dispatch)=>{
 
 export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
     dispatch(userDataRequest())
-    console.log(id);
-    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id}`).then((res)=>{
+    console.log(id.trim());
+    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`).then((res)=>{
         // console.log(`https://6wwnt.sse.codesandbox.io/profiles/${id}`)
     
         dispatch(userDataSuccess(res.data))

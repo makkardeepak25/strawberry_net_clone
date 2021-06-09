@@ -1,12 +1,13 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import styles from './PersonalInfo.module.css';
 import styled from 'styled-components';
-import {countries} from '../countries';
 import { useDispatch,useSelector } from 'react-redux';
-import { getUserDetails, userUpdate } from '../../../Redux/Auth/authAction';
+
+
+import {  userUpdate } from '../../../Redux/Auth/authAction';
+import {countries} from '../countries';
 
 
 const UserInput = styled.input`
@@ -95,7 +96,7 @@ export const PersonalInfo = ({onChange}) => {
    
     
     console.log(formData)
-    const {f_name,l_name,email,password,countryCode,phone,birth_date,birth_month,avatar,gender,points,location,addresses,wishlisht,bag,orders,saved_cards } =initUser
+    const {f_name,l_name,password,nickname,countryCode,phone,birth_date,birth_month,avatar,gender,location} =initUser
    
 
     const ShowUrlImage = () => {
@@ -128,7 +129,8 @@ export const PersonalInfo = ({onChange}) => {
   
     }
 
-    const handleSubmit =()=>{
+    const handleSubmit =(e)=>{
+        e.preventDefault()
         dispatch(userUpdate(userId,formData))
     }
 
@@ -177,7 +179,7 @@ export const PersonalInfo = ({onChange}) => {
                     <label htmlFor="">NickName</label>
                     <div>(Optional)</div>
                 </div>
-                <div className={styles.inputCont}><UserInput placeholder="" name="nickname" onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
+                <div className={styles.inputCont}><UserInput placeholder="" name="nickname" defaultValue={nickname}  onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
@@ -186,7 +188,10 @@ export const PersonalInfo = ({onChange}) => {
                 </div>
                 <div className={styles.inputCont} style={{display:'flex',alignItems:'center'}}>
                         <label htmlFor="" style={{width:'120px'}} >Country Code</label>
-                        <select name="countryCode" value={countryCode} id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                        <select name="countryCode" defaultValue={countryCode} id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                
+                        <option value={countryCode} selected>{location} {countryCode}</option>
+                
                 {
                     countries.map(item=>
                         <option value={`+${item.phone}`}>{item.label} +{item.phone}</option>
@@ -208,6 +213,7 @@ export const PersonalInfo = ({onChange}) => {
                 <div className={styles.inputCont}>
                     <select defaultValue={gender} name="gender" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                     <option value="Please Select">Please Select</option>
+                        <option value={gender} selected>{gender}</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         
@@ -222,15 +228,17 @@ export const PersonalInfo = ({onChange}) => {
                 </div>
                 <div className={styles.inputCont} style={{display:'flex',alignContent:'space-between',alignItems:'center',}}>
                 <label htmlFor="" style={{width:'70px'}}>Day</label>
-                        <select name="birth_date" value={birth_date}  id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                        <select name="birth_date" defaultValue={birth_date}  id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                            
+                        <option value={birth_date} selected>{birth_date}</option>
                             {
                                  days.map((item,i)=><option value={i+1}>{i+1}</option>)
                             }
                         </select>
                         <div style={{width:'25%'}} ></div>
                         <label htmlFor="" style={{width:'60px'}} >Month</label>
-                        <select name="birth_month" value={birth_month}  defaultValue={birth_date} id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
-                            
+                        <select name="birth_month" defaultValue={birth_month}  id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                        <option value={birth_month} selected>{birth_month}</option>
                             {
                                 months.map((item)=><option value={item}>{item}</option>)
                             }
@@ -262,7 +270,8 @@ export const PersonalInfo = ({onChange}) => {
                     <label htmlFor="">Location</label>
                 </div>
                 <div className={styles.inputCont} > 
-                <select name="location" value={location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                <select name="location" defaultvalue={location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                <option value={location} selected>{location}</option>
                 {
                     countries.map(item=>
                         <option value={item.label}>{item.label}</option>
