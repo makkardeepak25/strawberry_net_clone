@@ -1,5 +1,5 @@
 import axios from "axios"
-import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE,} from "./authActionTypes"
+import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, REMOVE_FROM_CART,} from "./authActionTypes"
 
 
 export const loginRequest =(payload)=>{
@@ -50,6 +50,12 @@ export const userdataUpdate=(payload)=>{
       payload
   }
 }
+export const removeFromCart = payload => {
+    return {
+      type: REMOVE_FROM_CART,
+      payload,
+    };
+  };
 
 
 
@@ -62,6 +68,7 @@ export const userDataRequest =(payload)=>{
     }
 }
 export const userDataSuccess =(payload)=>{
+    console.log(payload);
     return{
         type:USERDATA_SUCCESS,
         payload
@@ -83,7 +90,7 @@ export const getSignIn =(payload)=>(dispatch)=>{
     dispatch(signinRequest())
     return axios.post('https://6wwnt.sse.codesandbox.io/profiles',payload).then((res)=>{
         dispatch(signinSuccess(res))
-        console.log(res);
+       
     })
     .catch(err=>
         dispatch(signINFailure(err))
@@ -94,7 +101,7 @@ export const getSignIn =(payload)=>(dispatch)=>{
 export const getLogin =({email,password})=>(dispatch)=>{
     dispatch(loginRequest())
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles?email=${email}`,{email,password}).then((res)=>{
-        console.log(res.data[0])
+
         // console.log(res.data[0].email===email && res.data[0].password===password);
         dispatch(loginSuccess(res.data[0]))
         
@@ -108,11 +115,12 @@ export const getLogin =({email,password})=>(dispatch)=>{
 
 
 
-export const getUserDetails = (id)=>(dispatch)=>{
+export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
     dispatch(userDataRequest())
+    console.log(id);
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id}`).then((res)=>{
         // console.log(`https://6wwnt.sse.codesandbox.io/profiles/${id}`)
-        // console.log(res)
+    
         dispatch(userDataSuccess(res.data))
         
     })
@@ -125,7 +133,7 @@ export const userUpdate =(id,payload)=>(dispatch)=>{
     dispatch(signinRequest())
     return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id}`,payload).then((res)=>{
         dispatch(userdataUpdate(res))
-       
+        dispatch(getUserDetails(id))
     })
     .catch(err=>
         dispatch(signINFailure(err))
