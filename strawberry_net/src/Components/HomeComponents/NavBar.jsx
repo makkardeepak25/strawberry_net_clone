@@ -10,13 +10,15 @@ import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
 export const NavBar = () => {
   const[brand,setBrand]= React.useState({})
   const dispatch=useDispatch()
- 
-
+ const isAuth=useSelector(state=>state.auth.isAuth)
+ const user = useSelector(state => state.auth.user);
+ const cart = user.bag
+ const name=user.f_name
 
   const handleChange=(e)=>{
     setBrand(e.target.value)
@@ -56,14 +58,21 @@ export const NavBar = () => {
               </ul>
             </nav>
             <ul className={styles.menunavright}>
-              <li className={styles.loginlinks}>
+              {!isAuth?<li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
                 </Link>
-              </li>
+              </li> : <li className={styles.loginlinks}>
+              <Link  className={styles.accname} >
+              <img className={styles.logimg} src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"} alt="strawlog"/>
+                    <span className={styles.aaccname}>{name}</span>
+                </Link>
+              </li>}
+              
+              
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
