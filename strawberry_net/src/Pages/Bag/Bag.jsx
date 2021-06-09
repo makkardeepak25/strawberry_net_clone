@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Bag.module.css";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import CloseIcon from '@material-ui/icons/Close';
+import { removeFromCart } from "../../Redux/Auth/authAction";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
+  const dispatch=useDispatch()
   const cart = user.bag;
   const name = user.f_name;
   console.log(user);
@@ -11,15 +13,18 @@ export function Bag() {
   cart.map(el => {
     total = total + Number(parseInt(el.size[0].price.replace(/,/g, "")));
   });
-  let newCustomeroff = 0.1 * total;
+  let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
   let frieghtSurcharge = Number(0.035 * total).toFixed(2);
-  let orderTotal = Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff);
+  let orderTotal = (Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
   console.log(orderTotal);
   const [quant, setQuant] = React.useState("");
   const handleChange = e => {
     setQuant(e.target.value);
   };
+  const handleRemove = (id) => {
+    dispatch(removeFromCart(id))
+  }
   return (
     <div>
       <div className={styles.container}>
@@ -55,7 +60,7 @@ export function Bag() {
                           <div>{el.size[0].size}</div>
                           <div>{Number(parseInt(el.size[0].price.replace(/,/g, "")))}</div>
                         </div>
-                        <select onChange={handleChange}>
+                        <select value={el.qty} onChange={handleChange}>
                           <option value={1}>Qty.1</option>
                           <option value={2}>Qty.2</option>
                           <option value={3}>Qty.3</option>
@@ -71,7 +76,9 @@ export function Bag() {
                           {Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty)}
                         </div>
                         <br />
+                        <div onClick={()=>handleRemove(el.id)} className={styles.removeprod}><CloseIcon /></div>
                         <div className={styles.bordbott} />
+
                       </div>
                     );
                   })}
@@ -118,6 +125,7 @@ export function Bag() {
                       INR7,579.90 after discounts to qualify for a reduced shipping cost at INR379.00.
                     </li>
                   </ul>
+                
                 </div>
               </>
             )}

@@ -1,5 +1,5 @@
 import axios from "axios"
-import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE,} from "./authActionTypes"
+import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, REMOVE_FROM_CART,} from "./authActionTypes"
 
 
 export const loginRequest =(payload)=>{
@@ -50,6 +50,12 @@ export const userdataUpdate=(payload)=>{
       payload
   }
 }
+export const removeFromCart = payload => {
+    return {
+      type: REMOVE_FROM_CART,
+      payload,
+    };
+  };
 
 
 
@@ -111,8 +117,8 @@ export const getLogin =({email,password})=>(dispatch)=>{
 
 export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
     dispatch(userDataRequest())
-    console.log(id);
-    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id}`).then((res)=>{
+    console.log(id.trim());
+    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`).then((res)=>{
         // console.log(`https://6wwnt.sse.codesandbox.io/profiles/${id}`)
     
         dispatch(userDataSuccess(res.data))

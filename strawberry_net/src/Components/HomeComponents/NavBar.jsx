@@ -19,15 +19,25 @@ export const NavBar = () => {
   const[brand,setBrand]= React.useState({})
   const dispatch=useDispatch()
 
+
  
   const user= useSelector((state)=>state.auth.user)
-  const isAuth=useSelector((state)=>state.auth.isAuth)
+  const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
   const [userAuth,setUserAuth]=useState(isAuth)
    const bag=user&&user.bag
   console.log("bag",bag);
 
  //const cart = user&&user.bag
  const name=user&&user.f_name
+
+ 
+ 
+  
+
+
+ const cart = user.bag
+ 
+
 
 
   const handleChange=(e)=>{
