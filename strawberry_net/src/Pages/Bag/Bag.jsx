@@ -1,17 +1,18 @@
 import React from "react";
 import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import CloseIcon from '@material-ui/icons/Close';
-import { removeFromCart } from "../../Redux/Auth/authAction";
+import CloseIcon from "@material-ui/icons/Close";
+import { removeFromCart, removeItem } from "../../Redux/Auth/authAction";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const cart = user.bag;
   const name = user.f_name;
   console.log(user);
+  
   let total = 0;
-  cart.map(el => {
-    total = total + Number(parseInt(el.size[0].price.replace(/,/g, "")));
+  cart&&cart.map(el => {
+    total = total + (Number(parseInt(el.size[0].price.replace(/,/g, "")))*Number(el.qty));
   });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
@@ -19,12 +20,39 @@ export function Bag() {
   let orderTotal = (Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
   console.log(orderTotal);
   const [quant, setQuant] = React.useState("");
-  const handleChange = e => {
+  const handleChange = (e,id) => {
     setQuant(e.target.value);
+    quantityUpdate(id)
   };
-  const handleRemove = (id) => {
-    dispatch(removeFromCart(id))
-  }
+
+  const RemovefromCard = product => {
+    const id = product.id;
+    console.log(id, product);
+    dispatch(removeItem(id, product));
+  };
+  const removeFromBag = (id) => {
+    const bag = user && user.bag;
+    let new_bag = bag.filter(item => item.id !== id)
+    const userdata = {
+      ...user,
+      bag: new_bag
+    };
+    RemovefromCard(userdata);
+  };
+  const quantityUpdate = (id) => {
+    const bag = user && user.bag;
+    console.log(id)
+    let new_bag = bag.find(item => item.id === id)
+    let removedQuantity = bag.filter(item => item.id !== id)
+
+    new_bag.qty=quant
+    const userdata = {
+      ...user,
+      bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
+    };
+    RemovefromCard(userdata);
+    
+  };
   return (
     <div>
       <div className={styles.container}>
@@ -48,7 +76,7 @@ export function Bag() {
                   </p>
                   <p style={{ marginTop: "25px" }}>Goods shipped from Strawberrynet</p>
                   <div className={styles.bordbot} />
-                  {cart.map(el => {
+                  {cart&&cart.map(el => {
                     return (
                       <div className={styles.prodbag}>
                         <img src={el.images[0]} alt="product" />
@@ -60,7 +88,7 @@ export function Bag() {
                           <div>{el.size[0].size}</div>
                           <div>{Number(parseInt(el.size[0].price.replace(/,/g, "")))}</div>
                         </div>
-                        <select value={el.qty} onChange={handleChange}>
+                        <select value={el.qty} onChange={(e)=>handleChange(e,el.id)}>
                           <option value={1}>Qty.1</option>
                           <option value={2}>Qty.2</option>
                           <option value={3}>Qty.3</option>
@@ -76,9 +104,10 @@ export function Bag() {
                           {Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty)}
                         </div>
                         <br />
-                        <div onClick={()=>handleRemove(el.id)} className={styles.removeprod}><CloseIcon /></div>
+                        <div onClick={() => removeFromBag(el.id)} className={styles.removeprod}>
+                          <CloseIcon />
+                        </div>
                         <div className={styles.bordbott} />
-
                       </div>
                     );
                   })}
@@ -125,7 +154,6 @@ export function Bag() {
                       INR7,579.90 after discounts to qualify for a reduced shipping cost at INR379.00.
                     </li>
                   </ul>
-                
                 </div>
               </>
             )}
