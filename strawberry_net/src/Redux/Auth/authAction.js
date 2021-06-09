@@ -63,6 +63,7 @@ export const userdataUpdateFailure=(payload)=>{
     }
   }
 export const removeFromCart = payload => {
+    console.log(payload)
     return {
       type: REMOVE_FROM_CART,
       payload
@@ -155,6 +156,18 @@ export const userUpdate =(id=localStorage.getItem("userId"),payload)=>(dispatch)
 
 }
 
+export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
+    dispatch(signinRequest())
+    // dispatch(removeFromCart(payload))
+    return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
+        console.log(res.data)
+        dispatch(userDataSuccess(res.data))
+    })
+    .catch(err=>
+        dispatch(signINFailure(err))
+        )
+
+}
 
 
 
