@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { userUpdate } from '../../Redux/Auth/authAction';
+import { getUserDetails, userUpdate } from '../../Redux/Auth/authAction';
 import { fixed } from '../Product_card/add';
 import styles from "./ProductCard.module.css"
 import {useDispatch,useSelector} from "react-redux"
@@ -18,7 +18,7 @@ const ProductCard = ({...prod}) => {
 }
 
 const user= useSelector((state)=>state.auth.user)
-const isAuth=useSelector((state)=>state.auth.isAuth)
+//const isAuth=useSelector((state)=>state.auth.isAuth)
 const dispatch=useDispatch()
 
 
@@ -26,7 +26,7 @@ const dispatch=useDispatch()
 const AddToCard=(product)=>{
     
     const id=product.id
- console.log(id,product);
+  
  if(user){
     dispatch(userUpdate(id,product))
  }else{
@@ -36,7 +36,7 @@ const AddToCard=(product)=>{
 
 }
 const addtoBag=()=>{
-    const bag=user.bag
+    const bag=user&&user.bag
     const userdata={
 
         ...user,
@@ -44,6 +44,12 @@ const addtoBag=()=>{
     }
      AddToCard(userdata)
 }
+React.useEffect(()=>{
+    const id= localStorage.getItem("userId")
+    
+    dispatch(getUserDetails(id))
+
+},[])
     return (
       <> {prod!==undefined&& <div className={styles.card_container}>
             <div onClick={redirect}  className={styles.product_info}>
