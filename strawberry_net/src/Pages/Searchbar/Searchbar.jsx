@@ -8,7 +8,9 @@ import AppsIcon from '@material-ui/icons/Apps';
 
 
 export function Searchbar(){
-    const searchData=useSelector(state=>state.prod.searchProd)
+    const searchData = useSelector(state => state.prod.searchProd)
+    let searchKey = localStorage.getItem("searchKey")
+    searchKey=JSON.parse(searchKey)
     return(
         <div className={styles.Maindiv}>
             <div className={styles.Div1}>Search Results</div>
@@ -16,10 +18,10 @@ export function Searchbar(){
 
             <div className={styles.Div4}>
                 <div className={styles.Div5}>
-                    <div>{`${searchData.length} RESULTS FOR ${searchData.slice(0,1).map(el=>{return el.prod_name})}`}</div>
+                    <div>{`${searchData.length} RESULTS FOR ${searchKey} ${searchData.slice(0,1).map(el=>{return el.prod_name})}`}</div>
                 </div>
             </div>
-            <div className={styles.container}>
+            {searchData.length>0?<div className={styles.container}>
             <div className={styles.filter_container}>
                 <div>
 
@@ -67,7 +69,8 @@ export function Searchbar(){
                  }
              </div>
              </div>
-            </div>
+            </div>:<div style={{width:"90%",margin:"auto"}}><img style={{width:"100%",margin:"auto"}} src="/notFound.JPG" /></div>}
+            
 
 
 

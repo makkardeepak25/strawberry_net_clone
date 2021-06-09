@@ -39,6 +39,7 @@ export const NavBar = () => {
   };
 
   const handleClick = () => {
+    localStorage.setItem("searchKey",JSON.stringify( brand))
     dispatch(getSearchData(brand));
   };
 
@@ -256,10 +257,11 @@ export const NavBar = () => {
               placeholder="SEARCH BRAND / PRODUCT"
               autocomplete="off"
               className={styles.inpsearch2}
+              onChange={handleChange}
             />
-            <a className={styles.searchbtn2} href="#">
-              <BsSearch />
-            </a>
+           <Link to={"/search/product-search"} className={styles.searchbtn2}>
+                <BsSearch onClick={handleClick} />
+              </Link>
           </div>
         </div>
       </div>
