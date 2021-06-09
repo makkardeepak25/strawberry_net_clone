@@ -53,7 +53,7 @@ export const userdataUpdate=(payload)=>{
 export const removeFromCart = payload => {
     return {
       type: REMOVE_FROM_CART,
-      payload,
+      payload
     };
   };
 

@@ -90,7 +90,7 @@ export const authReducer=(state=initState,{type,payload})=>{
             }
         }
         case REMOVE_FROM_CART:
-            let user_new = state.user.bag.filter(item=> payload !== item.id)
+            let user_new = state.user.bag.filter(item=> item.id !== payload)
             return {
               ...state,
             user:user_new
