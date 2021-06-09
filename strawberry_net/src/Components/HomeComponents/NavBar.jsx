@@ -10,15 +10,21 @@ import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
+import Badge from '@material-ui/core/Badge';
 export const NavBar = () => {
   const[brand,setBrand]= React.useState({})
   const dispatch=useDispatch()
- const isAuth=useSelector(state=>state.auth.isAuth)
- const user = useSelector(state => state.auth.user);
+
+  const auth= useSelector((state)=>state.auth)
+  const user= useSelector((state)=>state.auth.user)
+   const bag=user&&auth.user.bag
+  console.log("bag",bag);
+
  const cart = user.bag
  const name=user.f_name
+
 
   const handleChange=(e)=>{
     setBrand(e.target.value)
@@ -84,7 +90,12 @@ export const NavBar = () => {
               <li className={styles.loginlinks}>
                <Link to={"/user/bag"} className={styles.accname}>
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
+                  <Badge badgeContent={bag&&bag.length} color="secondary"   anchorOrigin={{
+    vertical: 'top',
+    horizontal: 'left',
+  }}>
                     <GiShoppingBag />
+                    </Badge>
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Bag</span>
                 </Link>
