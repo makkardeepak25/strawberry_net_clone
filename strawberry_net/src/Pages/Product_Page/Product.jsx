@@ -83,7 +83,7 @@ const Product = () => {
         const userdata={
 
             ...user,
-            bag:bag.length>0?[...bag,addProduct]:[addProduct]
+            bag:bag.length > 0?[...bag,addProduct]:[addProduct]
         }
          AddToCard(userdata)
     }

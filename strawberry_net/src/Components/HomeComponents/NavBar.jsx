@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./NavBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
@@ -13,19 +13,31 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
 import Badge from '@material-ui/core/Badge';
+import { useState } from "react";
+import { getUserDetails } from "../../Redux/Auth/authAction";
 export const NavBar = () => {
   const[brand,setBrand]= React.useState({})
   const dispatch=useDispatch()
 
-  const auth= useSelector((state)=>state.auth)
-  const user = useSelector((state) => state.auth.user)
+
+ 
+  const user= useSelector((state)=>state.auth.user)
   const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
-   const bag=user&&auth.user.bag
+  const [userAuth,setUserAuth]=useState(isAuth)
+   const bag=user&&user.bag
   console.log("bag",bag);
-console.log("user",user)
+
+ //const cart = user&&user.bag
+ const name=user&&user.f_name
+
+ 
+ 
+  
+
+
  const cart = user.bag
-  const name = user.f_name
-  console.log(name)
+ 
+
 
 
   const handleChange=(e)=>{
@@ -37,7 +49,10 @@ console.log("user",user)
 
     
   }
-
+  useEffect(()=>{
+    const id=localStorage.getItem("userId")
+ id&&dispatch(getUserDetails(id))
+  },[])
   return (
     <div className={styles.navbar}>
       <div className={styles.headerbg}>
@@ -66,19 +81,22 @@ console.log("user",user)
               </ul>
             </nav>
             <ul className={styles.menunavright}>
-              {!isAuth?<li className={styles.loginlinks}>
+              {!userAuth&&<li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
                 </Link>
-              </li> : <li className={styles.loginlinks}>
+              </li> }
+
+             {userAuth&& <li className={styles.loginlinks}>
               <Link  className={styles.accname} >
               <img className={styles.logimg} src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"} alt="strawlog"/>
                     <span className={styles.aaccname}>{name}</span>
                 </Link>
-              </li>}
+              </li>
+             }
               
               
               <li className={styles.loginlinks}>
@@ -92,7 +110,7 @@ console.log("user",user)
               <li className={styles.loginlinks}>
                <Link to={"/user/bag"} className={styles.accname}>
                   <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
-                  <Badge badgeContent={bag&&bag.length} color="secondary"   anchorOrigin={{
+                  <Badge badgeContent={bag?bag.length:0} color="secondary"   anchorOrigin={{
     vertical: 'top',
     horizontal: 'left',
   }}>
