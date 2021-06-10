@@ -49,8 +49,9 @@ export const MayLike = () => {
         ssr={true} 
         infinite={true}
         autoPlaySpeed={1000}
+        
         keyBoardControl={true}
-        customTransition="all 3"
+        customTransition="all .5"
         containerClass="carousel-container"
         removeArrowOnDeviceType={["tablet", "mobile"]}
         dotListClass="custom-dot-list-style"
