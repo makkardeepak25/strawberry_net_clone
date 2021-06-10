@@ -67,7 +67,7 @@ export const BillingAddress = () => {
             
             { 
                 addresses.map((item, index) =>
-                    <div className={styles.addressCont}>
+                    <div key={index} className={styles.addressCont}>
                        <div className={styles.lineone}>
                            <p style={{fontSize:'24px',marginRight:'20px'}}>{item.address_tittle}</p>
                            <GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />
