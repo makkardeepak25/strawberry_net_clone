@@ -3,8 +3,10 @@ import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import { removeFromCart, removeItem } from "../../Redux/Auth/authAction";
+import { Redirect } from "react-router";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
+  const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
   const cart = user.bag;
   const name = user.f_name;
@@ -39,19 +41,26 @@ export function Bag() {
     };
     RemovefromCard(userdata);
   };
-  // const quantityUpdate = (id) => {
-  //   const bag = user && user.bag;
-  //   console.log(id)
-  //   let new_bag = bag.find(item => item.id === id)
-  //   let removedQuantity = bag.filter(item => item.id !== id)
+ 
+  const quantityUpdate = (id) => {
+    const bag = user && user.bag;
+    console.log(id)
+    let new_bag = bag.find(item => item.id === id)
+    let removedQuantity = bag.filter(item => item.id !== id)
 
-  //   new_bag.qty=quant
-  //   const userdata = {
-  //     ...user,
-  //     bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
-  //   };
-  //   RemovefromCard(userdata);
-  // };
+    new_bag.qty=quant
+    const userdata = {
+      ...user,
+      bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
+    };
+    RemovefromCard(userdata);
+  };
+  React.useEffect((id) => {
+    dispatch(quantityUpdate(id))
+  }, [quant])
+  if (!isAuth) {
+    return <Redirect to={"/signin"}/>
+  }
   return (
     <div>
       <div className={styles.container}>
