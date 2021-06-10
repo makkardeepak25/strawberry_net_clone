@@ -28,11 +28,15 @@ export const NavBar = () => {
   const user = useSelector((state) => state.auth.user);
   const isAuth = useSelector((state) => state.auth.isAuth); //dont change this
   const [userAuth, setUserAuth] = useState(isAuth);
+  
   const bag = user && user.bag;
   console.log("bag", bag);
 
   //const cart = user&&user.bag
   const name = user && user.f_name;
+
+
+ 
 
   const handleChange = (e) => {
     setBrand(e.target.value);
@@ -170,12 +174,12 @@ export const NavBar = () => {
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
           </Link>
-          <NavLink to={"/skincare"} activeClassName={styles.active}>
+          <Link to={"/skincare"}>
             {" "}
             <li>
               <span className={styles.clrspn} >SKINCARE</span>
             </li>
-          </NavLink>
+          </Link>
           <Link>
             <li to={"/makeup"}>
               <span className={styles.clrspn}>MAKEUP</span>
