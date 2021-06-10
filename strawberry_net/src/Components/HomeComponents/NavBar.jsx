@@ -161,7 +161,7 @@ export const NavBar = () => {
       
       <div className={styles.navbarmenu1}>
         <ul className={styles.menucont}>
-          <Link to={"/brands"}>
+          <Link to={"/brands"} >
             {" "}
             <li className={styles.li1}>
               <span>
