@@ -8,7 +8,6 @@ import Routes from "./Pages/Routes/Routes";
 function App() {
   return (
     <div>
-
     <Routes/>
     
 

@@ -47,9 +47,6 @@
     margin: 0 0 10px;
   }
   .removeprod{
-    top: 1%;
-    position: absolute;
-    left: 96%;
     cursor: pointer;
   }
   .shipBar {
