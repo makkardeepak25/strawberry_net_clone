@@ -110,7 +110,7 @@ export const NavBar = () => {
                     />
                     <span className={styles.aaccname}>{name}</span>
                   </Link>
-                      {flag && <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}  > //Pull this
+                      {flag && <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}  > 
                    <Link> <div className={styles.showProfileOptions} ><PermIdentityOutlinedIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Account</span></div></Link>
                    <Link> <div className={styles.showProfileOptions}><AcUnitIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Wishlist</span></div> </Link>
                   <Link>  <div className={styles.showProfileOptionss}><ControlPointDuplicateIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Point Rewards</span></div></Link>
