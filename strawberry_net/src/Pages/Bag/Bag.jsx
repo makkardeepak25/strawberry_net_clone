@@ -12,7 +12,6 @@ export function Bag() {
   const cart = user.bag;
   const name = user.f_name;
   console.log(user);
-  const [product,setProduct]=React.useState({})
 
   let total = 0;
   cart&&cart.map(el => {
@@ -83,7 +82,7 @@ export function Bag() {
                 Deliver to: <strong>Country Name</strong>
               </span>
             </div>
-            {cart.length > 0 && (
+            {cart && 
               <>
                 <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
@@ -95,7 +94,7 @@ export function Bag() {
                   </p>
                   <p style={{ marginTop: "25px" }}>Goods shipped from Strawberrynet</p>
                   <div className={styles.bordbot} />
-                  {cart&&cart.map(el => {
+                  {cart.length>0&&cart.map(el => {
                     return (
                       <div className={styles.prodbag}>
                         <img src={el.images[0]} alt="product" />
@@ -185,7 +184,7 @@ export function Bag() {
                   </ul>
                 </div>
               </>
-            )}
+            }
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
