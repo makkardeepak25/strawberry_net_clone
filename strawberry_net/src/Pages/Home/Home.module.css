@@ -1,6 +1,11 @@
+
+.home{
+width: 90%;
+margin: auto;
+}
 .dailyspecial {
   padding-top: 25px;
-  width: 80%;
+  width: 100%;
   margin: auto;
 }
 .promopadding {
@@ -20,8 +25,9 @@
   margin-top: -20px;
   letter-spacing: 6px;
   text-transform: uppercase;
+  width: 100%;
 }
-  
+
 .promotitle h3 {
   margin-top: 0;
   margin-bottom: 0;
@@ -54,21 +60,28 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  margin: auto;
-  gap: 20px;
+  gap: 10px;
   font-family: Lato, sans-serif;
+  margin: auto;
 }
 .containerfluid {
   margin-right: auto;
   margin-left: auto;
   padding-left: 7.5px;
   padding-right: 7.5px;
+  width: 100%;
+
 }
 .promoblockpicks {
-  margin: 35px -7.5px 0;
+  width: 100%;
+  /* margin: 35px 0 0; */
   padding-bottom: 20px;
   padding-top: 20px;
   background-color: #ebe5f1;
+
+}
+.dailypromocounter{
+  width: 100%;
 }
 .container {
   max-width: 1200px;
@@ -76,16 +89,17 @@
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+  width: 100%;
 }
 .promotitlepad {
   margin-top: 35px;
   margin-bottom: 35px;
 }
 .promotitleline {
-  border-color: #65318f;
-  /* border-bottom: 5px solid #0b0b0b; */
+  border-color:#401761;
   margin: 0 0 -15px;
 }
+
 .promotitle {
   color: #65318f;
   text-align: center;
@@ -136,4 +150,20 @@
   padding: 0 20px;
   display: inline-block;
   background-color: white;
+}
+@media (max-width: 1200px) {
+  .productgridlist{
+    grid-template-columns: repeat(3, 1fr);
+
+  }
+}
+@media (max-width: 1040px) {
+  .productgridlist{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 670px) {
+  .productgridlist{
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

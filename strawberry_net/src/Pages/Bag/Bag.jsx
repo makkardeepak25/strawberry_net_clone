@@ -22,7 +22,7 @@ export function Bag() {
   const [quant, setQuant] = React.useState("");
   const handleChange = (e,id) => {
     setQuant(e.target.value);
-    quantityUpdate(id)
+    // quantityUpdate(id)
   };
 
   const RemovefromCard = product => {
@@ -39,20 +39,19 @@ export function Bag() {
     };
     RemovefromCard(userdata);
   };
-  const quantityUpdate = (id) => {
-    const bag = user && user.bag;
-    console.log(id)
-    let new_bag = bag.find(item => item.id === id)
-    let removedQuantity = bag.filter(item => item.id !== id)
+  // const quantityUpdate = (id) => {
+  //   const bag = user && user.bag;
+  //   console.log(id)
+  //   let new_bag = bag.find(item => item.id === id)
+  //   let removedQuantity = bag.filter(item => item.id !== id)
 
-    new_bag.qty=quant
-    const userdata = {
-      ...user,
-      bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
-    };
-    RemovefromCard(userdata);
-    
-  };
+  //   new_bag.qty=quant
+  //   const userdata = {
+  //     ...user,
+  //     bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
+  //   };
+  //   RemovefromCard(userdata);
+  // };
   return (
     <div>
       <div className={styles.container}>
@@ -99,6 +98,16 @@ export function Bag() {
                           <option value={8}>Qty.8</option>
                           <option value={9}>Qty.9</option>
                           <option value={10}>Qty.10</option>
+                          <option value={11}>Qty.11</option>
+                          <option value={12}>Qty.12</option>
+                          <option value={13}>Qty.13</option>
+                          <option value={14}>Qty.14</option>
+                          <option value={15}>Qty.15</option>
+                          <option value={16}>Qty.16</option>
+                          <option value={17}>Qty.17</option>
+                          <option value={18}>Qty.18</option>
+                          <option value={19}>Qty.19</option>
+                          <option value={20}>Qty.20</option>
                         </select>
                         <div style={{ marginLeft: "10%" }}>
                           {Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty)}
