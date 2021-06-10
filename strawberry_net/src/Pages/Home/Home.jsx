@@ -11,6 +11,7 @@ import { BestSellers } from "../../Components/HomeComponents/BestSellers";
 import { NewArrivals } from "../../Components/HomeComponents/NewArrivals";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Timer } from "../../Components/HomeComponents/Timer";
+import { MayLike } from "../../Components/HomeComponents/mayLike";
 export const Home = () => {
   useEffect(() => {
     document.title = "Strawberrynet.com";
@@ -151,6 +152,9 @@ export const Home = () => {
                 <h3>You may like these</h3>
               </div>
             </div>
+          </div>
+          <div>
+            <MayLike/>
           </div>
         </div>
       </div>

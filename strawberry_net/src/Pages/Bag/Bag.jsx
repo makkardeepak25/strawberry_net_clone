@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import { removeFromCart, removeItem } from "../../Redux/Auth/authAction";
 import { Redirect } from "react-router";
+import Axios from "axios"
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
@@ -11,7 +12,8 @@ export function Bag() {
   const cart = user.bag;
   const name = user.f_name;
   console.log(user);
-  
+  const [product,setProduct]=React.useState({})
+
   let total = 0;
   cart&&cart.map(el => {
     total = total + (Number(parseInt(el.size[0].price.replace(/,/g, "")))*Number(el.qty));
@@ -41,23 +43,25 @@ export function Bag() {
     };
     RemovefromCard(userdata);
   };
- 
-  const quantityUpdate = (id) => {
-    const bag = user && user.bag;
-    console.log(id)
-    let new_bag = bag.find(item => item.id === id)
-    let removedQuantity = bag.filter(item => item.id !== id)
+  
 
-    new_bag.qty=quant
-    const userdata = {
-      ...user,
-      bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
-    };
-    RemovefromCard(userdata);
-  };
-  React.useEffect((id) => {
-    dispatch(quantityUpdate(id))
-  }, [quant])
+ 
+  // const quantityUpdate = (id) => {
+  //   const bag = user && user.bag;
+  //   console.log(id)
+  //   let new_bag = bag.find(item => item.id === id)
+  //   let removedQuantity = bag.filter(item => item.id !== id)
+
+  //   new_bag.qty=quant
+  //   const userdata = {
+  //     ...user,
+  //     bag:removedQuantity.length > 0?[...removedQuantity,new_bag]:[new_bag]
+  //   };
+  //   RemovefromCard(userdata);
+  // };
+  // React.useEffect(() => {
+  //   GetProduct()
+  // }, [])
   if (!isAuth) {
     return <Redirect to={"/signin"}/>
   }

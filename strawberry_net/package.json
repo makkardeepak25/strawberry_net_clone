@@ -17,6 +17,7 @@
     "react-google-recaptcha": "^2.1.0",
     "react-icons": "^4.2.0",
     "react-images-upload": "^1.2.8",
+    "react-multi-carousel": "^2.6.3",
     "react-redux": "^7.2.4",
     "react-responsive-carousel": "^3.2.18",
     "react-router-dom": "^5.2.0",
