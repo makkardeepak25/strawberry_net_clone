@@ -9,14 +9,14 @@ export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
-  const cart = user.bag;
+  const cart =user.bag&& user.bag;
   const name = user.f_name;
   console.log(user);
   const [product,setProduct]=React.useState({})
 
   let total = 0;
-  cart&&cart.map(el => {
-    total = total + (Number(parseInt(el.size[0].price.replace(/,/g, "")))*Number(el.qty));
+ cart&& cart.map(el => {
+    total = total + Number(parseInt(el.size[0].price.replace(/,/g, "")));
   });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
@@ -83,7 +83,7 @@ export function Bag() {
                 Deliver to: <strong>Country Name</strong>
               </span>
             </div>
-            {cart.length > 0 && (
+            {cart&&cart.length > 0 && (
               <>
                 <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
