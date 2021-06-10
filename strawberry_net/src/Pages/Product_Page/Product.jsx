@@ -62,7 +62,7 @@ const Product = () => {
     const addProduct={
         ...product,
         size: [{size:product.size?product.size[size].size:"",price:product.size?product.size[size].price:"0"}],
-       qty:qty
+       qty:Number(qty)
     }
 
     const user= useSelector((state)=>state.auth.user)
@@ -74,18 +74,29 @@ const Product = () => {
     const AddToCard=(product)=>{
         
         const id=product.id
-     console.log(id,product);
+     //console.log(id,product);
      dispatch(userUpdate(id,product))
 
     }
     const addtoBag=()=>{
         const bag=user&&user.bag
-        const userdata={
+         const isPresent= bag.length>0&& bag.map((el)=> el.id===addProduct.id?{...el, qty:Number(el.qty)+Number(qty)}:el)
+        // const isPresent= bag.length>0&& bag.find((el)=> el.id===product.id)
+     
+         const isPresentObject= bag.length>0&& bag.filter((el)=> el.id===addProduct.id&&{...el, qty:Number(el.qty)+Number(qty)})
+        console.log(isPresentObject[0]);
+         const userdata={
 
             ...user,
-            bag:bag.length > 0?[...bag,addProduct]:[addProduct]
+            bag:bag.length > 0?[...isPresent,addProduct]:[addProduct]
         }
-         AddToCard(userdata)
+        const userdata1={
+
+            ...user,
+            bag:bag.length > 0?[...isPresent]:[addProduct]
+        }
+        isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
+        // AddToCard(userdata)
     }
    
 

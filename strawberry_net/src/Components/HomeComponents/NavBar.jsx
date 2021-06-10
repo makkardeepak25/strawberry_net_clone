@@ -25,7 +25,7 @@ export const NavBar = () => {
   const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
   const [userAuth,setUserAuth]=useState(isAuth)
    const bag=user&&user.bag
-  console.log("bag",bag);
+console.log("navbar",isAuth);
 
  //const cart = user&&user.bag
  const name=user&&user.f_name
@@ -78,7 +78,7 @@ export const NavBar = () => {
               </ul>
               </nav>
               <ul className={styles.menunavright}>
-                {!isAuth ? (
+                {!userAuth ? (
                   <li className={styles.loginlinks}>
                     <Link to={"/signin"} className={styles.accname} href="#">
                       <IconContext.Provider

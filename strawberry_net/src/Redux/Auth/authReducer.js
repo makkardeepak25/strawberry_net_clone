@@ -10,7 +10,7 @@ let initState ={
     userId:localStorage.getItem("userId") ||"",
     user:{}
 }
-
+console.log(initState.isAuth);
 
 export const authReducer=(state=initState,{type,payload})=>{
     switch(type){

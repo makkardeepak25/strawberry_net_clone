@@ -6,11 +6,11 @@ import { removeFromCart } from "../../Redux/Auth/authAction";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const dispatch=useDispatch()
-  const cart = user.bag;
+  const cart =user.bag&& user.bag;
   const name = user.f_name;
   console.log(user);
   let total = 0;
-  cart.map(el => {
+ cart&& cart.map(el => {
     total = total + Number(parseInt(el.size[0].price.replace(/,/g, "")));
   });
   let newCustomeroff = (0.1 * total).toFixed(2);
@@ -36,7 +36,7 @@ export function Bag() {
                 Deliver to: <strong>Country Name</strong>
               </span>
             </div>
-            {cart.length > 0 && (
+            {cart&&cart.length > 0 && (
               <>
                 <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
