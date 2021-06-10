@@ -15,7 +15,7 @@ export function Bag() {
 
   let total = 0;
  cart&& cart.map(el => {
-    total = total + Number(parseInt(el.size[0].price.replace(/,/g, "")));
+    total = total + (Number(parseInt(el.size[0].price.replace(/,/g, "")))*Number(el.qty));
   });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
