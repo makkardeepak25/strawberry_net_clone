@@ -1,5 +1,5 @@
 import axios from "axios"
-import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, REMOVE_FROM_CART,} from "./authActionTypes"
+import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, REMOVE_FROM_CART, IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS,IMAGE_URL_FAILURE} from "./authActionTypes"
 
 
 export const loginRequest =(payload)=>{
@@ -91,6 +91,32 @@ export const userDataSuccess =(payload)=>{
 export const userDataFailure =(payload)=>{
     return {
         type:USERDATA_FAILURE,
+        payload
+    }
+}
+
+
+
+
+
+export const imageUrlRequest =(payload)=>{
+    return{
+        type:IMAGE_URL_REQUEST,
+        payload
+      
+    }
+}
+export const imageUrlSuccess =(payload)=>{
+
+    return{
+        type:IMAGE_URL_SUCCESS,
+        payload
+    }
+
+}
+export const imageUrlFailure =(payload)=>{
+    return {
+        type:IMAGE_URL_FAILURE,
         payload
     }
 }
@@ -219,4 +245,28 @@ export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=
 }
 
 
+
+
+
+
+//imageRef.current.files[0]
+
+export const GetimageUrl= (payload) => async(dispatch)=>{
+    dispatch(imageUrlRequest())
+    await axios({
+      method: "post",
+      url: "https://api.imgur.com/3/image",
+      headers: {
+        Authorization: "Client-ID fc509ad5b921bf3"
+      },
+      data:payload 
+    })
+      .then((res) => {
+          
+        imageUrlSuccess(res.data.data.link)
+        alert('uploaded Successfully')
+        console.log(res.data.data.link)
+    })
+      .catch((err) => imageUrlFailure(err));
+  };
 
