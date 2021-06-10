@@ -6,6 +6,7 @@ import { withStyles,makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { AddressForm } from '../AddressForm/AddressForm';
+import { useSelector } from 'react-redux';
 
 
 
@@ -51,7 +52,7 @@ export const DeliveryAddress = () => {
     const classes = useStyles();
     const [state, setState] = React.useState({});
     const [showAddressform,setShowAddressForm] = React.useState(false);
-    
+    const addresses = useSelector(state => state.auth.user.addresses)
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
@@ -68,7 +69,7 @@ export const DeliveryAddress = () => {
             
             { 
                 addresses.map((item, index) =>
-                    <div className={styles.addressCont}>
+                    <div key={index} className={styles.addressCont}>
                        <div className={styles.lineone}>
                            <p style={{fontSize:'24px',marginRight:'20px'}}>{item.address_tittle}</p>
                            <GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />

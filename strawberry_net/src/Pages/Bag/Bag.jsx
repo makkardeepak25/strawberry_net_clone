@@ -3,21 +3,32 @@ import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import { removeFromCart, removeItem } from "../../Redux/Auth/authAction";
+import { Redirect } from "react-router";
+import Axios from "axios"
 export function Bag() {
   const user = useSelector(state => state.auth.user);
+  const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
-  const cart = user.bag;
+  const cart =user.bag&& user.bag;
   const name = user.f_name;
   console.log(user);
-  
+  const [product,setProduct]=React.useState({})
+
   let total = 0;
-  cart&&cart.map(el => {
-    total = total + (Number(parseInt(el.size[0].price.replace(/,/g, "")))*Number(el.qty));
+ cart&& cart.map(el => {
+    total = total + Number(parseInt(el.size[0].price.replace(/,/g, "")));
   });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
   let frieghtSurcharge = Number(0.035 * total).toFixed(2);
-  let orderTotal = (Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
+  let orderTotal = 0
+  if (Number(total < 11370)) {
+      orderTotal=(Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
+  }
+  else {
+    orderTotal=(Number(total) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
+  }
+    
   console.log(orderTotal);
   const [quant, setQuant] = React.useState("");
   const handleChange = (e,id) => {
@@ -39,6 +50,9 @@ export function Bag() {
     };
     RemovefromCard(userdata);
   };
+  
+
+ 
   // const quantityUpdate = (id) => {
   //   const bag = user && user.bag;
   //   console.log(id)
@@ -52,6 +66,12 @@ export function Bag() {
   //   };
   //   RemovefromCard(userdata);
   // };
+  // React.useEffect(() => {
+  //   GetProduct()
+  // }, [])
+  if (!isAuth) {
+    return <Redirect to={"/signin"}/>
+  }
   return (
     <div>
       <div className={styles.container}>
@@ -63,7 +83,7 @@ export function Bag() {
                 Deliver to: <strong>Country Name</strong>
               </span>
             </div>
-            {cart.length > 0 && (
+            {cart&&cart.length > 0 && (
               <>
                 <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
@@ -131,10 +151,10 @@ export function Bag() {
                       <div>Extra 10% Off (New Customer)</div>
                       <div>-INR {newCustomeroff}</div>
                     </div>
-                    <div className={`${styles.flexsum}`}>
+                    {total<11370?<div className={`${styles.flexsum}`}>
                       <div>Standard Shipping (Signature)</div>
                       <div>{standardShip}</div>
-                    </div>
+                    </div>:null}                    
                     <div className={`${styles.flexsum}`}>
                       <div>Freight Surcharge</div>
                       <div>{frieghtSurcharge}</div>

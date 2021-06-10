@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { Banner } from "../../Components/HomeComponents/Banner";
-import { Footer } from "../../Components/HomeComponents/Footer";
-import { NavBar } from "../../Components/HomeComponents/NavBar";
+// import { Footer } from "../../Components/HomeComponents/Footer";
+// import { NavBar } from "../../Components/HomeComponents/NavBar";
 import styles from "./Home.module.css";
 import { DailySpecial } from "../../Components/HomeComponents/DailySpecial";
 import { BestDeals } from "../../Components/HomeComponents/BestDeals";
@@ -11,6 +11,7 @@ import { BestSellers } from "../../Components/HomeComponents/BestSellers";
 import { NewArrivals } from "../../Components/HomeComponents/NewArrivals";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { Timer } from "../../Components/HomeComponents/Timer";
+import { MayLike } from "../../Components/HomeComponents/mayLike";
 export const Home = () => {
   useEffect(() => {
     document.title = "Strawberrynet.com";
@@ -151,6 +152,9 @@ export const Home = () => {
                 <h3>You may like these</h3>
               </div>
             </div>
+          </div>
+          <div className={styles.maylike}>
+            <MayLike/>
           </div>
         </div>
       </div>

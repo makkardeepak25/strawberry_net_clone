@@ -32,8 +32,16 @@ export const NavBar = () => {
   const bag = user && user.bag;
   console.log("bag", bag);
 
-  //const cart = user&&user.bag
-  const name = user && user.f_name;
+
+ 
+//   const user= useSelector((state)=>state.auth.user)
+//   const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
+//   const [userAuth,setUserAuth]=useState(isAuth)
+//    const bag=user&&user.bag
+// console.log("navbar",isAuth);
+
+ //const cart = user&&user.bag
+ const name=user&&user.f_name
 
 
  
@@ -48,9 +56,11 @@ export const NavBar = () => {
   };
 
   const showProfileBox=()=>{
-    setFlag(!flag)
+    setFlag(true)
   }
-
+  const hideProfileBox = () => {
+  setFlag(false)
+}
  
   useEffect(() => {
     const id = localStorage.getItem("userId");
@@ -87,11 +97,36 @@ export const NavBar = () => {
                   <a className={styles.ordertrack}> Order Tracking</a>
                 </li>
               </ul>
-            </nav>
-            <ul className={styles.menunavright}>
-              {!isAuth ? (
+              </nav>
+              <ul className={styles.menunavright}>
+                {!userAuth ? (
+                  <li className={styles.loginlinks}>
+                    <Link to={"/signin"} className={styles.accname} href="#">
+                      <IconContext.Provider
+                        value={{ color: "#B53788", size: "3.2em" }}
+                      >
+                        <FaUserCircle />
+                      </IconContext.Provider>
+                      <span className={styles.aaccname}>Sign in</span>
+                    </Link>
+                  </li>
+                ) : (
+                  <li className={styles.loginlinks}>
+                    <Link className={styles.accname}>
+                      <img
+                        className={styles.logimg}
+                        src={
+                          "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
+                        }
+                        alt="strawlog"
+                      />
+                      <span className={styles.aaccname}>{name}</span>
+                    </Link>
+                  </li>
+                )}
+
                 <li className={styles.loginlinks}>
-                  <Link to={"/signin"} className={styles.accname} href="#">
+                  <Link to={"/signin"} className={styles.accname}>
                     <IconContext.Provider
                       value={{ color: "#B53788", size: "2.5em" }}
                     >
@@ -100,8 +135,8 @@ export const NavBar = () => {
                     <span className={styles.aaccname}>Sign in</span>
                   </Link>
                 </li>
-              ) : (
-                <li className={styles.loginlinks} onClick={showProfileBox}  >
+            
+                <li className={styles.loginlinks} onMouseEnter={showProfileBox} onMouseLeave={hideProfileBox} >
                   <Link className={styles.accname} >
                     <img
                       className={styles.logimg}
@@ -112,7 +147,7 @@ export const NavBar = () => {
                     />
                     <span className={styles.aaccname}>{name}</span>
                   </Link>
-                      {flag && <div className={styles.showProfileOn}   >
+                      {flag && <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}  > 
                    <Link> <div className={styles.showProfileOptions} ><PermIdentityOutlinedIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Account</span></div></Link>
                    <Link> <div className={styles.showProfileOptions}><AcUnitIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Wishlist</span></div> </Link>
                   <Link>  <div className={styles.showProfileOptionss}><ControlPointDuplicateIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Point Rewards</span></div></Link>
@@ -126,7 +161,7 @@ export const NavBar = () => {
                   
 
                 </li>
-              )}
+         
 
               <li className={styles.loginlinks}>
                 <a className={styles.accname} href="#">

@@ -1,13 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import styles from './PersonalInfo.module.css';
 import styled from 'styled-components';
 import { useDispatch,useSelector } from 'react-redux';
 
 
-import {  getUserDetails, userUpdate } from '../../../Redux/Auth/authAction';
+import styles from './PersonalInfo.module.css';
+import { GetimageUrl, userUpdate } from '../../../Redux/Auth/authAction';
 import {countries} from '../countries';
+import axios from 'axios';
+import { API_KEY } from '../../..';
 
 
 const initUser ={
@@ -99,6 +101,7 @@ export const PersonalInfo = () => {
     // console.log(User.f_name)
     const userId = useSelector((state)=>state.auth.userId)
     const isLoading = useSelector((state)=>state.auth.isLoading)
+    const avataring_image = useSelector((state)=>state.auth)
     
     console.log(userId,"Inside Personal Info")
   
@@ -110,7 +113,7 @@ export const PersonalInfo = () => {
    
 
     React.useEffect(()=>{
-        setFormData({...formData,"avatar":imageurl})
+        setFormData({...formData,["avatar"]:imageurl})
         
     },[imageurl])
    
@@ -118,19 +121,44 @@ export const PersonalInfo = () => {
     
    
 
-    const ShowUrlImage = () => {
+    // const ShowUrlImage = () => {
        
-        // imageRef.current.click()
-        if (!imageRef.current.files[0]) {
-        return;
-        }
-        const img = URL.createObjectURL(imageRef.current.files[0]);
-        setImageURL(img);
+    //     // imageRef.current.click()
+    //     // if (!imageRef.current.files[0]) {
+    //     // return;
+    //     // }
+    //     // const img = URL.createObjectURL(imageRef.current.files[0]);
+
+    //    dispatch(GetimageUrl(imageRef.current.files[0])).then(()=>{
+    //     console.log(avataring_image)
+    //    })
+       
+    console.log(`Client-ID ${API_KEY}`)
+      const ShowUrlImage= async()=>{
+      
+        await axios({
+          method: "post",
+          url: "https://api.imgur.com/3/image",
+          headers: {
+            Authorization: `Client-ID ${process.env.REACT_APP_API_KEY}`,
+          },
+          data:imageRef.current.files[0] 
+        })
+          .then((res) => {
+              
+           setImageURL(res.data.data.link)
+            alert('uploaded Successfully')
+            console.log(res.data.data.link)
+        })
+          .catch((err) => alert(err));
+      };
+
+    
        
     
         
       
-    };
+    
    
   
     
@@ -142,7 +170,7 @@ export const PersonalInfo = () => {
     }
 
     const handleOnChange=(e)=>{
-        setFormData({...formData,...User,[e.target.name]:e.target.value})  
+        setFormData({...formData,...User,["avatar"]:imageurl,[e.target.name]:e.target.value})  
 
        
     }
@@ -172,7 +200,8 @@ export const PersonalInfo = () => {
 
         
         <div className={classes.root,styles.mainCont}>
-          <Avatar className={classes.large}  alt="" src={imageurl}/>
+           { console.log(imageurl)}
+          <Avatar className={classes.large}  alt="" src={imageurl?imageurl:User.avatar}/>
        
             <div className={styles.UploadButton}>
             <input type="file" style={{display:'none'}} className={styles.customeFileInput} onChange={ShowUrlImage}  ref={imageRef} />
@@ -292,7 +321,7 @@ export const PersonalInfo = () => {
                     <label htmlFor="">Location</label>
                 </div>
                 <div className={styles.inputCont} > 
-                <select name="location" defaultvalue={User.location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                <select name="location" defaultValue={User.location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                 <option value={User.location} selected>{User.location}</option>
                 {
                     countries.map(item=>
