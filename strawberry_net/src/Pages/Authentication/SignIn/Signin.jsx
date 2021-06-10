@@ -45,14 +45,18 @@ export const Signin = () => {
   
     const dispatch = useDispatch()
     const handleClick=(e)=>{
-        e.preventDefault()
-            dispatch(getLogin(signInForm)) 
-            console.log(user); 
-            // dispatch(getUserDetails(user.userId))
+            e.preventDefault()
+            dispatch(getLogin(signInForm)).then(()=>{
+                isAuth?alert("Logged In"): user.isError?alert("Something Went Wrong"):console.log("Else")
+               
+            })
+           
+        
             
             
             
     }
+    
     
     return (
         <form className={styles.signupform}>

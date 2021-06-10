@@ -1,14 +1,16 @@
-import { getUser, setUser } from "../../Pages/Authentication/localstorage_s"
+import {setUser } from "../../Pages/Authentication/localstorage_s"
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS,SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS, 
-    USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, USERDATA_UPDATE, REMOVE_FROM_CART} from "./authActionTypes"
+    USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, USERDATA_UPDATE, REMOVE_FROM_CART,IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS, IMAGE_URL_FAILURE} from "./authActionTypes"
 
 
 let initState ={
+    kamal:"",
     isLoading: false,
     isError: false,
     isAuth:localStorage.getItem("userId")?true:false,
     userId:localStorage.getItem("userId") ||"",
-    user:{}
+    user:{},
+
 }
 
 
@@ -21,13 +23,15 @@ export const authReducer=(state=initState,{type,payload})=>{
             }
         }
         case LOGIN_SUCCESS:{
+      
             setUser("userId",payload.id)
             return{
                 
                  ...state,
                  user:payload,
-                isAuth:true,
+                    isAuth:true,
                  isLoading:false,
+                
 
             }
         }
@@ -36,6 +40,7 @@ export const authReducer=(state=initState,{type,payload})=>{
                  ...state,
                  isError:true,
                  isLoading:false,
+                 isAuth:false,
 
             }
         }
@@ -49,9 +54,7 @@ export const authReducer=(state=initState,{type,payload})=>{
             return{
                 ...state,
                 user:payload,
-               
-                  isAuth:true,
-                 isLoading:false
+                isLoading:false
 
 
             }
@@ -72,16 +75,50 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case SIGNIN_SUCCESS:{
             return{
-                 ...state
+                 ...state,
+                 isLoading:false,
 
             }
         }
         case SIGNIN_FAILURE:{
             return{
-                 ...state
+                 ...state,
+                 isError:true,
+                 isLoading:false,
                 
             }
         }
+        case IMAGE_URL_REQUEST:{
+            alert("IMAGE_URL_REQUEST")
+            return {
+                isLoading:true,
+                ...state
+            }
+        }
+        case IMAGE_URL_SUCCESS:{
+            alert("IMAGE_URL_SUCCESS")
+            return{
+           
+                 ...state,
+                 
+                 isLoading:false,
+
+            }
+        }
+        case IMAGE_URL_FAILURE:{
+            alert("IMAGE_URL_FAILURE")
+            return{
+                 ...state,
+                 isError:true,
+                 isLoading:false,
+                
+            }
+        }
+
+
+
+
+
         case USERDATA_UPDATE:{
          
             return {
