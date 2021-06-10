@@ -1,6 +1,6 @@
-import { StylesProvider } from '@material-ui/styles'
+
 import React from 'react';
-import styles from './Gradient.module.css';
+
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LoyaltyOutlinedIcon from '@material-ui/icons/LoyaltyOutlined';
@@ -9,6 +9,8 @@ import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 
 import { Setting } from './Settings/Setting';
+import styles from './Gradient.module.css';
+
 
 export const Gradient = () => {
     return (

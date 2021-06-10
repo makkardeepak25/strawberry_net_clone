@@ -6,7 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { getSignIn } from '../../../Redux/Auth/authAction';
 import { useDispatch } from "react-redux";
 import {v4 as uuid} from 'uuid'
-import { Signin } from '../SignIn/Signin';
+
 
 const AuthInput = styled.input`
     background: none;
