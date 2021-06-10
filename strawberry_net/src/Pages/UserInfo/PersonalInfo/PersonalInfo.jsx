@@ -9,6 +9,7 @@ import styles from './PersonalInfo.module.css';
 import { GetimageUrl, userUpdate } from '../../../Redux/Auth/authAction';
 import {countries} from '../countries';
 import axios from 'axios';
+import { API_KEY } from '../../..';
 
 
 const initUser ={
@@ -132,13 +133,14 @@ export const PersonalInfo = () => {
     //     console.log(avataring_image)
     //    })
        
+    console.log(`Client-ID ${API_KEY}`)
       const ShowUrlImage= async()=>{
       
         await axios({
           method: "post",
           url: "https://api.imgur.com/3/image",
           headers: {
-            Authorization: "Client-ID fc509ad5b921bf3"
+            Authorization: `Client-ID ${process.env.REACT_APP_API_KEY}`,
           },
           data:imageRef.current.files[0] 
         })
