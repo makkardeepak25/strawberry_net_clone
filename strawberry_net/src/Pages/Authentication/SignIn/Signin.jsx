@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import styles from './SignIn.module.css';
 import { useDispatch, useSelector } from "react-redux";
-import { getLogin, getUserDetails, signinRequest } from '../../../Redux/Auth/authAction';
-import { getUser, setUser } from '../localstorage_s';
+
+import { getLogin} from '../../../Redux/Auth/authAction';
+import styles from './SignIn.module.css';
 const AuthInput = styled.input`
     background: none;
     width: 100%;
