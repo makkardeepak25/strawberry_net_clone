@@ -12,7 +12,7 @@ let initState ={
     user:{},
 
 }
-
+console.log(initState.isAuth);
 
 export const authReducer=(state=initState,{type,payload})=>{
     switch(type){
