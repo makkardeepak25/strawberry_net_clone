@@ -28,6 +28,7 @@ export const authReducer=(state=initState,{type,payload})=>{
                  user:payload,
                 isAuth:true,
                  isLoading:false,
+                
 
             }
         }
@@ -36,6 +37,7 @@ export const authReducer=(state=initState,{type,payload})=>{
                  ...state,
                  isError:true,
                  isLoading:false,
+                 isAuth:false,
 
             }
         }

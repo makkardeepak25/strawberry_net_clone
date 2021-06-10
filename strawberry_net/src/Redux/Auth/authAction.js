@@ -115,13 +115,23 @@ export const getLogin =({email,password})=>(dispatch)=>{
     dispatch(loginRequest())
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles?email=${email}`,{email,password}).then((res)=>{
 
-        // console.log(res.data[0].email===email && res.data[0].password===password);
-        dispatch(loginSuccess(res.data[0]))
+        if(res.data[0].email===email && res.data[0].password===password){
+            dispatch(loginSuccess(res.data[0]))
+           
+        }
+        else {
+             
+        dispatch(loginFailure("wfeg"))
+        }
+       
+       
         
     })
-    .catch(err=>
+    .catch(err=>{
+        
         dispatch(loginFailure(err))
-        )
+    
+        })
 
 
 }
