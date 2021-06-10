@@ -6,22 +6,23 @@ import { withStyles,makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { AddressForm } from '../AddressForm/AddressForm';
+import { useSelector } from 'react-redux';
 
 
 
-var addresses = [{
-    address_tittle:"Home",
-    defaultAdd:true,
-    f_name:"Kamal",
-    l_name:"Gupta",
-    company:"Masai",
-    country:"India",
-    city:"New Delhi",
-    state:"Delhi",
-    pincode:"110067",
-    countryCode:"+91",
-    phone:"7500013500"
-}]
+// var addresses = [{
+//     address_tittle:"Home",
+//     defaultAdd:true,
+//     f_name:"Kamal",
+//     l_name:"Gupta",
+//     company:"Masai",
+//     country:"India",
+//     city:"New Delhi",
+//     state:"Delhi",
+//     pincode:"110067",
+//     countryCode:"+91",
+//     phone:"7500013500"
+// }]
 
 
 const GreenCheckbox = withStyles({
@@ -50,6 +51,7 @@ export const BillingAddress = () => {
     const classes = useStyles();
     const [state, setState] = React.useState({});
     const [showAddressform,setShowAddressForm] = React.useState(false);
+    const addresses = useSelector(state => state.auth.user.addresses)
     
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });

@@ -28,20 +28,19 @@ const initAddress ={
 
 export const AddressForm = () => {
 
-  
     const [addressForm,setAddressForm] = React.useState(initAddress)
     const { address_tittle,f_name,l_name, company, country, locality,city,state,pincode,countryCode,phone,defaultAdd} =addressForm
    
     const user = useSelector(state => state.auth.user)
-    const adressesList =user.addresses
+ 
     React.useEffect(()=>{
-
+   
     console.log(user,"From AddressForm")
-    console.log(adressesList,"Array Of Addresses")
-   })
+    
+   },[])
 
     const handleOnChange=(e)=>{
-        setAddressForm({...addressForm,...user,[e.target.name]:e.target.value})
+        setAddressForm({...addressForm,["f_name"]:user.f_name,["l_name"]:user.l_name,["phone"]:user.phone,[e.target.name]:e.target.value})
         
         
     }
@@ -55,16 +54,9 @@ export const AddressForm = () => {
     const dispatch = useDispatch()
     
     const  handleSubmit = (e)=>{
-        e.preventDefault()
-        adressesList.push(addressForm)
-        
-        console.log({addresses:adressesList})
-
-        dispatch(userUpdate(user.id,{addresses:adressesList}))
-  
-        // alert(`Hello ${user.f_name} your details saved successFully`)
-
-       
+        e.preventDefault()        
+        dispatch(userUpdate(user.id,{addresses:[...user.addresses,addressForm]}))
+   
     }
     return (
         <div className={styles.addressformCont}>

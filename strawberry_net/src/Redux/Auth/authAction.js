@@ -143,12 +143,11 @@ export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
 }
 
 export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch)=>{
-    console.log(payload,'rom AUTH ACTION USERUPDATE Before request')
     dispatch(signinRequest())
     axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
         
-        alert(`Hello your details saved successFully`)
-        console.log(res.data,"From AUTH ACTION USERUPDATE ")
+        alert(`Your details has been successfully saved into our server`)
+       
         dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
