@@ -9,20 +9,19 @@ export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
-  const cart = user.bag;
+  const cart =user.bag&& user.bag;
   const name = user.f_name;
   console.log(user);
-  const [product,setProduct]=React.useState({})
 
   let total = 0;
-  cart&&cart.map(el => {
+ cart&& cart.map(el => {
     total = total + (Number(parseInt(el.size[0].price.replace(/,/g, "")))*Number(el.qty));
   });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
   let frieghtSurcharge = Number(0.035 * total).toFixed(2);
   let orderTotal = 0
-  if (Number(total < 11000)) {
+  if (Number(total < 11370)) {
       orderTotal=(Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
   }
   else {
@@ -83,7 +82,7 @@ export function Bag() {
                 Deliver to: <strong>Country Name</strong>
               </span>
             </div>
-            {cart.length > 0 && (
+            {cart&& cart.length>0 && 
               <>
                 <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
@@ -95,7 +94,7 @@ export function Bag() {
                   </p>
                   <p style={{ marginTop: "25px" }}>Goods shipped from Strawberrynet</p>
                   <div className={styles.bordbot} />
-                  {cart&&cart.map(el => {
+                  {cart.length>0&&cart.map(el => {
                     return (
                       <div className={styles.prodbag}>
                         <img src={el.images[0]} alt="product" />
@@ -151,7 +150,7 @@ export function Bag() {
                       <div>Extra 10% Off (New Customer)</div>
                       <div>-INR {newCustomeroff}</div>
                     </div>
-                    {total<11000?<div className={`${styles.flexsum}`}>
+                    {total<11370?<div className={`${styles.flexsum}`}>
                       <div>Standard Shipping (Signature)</div>
                       <div>{standardShip}</div>
                     </div>:null}                    
@@ -185,7 +184,7 @@ export function Bag() {
                   </ul>
                 </div>
               </>
-            )}
+            }
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
