@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import styles from './PersonalInfo.module.css';
 import styled from 'styled-components';
 import { useDispatch,useSelector } from 'react-redux';
 
 
-import {  getUserDetails, userUpdate } from '../../../Redux/Auth/authAction';
+import styles from './PersonalInfo.module.css';
+import { userUpdate } from '../../../Redux/Auth/authAction';
 import {countries} from '../countries';
 
 
@@ -292,7 +292,7 @@ export const PersonalInfo = () => {
                     <label htmlFor="">Location</label>
                 </div>
                 <div className={styles.inputCont} > 
-                <select name="location" defaultvalue={User.location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                <select name="location" defaultValue={User.location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                 <option value={User.location} selected>{User.location}</option>
                 {
                     countries.map(item=>

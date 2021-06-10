@@ -142,24 +142,64 @@ export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
         )
 }
 
-export const userUpdate =(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
+export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch)=>{
+    console.log(payload,'rom AUTH ACTION USERUPDATE Before request')
     dispatch(signinRequest())
-    return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
-        // dispatch(userdataUpdate(res))
-        // dispatch(getUserDetails(id))
-        console.log(res.data)
+    axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
+        
+        alert(`Hello your details saved successFully`)
+        console.log(res.data,"From AUTH ACTION USERUPDATE ")
         dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
-        dispatch(signINFailure(err))
+        // dispatch(signINFailure(err))
+        console.log(err)
         )
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
     // dispatch(removeFromCart(payload))
     return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
+   
         console.log(res.data)
         dispatch(userDataSuccess(res.data))
     })
