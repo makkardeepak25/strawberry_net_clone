@@ -21,7 +21,14 @@ export function Bag() {
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
   let frieghtSurcharge = Number(0.035 * total).toFixed(2);
-  let orderTotal = (Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
+  let orderTotal = 0
+  if (Number(total < 11000)) {
+      orderTotal=(Number(total) + Number(standardShip) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
+  }
+  else {
+    orderTotal=(Number(total) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
+  }
+    
   console.log(orderTotal);
   const [quant, setQuant] = React.useState("");
   const handleChange = (e,id) => {
@@ -144,10 +151,10 @@ export function Bag() {
                       <div>Extra 10% Off (New Customer)</div>
                       <div>-INR {newCustomeroff}</div>
                     </div>
-                    <div className={`${styles.flexsum}`}>
+                    {total<11000?<div className={`${styles.flexsum}`}>
                       <div>Standard Shipping (Signature)</div>
                       <div>{standardShip}</div>
-                    </div>
+                    </div>:null}                    
                     <div className={`${styles.flexsum}`}>
                       <div>Freight Surcharge</div>
                       <div>{frieghtSurcharge}</div>
