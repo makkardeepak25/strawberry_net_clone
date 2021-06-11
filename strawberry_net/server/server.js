@@ -4,8 +4,8 @@ const dotenv= require('dotenv')
 const app=express()
 app.use(express.json())
 
-dotenv.config({path:'../config1.env'})
-const ab= process.env.REACT_APP_DATABASE
+dotenv.config({path:'./config.env'})
+const ab= process.env.DATABASE
 console.log(ab);
 const DB= "mongodb+srv://username:password@cluster0.6nl2d.mongodb.net/strawberrynet?retryWrites=true&w=majority"
 const connect=()=>{

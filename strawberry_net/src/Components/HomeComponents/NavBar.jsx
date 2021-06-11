@@ -9,7 +9,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
 import Badge from "@material-ui/core/Badge";
@@ -36,8 +36,9 @@ export const NavBar = () => {
   const name = user && user.f_name;
 
 
- 
+  const {category}= useParams()
 
+ console.log("navbar",category);
   const handleChange = (e) => {
     setBrand(e.target.value);
   };
@@ -176,8 +177,8 @@ export const NavBar = () => {
           </Link>
           <Link className={styles.foc} to={"/skincare"}>
             {" "}
-            <li>
-              <span className={styles.clrspn} >SKINCARE</span>
+            <li >
+              <span  className={styles.clrspn} >SKINCARE</span>
             </li>
           </Link>
           <Link className={styles.foc}>

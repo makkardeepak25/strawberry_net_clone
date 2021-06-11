@@ -192,6 +192,19 @@ export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch
         )
 
 }
+export const priceUpdate = (id=localStorage.getItem("userId"),payload) => (dispatch) => {
+    dispatch(signinRequest())
+    axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id}`,payload).then((res)=>{
+        
+        alert(`Your details has been successfully saved into our server`)
+       
+        dispatch(userDataSuccess(res.data))
+    })
+    .catch(err=>
+        console.log(err)
+        )
+    
+}
 
 
 

@@ -1,0 +1,9 @@
+/* .foc>span:hover,.foc>span:focus{
+    background-color: brown;
+    color: beige;
+} */
+.foc:hover{
+    background-color: brown;
+    color: beige;
+}
+
