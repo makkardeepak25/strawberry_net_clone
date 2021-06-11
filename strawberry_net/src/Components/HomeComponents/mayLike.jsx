@@ -24,39 +24,25 @@ export const MayLike = () => {
       slidesToSlide: 3
     },
     tablet: {
-      breakpoint: { max: 1024, min: 800 },
-      items: 4,
-      slidesToSlide: 2
-    },
-    med: {
-      breakpoint: { max: 800, min: 464 },
+      breakpoint: { max: 1024, min: 464 },
       items: 3,
       slidesToSlide: 2
     },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
+
+    mid: {
+      breakpoint: { max: 800, min: 600 },
       items: 2,
       slidesToSlide: 1
+    },
+    mobile: {
+      breakpoint: { max: 600, min: 0 },
+      items: 1
     }
   };
+
   return (
     <>
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        showDots={true}
-        responsive={responsive}
-        ssr={true} 
-        infinite={true}
-        autoPlaySpeed={1000}
-        
-        keyBoardControl={true}
-        customTransition="all .5"
-        containerClass="carousel-container"
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-      >
+      <Carousel responsive={responsive} infinite={true} swipeable={true} draggable={true} showDots={true}>
         {data.map(el => {
           return (
             <div className={styles.prodDiv}>
