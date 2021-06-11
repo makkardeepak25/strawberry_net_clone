@@ -1,9 +1,4 @@
-
-
-
-
 import Routes from "./Pages/Routes/Routes";
-
 function App() {
   
 
