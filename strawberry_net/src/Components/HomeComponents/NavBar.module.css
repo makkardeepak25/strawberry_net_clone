@@ -294,11 +294,13 @@ li {
 li:hover {
   background: #fff;
   color: #521b76;
+  text-decoration: none;
 }
 
 li:focus {
   background: #fff;
   color: #521b76;
+ 
 }
 
 li > span {

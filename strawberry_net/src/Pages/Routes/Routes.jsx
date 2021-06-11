@@ -35,34 +35,49 @@ const Routes = () => {
    
     return (
         <div>
-          <NavBar/>
-      <div style={{height:"150px"}}></div>
+      
           <Switch>
            <Route exact path="/">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
            <Home/>
            </Route>
            <Route exact path="/signin">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
              <Authentication/>
            </Route>
            <Route exact path="/userinfo">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
           <Gradient/>
            </Route>
 
            <Route path="/:category/bag">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
           <Bag/>
            </Route>
            <Route exact path="/:category">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
              <CategoryPage/>
            </Route>
            <Route exact path="/:category/products/:id">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
              <Product/>
            </Route>
 
            <Route exact path="/search/product-search">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
              <Searchbar/>
            </Route>
 
            <Route exact path="/:category/checkout">
+           <NavBar/>
+      <div style={{height:"150px"}}></div>
           <Checkout/>
            </Route>
 
