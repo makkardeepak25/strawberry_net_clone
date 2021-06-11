@@ -15,201 +15,171 @@ import { getSearchData } from "../../Redux/Products/productAction";
 import Badge from "@material-ui/core/Badge";
 import { useState } from "react";
 import { getUserDetails } from "../../Redux/Auth/authAction";
-import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
-import AcUnitIcon from "@material-ui/icons/AcUnit";
-import ControlPointDuplicateIcon from "@material-ui/icons/ControlPointDuplicate";
-import ListAltIcon from "@material-ui/icons/ListAlt";
-import StarBorderIcon from "@material-ui/icons/StarBorder";
-import SettingsIcon from "@material-ui/icons/Settings";
+import PermIdentityOutlinedIcon from '@material-ui/icons/PermIdentityOutlined';
+import AcUnitIcon from '@material-ui/icons/AcUnit';
+import ControlPointDuplicateIcon from '@material-ui/icons/ControlPointDuplicate';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import SettingsIcon from '@material-ui/icons/Settings';
 export const NavBar = () => {
   const [brand, setBrand] = React.useState({});
   const dispatch = useDispatch();
-  const [flag, setFlag] = React.useState(false);
-  const user = useSelector(state => state.auth.user);
-  const isAuth = useSelector(state => state.auth.isAuth); //dont change this
+  const [flag,setFlag]=React.useState(false)
+  const user = useSelector((state) => state.auth.user);
+  const isAuth = useSelector((state) => state.auth.isAuth); //dont change this
   const [userAuth, setUserAuth] = useState(isAuth);
+  
   const bag = user && user.bag;
   console.log("bag", bag);
-
-  //   const user= useSelector((state)=>state.auth.user)
-  //   const isAuth=useSelector(state=>state.auth.isAuth) //dont change this
-  //   const [userAuth,setUserAuth]=useState(isAuth)
-  //    const bag=user&&user.bag
-  // console.log("navbar",isAuth);
 
   //const cart = user&&user.bag
   const name = user && user.f_name;
 
-  const handleChange = e => {
+
+ 
+
+  const handleChange = (e) => {
     setBrand(e.target.value);
   };
 
   const handleClick = () => {
-    localStorage.setItem("searchKey", JSON.stringify(brand));
+    localStorage.setItem("searchKey",JSON.stringify( brand))
     dispatch(getSearchData(brand));
   };
 
-  const showProfileBox = () => {
-    setFlag(true);
-  };
-  const hideProfileBox = () => {
-    setFlag(false);
-  };
+  const showProfileBox=()=>{
+    setFlag(!flag)
+  }
 
+ 
   useEffect(() => {
     const id = localStorage.getItem("userId");
     id && dispatch(getUserDetails(id));
   }, []);
   return (
     <div className={styles.navbar}>
-      <div className={styles.container}>
-        <Link to={"/"}>
-          <img src="/strawIcon.png" className={styles.navbrand} />
-        </Link>
-        <div className={styles.navform1}>
-          <div>
-            <input
-              type="text"
-              placeholder="SEARCH BRAND / PRODUCT"
-              autocomplete="off"
-              className={styles.inpsearch1}
-              onChange={handleChange}
-            />
-            <Link to={"/search/product-search"} className={styles.searchbtn1}>
-              <BsSearch onClick={handleClick} />
-            </Link>
+        <div className={styles.container}>
+          <Link to={"/"}><img src="/strawIcon.png" className={styles.navbrand} /></Link>
+          <div className={styles.navform1}>
+            <div>
+              <input
+                type="text"
+                placeholder="SEARCH BRAND / PRODUCT"
+                autocomplete="off"
+                className={styles.inpsearch1}
+                onChange={handleChange}
+              />
+              <Link to={"/search/product-search"} className={styles.searchbtn1}>
+                <BsSearch onClick={handleClick} />
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className={styles.navright}>
-          <nav className={styles.addnav}>
-            <ul className={styles.addnavlang}>
-              <li>
-                Rs&nbsp;.&nbsp;INR&nbsp;India: English |
-                <a className={styles.glyphicon} aria-hidden="true">
-                  {AiOutlineDown}
+          <div className={styles.navright}>
+            <nav className={styles.addnav}>
+              <ul className={styles.addnavlang}>
+                <li>
+                  Rs&nbsp;.&nbsp;INR&nbsp;India: English |
+                  <a className={styles.glyphicon} aria-hidden="true">
+                    {AiOutlineDown}
+                  </a>
+                </li>
+                <li>
+                  <a className={styles.ordertrack}> Order Tracking</a>
+                </li>
+              </ul>
+            </nav>
+            <ul className={styles.menunavright}>
+              {!isAuth ? (
+                <li className={styles.loginlinks}>
+                  <Link to={"/signin"} className={styles.accname} href="#">
+                    <IconContext.Provider
+                      value={{ color: "#B53788", size: "2.5em" }}
+                    >
+                      <FaUserCircle />
+                    </IconContext.Provider>
+                    <span className={styles.aaccname}>Sign in</span>
+                  </Link>
+                </li>
+              ) : (
+                <li className={styles.loginlinks} onClick={showProfileBox}  >
+                  <Link className={styles.accname} >
+                    <img
+                      className={styles.logimg}
+                      src={
+                        "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
+                      }
+                      alt="strawlog"
+                    />
+                    <span className={styles.aaccname}>{name}</span>
+                  </Link>
+                      {flag && <div className={styles.showProfileOn}   >
+                   <Link> <div className={styles.showProfileOptions} ><PermIdentityOutlinedIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Account</span></div></Link>
+                   <Link> <div className={styles.showProfileOptions}><AcUnitIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Wishlist</span></div> </Link>
+                  <Link>  <div className={styles.showProfileOptionss}><ControlPointDuplicateIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Point Rewards</span></div></Link>
+                  <Link>  <div className={styles.showProfileOptionsor}><ListAltIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Orders</span></div> </Link>
+                   <Link> <div className={styles.showProfileOptions}><StarBorderIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Reviews</span></div> </Link>
+                   <Link> <div className={styles.showProfileOptions}><SettingsIcon style={{width:"15px", height:"15px",color: "#6b3a87"}}/> <span>Settings</span></div> </Link>
+                   <Link> <div className={styles.showProfilePink}>Get 10% Off</div> </Link>
+                  </div>}
+                  
+
+                  
+
+                </li>
+              )}
+
+              <li className={styles.loginlinks}>
+                <a className={styles.accname} href="#">
+                  <IconContext.Provider
+                    value={{ color: "#B53788", size: "2.5em" }}
+                  >
+                    <AiFillHeart />
+                  </IconContext.Provider>
+                  <span className={styles.aaccname}>Wishlist</span>
                 </a>
               </li>
-              <li>
-                <a className={styles.ordertrack}> Order Tracking</a>
+              <li className={styles.loginlinks}>
+                <Link to={"/user/bag"} className={styles.accname}>
+                  <IconContext.Provider
+                    value={{ color: "#B53788", size: "2.3em" }}
+                  >
+                    <Badge
+                      badgeContent={bag && bag.length}
+                      color="secondary"
+                      anchorOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                    >
+                      <GiShoppingBag />
+                    </Badge>
+                  </IconContext.Provider>
+                  <span className={styles.aaccname}>Bag</span>
+                </Link>
               </li>
             </ul>
-          </nav>
-          <ul className={styles.menunavright}>
-            {!userAuth ? (
-              <li className={styles.loginlinks}>
-                <Link to={"/signin"} className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
-                    <FaUserCircle />
-                  </IconContext.Provider>
-                  <span className={styles.aaccname}>Sign in</span>
-                </Link>
-              </li>
-            ) : (
-              <li className={styles.loginlinks} onMouseEnter={showProfileBox} onMouseLeave={hideProfileBox}>
-                <Link className={styles.accname}>
-                  <img
-                    className={styles.logimg}
-                    src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
-                    alt="strawlog"
-                  />
-                  <span className={styles.aaccname}>{name}</span>
-                </Link>
-                {flag && (
-                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <PermIdentityOutlinedIcon style={{ width: "15px", height: "15px", color: "#6b3a87" }} />{" "}
-                        <span>Account</span>
-                      </div>
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <AcUnitIcon style={{ width: "15px", height: "15px", color: "#6b3a87" }} /> <span>Wishlist</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptionss}>
-                        <ControlPointDuplicateIcon style={{ width: "15px", height: "15px", color: "#6b3a87" }} />{" "}
-                        <span>Point Rewards</span>
-                      </div>
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptionsor}>
-                        <ListAltIcon style={{ width: "15px", height: "15px", color: "#6b3a87" }} /> <span>Orders</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <StarBorderIcon style={{ width: "15px", height: "15px", color: "#6b3a87" }} /> <span>Reviews</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <SettingsIcon style={{ width: "15px", height: "15px", color: "#6b3a87" }} /> <span>Settings</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
-                    </Link>
-                  </div>
-                )}
-              </li>
-            )}
-
-
-            <li className={styles.loginlinks}>
-              <a className={styles.accname} href="#">
-                <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
-                  <AiFillHeart />
-                </IconContext.Provider>
-                <span className={styles.aaccname}>Wishlist</span>
-              </a>
-            </li>
-            <li className={styles.loginlinks}>
-              <Link to={"/user/bag"} className={styles.accname}>
-                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
-                  <Badge
-                    badgeContent={bag && bag.length}
-                    color="secondary"
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "left"
-                    }}
-                  >
-                    <GiShoppingBag />
-                  </Badge>
-                </IconContext.Provider>
-                <span className={styles.aaccname}>Bag</span>
-              </Link>
-            </li>
-          </ul>
+          </div>
         </div>
-      </div>
-
+      
       <div className={styles.navbarmenu1}>
         <ul className={styles.menucont}>
           <Link to={"/brands"}>
             {" "}
             <li className={styles.li1}>
               <span>
-                <MenuIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <MenuIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
           </Link>
-          <NavLink to={"/skincare"} activeClassName={styles.active}>
+          <Link to={"/skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>SKINCARE</span>
+              <span className={styles.clrspn} >SKINCARE</span>
             </li>
-          </NavLink>
+          </Link>
           <Link>
             <li to={"/makeup"}>
               <span className={styles.clrspn}>MAKEUP</span>
@@ -255,7 +225,9 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-                <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <CardGiftcardIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
@@ -264,7 +236,9 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-                <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <StarIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspns}>NEW</span>
             </li>
@@ -277,7 +251,7 @@ export const NavBar = () => {
             width: "50px",
             height: "50px",
             color: "white",
-            cursor: "pointer"
+            cursor: "pointer",
           }}
         />
         <div className={styles.navform2}>
@@ -289,9 +263,9 @@ export const NavBar = () => {
               className={styles.inpsearch2}
               onChange={handleChange}
             />
-            <Link to={"/search/product-search"} className={styles.searchbtn2}>
-              <BsSearch onClick={handleClick} />
-            </Link>
+           <Link to={"/search/product-search"} className={styles.searchbtn2}>
+                <BsSearch onClick={handleClick} />
+              </Link>
           </div>
         </div>
       </div>
