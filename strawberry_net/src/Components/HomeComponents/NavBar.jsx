@@ -9,7 +9,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
-import { Link, NavLink, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
 import Badge from "@material-ui/core/Badge";
@@ -36,8 +36,9 @@ export const NavBar = () => {
   const name = user && user.f_name;
 
 
- 
+  const {category}= useParams()
 
+ console.log("navbar",category);
   const handleChange = (e) => {
     setBrand(e.target.value);
   };
@@ -163,7 +164,7 @@ export const NavBar = () => {
       
       <div className={styles.navbarmenu1}>
         <ul className={styles.menucont}>
-          <Link to={"/brands"}>
+          <Link style={{ textDecoration: "none" }} to={"/brands"}>
             {" "}
             <li className={styles.li1}>
               <span>
@@ -174,13 +175,13 @@ export const NavBar = () => {
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
           </Link>
-          <Link to={"/skincare"}>
+          <Link style={{ textDecoration: "none" }}  to={"/skincare"}>
             {" "}
-            <li>
-              <span className={styles.clrspn} >SKINCARE</span>
+            <li >
+              <span  className={styles.clrspn} >SKINCARE</span>
             </li>
           </Link>
-          <Link>
+          <Link style={{ textDecoration: "none" }} to={"/makeup"}>
             <li to={"/makeup"}>
               <span className={styles.clrspn}>MAKEUP</span>
             </li>
@@ -197,7 +198,7 @@ export const NavBar = () => {
               <span className={styles.clrspn}>PERFUME</span>
             </li>
           </Link>
-          <Link to={"/men-skincare"}>
+          <Link style={{ textDecoration: "none" }} to={"/men-skincare"}>
             {" "}
             <li>
               <span className={styles.clrspn}>MEN'S SKINCARE</span>
