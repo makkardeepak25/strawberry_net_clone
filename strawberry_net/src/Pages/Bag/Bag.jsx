@@ -37,12 +37,12 @@ export function Bag() {
     setQuant(e.target.value);
     // quantityUpdate(id)
   };
-  const payload= {
-    tot: total,
-    newCust: newCustomeroff,
-    ship: standardShip,
-    orderTot:orderTotal
-  }
+  // const payload= {
+  //   tot: total,
+  //   newCust: newCustomeroff,
+  //   ship: standardShip,
+  //   orderTot:orderTotal
+  // }
   // const Addtouser = () => {
   //   const order = user && user.orders
   //   order[0]=payload

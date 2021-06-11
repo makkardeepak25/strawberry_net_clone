@@ -84,9 +84,30 @@
     height: 90px;
     width: 100px;
   }
+  .promocode{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0px;
+    text-align: left;
+  }
+  .promInput{
+    width: 100%;
+    padding: 5px;
+    margin: auto;
+    height: 25px;
+    margin-bottom: 20px;
+
+  }
   .flexsum {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .flexsums {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5%;
     margin-bottom: 10px;
     font-size: 14px;
   }
@@ -95,7 +116,7 @@
   }
   .bolditems {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
   }
   .extraoff {
     color: hotpink;
@@ -121,7 +142,7 @@
   .checksignout {
     background-color: #fff;
     border-bottom: solid 1px #e0e0e0 !important;
-    max-height: 450px;
+    max-height: 340px;
     padding: 25px;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -141,7 +162,7 @@
       border-radius: 0;
       text-transform: uppercase;
       padding: 8px;
-      min-width: 60%;
+      width: 70%;
       border-color: #ccc;
       vertical-align: middle;
       cursor: pointer;
@@ -150,7 +171,7 @@
       white-space: nowrap;
   }
   .bordbotcheck{
-      margin: 50px 0px;
+      margin: 30px 0px;
       border-bottom: 0.3px solid rgb(71, 69, 69);
   }
   @media (max-width: 730px) {
