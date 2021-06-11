@@ -98,7 +98,6 @@ const Product = () => {
         isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
         // AddToCard(userdata)
     }
-   
 
 
 useEffect(()=>{
