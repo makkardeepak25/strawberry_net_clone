@@ -20,7 +20,7 @@
   }
   .shopbag {
     display: grid;
-    grid-template-columns: 70% 28%;
+    grid-template-columns: 68% 30%;
     gap: 2%;
   }
   .country {
@@ -121,7 +121,7 @@
   .checksignout {
     background-color: #fff;
     border-bottom: solid 1px #e0e0e0 !important;
-    max-height: 250px;
+    max-height: 450px;
     padding: 25px;
     border: 1px solid transparent;
     border-radius: 4px;
