@@ -115,7 +115,7 @@ export function Checkout() {
 
                   <div className={styles.bordbot} />
                   <div className={`${styles.flexsum} ${styles.bolditem}`}>
-                    <div>Item Total: {cart.length} item(s)‎</div>
+                    <div>Item Total:{cart&&cart.length} item(s)‎</div>
                     <div>INR {total}</div>
                   </div>
                 </div>
