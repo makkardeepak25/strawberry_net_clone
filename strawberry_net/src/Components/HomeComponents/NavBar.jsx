@@ -47,10 +47,13 @@ export const NavBar = () => {
     dispatch(getSearchData(brand));
   };
 
-  const showProfileBox = () => {
-    setFlag(!flag);
-  };
-
+  const showProfileBox=()=>{
+    setFlag(true)
+  }
+  const hideProfileBox=()=>{
+    setFlag(false)
+  }
+ 
   useEffect(() => {
     const id = localStorage.getItem("userId");
     id && dispatch(getUserDetails(id));
@@ -102,7 +105,7 @@ export const NavBar = () => {
                 </Link>
               </li>
             ) : (
-              <li className={styles.loginlinks} onClick={showProfileBox}>
+              <li className={styles.loginlinks} onMouseOver={showProfileBox} onMouseLeave={hideProfileBox}>
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
@@ -114,7 +117,7 @@ export const NavBar = () => {
                   <span className={styles.aaccname}>{name}</span>
                 </Link>
                 {flag && (
-                  <div className={styles.showProfileOn}>
+                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
                     <Link>
                       {" "}
                       <div className={styles.showProfileOptions}>
@@ -393,7 +396,7 @@ export const NavBar = () => {
                 </Link>
               </li>
             ) : (
-              <li className={styles.loginlinks} onMouseOver={showProfileBox}>
+              <li className={styles.loginlinks} onMouseOver={showProfileBox} onMouseLeave={hideProfileBox}>
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
@@ -405,7 +408,7 @@ export const NavBar = () => {
                   <span className={styles.aaccname}>{name}</span>
                 </Link>
                 {flag && (
-                  <div className={styles.showProfileOn}>
+                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
                     <Link>
                       {" "}
                       <div className={styles.showProfileOptions}>

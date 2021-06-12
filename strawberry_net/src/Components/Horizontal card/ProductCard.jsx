@@ -53,7 +53,7 @@ React.useEffect(()=>{
     return (
       <> {prod!==undefined&& <div className={styles.card_container}>
             <div onClick={redirect}  className={styles.product_info}>
-                <h4>{prod.prod_name}</h4>
+                <h4 style={{textTransform:"uppercase"}}>{prod.prod_name}</h4>
                 <h4>{prod.prod_description}</h4>
                 <p>{prod.size[0].size}</p>
             </div>

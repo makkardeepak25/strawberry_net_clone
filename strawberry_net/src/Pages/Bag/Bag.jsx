@@ -2,11 +2,9 @@ import React from "react";
 import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
-import { priceUpdate, removeFromCart, removeItem, userUpdate } from "../../Redux/Auth/authAction";
+import { removeItem } from "../../Redux/Auth/authAction";
 import { Redirect } from "react-router";
-import { Checkout } from "../Checkout/Checkout";
 import { Link } from "react-router-dom";
-import Axios from "axios"
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
@@ -15,11 +13,10 @@ export function Bag() {
   const name = user.f_name;
   console.log(user);
 
-
   let total = 0;
   cart &&
     cart.map(el => {
-      total = total + Number(parseInt(el.size[0].price.replace(/,/g, ""))) *el.qty;
+      total = total + Number(parseInt(el.size[0].price.replace(/,/g, ""))) * el.qty;
     });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
@@ -53,7 +50,7 @@ export function Bag() {
   const RemovefromCard = product => {
     const id = product.id;
     console.log(id, product);
-    dispatch(removeItem(id, product));
+    // dispatch(removeItem(id, product));
   };
   const removeFromBag = id => {
     const bag = user && user.bag;
@@ -67,11 +64,12 @@ export function Bag() {
 
   // const quantityUpdate = (id) => {
   //   const bag = user && user.bag;
-  //   let new_bag = bag.find(item => item.id === id && {...item,qty:Number(quant)})
-  //   let removedQuantity = bag.filter(item => item.id !== id)
+  //   // let new_bag = bag.find(item => item.id === id && {...item,qty:Number(quant)})
+  //   // let removedQuantity = bag.filter(item => item.id !== id)
+  //   const isPresent= bag.length>0&& bag.map((el)=> el.id===id?{...el, qty:Number(quant)}:el)
   //   const userdata = {
   //     ...user,
-  //     bag:new_bag?[...removedQuantity,new_bag]:bag
+  //     bag:isPresent
   //   };
   //   console.log(quant)
   //   console.log(userdata)
@@ -96,7 +94,7 @@ export function Bag() {
             </div>
             {cart && cart.length > 0 && (
               <>
-                <div  className={styles.bagData}>
+                <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
                   <div className={styles.shipBar}>
                     <div className={styles.shipAmt} style={{ width: "44%" }} />
@@ -119,7 +117,7 @@ export function Bag() {
                             <div>{el.size[0].size}</div>
                             <div>{Number(parseInt(el.size[0].price.replace(/,/g, "")))}</div>
                           </div>
-                          <select value={el.qty}  onChange={e => handleChange(e, el.id)}>
+                          <select defaultValue={el.qty} value={quant} onChange={e => handleChange(e, el.id)}>
                             <option value={1}>Qty.1</option>
                             <option value={2}>Qty.2</option>
                             <option value={3}>Qty.3</option>
@@ -203,8 +201,11 @@ export function Bag() {
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
-              <p>Checkout as {name}?</p> 
-              <Link to={"/user/checkout"}>  <button className={styles.checkoutbagbtn}>Check Out</button> </Link>
+              <p>Checkout as {name}?</p>
+              <Link to={"/user/checkout"}>
+                {" "}
+                <button className={styles.checkoutbagbtn}>Check Out</button>{" "}
+              </Link>
             </div>
             <div className={styles.bordbotcheck} />
             <div className={styles.checkoutbag}>
