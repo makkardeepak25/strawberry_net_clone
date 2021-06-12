@@ -1,10 +1,14 @@
-import {setUser } from "../../Pages/Authentication/localstorage_s"
+import {setUser,removeUser } from "../../Pages/Authentication/localstorage_s"
 import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS,SIGNIN_FAILURE, SIGNIN_REQUEST, SIGNIN_SUCCESS, 
-    USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, USERDATA_UPDATE, REMOVE_FROM_CART,IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS, IMAGE_URL_FAILURE} from "./authActionTypes"
+    USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, USERDATA_UPDATE, 
+    LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE,
+    REMOVE_FROM_CART,IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS, IMAGE_URL_FAILURE} from "./authActionTypes"
 
 
 let initState ={
-    kamal:"",
+    
     isLoading: false,
     isError: false,
     isAuth:localStorage.getItem("userId")?true:false,
@@ -44,6 +48,34 @@ export const authReducer=(state=initState,{type,payload})=>{
 
             }
         }
+        case LOGOUT_REQUEST:{
+            return {
+                ...state,
+                isLoading:true,
+            }
+        }
+        case LOGOUT_SUCCESS:{
+            removeUser()
+            
+            return{
+                
+                 ...state,
+                 user:payload,
+                    isAuth:false,
+                 isLoading:false,
+                
+
+            }
+        }
+        case LOGOUT_FAILURE:{
+            return{
+                 ...state,
+                 isError:true,
+                 isLoading:false,
+                 
+
+            }
+        }
         case USERDATA_REQUEST:{
             return {
                 isLoading:true,
@@ -68,12 +100,15 @@ export const authReducer=(state=initState,{type,payload})=>{
             }
         }
         case SIGNIN_REQUEST:{
+            // alert("Requesting.....")
             return {
+               
+                ...state,
                 isLoading:true,
-                ...state
             }
         }
         case SIGNIN_SUCCESS:{
+            setUser("userId",payload)
             return{
                  ...state,
                  isLoading:false,
@@ -120,11 +155,13 @@ export const authReducer=(state=initState,{type,payload})=>{
 
 
         case USERDATA_UPDATE:{
-         
+            alert("Details Updated SuccessFully")
             return {
-                ...state,
                 user:payload,
                 isLoading:false,
+                ...state,
+               
+                
              
             }
         }

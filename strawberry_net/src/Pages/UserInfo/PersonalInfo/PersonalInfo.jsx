@@ -170,7 +170,7 @@ export const PersonalInfo = () => {
         
            
         dispatch(userUpdate(userId,formData))
-        alert(`Hello ${User.f_name} your details saved successFully`)
+        // alert(`Hello ${User.f_name} your details saved successFully`)
 
        
     }
@@ -184,7 +184,7 @@ export const PersonalInfo = () => {
     console.log(User)
   
     // !User||User ?<div>...loading</div>:
-    
+    {console.log(isLoading)}
     return isLoading?(<Spinner/>): (
         <div className={styles.fullmainCont}>
 

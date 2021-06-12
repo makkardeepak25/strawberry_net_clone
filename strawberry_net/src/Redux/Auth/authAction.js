@@ -1,5 +1,9 @@
 import axios from "axios"
-import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, REMOVE_FROM_CART, IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS,IMAGE_URL_FAILURE} from "./authActionTypes"
+import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUEST,
+    SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, 
+    REMOVE_FROM_CART, IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS,IMAGE_URL_FAILURE,LOGOUT_REQUEST,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAILURE,} from "./authActionTypes"
 
 
 export const loginRequest =(payload)=>{
@@ -22,12 +26,31 @@ export const loginFailure =(payload)=>{
     }
 }
 
+export const logoutRequest =(payload)=>{
+    return{
+        type:LOGOUT_REQUEST,
+        payload
+    }
+}
+export const logoutSuccess =(payload)=>{
+    return{
+        type:LOGOUT_SUCCESS,
+        payload
+    }
 
+}
+export const logoutFailure =(payload)=>{
+    return {
+        type:LOGOUT_FAILURE,
+        payload
+    }
+}
 
-export const signinRequest =(payload)=>{
+export const signinRequest =()=>{
+    
     return{
         type:SIGNIN_REQUEST,
-        payload
+     
     }
 }
 export const signinSuccess =(payload)=>{
@@ -128,7 +151,9 @@ export const imageUrlFailure =(payload)=>{
 export const getSignIn =(payload)=>(dispatch)=>{
     dispatch(signinRequest())
     return axios.post('https://6wwnt.sse.codesandbox.io/profiles',payload).then((res)=>{
-        dispatch(signinSuccess(res))
+        dispatch(signinSuccess(res.data.id))
+        console.log(res.data.id)
+
        
     })
     .catch(err=>
@@ -146,7 +171,7 @@ export const getLogin =({email,password})=>(dispatch)=>{
            
         }
         else {
-             
+          console.log("Error")
         dispatch(loginFailure("wfeg"))
         }
        
@@ -166,9 +191,9 @@ export const getLogin =({email,password})=>(dispatch)=>{
 
 export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
     dispatch(userDataRequest())
-    console.log(id.trim());
+  
     return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`).then((res)=>{
-        // console.log(`https://6wwnt.sse.codesandbox.io/profiles/${id}`)
+       
     
         dispatch(userDataSuccess(res.data))
         
@@ -181,14 +206,13 @@ export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
 export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch)=>{
     dispatch(signinRequest())
     axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
-        
-        alert(`Your details has been successfully saved into our server`)
+   
        
-        dispatch(userDataSuccess(res.data))
+        dispatch(userdataUpdate(res.data))
     })
     .catch(err=>
-        // dispatch(signINFailure(err))
-        console.log(err)
+        dispatch(signINFailure(err))
+     
         )
 
 }
@@ -201,7 +225,7 @@ export const priceUpdate = (id=localStorage.getItem("userId"),payload) => (dispa
         dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
-        console.log(err)
+        dispatch(signINFailure(err))
         )
     
 }
@@ -210,7 +234,11 @@ export const priceUpdate = (id=localStorage.getItem("userId"),payload) => (dispa
 
 
 
-
+export const getlogout=()=>(dispatch)=>{
+    dispatch(logoutRequest())
+    return dispatch(logoutSuccess())
+    
+}
 
 
 

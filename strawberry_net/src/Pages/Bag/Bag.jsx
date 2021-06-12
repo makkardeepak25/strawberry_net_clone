@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
-import { removeItem } from "../../Redux/Auth/authAction";
+import { getlogout, removeItem } from "../../Redux/Auth/authAction";
 import { Redirect } from "react-router";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
   const dispatch = useDispatch();
+  const history= useHistory()
   const cart = user.bag && user.bag;
   const name = user.f_name;
   console.log(user);
@@ -80,6 +81,12 @@ export function Bag() {
   // }, [payload])
   if (!isAuth) {
     return <Redirect to={"/signin"} />;
+  }
+
+
+  const handleLogout=()=>{
+      dispatch(getlogout())
+      history.replace("/")
   }
   return (
     <div>
@@ -210,7 +217,7 @@ export function Bag() {
             <div className={styles.bordbotcheck} />
             <div className={styles.checkoutbag}>
               <p>Not {name}?</p>
-              <button className={styles.checkoutbagbtn}>Sign Out</button>
+              <button className={styles.checkoutbagbtn} onClick={handleLogout}>Sign Out</button>
             </div>
           </div>
         </div>
