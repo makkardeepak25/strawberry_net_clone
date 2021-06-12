@@ -28,6 +28,15 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 100px;
 }
+
+@media(max-width:900px){
+
+  .row{
+    grid-template-columns: repeat(2,1fr);
+
+  }
+  
+}
 .connect {
   font-size: 24px;
   margin: 5px 0 25px;
@@ -308,7 +317,25 @@
   letter-spacing: 0.09em;
   font-size: 14px;
   gap: 4%;
+
 }
+
+@media (max-width:1080px){
+
+
+  .gridmainbox{
+
+    grid-template-columns:repeat(3,1fr) ;
+
+  }
+ 
+}
+
+
+
+
+
+
 
 .gridmainbox1grid {
   display: grid;
