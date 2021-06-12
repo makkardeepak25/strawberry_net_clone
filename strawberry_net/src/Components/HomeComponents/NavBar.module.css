@@ -22,8 +22,6 @@
   color: #fff;
   width: 80%;
   height: 90px;
-  background: url(https://a.cdnsbn.com/images/common/2016CompanyLogo.png) no-repeat scroll center center transparent;
-  background-size: contain;
   display: block;
   text-indent: -9999px;
   line-height: 0;
@@ -287,13 +285,19 @@ li {
   display: flex;
   justify-content: space-evenly;
 }
+.navbrand1{
+  display: none;
+  width: 80%;
+  height: 90px;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+}
 
+.mediaUser{
+  display: none;
+  padding-top: 10px;
+}
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> cf9ae3536754665e37168105f21f29ed3977b88a
 @media (max-width: 1174px) {
   .li1 {
     display: grid;
@@ -357,6 +361,9 @@ ul .foc:focus,ul .foc:hover {
   font-weight: 500;
   text-align: center;
 }
+.container1{
+  display:none;
+}
 
 .showProfileOptions {
   color: #6b3a87;
@@ -403,4 +410,27 @@ ul .foc:focus,ul .foc:hover {
 }
 .showProfileOptions span {
   text-align: left;
+}
+@media (max-width: 750px) {
+  .navbrand{
+    display: none;
+  }
+  .navbrand1{
+    display: block;
+  }
+  .container1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 90px;
+  }
+  .container {
+    display: none;
+  }
+.mediaUser{
+  display: block;
+
+}
+.navright{
+  display: none;
+}
 }

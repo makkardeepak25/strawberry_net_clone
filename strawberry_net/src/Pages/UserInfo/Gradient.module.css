@@ -25,17 +25,25 @@
     align-items: center;
     font-size: 17px;
     font-weight: 300;
+    text-decoration: none;
+   
 }
 .menuIcons:hover{
     text-decoration: underline;
-    font-weight: 400;
+    font-weight: 600;   
+  
+}
 
-
-   
+.menuIcons:focus{
+    text-decoration: underline;
+    font-weight: 600;   
+    outline: none;
+    
 }
 .menuIcons link:focus{
     text-decoration: underline;
-    font-weight: 400;   
+    font-weight: 400;  
+    
 }
 .iconList{
 

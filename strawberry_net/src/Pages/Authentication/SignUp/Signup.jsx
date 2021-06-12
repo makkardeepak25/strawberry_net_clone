@@ -87,7 +87,7 @@ export const Signup = () => {
         e.preventDefault()
 
         dispatch(getSignIn(sigupData))
-        hasregistered(true)
+        setHasRegistered(true)
         
     }
     function onChange(value) {
