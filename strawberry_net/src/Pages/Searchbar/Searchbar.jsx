@@ -18,7 +18,7 @@ export function Searchbar(){
 
             <div className={styles.Div4}>
                 <div className={styles.Div5}>
-                    <div>{`${searchData.length} RESULTS FOR ${searchKey} ${searchData.slice(0,1).map(el=>{return el.prod_name})}`}</div>
+                    <div style={{textTransform:"uppercase"}}>{`${searchData.length} RESULTS FOR ${searchKey}`}</div>
                 </div>
             </div>
             {searchData.length>0?<div className={styles.container}>
@@ -38,7 +38,7 @@ export function Searchbar(){
             <div className={styles.product_container}>
             
              <div>
-                 <h4>{searchData.length} results for <span style={{color:"#C7007D"}}>{searchData.slice(0,1).map(el=>{return el.prod_name})}</span></h4>
+                 <h4>{searchData.length} results for <span style={{color:"#C7007D",textTransform:"uppercase"}}>{searchData.slice(0,1).map(el=>{return el.prod_name})}</span></h4>
              </div>
              <div className={styles.divider}></div>
            
