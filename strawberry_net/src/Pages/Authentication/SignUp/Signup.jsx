@@ -4,10 +4,20 @@ import styles from './Signup.module.css';
 import ReCAPTCHA from "react-google-recaptcha";
 import Checkbox from '@material-ui/core/Checkbox';
 import { getSignIn } from '../../../Redux/Auth/authAction';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {v4 as uuid} from 'uuid'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
 
-
+const useStyles = makeStyles({
+    root: {
+        marginLeft:'150px', 
+        marginTop:'20px'  ,  
+      color: '#623381',
+     
+    },
+   
+  });
 const AuthInput = styled.input`
     background: none;
     width: 100%;
@@ -48,25 +58,9 @@ const iniState ={
 
 
 export const Signup = () => {
-    const iniState ={
-        id:"", 
-        f_name:"",
-        l_name:"", 
-        email:"", 
-        password:"",
-        countryCode:"", 
-        phone:"", 
-        birth_date:"", 
-        birth_month:"", 
-        avatar:"",
-        gender:"",
-        points:0,
-        addresses:[], // Addresses can be multiple thats why I took array
-        wishlisht:[],
-        bag:[],
-        orders:[], // indiside individual orders we will also save reviews of that order // Order Id
-        saved_cards:[]
-    }
+    const isLoading = useSelector(state => state.auth.isLoading)
+    const classes = useStyles();
+   
     const [sigupData,setSignUpdata]=React.useState(iniState)
     const [isMatched,SetIsMatched]=React.useState(true)
     const [hasregistered,setHasRegistered] = React.useState(false)
@@ -105,7 +99,7 @@ export const Signup = () => {
       
 
     }
-    return (
+    return  isLoading?(   <CircularProgress disableShrink classes={{root: classes.root}}/>) : (
         <form className={styles.signupform}>
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Last Name" name="l_name" value={l_name} onChange={handleOnchange}></AuthInput>

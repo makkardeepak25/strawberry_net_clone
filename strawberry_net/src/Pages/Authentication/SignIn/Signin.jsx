@@ -4,6 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getLogin} from '../../../Redux/Auth/authAction';
 import styles from './SignIn.module.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+    root: {
+        marginLeft:'150px', 
+        marginTop:'20px'  ,  
+      color: '#623381',
+     
+    },
+   
+  });
+
 const AuthInput = styled.input`
     background: none;
     width: 100%;
@@ -25,7 +38,9 @@ const initSignIn ={
 }
 
 
+
 export const Signin = () => {
+    const classes = useStyles();
   
     const [signInForm,setsignInForm] = React.useState(initSignIn)
     const {email,password} = signInForm
@@ -47,7 +62,7 @@ export const Signin = () => {
     const handleClick=(e)=>{
             e.preventDefault()
             dispatch(getLogin(signInForm)).then(()=>{
-                isAuth?alert("Logged In"): user.isError?alert("Something Went Wrong"):console.log("Else")
+                // isAuth?alert("Logged In"): user.isError?alert("Something Went Wrong"):console.log("Else")
                
             })
            
@@ -58,12 +73,13 @@ export const Signin = () => {
     }
     
     
-    return (
+    return isLoading?(   <CircularProgress disableShrink classes={{root: classes.root}}/>) :(
         <form className={styles.signupform}>
         <AuthInput placeholder="Email Address" name="email" value={email} onChange={handleChange}></AuthInput>
         <AuthInput placeholder="Password" name="password" password={password} onChange={handleChange}></AuthInput>
         <h4 className={styles.signin_Text}>Forgot Password</h4>
         <AuthButton onClick={handleClick}>SignIn</AuthButton>
+     
     </form>
     )
 }

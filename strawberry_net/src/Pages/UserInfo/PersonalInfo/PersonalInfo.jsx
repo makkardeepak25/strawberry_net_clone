@@ -10,6 +10,8 @@ import { GetimageUrl, userUpdate } from '../../../Redux/Auth/authAction';
 import {countries} from '../countries';
 import axios from 'axios';
 import { API_KEY } from '../../..';
+import {Spinner} from '../../../Components/Spinner'
+
 
 
 const initUser ={
@@ -183,7 +185,7 @@ export const PersonalInfo = () => {
   
     // !User||User ?<div>...loading</div>:
     
-    return (
+    return isLoading?(<Spinner/>): (
         <div className={styles.fullmainCont}>
 
         
