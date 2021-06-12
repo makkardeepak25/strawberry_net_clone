@@ -1,7 +1,11 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js"
 import axios from "axios"
 import React, { useState } from 'react';
+import { Spinner } from "../Spinner";
+import PaymentFailure from "./PaymentFailure";
 import styles from './PaymentForm.module.css'
+import PaymentSucces from "./PaymentSucces";
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 
 
 const CARD_OPTIONS = {
@@ -26,6 +30,10 @@ const CARD_OPTIONS = {
 
 export default function PaymentForm() {
     const [success, setSuccess ] = useState(false)
+    const [isLoading,setisLoading]=React.useState(false)
+    const [isError,setisError]=React.useState(false)
+    const [closeSuccess,setcloseSuccess]=React.useState(false)
+    const [closeFailure,setcloseFailure]=React.useState(false)
     const stripe = useStripe()
     const elements = useElements()
 
@@ -43,6 +51,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod
+            setisLoading(true)
             const response = await axios.post("http://localhost:4000/payment", {
                 amount: 1000,
                 id
@@ -51,10 +60,13 @@ export default function PaymentForm() {
             if(response.data.success) {
                 console.log("Successful payment")
                 setSuccess(true)
+                setisLoading(false)
             }
 
         } catch (error) {
             console.log("Error", error)
+            setisError(true)
+            setisLoading(false)
         }
     } else {
         console.log(error.message)
@@ -64,18 +76,38 @@ export default function PaymentForm() {
     return (
         <>
         {!success ? 
-        <form onSubmit={handleSubmit}>
-            <fieldset className={styles.FormGroup}>
-                <div className={styles.FormRow}>
-                    <CardElement options={CARD_OPTIONS}/>
-                </div>
-            </fieldset>
-            <button>Pay</button>
-        </form>
+        <div>
+            { 
+                isLoading ?(<Spinner/>): isError? <div>
+                
+                { !closeFailure &&
+                     <div>
+                          <PaymentFailure />
+                         <CancelOutlinedIcon className={styles.closemodal} onClick={()=>setcloseFailure(!closeFailure)}/>
+                     </div>
+                
+                }
+             </div>:<form onSubmit={handleSubmit}>
+                <fieldset className={styles.FormGroup}>
+                    <div className={styles.FormRow}>
+                        <CardElement options={CARD_OPTIONS}/>
+                    </div>
+                </fieldset>
+                <button>Pay</button>
+                </form>
+            }
+        </div>
         :
-       <div>
-           <h1>आपका आर्डर सफलता से अग्रेसित कर दिए गया है...</h1>
-       </div> 
+            <div>
+                
+               { !closeSuccess &&
+                    <div>
+                         <PaymentSucces />
+                        <CancelOutlinedIcon className={styles.closemodal} onClick={()=>setcloseSuccess(!closeSuccess)}/>
+                    </div>
+               
+               }
+            </div>
         }
             
         </>
