@@ -34,6 +34,8 @@ export default function PaymentForm() {
     const [isError,setisError]=React.useState(false)
     const [closeSuccess,setcloseSuccess]=React.useState(false)
     const [closeFailure,setcloseFailure]=React.useState(false)
+    const [closeInvalid,setcloseInvalid]=React.useState(false)
+    const [isInvalid,setisInvalid] = React.useState(false)
     const stripe = useStripe()
     const elements = useElements()
 
@@ -70,6 +72,7 @@ export default function PaymentForm() {
         }
     } else {
         console.log(error.message)
+        setisInvalid(true)
     }
 }
 
@@ -78,11 +81,20 @@ export default function PaymentForm() {
         {!success ? 
         <div>
             { 
-                isLoading ?(<Spinner/>): isError? <div>
+                isLoading ?(<Spinner/>):isInvalid? <div>
+                
+                { !closeInvalid &&
+                     <div>
+                          <PaymentFailure src={"https://previews.123rf.com/images/bankrx/bankrx1801/bankrx180100212/93748171-grunge-red-invalid-word-round-rubber-seal-stamp-on-white-background.jpg"} text={"Invalid"} />
+                         <CancelOutlinedIcon className={styles.closemodal} onClick={()=>setcloseInvalid(!closeInvalid)}/>
+                     </div>
+                
+                }
+             </div>: isError? <div>
                 
                 { !closeFailure &&
                      <div>
-                          <PaymentFailure />
+                          <PaymentFailure src ={"https://kvnmail.com/in/wp-content/uploads/2017/08/round-error-icon-16.jpg"} text={"Failure"}/>
                          <CancelOutlinedIcon className={styles.closemodal} onClick={()=>setcloseFailure(!closeFailure)}/>
                      </div>
                 
