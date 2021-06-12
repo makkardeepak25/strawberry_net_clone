@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {v4 as uuid} from 'uuid'
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -75,17 +76,18 @@ export const Signup = () => {
         }
 
     }
-    
+    const history= useHistory()
     const dispatch = useDispatch()
     const handleClick = e=>{
         e.preventDefault()
 
         dispatch(getSignIn(sigupData))
         setHasRegistered(true)
+        history.replace('/')
         
     }
     function onChange(value) {
-        console.log("Captcha value:", value)
+        // console.log("Captcha value:", value)
       }
 
     const [isPasswordMatching,setIsPasswordMatching]=React.useState(true)

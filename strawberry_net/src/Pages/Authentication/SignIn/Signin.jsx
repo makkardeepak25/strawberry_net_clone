@@ -6,6 +6,7 @@ import { getLogin} from '../../../Redux/Auth/authAction';
 import styles from './SignIn.module.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -48,6 +49,7 @@ export const Signin = () => {
         setsignInForm({...signInForm,[e.target.name]:e.target.value})
     }
     const isAuth =useSelector((state)=>state.auth.isAuth)
+    const isError =useSelector((state)=>state.auth.isError)
    
     const isLoading =useSelector((state)=>state.auth.isLoading)
     const user =useSelector((state)=>state.auth)
@@ -58,21 +60,20 @@ export const Signin = () => {
 
 //    console.log(localStorage.getItem('userId'))
   
+    const history= useHistory()
+
     const dispatch = useDispatch()
     const handleClick=(e)=>{
             e.preventDefault()
-            dispatch(getLogin(signInForm)).then(()=>{
-                // isAuth?alert("Logged In"): user.isError?alert("Something Went Wrong"):console.log("Else")
-               
-            })
-           
+           dispatch(getLogin(signInForm))
+
+            
+    history.replace('/')
         
-            
-            
-            
     }
     
     
+
     return isLoading?(   <CircularProgress disableShrink classes={{root: classes.root}}/>) :(
         <form className={styles.signupform}>
         <AuthInput placeholder="Email Address" name="email" value={email} onChange={handleChange}></AuthInput>

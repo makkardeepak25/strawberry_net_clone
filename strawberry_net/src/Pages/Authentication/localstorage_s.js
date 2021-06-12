@@ -20,4 +20,8 @@ catch
 }
 
 
-export {setUser,getUser}
+function removeUser(){
+  localStorage.removeItem('userId');
+}
+
+export {setUser,getUser,removeUser}
