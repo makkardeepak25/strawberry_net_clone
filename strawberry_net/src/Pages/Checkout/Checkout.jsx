@@ -3,6 +3,8 @@ import styles from "./Checkout.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Addressform } from "./Addressform/Addressform";
+import { priceUpdate } from "../../Redux/Auth/authAction";
+import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
 
 
 
@@ -13,6 +15,7 @@ export function Checkout() {
   const cart = user.bag && user.bag;
   const name = user.f_name;
   console.log(user);
+
   
 
   let total = 0;
@@ -40,6 +43,24 @@ export function Checkout() {
       Number(newCustomeroff)
     ).toFixed(2);
   }
+  
+  const payload= {
+    tot: total,
+    newCust: newCustomeroff,
+    ship: standardShip,
+    orderTot: orderTotal,
+    bag:cart
+  }
+  const Addtouser = () => {
+    const order = user && user.orders
+    order[0]=payload
+    dispatch(priceUpdate(order))
+    console.log(user)
+  }
+  console.log(payload)
+   React.useEffect(() => {
+    Addtouser()
+  }, [payload])
 
   return (
     <div>
@@ -114,7 +135,7 @@ export function Checkout() {
                     })}
 
                   <div className={styles.bordbot} />
-                  <div className={`${styles.flexsum} ${styles.bolditem}`}>
+                  <div className={`${styles.flexsums} ${styles.bolditem}`}>
                     <div>Item Total: {cart.length} item(s)‎</div>
                     <div>INR {total}</div>
                   </div>
@@ -126,9 +147,9 @@ export function Checkout() {
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
-              <h1>ENTER PROMO CODE</h1>
+              <div className={styles.promocode}>ENTER PROMO CODE</div>
               <div>
-                <input />
+                <input type="text" className={styles.promInput} />
               </div>
               <button className={styles.checkoutbagbtn}>APPLY</button>
             </div>
@@ -162,7 +183,9 @@ export function Checkout() {
             </div>
           </div>
         </div>
+        <PaymentMethods />
       </div>
+    
     </div>
   );
 }
