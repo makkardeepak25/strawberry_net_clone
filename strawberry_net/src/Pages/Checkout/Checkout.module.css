@@ -144,6 +144,8 @@
     background-color: #fff;
     border-bottom: solid 1px #e0e0e0 !important;
     max-height: 340px;
+    position: sticky;
+    top: 15%;
     padding: 25px;
     border: 1px solid transparent;
     border-radius: 4px;

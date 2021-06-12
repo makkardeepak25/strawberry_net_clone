@@ -11,6 +11,8 @@ import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
 export function Checkout() {
   const user = useSelector((state) => state.auth.user);
   const isAuth = useSelector((state) => state.auth.isAuth);
+  const addressAvail = user && user.addresses
+  console.log(addressAvail)
   const dispatch = useDispatch();
   const cart = user.bag && user.bag;
   const name = user.f_name;
@@ -59,7 +61,7 @@ export function Checkout() {
   }
   console.log(payload)
    React.useEffect(() => {
-    Addtouser()
+     if (cart) { Addtouser() }
   }, [payload])
 
   return (
@@ -140,7 +142,8 @@ export function Checkout() {
                     <div>INR {total}</div>
                   </div>
                 </div>
-                    <Addressform/>
+                <Addressform />
+                <PaymentMethods />
                
               </>
             )}
@@ -183,7 +186,7 @@ export function Checkout() {
             </div>
           </div>
         </div>
-        <PaymentMethods />
+       
       </div>
     
     </div>
