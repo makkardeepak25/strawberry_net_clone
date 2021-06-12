@@ -289,16 +289,6 @@ li {
 }
 
 
-
-
-li > span {
-  padding: 0px 2px;
-}
-span:hover {
-  color: #521b76;
-  background-color: #fff;
-}
-
 @media (max-width: 1174px) {
   .li1 {
     display: grid;
