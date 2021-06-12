@@ -22,8 +22,7 @@
   color: #fff;
   width: 80%;
   height: 90px;
-  background: url(https://a.cdnsbn.com/images/common/2016CompanyLogo.png)
-    no-repeat scroll center center transparent;
+  background: url(https://a.cdnsbn.com/images/common/2016CompanyLogo.png) no-repeat scroll center center transparent;
   background-size: contain;
   display: block;
   text-indent: -9999px;
@@ -250,7 +249,6 @@ li {
   list-style: none;
   letter-spacing: 0.015em;
   position: relative;
-  
 }
 .accname {
   color: #b53788;
@@ -274,49 +272,38 @@ li {
   margin-left: 5px;
 }
 .clrspn {
-  color: white;
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
+  /* color: white; */
+
 }
 .clrspns {
-  color: white;
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
 }
 .li1 {
-  color: rgb(163, 114, 114);
   display: flex;
   justify-content: space-evenly;
 }
 
-
-li:hover {
-  background: #fff;
-  color: #521b76;
-  text-decoration: none;
-}
-
-li:focus {
-  background: #fff;
-  color: #521b76;
- 
-}
-
-li > span {
-  padding: 0px 2px;
-}
-span:hover {
-  color: #521b76;
-  background-color: #fff;
-}
 
 @media (max-width: 1174px) {
   .li1 {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
   }
+}
+ul .foc{
+  text-decoration: none;
+  color: #fff;
+  padding: 0px 4px;
+}
+ul .foc:focus,ul .foc:hover {
+  background-color: #fff;
+  color: #521b76;
+  text-decoration: underline;
 }
 @media (max-width: 1000px) {
   .container {
@@ -352,9 +339,7 @@ span:hover {
   padding: 10px 0px;
   z-index: 100000000;
   width: 130px;
-  position: absolute ;
-  
-
+  position: absolute;
 }
 
 .showProfilePink {
@@ -366,14 +351,13 @@ span:hover {
   display: inline-block;
   font-weight: 500;
   text-align: center;
-  
 }
 
-.showProfileOptions{
+.showProfileOptions {
   color: #6b3a87;
   font-weight: 700;
   font-size: 14px;
-  letter-spacing: .015em;
+  letter-spacing: 0.015em;
   padding: 7px 0px;
   font-weight: 500;
   text-align: center;
@@ -382,13 +366,12 @@ span:hover {
   justify-content: space-between;
   margin: 0px 10px;
   cursor: pointer;
-  
 }
-.showProfileOptionsor{
+.showProfileOptionsor {
   color: #6b3a87;
   font-weight: 700;
   font-size: 14px;
-  letter-spacing: .015em;
+  letter-spacing: 0.015em;
   padding: 7px 0px;
   font-weight: 500;
   text-align: center;
@@ -397,14 +380,13 @@ span:hover {
   justify-content: space-between;
   margin: 0px 10px;
   cursor: pointer;
-  
 }
 
-.showProfileOptionss{
+.showProfileOptionss {
   color: #6b3a87;
   font-weight: 700;
   font-size: 14px;
-  letter-spacing: .015em;
+  letter-spacing: 0.015em;
   padding: 7px 0px;
   font-weight: 500;
   text-align: center;
@@ -414,6 +396,6 @@ span:hover {
   margin: 0px 10px;
   cursor: pointer;
 }
-.showProfileOptions span{
+.showProfileOptions span {
   text-align: left;
 }

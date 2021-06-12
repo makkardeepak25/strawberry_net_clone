@@ -164,7 +164,7 @@ export const NavBar = () => {
       
       <div className={styles.navbarmenu1}>
         <ul className={styles.menucont}>
-          <Link style={{ textDecoration: "none" }} to={"/brands"}>
+          <Link className={styles.foc}  to={"/brands"}>
             {" "}
             <li className={styles.li1}>
               <span>
@@ -175,54 +175,54 @@ export const NavBar = () => {
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }}  to={"/skincare"}>
+          <Link className={styles.foc} to={"/skincare"}>
             {" "}
             <li >
               <span  className={styles.clrspn} >SKINCARE</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/makeup"}>
+          <Link className={styles.foc}>
             <li to={"/makeup"}>
               <span className={styles.clrspn}>MAKEUP</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/haircare"}>
+          <Link className={styles.foc}  to={"/haircare"}>
             {" "}
             <li>
               <span className={styles.clrspn}>HAIRCARE</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/perfumes"}>
+          <Link className={styles.foc} to={"/perfumes"}>
             {" "}
             <li>
               <span className={styles.clrspn}>PERFUME</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/men-skincare"}>
+          <Link className={styles.foc} to={"/men-skincare"}>
             {" "}
             <li>
               <span className={styles.clrspn}>MEN'S SKINCARE</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/men-cologne"}>
+          <Link className={styles.foc} to={"/men-cologne"}>
             {" "}
             <li>
               <span className={styles.clrspn}>MEN'S COLOGNE</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/home-scents"}>
+          <Link className={styles.foc} to={"/home-scents"}>
             {" "}
             <li>
               <span className={styles.clrspn}>HOME SCENTS</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/natural-beauty"}>
+          <Link className={styles.foc} to={"/natural-beauty"}>
             {" "}
             <li>
               <span className={styles.clrspn}>NATURAL BEAUTY</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/specials"}>
+          <Link className={styles.foc} to={"/specials"}>
             {" "}
             <li className={styles.li1}>
               <span>
@@ -233,7 +233,7 @@ export const NavBar = () => {
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
           </Link>
-          <Link style={{ textDecoration: "none" }} to={"/new-products"}>
+          <Link className={styles.foc} to={"/new-products"}>
             {" "}
             <li className={styles.li1}>
               <span>

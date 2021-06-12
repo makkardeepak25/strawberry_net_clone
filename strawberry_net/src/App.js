@@ -1,12 +1,13 @@
 
 
+
 import Product from "./Pages/Product_Page/Product";
 import { Home } from "./Pages/Home/Home";
 
 import {PaymentMethods} from './Components/Payment/PaymentMethods'
 
-import Routes from "./Pages/Routes/Routes";
 
+import Routes from "./Pages/Routes/Routes";
 function App() {
   
 
@@ -16,8 +17,6 @@ console.log(db);
   return (
     <div>
     <Routes/>
-
-    {/* <PaymentMethods/>     */}
 
     </div>
   );
