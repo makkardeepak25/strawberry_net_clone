@@ -3,7 +3,7 @@ import {USERDATA_UPDATE, LOGIN_REQUEST,LOGIN_SUCCESS,LOGIN_FAILURE,SIGNIN_REQUES
     SIGNIN_SUCCESS,SIGNIN_FAILURE,USERDATA_REQUEST,USERDATA_SUCCESS,USERDATA_FAILURE, 
     REMOVE_FROM_CART, IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS,IMAGE_URL_FAILURE,LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
-    LOGOUT_FAILURE,} from "./authActionTypes"
+    LOGOUT_FAILURE,PAYMENT_SUCCESS} from "./authActionTypes"
 
 
 export const loginRequest =(payload)=>{
@@ -145,6 +145,12 @@ export const imageUrlFailure =(payload)=>{
 }
 
 
+export const paymentSuccess =(payload)=>{
+    return {
+        type:PAYMENT_SUCCESS,
+        payload
+    }
+}
 
 
 
@@ -242,16 +248,9 @@ export const getlogout=()=>(dispatch)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-
+export const setPaymentSucceeded=()=>(dispatch)=>{
+   return dispatch(paymentSuccess(true))
+}
 
 
 

@@ -6,6 +6,8 @@ import PaymentFailure from "./PaymentFailure";
 import styles from './PaymentForm.module.css'
 import PaymentSucces from "./PaymentSucces";
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+import { useDispatch, useSelector } from "react-redux";
+import { setPaymentSucceeded } from "../../Redux/Auth/authAction";
 
 
 const CARD_OPTIONS = {
@@ -40,6 +42,10 @@ export default function PaymentForm() {
     const elements = useElements()
 
 
+    const dispatch = useDispatch()
+
+    const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
+    console.log(paymentConfirmation)
     const handleSubmit = async (e) => {
         e.preventDefault()
         const {error, paymentMethod} = await stripe.createPaymentMethod({
@@ -63,6 +69,7 @@ export default function PaymentForm() {
                 console.log("Successful payment")
                 setSuccess(true)
                 setisLoading(false)
+                dispatch(setPaymentSucceeded())
             }
 
         } catch (error) {

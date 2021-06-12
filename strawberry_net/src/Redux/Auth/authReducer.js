@@ -4,11 +4,11 @@ import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS,SIGNIN_FAILURE, SIGNIN_REQU
     LOGOUT_REQUEST,
     LOGOUT_SUCCESS,
     LOGOUT_FAILURE,
-    REMOVE_FROM_CART,IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS, IMAGE_URL_FAILURE} from "./authActionTypes"
+    REMOVE_FROM_CART,IMAGE_URL_REQUEST, IMAGE_URL_SUCCESS, IMAGE_URL_FAILURE,PAYMENT_SUCCESS} from "./authActionTypes"
 
 
 let initState ={
-    
+    isPaymentSuccess:false,
     isLoading: false,
     isError: false,
     isAuth:localStorage.getItem("userId")?true:false,
@@ -165,7 +165,14 @@ export const authReducer=(state=initState,{type,payload})=>{
              
             }
         }
-
+        case PAYMENT_SUCCESS:{
+            // alert('payment SuccessFull')
+            return {
+               
+                ...state,
+                isPaymentSuccess:true,
+            }
+        }
         default:{
             return{
                 ...state
