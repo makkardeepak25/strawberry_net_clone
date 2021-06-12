@@ -17,3 +17,17 @@
 	margin-left: 15px;
 	border-top: 1px solid white;
 }
+
+.closemodal{
+	top: 28%;
+	position:fixed;
+	color:#623381;
+	right:33.8%;
+	z-index: 10000;
+
+
+}
+
+.closemodal:hover{
+	color:green;
+}
