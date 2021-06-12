@@ -1,9 +1,10 @@
 .paymentmethods{
     /* background-color: aquamarine; */
-    width:40%;
+    width:65%;
     height:60vh;
-	box-shadow:1px 1px 1px 1px rgba(128, 128, 128, 0.479);
+	/* box-shadow:1px 1px 1px 1px rgba(128, 128, 128, 0.479); */
 	padding: 20px 20px;
+	background-color: white;
 }
 
 
@@ -34,8 +35,8 @@
 }
 
 .paymentmethods {
-	margin-left: 5%;
-	margin-top: 5%;
+	/* margin-left: 1%; */
+	margin-top: 2%;
 	
 }
 
