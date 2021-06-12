@@ -38,6 +38,8 @@ export default function PaymentForm() {
         })
 
 
+        
+
     if(!error) {
         try {
             const {id} = paymentMethod
