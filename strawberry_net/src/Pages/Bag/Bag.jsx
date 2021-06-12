@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
 import { removeFromCart, removeItem } from "../../Redux/Auth/authAction";
 import { Redirect } from "react-router";
+import { Checkout } from "../Checkout/Checkout";
+import { Link } from "react-router-dom";
 import Axios from "axios"
 export function Bag() {
   const user = useSelector(state => state.auth.user);
@@ -188,13 +190,13 @@ export function Bag() {
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
-              <p>Checkout as {name}?</p>
-              <button>Check Out</button>
+              <p>Checkout as {name}?</p> 
+              <Link to={"/user/checkout"}>  <button className={styles.checkoutbagbtn}>Check Out</button> </Link>
             </div>
             <div className={styles.bordbotcheck} />
             <div className={styles.checkoutbag}>
               <p>Not {name}?</p>
-              <button>Sign Out</button>
+              <button className={styles.checkoutbagbtn}>Sign Out</button>
             </div>
           </div>
         </div>
