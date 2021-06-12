@@ -43,6 +43,7 @@
     text-overflow: ellipsis;
     display: block;
     display: -webkit-box;
+    text-transform: uppercase;
     position: absolute;
     left: 7%;
     top: 50%;
