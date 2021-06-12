@@ -85,6 +85,7 @@
     width: 100px;
   }
   .promocode{
+   
     font-size: 18px;
     font-weight: bold;
     margin: 10px 0px;
@@ -148,6 +149,7 @@
     border-radius: 4px;
     text-transform: uppercase;
     text-align: center;
+   ;
   }
   .checkoutbag>p{
       font-size: 18px;

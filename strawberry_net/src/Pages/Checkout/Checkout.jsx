@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Addressform } from "./Addressform/Addressform";
 import { priceUpdate } from "../../Redux/Auth/authAction";
+import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
 
 
 
@@ -182,7 +183,9 @@ export function Checkout() {
             </div>
           </div>
         </div>
+        <PaymentMethods />
       </div>
+    
     </div>
   );
 }

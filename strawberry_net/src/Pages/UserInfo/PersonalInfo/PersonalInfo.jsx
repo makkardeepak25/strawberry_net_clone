@@ -121,26 +121,14 @@ export const PersonalInfo = () => {
     
    
 
-    // const ShowUrlImage = () => {
-       
-    //     // imageRef.current.click()
-    //     // if (!imageRef.current.files[0]) {
-    //     // return;
-    //     // }
-    //     // const img = URL.createObjectURL(imageRef.current.files[0]);
 
-    //    dispatch(GetimageUrl(imageRef.current.files[0])).then(()=>{
-    //     console.log(avataring_image)
-    //    })
-       
-    console.log(`Client-ID ${API_KEY}`)
       const ShowUrlImage= async()=>{
       
         await axios({
           method: "post",
           url: "https://api.imgur.com/3/image",
           headers: {
-            Authorization: `Client-ID ${process.env.REACT_APP_API_KEY}`,
+            Authorization: `Client-ID ${API_KEY}`,
           },
           data:imageRef.current.files[0] 
         })
