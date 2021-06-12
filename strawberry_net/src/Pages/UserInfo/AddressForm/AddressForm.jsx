@@ -82,8 +82,8 @@ export const AddressForm = () => {
 
           <div>
               <div><input type="text" placeholder="Address *" defaultValue={locality}  name="locality" onChange={handleOnChange}/></div>
-              <div><input type="text" style={{borderTop:'none'}} defaultValue={locality}  name="locality" onChange={handleOnChange}/></div>
-              <div><input type="text" style={{borderTop:'none'}}   defaultValue={locality}  name="locality" onChange={handleOnChange}/></div>
+              {/* <div><input type="text" style={{borderTop:'none'}} defaultValue={locality}  name="locality" onChange={handleOnChange}/></div>
+              <div><input type="text" style={{borderTop:'none'}}   defaultValue={locality}  name="locality" onChange={handleOnChange}/></div> */}
           </div>
           <div><input type="text" placeholder="City/town *" value={city}  name="city" onChange={handleOnChange}/></div>
          <div> 
