@@ -23,9 +23,10 @@ export const getProdFailure =(payload)=>{
 
 export const getProdData = () => dispatch => {
     dispatch(getProdRequest());
-    Axios.get("https://6wwnt.sse.codesandbox.io/products")
+    Axios.get("https://api-strawberrynet.herokuapp.com/products")
         .then(res => {
-        dispatch(getProdSuccess(res.data));
+            dispatch(getProdSuccess(res.data));
+            console.log(res.data)
       })
       .catch(err => {
         dispatch(getProdFailure(err));
@@ -55,7 +56,7 @@ export const getSearchFailure =(payload)=>{
 
 export const getSearchData = (title) => dispatch => {
     dispatch(getSearchRequest());
-    Axios.get(`https://6wwnt.sse.codesandbox.io/products?prod_name=${title}`)
+    Axios.get(`https://api-strawberrynet.herokuapp.com/products?prod_name=${title}`)
         .then(res => {
         dispatch(getSearchSuccess(res.data));
         console.log(res.data)
