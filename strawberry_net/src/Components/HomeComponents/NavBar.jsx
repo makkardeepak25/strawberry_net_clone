@@ -36,6 +36,7 @@ const history=useHistory()
 
   //const cart = user&&user.bag
   const name = user && user.f_name;
+  const avatar = user && user.avatar
 
   const { category } = useParams();
 
@@ -116,7 +117,7 @@ const history=useHistory()
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
-                    src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
+                    src={avatar?avatar:"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
                     alt="strawlog"
                   />
                   <span className={styles.aaccname}>{name}</span>
