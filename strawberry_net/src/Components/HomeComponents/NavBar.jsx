@@ -401,48 +401,48 @@ export const NavBar = () => {
           <Link className={styles.foc} to={"/skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>SKINCARE</span>
+              <div className={styles.clrspn}>SKINCARE</div>
             </li>
           </Link>
           <Link className={styles.foc}>
             <li to={"/makeup"}>
-              <span className={styles.clrspn}>MAKEUP</span>
+              <div className={styles.clrspn}>MAKEUP</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/haircare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>HAIRCARE</span>
+              <div className={styles.clrspn}>HAIRCARE</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/perfumes"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>PERFUME</span>
+              <div className={styles.clrspn}>PERFUME</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/men-skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>MEN'S SKINCARE</span>
+              <div className={styles.clrspn}>MEN'S SKINCARE</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/men-cologne"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>MEN'S COLOGNE</span>
+              <div className={styles.clrspn}>MEN'S COLOGNE</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/home-scents"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>HOME SCENTS</span>
+              <div className={styles.clrspn}>HOME SCENTS</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/natural-beauty"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>NATURAL BEAUTY</span>
+              <div className={styles.clrspn}>NATURAL BEAUTY</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/specials"}>

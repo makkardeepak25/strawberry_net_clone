@@ -202,6 +202,7 @@
   background: #623381;
   width: 100%;
   display: block;
+  padding: 3px 5px;
 }
 .navbarmenu2 {
   background: #623381;
@@ -216,7 +217,7 @@
   position: relative;
   display: flex;
   text-align: center;
-  justify-content: space-between !important;
+  justify-content: space-evenly !important;
   font-size: 14px;
   float: none;
   text-align: center;
@@ -276,16 +277,33 @@ li {
   /* color: white; */
 
 }
+.menucont li:hover{
+  background-color: white;
+  color: #521B76;
+}
+
 .clrspns {
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
   
 }
+.clrspn:hover{
+  color: #521B76;
+}
+
+.clrspns:hover {
+  color: #521B76;
+}
 .li1 {
   display: flex;
   justify-content: space-evenly;
 }
+<<<<<<< HEAD
+.matui:hover{
+  color:#521B76
+}
+=======
 .navbrand1{
   display: none;
   width: 80%;
@@ -299,6 +317,7 @@ li {
   padding-top: 10px;
 }
 
+>>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
 @media (max-width: 1174px) {
   .li1 {
     display: grid;
