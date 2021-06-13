@@ -30,7 +30,7 @@ export function Checkout() {
   let total = 0;
   cart &&
     cart.map(el => {
-      total = total + Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty);
+      total = total + Number(parseInt(el.size[0].price)) * Number(el.qty);
     });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
@@ -115,11 +115,11 @@ export function Checkout() {
                             </div>
                             <div>{el.prod_description}</div>
                             <div>{el.size[0].size}</div>
-                            <div>{Number(parseInt(el.size[0].price.replace(/,/g, "")))}</div>
+                            <div>{Number(parseInt(el.size[0].price.replace))}</div>
                           </div>
                           <div>Qty. {el.qty}</div>
                           <div style={{ marginLeft: "10%" }}>
-                            {Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty)}
+                            {Number(parseInt(el.size[0].price)) * Number(el.qty)}
                           </div>
                           <br />
 
