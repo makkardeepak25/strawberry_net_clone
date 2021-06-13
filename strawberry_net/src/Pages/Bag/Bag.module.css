@@ -149,6 +149,11 @@
       border: 1px solid transparent;
       white-space: nowrap;
   }
+  .checkoutbagbtn:hover{
+    color: #333;
+    background-color: #ebebeb;
+    border-color: #adadad;
+  }
   .bordbotcheck{
       margin: 50px 0px;
       border-bottom: 0.3px solid rgb(71, 69, 69);

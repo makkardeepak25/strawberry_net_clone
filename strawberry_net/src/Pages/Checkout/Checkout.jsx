@@ -143,7 +143,7 @@ export function Checkout() {
               </>
             )}
           </div>
-          <div className={styles.checksignout}>
+          {cart&&cart.length>0&&  <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>
               <div className={styles.promocode}>ENTER PROMO CODE</div>
               <div>
@@ -163,6 +163,7 @@ export function Checkout() {
               )}
             </div>
             <div className={styles.bordbotcheck} />
+            
             <div className={styles.checkoutbag}>
               <div className={styles.summary}>
                 <div className={`${styles.flexsum} ${styles.bolditem}`}>
@@ -175,7 +176,7 @@ export function Checkout() {
                 </div>
                 {promCode ? (
                   <div className={`${styles.flexsum} ${styles.extraoff}`}>
-                    <div>Promo Code 10% Off</div>
+                    <div>Promo Code 5% Off</div>
                     <div>-INR {promoDisc}</div>
                   </div>
                 ) : null}
@@ -197,7 +198,8 @@ export function Checkout() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>}
+         
         </div>
       </div>
     </div>}

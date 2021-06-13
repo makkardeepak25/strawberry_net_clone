@@ -56,7 +56,10 @@ export const DeliveryAddress = () => {
       const handleChange = (event) => {
         setState({ ...state, [event.target.name]: event.target.checked });
       };
-    return showAddressform?(<div><AddressForm/></div>):
+      const handleClose=()=>{
+        setShowAddressForm(false);
+      }
+    return showAddressform?(<div><AddressForm handleClose={handleClose}/></div>):
     (
         <div className={styles.billingAddress}> 
          

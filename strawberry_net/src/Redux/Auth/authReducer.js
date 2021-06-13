@@ -157,9 +157,10 @@ export const authReducer=(state=initState,{type,payload})=>{
         case USERDATA_UPDATE:{
             alert("Details Updated SuccessFully")
             return {
+                ...state,
                 user:payload,
                 isLoading:false,
-                ...state,
+                
                
                 
              

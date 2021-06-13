@@ -160,7 +160,7 @@ export const PersonalInfo = () => {
     }
 
     const handleOnChange=(e)=>{
-        setFormData({...formData,...User,["avatar"]:imageurl,[e.target.name]:e.target.value})  
+        setFormData({...formData,...User,["avatar"]:imageurl!==null?imageurl:User.avatar,[e.target.name]:e.target.value})  
 
        
     }
@@ -168,8 +168,16 @@ export const PersonalInfo = () => {
     const  handleSubmit = (e)=>{
         e.preventDefault()
         
-           
-        dispatch(userUpdate(userId,formData))
+        if(formData['f_name']!=="") {
+            dispatch(userUpdate(userId,formData))
+        }  
+        
+        else{
+            alert("You are not making any Change")
+        }
+
+
+
         // alert(`Hello ${User.f_name} your details saved successFully`)
 
        
