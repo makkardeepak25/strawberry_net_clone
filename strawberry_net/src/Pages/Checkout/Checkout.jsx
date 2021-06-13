@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Addressform } from "./Addressform/Addressform";
 import { priceUpdate } from "../../Redux/Auth/authAction";
 import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
+import {Spinner} from "./../../Components/Spinner"
 import { Checkbox } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid } from "uuid";
@@ -28,6 +29,7 @@ const useStyles = makeStyles({
 
 export function Checkout() {
   const user = useSelector(state => state.auth.user);
+  const isLoading=useSelector(state=>state.auth.isLoading)
   const isAuth = useSelector(state => state.auth.isAuth);
   const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
   console.log(paymentConfirmation)
@@ -109,7 +111,8 @@ export function Checkout() {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
   return (
-    <div>
+    <>
+    {isLoading?<Spinner/>:<div>
       <div className={styles.container}>
         <h1 className={styles.pagetitle}>CHECKOUT</h1>
 
@@ -140,6 +143,7 @@ export function Checkout() {
                   {cart.length > 0 &&
                     cart.map(el => {
                       return (
+
                         <div className={styles.prodbag}>
                           <img src={el.images[0]} alt="product" />
                           <div style={{ width: "45%" }}>
@@ -258,6 +262,8 @@ export function Checkout() {
           )}
         </div>
       </div>
-    </div>
+    </div>}
+    
+    </>
   );
 }
