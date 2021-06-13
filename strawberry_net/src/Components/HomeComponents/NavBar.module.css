@@ -419,6 +419,15 @@ ul .foc:focus,ul .foc:hover {
   margin: 0px 10px;
   cursor: pointer;
 }
+.signoutbtn{
+  color: white;
+  background-color: hotpink;
+  margin: 10px 27px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
 
 .showProfileOptionss {
   color: #6b3a87;
