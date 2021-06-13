@@ -7,16 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProdData } from "../../Redux/Products/productAction";
 
 export const BestDeals = () => {
-    const [data, setData] = React.useState([]);
-    const getData = () => {
-      axios.get("https://6wwnt.sse.codesandbox.io/products").then(res => {
-        console.log(res.data);
-        setData(res.data);
-      });
-    };
-    React.useEffect(() => {
-      getData();
-    }, []);
+  const dispatch = useDispatch();
+  const data = useSelector(state => state.prod.products);
+
+  React.useEffect(
+    () => {
+      dispatch(getProdData());
+    },
+    [dispatch]
+  );
+    
     return (
         <>
         {data.slice(8,12).map(el => {

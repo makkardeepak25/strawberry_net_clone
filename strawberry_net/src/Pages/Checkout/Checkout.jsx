@@ -134,7 +134,7 @@ export function Checkout() {
                     <div>INR {total}</div>
                   </div>
                 </div>
-                <Addressform />
+                {(addressAvail&&addressAvail.length>0)?<div>Deepak</div>:<Addressform/>}
                 <PaymentMethods />
               </>
             )}
