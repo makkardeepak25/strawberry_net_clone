@@ -28,7 +28,8 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case LOGIN_SUCCESS:{
       
-            setUser("userId",payload.id)
+            setUser("userId",payload._id)
+            console.log(payload._id)
             return{
                 
                  ...state,
