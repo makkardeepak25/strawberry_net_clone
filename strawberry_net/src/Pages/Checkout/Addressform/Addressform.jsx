@@ -51,7 +51,7 @@ export const Addressform=()=>{
     const dispatch = useDispatch()
     
     const  handleSubmit = (e)=>{
-        e.preventDefault()        
+      e.preventDefault()
         dispatch(userUpdate(user.id,{addresses:[...user.addresses,addressForm]}))
    
     }
@@ -113,24 +113,6 @@ export const Addressform=()=>{
               <input
                 type="text"
                 placeholder="Address *"
-                defaultValue={locality}
-                name="locality"
-                onChange={handleOnChange}
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                style={{ borderTop: "none" }}
-                defaultValue={locality}
-                name="locality"
-                onChange={handleOnChange}
-              />
-            </div>
-            <div>
-              <input
-                type="text"
-                style={{ borderTop: "none" }}
                 defaultValue={locality}
                 name="locality"
                 onChange={handleOnChange}

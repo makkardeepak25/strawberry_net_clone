@@ -29,6 +29,8 @@ const useStyles = makeStyles({
 export function Checkout() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
+  const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
+  console.log(paymentConfirmation)
   const addressAvail = user && user.addresses;
   const [promCode, setPromCode] = React.useState(false);
   const [state, setState] = React.useState({});
@@ -75,7 +77,7 @@ export function Checkout() {
   } else {
     orderTotal = (Number(total) - Number(promoDisc) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
   }
-  let today = Date.now();
+  let today = new Date();
   const payload = {
     Item_Total: total,
     newCustomerOff: newCustomeroff,
@@ -85,7 +87,8 @@ export function Checkout() {
     promoDiscount: promoDisc,
     address: addressAvail && addressAvail[0],
     orderId: orderid,
-    date: today.toLocaleDateString()
+    date: today.toLocaleDateString(),
+    payment:paymentConfirmation? "Success":"Due"
   };
   const Addtouser = () => {
     const order = user && user.orders;

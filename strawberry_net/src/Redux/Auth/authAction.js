@@ -171,19 +171,8 @@ export const getSignIn =(payload)=>(dispatch)=>{
 export const getLogin =({email,password})=>(dispatch)=>{
     dispatch(loginRequest())
   
-    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles?email=${email}`,{email,password}).then((res)=>{
-        
-        
-        if(res.data[0].email===email && res.data[0].password===password){
-            dispatch(loginSuccess(res.data[0]))
-           
-        }
-        else {
-          console.log("Error")
-        dispatch(loginFailure("wfeg"))
-        }
-       
-       
+    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles?email=${email}&password=${password}`,{email,password}).then((res)=>{
+            dispatch(loginSuccess(res.data[0]))       
         
     })
     .catch(err=>{
@@ -256,24 +245,6 @@ export const getlogout=()=>(dispatch)=>{
 export const setPaymentSucceeded=()=>(dispatch)=>{
    return dispatch(paymentSuccess(true))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
