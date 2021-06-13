@@ -1,0 +1,60 @@
+.paymentmethods{
+    /* background-color: aquamarine; */
+    width:95%;
+    height:60vh;
+	/* box-shadow:1px 1px 1px 1px rgba(128, 128, 128, 0.479); */
+	padding: 20px 20px;
+	background-color: white;
+}
+
+
+
+
+.paymentmethods button {
+	display: block;
+	font-size: 16px;
+	min-width: 300px;
+    width:25%;
+	height: 40px;
+	margin: 40px 15px 0;
+	background-color: #623381;
+	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #623381;
+	border-radius: 4px;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 100ms ease-in-out;
+	will-change: transform, background-color, box-shadow;
+	border: none;
+}
+
+.paymentmethods button:active {
+	background-color: #623381;
+	box-shadow: 0 6px 9px rgba(50, 50, 93, 0.06), 0 2px 5px rgba(0, 0, 0, 0.08), inset 0 1px 0 #623381;
+	transform: scale(0.99);
+}
+
+.paymentmethods {
+	/* margin-left: 1%; */
+	margin-top: 2%;
+	
+}
+
+.paymentmethods h1,
+.paymentmethods h3 {
+	text-align: center;
+}
+
+.payOptions{
+	display: flex;
+	align-items: center;
+}
+
+.payOptions label {
+	margin-left: 10px;
+}
+
+.center{
+	margin:30px auto !important;
+	width:70% !important;
+}

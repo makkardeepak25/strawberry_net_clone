@@ -1,25 +1,26 @@
-import React from "react"
-import axios from "axios"
-import styles from "./Card.module.css"
-import { Link } from "react-router-dom"
+import React from "react";
+import axios from "axios";
+import styles from "./Card.module.css";
+import { Link } from "react-router-dom";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getProdData } from "../../Redux/Products/productAction";
 
 export const BestDeals = () => {
-    const [data, setData] = React.useState([]);
-    const getData = () => {
-      axios.get("https://6wwnt.sse.codesandbox.io/products").then(res => {
-        console.log(res.data);
-        setData(res.data);
-      });
-    };
-    React.useEffect(() => {
-      getData();
-    }, []);
+  const dispatch = useDispatch();
+  const data = useSelector(state => state.prod.products);
+
+  React.useEffect(
+    () => {
+      dispatch(getProdData());
+    },
+    [dispatch]
+  );
+    
     return (
         <>
         {data.slice(8,12).map(el => {
-                    return <Link to={`/products/${el.id}`}><div className={styles.prodDeals}>
+                    return <Link to={`${el.category}/products/${el._id}`}><div className={styles.prodDeals}>
                     <a>
                       <span className={styles.prodname}>{el.prod_name}</span>
                       <p className={styles.desc}>

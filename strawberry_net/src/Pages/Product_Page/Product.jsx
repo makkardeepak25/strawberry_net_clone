@@ -6,6 +6,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SimpleRating from "../../Components/Rating/ReadRating"
 import {Rating} from "@material-ui/lab";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
+import {useDispatch,useSelector} from "react-redux"
+import { getUserDetails, userUpdate } from '../../Redux/Auth/authAction';
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -34,6 +38,7 @@ const Product = () => {
     //     ],
     //     offer:14
     // }
+
     let array = new Array(30).fill(0)
     
     const [activeTab, setActiveTab] = useState("details")
@@ -44,19 +49,69 @@ const Product = () => {
     const [image,setImage]=useState(0)
     const [size,setSize]=useState(0)
     const [product,setProduct]=useState({})
+    const [qty,setQty]=useState("1")
+
 
     const GetProduct=()=>{
-        axios.get(`https://6wwnt.sse.codesandbox.io/products/${id}`)
+        axios.get(`https://api-strawberrynet.herokuapp.com/products/${id}`)
         .then(res=>{
-           console.log(res.data);
+        //    console.log(res.data);
            setProduct(res.data)
         })
     }
-    let avr_rating=product.reviews && product.reviews
-    console.log(avr_rating);
+    const addProduct={
+        ...product,
+        size: [{size:product.size?product.size[size].size:"",price:product.size?product.size[size].price:"0"}],
+       qty:Number(qty)
+    }
+
+    const user= useSelector((state)=>state.auth.user)
+    const userid= useSelector((state)=>state.auth.userId)
+    const dispatch=useDispatch()
+   
+  
+ 
+    const AddToCard=(product)=>{
+        
+        const id=product.id
+     //console.log(id,product);
+     dispatch(userUpdate(id,product))
+
+    }
+    const addtoBag=()=>{
+        const bag=user&&user.bag
+         const isPresent= bag.length>0&& bag.map((el)=> el._id===addProduct._id?{...el, qty:Number(el.qty)+Number(qty)}:el)
+        // const isPresent= bag.length>0&& bag.find((el)=> el.id===product.id)
+     
+         const isPresentObject= bag.length>0&& bag.filter((el)=> el._id===addProduct._id&&{...el, qty:Number(el.qty)+Number(qty)})
+        console.log(isPresentObject[0]);
+         const userdata={
+
+            ...user,
+            bag:bag.length > 0?[...isPresent,addProduct]:[addProduct]
+        }
+        const userdata1={
+
+            ...user,
+            bag:bag.length > 0?[...isPresent]:[addProduct]
+        }
+         isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
+        // AddToCard(userdata)
+        console.log(userdata);
+        console.log(userdata1);
+    }
+
+
 useEffect(()=>{
 GetProduct()
-},[id])
+window.scrollTo(0, 0);
+
+
+},[])
+useEffect(()=>{
+    dispatch(getUserDetails(userid))
+
+},[])
 
     return (
         <>
@@ -105,14 +160,14 @@ GetProduct()
                         <h3>.00</h3>
                     </div>
                     <div className={styles.select_tag_btn_div}>
-                        <select >
+                        <select onChange={(e)=>setQty(e.target.value)} >
 
                             {
-                                array.map((el, i) => <option value="">{i + 1}</option>)
+                                array.map((el, i) => <option value={i+1}>{i + 1}</option>)
                             }
                         </select>
 
-                        <button >Add to bag</button>
+                        <button onClick={addtoBag} >Add to bag</button>
                         <h5>Low in Stock</h5>
 
                     </div>
@@ -133,7 +188,7 @@ GetProduct()
                             <SimpleRating value="2"/>
                             </div>
                             <div>
-                                <p>ADD TO WISHLIST</p>
+                                <div className={styles.wish_list}> <FavoriteBorderIcon className={styles.wish_icon} /><p>ADD TO WISHLIST</p></div>
                             </div>
                             <div className={styles.write}>
                                 <button>Write Review</button>
@@ -157,7 +212,8 @@ GetProduct()
                                  product.reviews.map((object)=>
                                  <div className={styles.reviews}>
                                      <div >
-                                     <h5>Rating star</h5>
+                                         
+                                    <SimpleRating value={2}/>
                                  <p>{object.date&&object.date}</p>
                                      </div>
                                      <div>

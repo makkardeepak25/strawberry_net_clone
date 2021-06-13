@@ -1,6 +1,6 @@
-import { StylesProvider } from '@material-ui/styles'
+
 import React from 'react';
-import styles from './Gradient.module.css';
+
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import LoyaltyOutlinedIcon from '@material-ui/icons/LoyaltyOutlined';
@@ -9,8 +9,31 @@ import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 
 import { Setting } from './Settings/Setting';
+import styles from './Gradient.module.css';
+import { makeStyles } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+
+
+const useStyles = makeStyles(
+    { 
+      root: {
+          
+          fontSize:'35px',
+         
+          
+          
+        }
+    }
+)
 
 export const Gradient = () => {
+    const classes = useStyles();
+    const defaultFocus = React.useRef();
+
+    React.useEffect(() => {
+        defaultFocus.current.focus()
+    },[])
+
     return (
         <div className={styles.mainCont}>      
             <div className={styles.gradeHeader}>
@@ -21,25 +44,25 @@ export const Gradient = () => {
               
                
           
-            <div className={styles.menuIcons}><PermIdentityIcon  style={{fontSize:'30px'}}/>
+            <Link  className={styles.menuIcons}><PermIdentityIcon className={classes.root}  />
               ACCOUNT
-            </div>
-            <div className={styles.menuIcons}><FavoriteBorderIcon style={{fontSize:'30px'}}/>
+            </Link>
+            <Link className={styles.menuIcons}><FavoriteBorderIcon className={classes.root}/>
                 WISHLIST
-            </div>
-            <div className={styles.menuIcons}><LoyaltyOutlinedIcon  style={{fontSize:'30px'}}/>
+            </Link>
+            <Link className={styles.menuIcons}><LoyaltyOutlinedIcon  className={classes.root}/>
                 POINTS
-            </div>
+            </Link>
 
-            <div className={styles.menuIcons}><ShoppingCartOutlinedIcon style={{fontSize:'30px'}} />
+            <Link className={styles.menuIcons}><ShoppingCartOutlinedIcon className={classes.root} />
                 ORDERS
-            </div>
-            <div className={styles.menuIcons}><GradeOutlinedIcon style={{fontSize:'30px'}} />
+            </Link>
+            <Link className={styles.menuIcons}><GradeOutlinedIcon className={classes.root} />
                 REVIEWS
-            </div>
-            <div className={styles.menuIcons}><SettingsOutlinedIcon style={{fontSize:'30px'}}/>
+            </Link>
+            <Link ref={defaultFocus} className={styles.menuIcons}><SettingsOutlinedIcon className={classes.root}/>
                 SETTINGS
-            </div>
+            </Link>
             </div>
             
             

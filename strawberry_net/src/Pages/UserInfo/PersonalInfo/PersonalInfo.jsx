@@ -1,10 +1,32 @@
 import React from 'react';
-import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import styles from './PersonalInfo.module.css';
 import styled from 'styled-components';
+import { useDispatch,useSelector } from 'react-redux';
+
+
+import styles from './PersonalInfo.module.css';
+import { GetimageUrl, userUpdate } from '../../../Redux/Auth/authAction';
 import {countries} from '../countries';
+import axios from 'axios';
+import { API_KEY } from '../../..';
+import {Spinner} from '../../../Components/Spinner'
+
+
+
+const initUser ={
+    f_name:"",
+    l_name:"",
+    password:"",
+    nickname:"",
+    countryCode:"",
+    phone:"",
+    birth_date:"",
+    birth_month:"",
+    avatar:"",
+    gender:"",
+    location:""
+}
 
 
 const UserInput = styled.input`
@@ -13,6 +35,9 @@ const UserInput = styled.input`
     height: 34px;
     border: 1px solid #623381;
     color: #808080c3;
+    ::placeholder{
+        /* font-size:16px; */
+    }
 
 `
 
@@ -31,14 +56,16 @@ const useStyles = makeStyles((theme) => ({
     
     },
   }));
-  
-export const PersonalInfo = ({onChange}) => {
-    const [showButton,setShowButton] =React.useState(false)
-    const [newPassword,setnewPassword] = React.useState(false)
 
-    let days = new Array(31)
-    days= days.fill(0,0,31)
-    const months = [
+
+
+
+      
+                
+  
+
+
+   const months = [
         'January',
         'February',
         'March',
@@ -51,23 +78,132 @@ export const PersonalInfo = ({onChange}) => {
         'October',
         'November',
         'December',
-      ];
-    
-    const classes = useStyles();
+      ];  
+      
+    var days = new Array(31)
+    days= days.fill(0,0,31)
 
-    const handleOnchange=()=>{
+
+  
+
+export const PersonalInfo = () => { 
+    const classes = useStyles();
+    const [formData,setFormData] =React.useState(initUser)
+   
+    const {f_name,l_name,password,nickname,countryCode,phone,birth_date,birth_month,avatar,gender,location} =formData
+    const [showButton,setShowButton] =React.useState(false)
+    const [newPassword,setnewPassword] = React.useState(false)  
+    const [imageurl, setImageURL] = React.useState(null);
+   
+    const imageRef = React.useRef();
+
+    const dispatch = useDispatch()
+
+    const User = useSelector((state)=>state.auth.user)
+    // console.log(User.f_name)
+    const userId = useSelector((state)=>state.auth.userId)
+    const isLoading = useSelector((state)=>state.auth.isLoading)
+    const avataring_image = useSelector((state)=>state.auth)
+    
+    console.log(userId,"Inside Personal Info")
+  
+   
+    
+    
+
+  
+   
+
+    React.useEffect(()=>{
+        setFormData({...formData,["avatar"]:imageurl})
+        
+    },[imageurl])
+   
+
+    
+   
+
+
+      const ShowUrlImage= async()=>{
+      
+        await axios({
+          method: "post",
+          url: "https://api.imgur.com/3/image",
+          headers: {
+            Authorization: `Client-ID ${API_KEY}`,
+          },
+          data:imageRef.current.files[0] 
+        })
+          .then((res) => {
+              
+           setImageURL(res.data.data.link)
+            alert('uploaded Successfully')
+            console.log(res.data.data.link)
+        })
+          .catch((err) => alert(err));
+      };
+
+    
+       
+    
+        
+      
+    
+   
+  
+    
+    
+
+    const handleOnFocus=()=>{
         setShowButton(true)
+   
     }
 
+    const handleOnChange=(e)=>{
+        setFormData({...formData,...User,["avatar"]:imageurl!==null?imageurl:User.avatar,[e.target.name]:e.target.value})  
 
-    return (
+       
+    }
+
+    const  handleSubmit = (e)=>{
+        e.preventDefault()
+        
+        if(formData['f_name']!=="") {
+            dispatch(userUpdate(userId,formData))
+        }  
+        
+        else{
+            alert("You are not making any Change")
+        }
+
+
+
+        // alert(`Hello ${User.f_name} your details saved successFully`)
+
+       
+    }
+
+    
+  
+    
+
+  
+
+    console.log(User)
+  
+    // !User||User ?<div>...loading</div>:
+    {console.log(isLoading)}
+    return isLoading?(<Spinner/>): (
         <div className={styles.fullmainCont}>
 
         
         <div className={classes.root,styles.mainCont}>
-            <Avatar className={classes.large}  alt="" src={"https://s.cdnsbn.com/images/profile/10364147.jpg?t=1622449131812"} />
+           { console.log(imageurl)}
+          <Avatar className={classes.large}  alt="" src={imageurl?imageurl:User.avatar}/>
+       
             <div className={styles.UploadButton}>
-            <input type="file" className={styles.customeFileInput} onFocus={handleOnchange} />
+            <input type="file" style={{display:'none'}} className={styles.customeFileInput} onChange={ShowUrlImage}  ref={imageRef} />
+            <button onClick={()=>{imageRef.current.click()}}>Upload profile photo</button>
            
            
             </div>
@@ -77,14 +213,14 @@ export const PersonalInfo = ({onChange}) => {
                 <div className={styles.labelCont}>
                     <label htmlFor="">First name</label>
                 </div>
-                <div className={styles.inputCont} ><UserInput value={"Kamal"} onFocus={handleOnchange}></UserInput></div>
+                <div className={styles.inputCont} ><UserInput defaultValue={User.f_name} name="f_name" onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
                 <div className={styles.labelCont}>
                     <label htmlFor="">Surname</label>
                 </div>
-                <div className={styles.inputCont}><UserInput onFocus={handleOnchange} value={"Gupta"}></UserInput></div>
+                <div className={styles.inputCont}><UserInput onFocus={handleOnFocus} defaultValue={User.l_name} name="l_name" onChange={handleOnChange} ></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
@@ -92,7 +228,7 @@ export const PersonalInfo = ({onChange}) => {
                     <label htmlFor="">NickName</label>
                     <div>(Optional)</div>
                 </div>
-                <div className={styles.inputCont}><UserInput onFocus={handleOnchange}></UserInput></div>
+                <div className={styles.inputCont}><UserInput placeholder="" name="nickname" defaultValue={User.nickname}  onFocus={handleOnFocus} onChange={handleOnChange}></UserInput></div>
                 
             </div>
             <div className={styles.userCont}>
@@ -101,16 +237,19 @@ export const PersonalInfo = ({onChange}) => {
                 </div>
                 <div className={styles.inputCont} style={{display:'flex',alignItems:'center'}}>
                         <label htmlFor="" style={{width:'120px'}} >Country Code</label>
-                        <select name="" id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnchange}>
+                        <select name="countryCode" defaultValue={User.countryCode} id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                
+                        <option value={countryCode} selected>{location} {User.countryCode}</option>
+                
                 {
                     countries.map(item=>
-                        <option value="">{item.label} +{item.phone}</option>
+                        <option value={`+${item.phone}`}>{item.label} +{item.phone}</option>
                         )
                 }
                     </select>
                     <div style={{width:'10%'}} ></div>
                         <label htmlFor="" style={{width:'70px'}} >Number</label>
-                        <UserInput style={{width:'35%'}} onFocus={handleOnchange} ></UserInput>
+                        <UserInput style={{width:'35%'}} onFocus={handleOnFocus} name="phone" defaultValue={User.phone} onChange={handleOnChange} ></UserInput>
 
                 </div>
                 
@@ -121,10 +260,11 @@ export const PersonalInfo = ({onChange}) => {
                     <div>(Optional)</div>
                 </div>
                 <div className={styles.inputCont}>
-                    <select name="" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnchange}>
-                    <option value="">Please Select</option>
-                        <option value="">Male</option>
-                        <option value="">Female</option>
+                    <select defaultValue={User.gender} name="gender" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                    <option value="Please Select">Please Select</option>
+                        <option value={User.gender} selected>{User.gender}</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                         
                     </select>
                 </div>
@@ -137,17 +277,19 @@ export const PersonalInfo = ({onChange}) => {
                 </div>
                 <div className={styles.inputCont} style={{display:'flex',alignContent:'space-between',alignItems:'center',}}>
                 <label htmlFor="" style={{width:'70px'}}>Day</label>
-                        <select name="" id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnchange}>
+                        <select name="birth_date" defaultValue={User.birth_date}  id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                            
+                        <option value={User.birth_date} selected>{User.birth_date}</option>
                             {
-                                 days.map((item,i)=><option value="">{i+1}</option>)
+                                 days.map((item,i)=><option value={i+1}>{i+1}</option>)
                             }
                         </select>
                         <div style={{width:'25%'}} ></div>
                         <label htmlFor="" style={{width:'60px'}} >Month</label>
-                        <select name="" id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnchange}>
-                            
+                        <select name="birth_month" defaultValue={User.birth_month}  id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                        <option value={User.birth_month} selected>{User.birth_month}</option>
                             {
-                                months.map((item)=><option value="">{item}</option>)
+                                months.map((item)=><option value={item}>{item}</option>)
                             }
                         </select>
                 </div>
@@ -159,11 +301,16 @@ export const PersonalInfo = ({onChange}) => {
                 <div className={styles.labelCont}>
                     <label htmlFor="">Password</label>
                 </div>
-                {setnewPassword?(<div className={styles.inputCont} style={{display:'flex'}}>
+                {!newPassword?(<div className={styles.inputCont} style={{display:'flex'}}>
                     <div className={styles.passwordSpan}>{"**********"}</div>
-                    <button className={styles.passwordBtn}  onClick={()=>setnewPassword(true)}>Change</button>
+                    <button className={styles.passwordBtn}  onClick={()=>setnewPassword(true)} >Change</button>
                     </div>):(
-                        <div></div>
+                     
+                           <div className={styles.inputCont}>
+                                <input className={styles.inputpassword} placeholder="Enter your password" type="password" name="password" defaultValue={User.password} onChange={handleOnChange} onFocus={handleOnFocus}  id="" />
+                                <input className={styles.inputpassword} placeholder="Re-Enter your password"  type="password" name="password" defaultValue={User.password} onChange={handleOnChange} onFocus={handleOnFocus}  id="" />
+                           </div>
+                          
                     )}
                 
             </div>
@@ -172,10 +319,11 @@ export const PersonalInfo = ({onChange}) => {
                     <label htmlFor="">Location</label>
                 </div>
                 <div className={styles.inputCont} > 
-                <select name="" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnchange}>
+                <select name="location" defaultValue={User.location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
+                <option value={User.location} selected>{User.location}</option>
                 {
                     countries.map(item=>
-                        <option value="">{item.label}</option>
+                        <option value={item.label}>{item.label}</option>
                         )
                 }
                     </select>
@@ -187,7 +335,7 @@ export const PersonalInfo = ({onChange}) => {
         </div>
             {showButton && <div className={styles.saveButton}>
                 <div>
-                    <button>Save</button>
+                    <button onClick={handleSubmit}>Save</button>
                 </div>
             </div>}
         </div>
