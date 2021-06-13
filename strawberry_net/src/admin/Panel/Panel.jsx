@@ -1,26 +1,15 @@
 import React from 'react';
 import styles from "./Panel.module.css"
 import {Button} from "@material-ui/core"
+import SideBar from '../SideBar/SideBar';
 const Panel = () => {
     return (
         <div className={styles.admin_panel}>
-            <div className={styles.side_panel}>
-               
-               <div className={styles.user}>
-                   <div className={styles.user_img}>
-
-                   </div>
-
-                   <h1>Admin Name</h1>
-
-                  <div className={styles.sign_out}> <Button color="primary" variant="contained"> Sign Out</Button></div>
-               </div>
-
-
-            </div>
+            
+            <SideBar prop="dashboard"/>
 
             <div className={styles.main_panel}>
-
+<h1>DASHBOARD</h1>
             </div>
         </div>
     );

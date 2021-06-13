@@ -1,0 +1,67 @@
+.admin_panel{
+  width: 320px;
+}
+.side_panel{
+    width: 250px;
+    height: 100vh;
+   /* background-image: url('https://inspirationfeed.com/wp-content/uploads/2020/01/chesser.jpg'); */
+   background-color: #52246D;
+   position: fixed;
+}
+.button{
+    background-color: #2ca59f;
+    
+    font-weight: 600;
+}
+
+.user{
+    height: 25%;
+    width: 100%;
+    background-color:#96307D;
+    padding-top: 5%;
+}
+.user_img{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    background-color: gray;
+    margin: auto;
+}
+.user > h1{
+    text-align: center;
+    color: white;
+    margin: 5px;
+    
+}
+.sign_out{
+width: 50%;
+height: 20px;
+margin: auto;
+
+}
+.sign_out > button{
+    padding: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.tabs{
+   
+}
+.tabs > div > h3{
+    color: white;
+margin: 0px;
+font-size: 15px;
+}
+.tabs > div{
+    padding: 10px;
+    border-bottom: 1px solid gray;
+    cursor: pointer;
+}
+.tab:hover{
+    border-right: 5px solid #2ca59f; 
+
+}
+.active_tab{
+    border-right: 5px solid #2ca59f; 
+}

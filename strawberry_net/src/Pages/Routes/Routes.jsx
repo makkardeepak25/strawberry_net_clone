@@ -15,8 +15,8 @@ import Product from '../Product_Page/Product';
 import { Searchbar } from '../Searchbar/Searchbar';
 import { Gradient } from '../UserInfo/Gradient';
 import Panel from "../../admin/Panel/Panel"
-
-
+import Profiles from '../../admin/Profiles/Profiles';
+import AdminProducts from '../../admin/Products/AdminProducts';
 const Routes = () => {
   const userid = useSelector(state => state.auth.userId)
   //console.log(userid,"ROutes")
@@ -43,10 +43,23 @@ const Routes = () => {
            <Home/>
            <Footer/>
            </Route>
-           
+
+           {/* Admin Panel Route */}
            <Route exact path="/admin/dashboard">
              <Panel/>
            </Route>
+
+           <Route exact path="/admin/profiles">
+            <Profiles/>
+           </Route>
+
+           <Route exact path="/admin/products">
+           <AdminProducts/>
+           </Route>
+
+
+
+
 
            <Route exact path="/signin">
            <NavBar/>
