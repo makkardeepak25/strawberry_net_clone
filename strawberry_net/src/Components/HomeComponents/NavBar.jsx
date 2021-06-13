@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
 import Badge from "@material-ui/core/Badge";
 import { useState } from "react";
-import { getUserDetails } from "../../Redux/Auth/authAction";
+import { getlogout, getUserDetails } from "../../Redux/Auth/authAction";
 import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 import ControlPointDuplicateIcon from "@material-ui/icons/ControlPointDuplicate";
@@ -30,7 +30,7 @@ export const NavBar = () => {
   const isAuth = useSelector(state => state.auth.isAuth); //dont change this
   const [userAuth, setUserAuth] = React.useState(isAuth);
   const [navOpen, setNavOpen] = React.useState(false);
-
+const history=useHistory()
   const bag = user && user.bag;
   console.log("bag", bag);
 
@@ -59,6 +59,10 @@ export const NavBar = () => {
     setFlag(false);
   };
 
+  const handleLogout=()=>{
+    dispatch(getlogout())
+    history.replace("/")
+}
   useEffect(() => {
     const id = localStorage.getItem("userId");
     id && dispatch(getUserDetails(id));
@@ -200,7 +204,8 @@ export const NavBar = () => {
                     <Link>
                       {" "}
                       <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
-                    </Link>
+                      </Link>
+                      <button onClick={handleLogout} className={styles.signoutbtn}>Sign Out</button>
                   </div>
                 )}
               </li>
@@ -342,7 +347,8 @@ export const NavBar = () => {
                     <Link>
                       {" "}
                       <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
-                    </Link>
+                      </Link>
+                      <button onClick={handleLogout} className={styles.signoutbtn}>Sign Out</button>
                   </div>
                 )}
               </li>
