@@ -87,7 +87,7 @@ overflow-wrap: break-word;
     padding: 5px;
 }
 .select_tag_btn_div :nth-child(2){
-
+   cursor: pointer;
     padding: 7px 25px;
     margin-left: 10px;
     background-color: #00A69C;
@@ -156,10 +156,7 @@ font-weight: 600;
 margin: 0px;
 
 }
-.write{
-   
 
-}
 .tabs :last-child > button{
     padding: 5px 10px;
     margin-left: 40px;

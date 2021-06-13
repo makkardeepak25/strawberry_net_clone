@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
@@ -8,6 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
+  const isLoading = useSelector(state => state.auth.isLoading);
   const dispatch = useDispatch();
   const history= useHistory()
   const cart = user.bag && user.bag;
@@ -51,7 +52,7 @@ export function Bag() {
   const RemovefromCard = product => {
     const id = product.id;
     console.log(id, product);
-    dispatch(removeItem(id, product));
+     dispatch(removeItem(id, product));
   };
   const removeFromBag = _id => {
     const bag = user && user.bag;
@@ -89,6 +90,8 @@ export function Bag() {
       dispatch(getlogout())
       history.replace("/")
   }
+
+
   return (
     <div>
       <div className={styles.container}>
