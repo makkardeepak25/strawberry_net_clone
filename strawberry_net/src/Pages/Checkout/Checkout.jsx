@@ -6,61 +6,74 @@ import { Addressform } from "./Addressform/Addressform";
 import { priceUpdate } from "../../Redux/Auth/authAction";
 import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
 
-
-
 export function Checkout() {
-  const user = useSelector((state) => state.auth.user);
-  const isAuth = useSelector((state) => state.auth.isAuth);
+  const user = useSelector(state => state.auth.user);
+  const isAuth = useSelector(state => state.auth.isAuth);
+  const addressAvail = user && user.addresses;
+  const [promCode, setPromCode] = React.useState(false);
+  console.log(addressAvail);
   const dispatch = useDispatch();
   const cart = user.bag && user.bag;
   const name = user.f_name;
+  let promoDisc = 0;
   console.log(user);
-
-  
+  const [promo, setPromo] = React.useState("");
+  const handlePromo = () => {
+    if (promo === "STRAW5") {
+      setPromCode(true);
+    } else {
+      setPromCode(false);
+      alert("Wrong PromoCode Applied")
+    }
+  };
 
   let total = 0;
   cart &&
-    cart.map((el) => {
-      total =
-        total +
-        Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty);
+    cart.map(el => {
+      total = total + Number(parseInt(el.size[0].price)) * Number(el.qty);
     });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
   let frieghtSurcharge = Number(0.035 * total).toFixed(2);
+  if (promCode === true) {
+    promoDisc = (0.05 * total).toFixed(2);
+  }
   let orderTotal = 0;
   if (Number(total < 11370)) {
     orderTotal = (
       Number(total) +
       Number(standardShip) +
       Number(frieghtSurcharge) -
+      Number(promoDisc) -
       Number(newCustomeroff)
     ).toFixed(2);
   } else {
-    orderTotal = (
-      Number(total) +
-      Number(frieghtSurcharge) -
-      Number(newCustomeroff)
-    ).toFixed(2);
+    orderTotal = (Number(total) - Number(promoDisc) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
   }
-  
-  const payload= {
-    tot: total,
-    newCust: newCustomeroff,
-    ship: standardShip,
+
+  const payload = {
+    Item_Total: total,
+    newCustomerOff: newCustomeroff,
+    shipmentFee: standardShip,
     orderTot: orderTotal,
-    bag:cart
-  }
+    bag: cart,
+    promoDiscount: promoDisc
+  };
   const Addtouser = () => {
-    const order = user && user.orders
-    order[0]=payload
-    dispatch(priceUpdate(order))
-    console.log(user)
-  }
-  console.log(payload)
-   React.useEffect(() => {
-    Addtouser()
-  }, [payload])
+    const order = user && user.orders;
+    order[0] = payload;
+    dispatch(priceUpdate(order));
+    console.log(user);
+  };
+  console.log(payload);
+  React.useEffect(
+    () => {
+      if (cart) {
+        Addtouser();
+      }
+    },
+    [payload]
+  );
 
   return (
     <div>
@@ -75,57 +88,38 @@ export function Checkout() {
                   <div className={styles.notifications}>
                     <h2>NOTIFICATION (5)‎&lrm;</h2>
                     <ul>
+                      <li>Due to recent flight scheduling changes, orders may experience delivery delays.</li>
+                      <li>Due to current situation, a 3.5% freight surcharge will be applied to your order</li>
                       <li>
-                        Due to recent flight scheduling changes, orders may
-                        experience delivery delays.
+                        Please note that delivery to your selected region will be delayed because order dispatches are on hold
+                        due to shipping restrictions. For more information, please contact info@strawberrynet.com.
                       </li>
                       <li>
-                        Due to current situation, a 3.5% freight surcharge will
-                        be applied to your order
+                        This order may be subject to duties and taxes, which are payable by the customer and are not refundable.
                       </li>
                       <li>
-                        Please note that delivery to your selected region will
-                        be delayed because order dispatches are on hold due to
-                        shipping restrictions. For more information, please
-                        contact info@strawberrynet.com.
-                      </li>
-                      <li>
-                        This order may be subject to duties and taxes, which are
-                        payable by the customer and are not refundable.
-                      </li>
-                      <li>
-                        Spend a minimum of INR11,369.80 after discounts to
-                        qualify for free shipping, or spend a minimum of
-                        INR7,579.90 after discounts to qualify for a reduced
-                        shipping cost at INR379.00.
+                        Spend a minimum of INR11,369.80 after discounts to qualify for free shipping, or spend a minimum of
+                        INR7,579.90 after discounts to qualify for a reduced shipping cost at INR379.00.
                       </li>
                     </ul>
                   </div>
                   <div className={styles.bordbot} />
                   {cart.length > 0 &&
-                    cart.map((el) => {
+                    cart.map(el => {
                       return (
                         <div className={styles.prodbag}>
                           <img src={el.images[0]} alt="product" />
                           <div style={{ width: "45%" }}>
                             <div>
-                              <strong style={{ textTransform: "uppercase" }}>
-                                {el.prod_name}
-                              </strong>
+                              <strong style={{ textTransform: "uppercase" }}>{el.prod_name}</strong>
                             </div>
                             <div>{el.prod_description}</div>
                             <div>{el.size[0].size}</div>
-                            <div>
-                              {Number(
-                                parseInt(el.size[0].price.replace(/,/g, ""))
-                              )}
-                            </div>
+                            <div>{Number(parseInt(el.size[0].price.replace))}</div>
                           </div>
                           <div>Qty. {el.qty}</div>
                           <div style={{ marginLeft: "10%" }}>
-                            {Number(
-                              parseInt(el.size[0].price.replace(/,/g, ""))
-                            ) * Number(el.qty)}
+                            {Number(parseInt(el.size[0].price)) * Number(el.qty)}
                           </div>
                           <br />
 
@@ -136,12 +130,12 @@ export function Checkout() {
 
                   <div className={styles.bordbot} />
                   <div className={`${styles.flexsums} ${styles.bolditem}`}>
-                    <div>Item Total: {cart.length} item(s)‎</div>
+                    <div>Item Total: {cart && cart.length} item(s)‎</div>
                     <div>INR {total}</div>
                   </div>
                 </div>
-                    <Addressform/>
-               
+                {(addressAvail&&addressAvail.length>0)?<div>Deepak</div>:<Addressform/>}
+                <PaymentMethods />
               </>
             )}
           </div>
@@ -149,21 +143,39 @@ export function Checkout() {
             <div className={styles.checkoutbag}>
               <div className={styles.promocode}>ENTER PROMO CODE</div>
               <div>
-                <input type="text" className={styles.promInput} />
+                <input
+                  type="text"
+                  className={styles.promInput}
+                  onChange={e => {
+                    setPromo(e.target.value);
+                  }}
+                />
               </div>
-              <button className={styles.checkoutbagbtn}>APPLY</button>
+              <button onClick={handlePromo} className={styles.checkoutbagbtn}>
+                APPLY
+              </button>
+              {promCode && (
+                <p style={{ color: "hotpink",marginTop:"10px" }}>Promo Code Applied successfully</p>
+              )}
             </div>
             <div className={styles.bordbotcheck} />
             <div className={styles.checkoutbag}>
               <div className={styles.summary}>
                 <div className={`${styles.flexsum} ${styles.bolditem}`}>
-                  <div>Item Total: {cart&&cart.length} item(s)‎</div>
+                  <div>Item Total: {cart && cart.length} item(s)‎</div>
                   <div>INR {total}</div>
                 </div>
                 <div className={`${styles.flexsum} ${styles.extraoff}`}>
                   <div>Extra 10% Off (New Customer)</div>
                   <div>-INR {newCustomeroff}</div>
                 </div>
+                {promCode ? (
+                  <div className={`${styles.flexsum} ${styles.extraoff}`}>
+                    <div>Promo Code 10% Off</div>
+                    <div>-INR {promoDisc}</div>
+                  </div>
+                ) : null}
+
                 {total < 11370 ? (
                   <div className={`${styles.flexsum}`}>
                     <div>Standard Shipping (Signature)</div>
@@ -183,9 +195,7 @@ export function Checkout() {
             </div>
           </div>
         </div>
-        <PaymentMethods />
       </div>
-    
     </div>
   );
 }
