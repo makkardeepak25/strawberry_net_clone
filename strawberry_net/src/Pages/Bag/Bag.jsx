@@ -51,15 +51,16 @@ export function Bag() {
   const RemovefromCard = product => {
     const id = product.id;
     console.log(id, product);
-    // dispatch(removeItem(id, product));
+    dispatch(removeItem(id, product));
   };
-  const removeFromBag = id => {
+  const removeFromBag = _id => {
     const bag = user && user.bag;
-    let new_bag = bag.filter(item => item.id !== id);
+    let new_bag = bag.filter(item => item._id !== _id);
     const userdata = {
       ...user,
       bag: new_bag
     };
+    console.log(_id)
     RemovefromCard(userdata);
   };
 
@@ -150,7 +151,7 @@ export function Bag() {
                             {Number(parseInt(el.size[0].price)) * Number(el.qty)}
                           </div>
                           <br />
-                          <div onClick={() => removeFromBag(el.id)} className={styles.removeprod}>
+                          <div onClick={() => removeFromBag(el._id)} className={styles.removeprod}>
                             <CloseIcon />
                           </div>
                           <div className={styles.bordbott} />

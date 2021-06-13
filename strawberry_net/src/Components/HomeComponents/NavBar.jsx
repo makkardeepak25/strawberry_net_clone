@@ -9,9 +9,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-=======
 import { Link, NavLink, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSearchData } from "../../Redux/Products/productAction";
@@ -24,7 +21,6 @@ import ControlPointDuplicateIcon from "@material-ui/icons/ControlPointDuplicate"
 import ListAltIcon from "@material-ui/icons/ListAlt";
 import StarBorderIcon from "@material-ui/icons/StarBorder";
 import SettingsIcon from "@material-ui/icons/Settings";
->>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
 export const NavBar = () => {
   const [brand, setBrand] = React.useState({});
   const dispatch = useDispatch();
@@ -209,11 +205,6 @@ export const NavBar = () => {
                   </div>
                 )}
               </li>
-<<<<<<< HEAD
-              <li className={styles.loginlinks}>
-                <Link to={"/bag"} className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#B53788", size: "3.2em" }}>
-=======
             )}
 
             <li className={styles.loginlinks}>
@@ -239,7 +230,6 @@ export const NavBar = () => {
                       horizontal: "left",
                     }}
                   >
->>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
                     <GiShoppingBag />
                   </Badge>
                 </IconContext.Provider>
@@ -267,11 +257,7 @@ export const NavBar = () => {
                   >
                     <FaUserCircle />
                   </IconContext.Provider>
-<<<<<<< HEAD
-                  <span className={styles.aaccname}>Bag</span>
-=======
                   <span className={styles.aaccname}>Sign in</span>
->>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
                 </Link>
               </li>
             ) : (
@@ -404,19 +390,12 @@ export const NavBar = () => {
           <Link className={styles.foc} to={"/brands"}>
             {" "}
             <li className={styles.li1}>
-<<<<<<< HEAD
-              <div>
-                <MenuIcon className={styles.matui} style={{ width: "30px", height: "15px", color: "white" }} />
-              </div>
-              <div className={styles.clrspns}>SHOP BY BRAND</div>
-=======
               <span>
                 <MenuIcon
                   style={{ width: "28px", height: "14px", color: "white" }}
                 />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
->>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
             </li>
           </Link>
           <Link className={styles.foc} to={"/skincare"}>
@@ -469,37 +448,23 @@ export const NavBar = () => {
           <Link className={styles.foc} to={"/specials"}>
             {" "}
             <li className={styles.li1}>
-<<<<<<< HEAD
-              <div>
-                <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
-              </div>
-              <div className={styles.clrspn}>SPECIALS</div>
-=======
               <span>
                 <CardGiftcardIcon
                   style={{ width: "30px", height: "15px", color: "white" }}
                 />
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
->>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
             </li>
           </Link>
           <Link className={styles.foc} to={"/new-products"}>
             {" "}
             <li className={styles.li1}>
-<<<<<<< HEAD
-              <div>
-                <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
-              </div>
-              <div className={styles.clrspns}>NEW</div>
-=======
               <span>
                 <StarIcon
                   style={{ width: "30px", height: "15px", color: "white" }}
                 />
               </span>
               <span className={styles.clrspns}>NEW</span>
->>>>>>> 8cc59f11f354299773b227df0878f9cd62fa09ff
             </li>
           </Link>
         </ul>

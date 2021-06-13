@@ -256,24 +256,6 @@ export const setPaymentSucceeded=()=>(dispatch)=>{
    return dispatch(paymentSuccess(true))
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
     // dispatch(removeFromCart(payload))
