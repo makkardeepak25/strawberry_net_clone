@@ -215,6 +215,7 @@ export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch
    
        
         dispatch(userdataUpdate(res.data))
+        dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
         dispatch(signINFailure(err))

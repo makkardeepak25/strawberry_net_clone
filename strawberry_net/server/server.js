@@ -1,13 +1,14 @@
+require('dotenv').config()
 const express= require("express")
 const mongoose= require("mongoose")
-const dotenv= require('dotenv')
+// const dotenv= require('dotenv')
 const app=express()
 app.use(express.json())
 
-dotenv.config({path:'./config.env'})
-const ab= process.env.DATABASE
-console.log(ab);
-const DB= "mongodb+srv://username:password@cluster0.6nl2d.mongodb.net/strawberrynet?retryWrites=true&w=majority"
+
+const ab= process.env.REACT_APP_API_KEY
+
+const DB= process.env.REACT_APP_API_KEY
 const connect=()=>{
     return mongoose.connect(DB,{
         useNewUrlParser:true,
@@ -62,14 +63,14 @@ app.get("/products/:id", async (req,res)=>{
    let products= await Product.findById(id).lean().exec()
 
     res.status(201).send(products)
-    console.log(id);
+   
 })
 app.get("/products", async (req,res)=>{
     const id= req.params
     let products= await Product.find(req.query).lean().exec()
 
     res.status(201).send(products)
-    console.log(id);
+  
 })
 
 app.delete("/products/:id",async (req,res)=>{
