@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
@@ -8,6 +8,7 @@ import { Link, useHistory } from "react-router-dom";
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
+  const isLoading = useSelector(state => state.auth.isLoading);
   const dispatch = useDispatch();
   const history= useHistory()
   const cart = user.bag && user.bag;
@@ -51,15 +52,16 @@ export function Bag() {
   const RemovefromCard = product => {
     const id = product.id;
     console.log(id, product);
-    // dispatch(removeItem(id, product));
+     dispatch(removeItem(id, product));
   };
-  const removeFromBag = id => {
+  const removeFromBag = _id => {
     const bag = user && user.bag;
-    let new_bag = bag.filter(item => item.id !== id);
+    let new_bag = bag.filter(item => item._id !== _id);
     const userdata = {
       ...user,
       bag: new_bag
     };
+    console.log(_id)
     RemovefromCard(userdata);
   };
 
@@ -88,6 +90,8 @@ export function Bag() {
       dispatch(getlogout())
       history.replace("/")
   }
+
+
   return (
     <div>
       <div className={styles.container}>
@@ -124,7 +128,7 @@ export function Bag() {
                             <div>{el.size[0].size}</div>
                             <div>{Number(parseInt(el.size[0].price))}</div>
                           </div>
-                          <select defaultValue={el.qty} value={quant} onChange={e => handleChange(e, el.id)}>
+                          <select value={el.qty} onChange={e => handleChange(e, el.id)}>
                             <option value={1}>Qty.1</option>
                             <option value={2}>Qty.2</option>
                             <option value={3}>Qty.3</option>
@@ -150,7 +154,7 @@ export function Bag() {
                             {Number(parseInt(el.size[0].price)) * Number(el.qty)}
                           </div>
                           <br />
-                          <div onClick={() => removeFromBag(el.id)} className={styles.removeprod}>
+                          <div onClick={() => removeFromBag(el._id)} className={styles.removeprod}>
                             <CloseIcon />
                           </div>
                           <div className={styles.bordbott} />

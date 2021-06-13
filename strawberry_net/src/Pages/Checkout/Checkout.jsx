@@ -6,13 +6,36 @@ import { Addressform } from "./Addressform/Addressform";
 import { priceUpdate } from "../../Redux/Auth/authAction";
 import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
 import {Spinner} from "./../../Components/Spinner"
+import { Checkbox } from "@material-ui/core";
+import { withStyles, makeStyles } from "@material-ui/core/styles";
+import { v4 as uuid } from "uuid";
+
+const GreenCheckbox = withStyles({
+  root: {
+    color: "#623381",
+    "&$checked": {
+      color: "#623381"
+    }
+  },
+  checked: {}
+})(props => <Checkbox color="default" {...props} />);
+
+const useStyles = makeStyles({
+  root: {
+    color: "#623381",
+    fontSize: "24px"
+  }
+});
 
 export function Checkout() {
   const user = useSelector(state => state.auth.user);
   const isLoading=useSelector(state=>state.auth.isLoading)
   const isAuth = useSelector(state => state.auth.isAuth);
+  const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
+  console.log(paymentConfirmation)
   const addressAvail = user && user.addresses;
   const [promCode, setPromCode] = React.useState(false);
+  const [state, setState] = React.useState({});
   console.log(addressAvail);
   const dispatch = useDispatch();
   const cart = user.bag && user.bag;
@@ -25,10 +48,14 @@ export function Checkout() {
       setPromCode(true);
     } else {
       setPromCode(false);
-      alert("Wrong PromoCode Applied")
+      alert("Wrong PromoCode Applied");
     }
   };
-
+  let orderid = uuid()
+    .toString()
+    .replace("-", "")
+    .substring(0, 8);
+  console.log(orderid);
   let total = 0;
   cart &&
     cart.map(el => {
@@ -52,14 +79,18 @@ export function Checkout() {
   } else {
     orderTotal = (Number(total) - Number(promoDisc) + Number(frieghtSurcharge) - Number(newCustomeroff)).toFixed(2);
   }
-
+  let today = new Date();
   const payload = {
     Item_Total: total,
     newCustomerOff: newCustomeroff,
     shipmentFee: standardShip,
     orderTot: orderTotal,
     bag: cart,
-    promoDiscount: promoDisc
+    promoDiscount: promoDisc,
+    address: addressAvail && addressAvail[0],
+    orderId: orderid,
+    date: today.toLocaleDateString(),
+    payment:paymentConfirmation? "Success":"Due"
   };
   const Addtouser = () => {
     const order = user && user.orders;
@@ -76,7 +107,9 @@ export function Checkout() {
     },
     [payload]
   );
-
+  const handleChange = event => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
   return (
     <>
     {isLoading?<Spinner/>:<div>
@@ -122,9 +155,7 @@ export function Checkout() {
                             <div>{Number(parseInt(el.size[0].price.replace))}</div>
                           </div>
                           <div>Qty. {el.qty}</div>
-                          <div style={{ marginLeft: "10%" }}>
-                            {Number(parseInt(el.size[0].price)) * Number(el.qty)}
-                          </div>
+                          <div style={{ marginLeft: "10%" }}>{Number(parseInt(el.size[0].price)) * Number(el.qty)}</div>
                           <br />
 
                           <div className={styles.bordbott} />
@@ -138,68 +169,97 @@ export function Checkout() {
                     <div>INR {total}</div>
                   </div>
                 </div>
-                {(addressAvail&&addressAvail.length>0)?<div>Deepak</div>:<Addressform/>}
+                {addressAvail && addressAvail.length > 0 ? (
+                  <div>
+                    {addressAvail.map((item, index) => (
+                      <div key={index} className={styles.addressCont}>
+                        <div className={styles.lineone}>
+                          <p style={{ fontSize: "24px", marginRight: "20px" }}>{item.address_tittle}</p>
+                          <GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />
+                          <h6>Default billing address</h6>
+                        </div>
+
+                        <div className={styles.linetwo}>
+                          <h5>
+                            {item.f_name} {item.l_name}
+                          </h5>
+                          <p style={{ marginTop: "-30px" }}>
+                            {item.city}, {item.state}, {item.country}, {item.pincode}{" "}
+                          </p>
+                          <p style={{ marginTop: "-12px" }}>
+                            Tel. {item.countryCode} {item.phone}
+                          </p>
+                        </div>
+                        {/* <div className={styles.linefour}>
+                          <DeleteIcon classes={{ root: classes.root }} />
+                          <EditIcon classes={{ root: classes.root }} />
+                        </div> */}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <Addressform />
+                )}
                 <PaymentMethods />
               </>
             )}
           </div>
-          {cart&&cart.length>0&&  <div className={styles.checksignout}>
-            <div className={styles.checkoutbag}>
-              <div className={styles.promocode}>ENTER PROMO CODE</div>
-              <div>
-                <input
-                  type="text"
-                  className={styles.promInput}
-                  onChange={e => {
-                    setPromo(e.target.value);
-                  }}
-                />
+          {cart && cart.length > 0 && (
+            <div className={styles.checksignout}>
+              <div className={styles.checkoutbag}>
+                <div className={styles.promocode}>ENTER PROMO CODE</div>
+                <div>
+                  <input
+                    type="text"
+                    className={styles.promInput}
+                    onChange={e => {
+                      setPromo(e.target.value);
+                    }}
+                  />
+                </div>
+                <button onClick={handlePromo} className={styles.checkoutbagbtn}>
+                  APPLY
+                </button>
+                {promCode && <p style={{ color: "hotpink", marginTop: "10px" }}>Promo Code Applied successfully</p>}
               </div>
-              <button onClick={handlePromo} className={styles.checkoutbagbtn}>
-                APPLY
-              </button>
-              {promCode && (
-                <p style={{ color: "hotpink",marginTop:"10px" }}>Promo Code Applied successfully</p>
-              )}
-            </div>
-            <div className={styles.bordbotcheck} />
-            
-            <div className={styles.checkoutbag}>
-              <div className={styles.summary}>
-                <div className={`${styles.flexsum} ${styles.bolditem}`}>
-                  <div>Item Total: {cart && cart.length} item(s)‎</div>
-                  <div>INR {total}</div>
-                </div>
-                <div className={`${styles.flexsum} ${styles.extraoff}`}>
-                  <div>Extra 10% Off (New Customer)</div>
-                  <div>-INR {newCustomeroff}</div>
-                </div>
-                {promCode ? (
-                  <div className={`${styles.flexsum} ${styles.extraoff}`}>
-                    <div>Promo Code 5% Off</div>
-                    <div>-INR {promoDisc}</div>
-                  </div>
-                ) : null}
+              <div className={styles.bordbotcheck} />
 
-                {total < 11370 ? (
-                  <div className={`${styles.flexsum}`}>
-                    <div>Standard Shipping (Signature)</div>
-                    <div>{standardShip}</div>
+              <div className={styles.checkoutbag}>
+                <div className={styles.summary}>
+                  <div className={`${styles.flexsum} ${styles.bolditem}`}>
+                    <div>Item Total: {cart && cart.length} item(s)‎</div>
+                    <div>INR {total}</div>
                   </div>
-                ) : null}
-                <div className={`${styles.flexsum}`}>
-                  <div>Freight Surcharge</div>
-                  <div>{frieghtSurcharge}</div>
-                </div>
-                <div className={styles.bordbott} />
-                <div className={`${styles.flexsum} ${styles.bolditems}`}>
-                  <div>Order Total: 1 item(s)‎</div>
-                  <div>INR {orderTotal}</div>
+                  <div className={`${styles.flexsum} ${styles.extraoff}`}>
+                    <div>Extra 10% Off (New Customer)</div>
+                    <div>-INR {newCustomeroff}</div>
+                  </div>
+                  {promCode ? (
+                    <div className={`${styles.flexsum} ${styles.extraoff}`}>
+                      <div>Promo Code 5% Off</div>
+                      <div>-INR {promoDisc}</div>
+                    </div>
+                  ) : null}
+
+                  {total < 11370 ? (
+                    <div className={`${styles.flexsum}`}>
+                      <div>Standard Shipping (Signature)</div>
+                      <div>{standardShip}</div>
+                    </div>
+                  ) : null}
+                  <div className={`${styles.flexsum}`}>
+                    <div>Freight Surcharge</div>
+                    <div>{frieghtSurcharge}</div>
+                  </div>
+                  <div className={styles.bordbott} />
+                  <div className={`${styles.flexsum} ${styles.bolditems}`}>
+                    <div>Order Total: 1 item(s)‎</div>
+                    <div>INR {orderTotal}</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>}
-         
+          )}
         </div>
       </div>
     </div>}

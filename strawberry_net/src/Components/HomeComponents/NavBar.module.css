@@ -202,6 +202,7 @@
   background: #623381;
   width: 100%;
   display: block;
+  padding: 3px 5px;
 }
 .navbarmenu2 {
   background: #623381;
@@ -210,13 +211,25 @@
   justify-content: space-between;
   padding: 6px 20px;
 }
+.mediaCat{
+  color:#fff;
+  font-size: larger;
+  margin: 25px 7px;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+
+}
+.mediaCat:hover{
+  color:#e1c6f3 ;
+}
 .menucont {
   width: 95%;
   margin: 0px auto;
   position: relative;
   display: flex;
   text-align: center;
-  justify-content: space-between !important;
+  justify-content: space-evenly !important;
   font-size: 14px;
   float: none;
   text-align: center;
@@ -276,11 +289,23 @@ li {
   /* color: white; */
 
 }
+.menucont li:hover{
+  background-color: white;
+  color: #521B76;
+}
+
 .clrspns {
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
   
+}
+.clrspn:hover{
+  color: #521B76;
+}
+
+.clrspns:hover {
+  color: #521B76;
 }
 .li1 {
   display: flex;
@@ -393,6 +418,15 @@ ul .foc:focus,ul .foc:hover {
   justify-content: space-between;
   margin: 0px 10px;
   cursor: pointer;
+}
+.signoutbtn{
+  color: white;
+  background-color: hotpink;
+  margin: 10px 27px;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
 }
 
 .showProfileOptionss {

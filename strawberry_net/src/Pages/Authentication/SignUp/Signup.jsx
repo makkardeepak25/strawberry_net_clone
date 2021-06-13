@@ -102,12 +102,12 @@ export const Signup = () => {
 
     }
     return  isLoading?(   <CircularProgress disableShrink classes={{root: classes.root}}/>) : (
-        <form className={styles.signupform}>
+        <form className={styles.signupform} onSubmit={handleClick}>
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Last Name" name="l_name" value={l_name} onChange={handleOnchange}></AuthInput>
            
             <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange}></AuthInput>
-            <AuthInput placeholder="  Password" name="password" value={password} onChange={handleOnchange}></AuthInput>
+            <AuthInput required placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
             {/* {
             isMatched? 
             ( */}
@@ -118,7 +118,7 @@ export const Signup = () => {
             (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
             </p>)} */}
-            <AuthInput placeholder="  Re-enter your Password"  onChange={handleMatch}></AuthInput>
+            <AuthInput placeholder="  Re-enter your Password"  onChange={handleMatch} required></AuthInput>
             {
                 !isPasswordMatching && <div style={{color:'red'}}>The passwords do not match.</div>
             }
@@ -142,7 +142,7 @@ export const Signup = () => {
                 Subscribe to our exclusive email offers
                 </div>
             </div>
-            <AuthButton onClick={handleClick}>Register</AuthButton>
+            <AuthButton >Register</AuthButton>
         </form>
     )
 }

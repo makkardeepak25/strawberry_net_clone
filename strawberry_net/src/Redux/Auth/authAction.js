@@ -104,7 +104,7 @@ export const userDataRequest =(payload)=>{
     }
 }
 export const userDataSuccess =(payload)=>{
-    console.log(payload);
+  
     return{
         type:USERDATA_SUCCESS,
         payload
@@ -156,7 +156,7 @@ export const paymentSuccess =(payload)=>{
 
 export const getSignIn =(payload)=>(dispatch)=>{
     dispatch(signinRequest())
-    return axios.post('https://6wwnt.sse.codesandbox.io/profiles',payload).then((res)=>{
+    return axios.post('https://api-strawberrynet.herokuapp.com/profiles',payload).then((res)=>{
         dispatch(signinSuccess(res.data.id))
         console.log(res.data.id)
 
@@ -170,18 +170,9 @@ export const getSignIn =(payload)=>(dispatch)=>{
 
 export const getLogin =({email,password})=>(dispatch)=>{
     dispatch(loginRequest())
-    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles?email=${email}`,{email,password}).then((res)=>{
-
-        if(res.data[0].email===email && res.data[0].password===password){
-            dispatch(loginSuccess(res.data[0]))
-           
-        }
-        else {
-          console.log("Error")
-        dispatch(loginFailure("wfeg"))
-        }
-       
-       
+  
+    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles?email=${email}&password=${password}`,{email,password}).then((res)=>{
+            dispatch(loginSuccess(res.data[0]))       
         
     })
     .catch(err=>{
@@ -198,7 +189,7 @@ export const getLogin =({email,password})=>(dispatch)=>{
 export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
     dispatch(userDataRequest())
   
-    return axios.get(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`).then((res)=>{
+    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g,"")}`).then((res)=>{
        
     
         dispatch(userDataSuccess(res.data))
@@ -211,11 +202,13 @@ export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
 
 export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch)=>{
     dispatch(signinRequest())
-    axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
+    axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
    
-       
+        // alert('userUpdate')
+      
         dispatch(userdataUpdate(res.data))
-        dispatch(userDataSuccess(res.data))
+      dispatch(getUserDetails(id))
+   
     })
     .catch(err=>
         dispatch(signINFailure(err))
@@ -225,7 +218,7 @@ export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch
 }
 export const priceUpdate = (id=localStorage.getItem("userId"),payload) => (dispatch) => {
     dispatch(signinRequest())
-    axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id}`,payload).then((res)=>{
+    axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id}`,payload).then((res)=>{
         
         alert(`Your details has been successfully saved into our server`)
        
@@ -253,31 +246,16 @@ export const setPaymentSucceeded=()=>(dispatch)=>{
    return dispatch(paymentSuccess(true))
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
     // dispatch(removeFromCart(payload))
-    return axios.patch(`https://6wwnt.sse.codesandbox.io/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
+    alert("Item Removing...")
+    return axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
    
         console.log(res.data)
         dispatch(userDataSuccess(res.data))
+         dispatch(getUserDetails(id))
+        
     })
     .catch(err=>
         dispatch(signINFailure(err))
