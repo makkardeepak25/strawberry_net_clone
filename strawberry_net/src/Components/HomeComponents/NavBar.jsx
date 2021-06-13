@@ -6,6 +6,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import StarIcon from "@material-ui/icons/Star";
 import CardGiftcardIcon from "@material-ui/icons/CardGiftcard";
 import { FaUserCircle } from "react-icons/fa";
+import CloseIcon from "@material-ui/icons/Close";
 import { IconContext } from "react-icons";
 import { AiFillHeart } from "react-icons/ai";
 import { GiShoppingBag } from "react-icons/gi";
@@ -25,9 +26,10 @@ export const NavBar = () => {
   const [brand, setBrand] = React.useState({});
   const dispatch = useDispatch();
   const [flag, setFlag] = React.useState(false);
-  const user = useSelector((state) => state.auth.user);
-  const isAuth = useSelector((state) => state.auth.isAuth); //dont change this
-  const [userAuth, setUserAuth] = useState(isAuth);
+  const user = useSelector(state => state.auth.user);
+  const isAuth = useSelector(state => state.auth.isAuth); //dont change this
+  const [userAuth, setUserAuth] = React.useState(isAuth);
+  const [navOpen, setNavOpen] = React.useState(false);
 
   const bag = user && user.bag;
   console.log("bag", bag);
@@ -38,8 +40,11 @@ export const NavBar = () => {
   const { category } = useParams();
 
   console.log("navbar", category);
-  const handleChange = (e) => {
+  const handleChange = e => {
     setBrand(e.target.value);
+  };
+  const handleNav = () => {
+    setNavOpen(!navOpen);
   };
 
   const handleClick = () => {
@@ -47,13 +52,13 @@ export const NavBar = () => {
     dispatch(getSearchData(brand));
   };
 
-  const showProfileBox=()=>{
-    setFlag(true)
-  }
-  const hideProfileBox=()=>{
-    setFlag(false)
-  }
- 
+  const showProfileBox = () => {
+    setFlag(true);
+  };
+  const hideProfileBox = () => {
+    setFlag(false);
+  };
+
   useEffect(() => {
     const id = localStorage.getItem("userId");
     id && dispatch(getUserDetails(id));
@@ -96,9 +101,7 @@ export const NavBar = () => {
             {!isAuth ? (
               <li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname} href="#">
-                  <IconContext.Provider
-                    value={{ color: "#B53788", size: "2.5em" }}
-                  >
+                  <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
@@ -109,9 +112,7 @@ export const NavBar = () => {
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
-                    src={
-                      "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
-                    }
+                    src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
                     alt="strawlog"
                   />
                   <span className={styles.aaccname}>{name}</span>
@@ -125,7 +126,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Account</span>
@@ -138,7 +139,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Wishlist</span>
@@ -151,7 +152,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Point Rewards</span>
@@ -164,7 +165,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Orders</span>
@@ -177,7 +178,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Reviews</span>
@@ -190,7 +191,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Settings</span>
@@ -198,9 +199,7 @@ export const NavBar = () => {
                     </Link>
                     <Link>
                       {" "}
-                      <div className={styles.showProfilePink}>
-                        Get 10% Off
-                      </div>{" "}
+                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
                     </Link>
                   </div>
                 )}
@@ -209,9 +208,7 @@ export const NavBar = () => {
 
             <li className={styles.loginlinks}>
               <a className={styles.accname} href="#">
-                <IconContext.Provider
-                  value={{ color: "#B53788", size: "2.5em" }}
-                >
+                <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
                   <AiFillHeart />
                 </IconContext.Provider>
                 <span className={styles.aaccname}>Wishlist</span>
@@ -219,15 +216,13 @@ export const NavBar = () => {
             </li>
             <li className={styles.loginlinks}>
               <Link to={"/user/bag"} className={styles.accname}>
-                <IconContext.Provider
-                  value={{ color: "#B53788", size: "2.3em" }}
-                >
+                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
                   <Badge
                     badgeContent={bag && bag.length}
                     color="secondary"
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "left",
+                      horizontal: "left"
                     }}
                   >
                     <GiShoppingBag />
@@ -238,23 +233,17 @@ export const NavBar = () => {
             </li>
           </ul>
         </div>
-        
       </div>
       <div className={styles.container1}>
         <Link to={"/"}>
-          <img
-            src="https://www.reviewsxp.com/image/Stawberrynet.jpg"
-            className={styles.navbrand1}
-          />
+          <img src="https://www.reviewsxp.com/image/Stawberrynet.jpg" className={styles.navbrand1} />
         </Link>
         <div className={styles.mediaUser}>
           <ul className={styles.menunavright}>
             {!isAuth ? (
               <li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname} href="#">
-                  <IconContext.Provider
-                    value={{ color: "#B53788", size: "2.5em" }}
-                  >
+                  <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
@@ -265,9 +254,7 @@ export const NavBar = () => {
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
-                    src={
-                      "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
-                    }
+                    src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
                     alt="strawlog"
                   />
                   <span className={styles.aaccname}>{name}</span>
@@ -281,7 +268,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Account</span>
@@ -294,7 +281,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Wishlist</span>
@@ -307,7 +294,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Point Rewards</span>
@@ -320,7 +307,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Orders</span>
@@ -333,7 +320,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Reviews</span>
@@ -346,7 +333,7 @@ export const NavBar = () => {
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87",
+                            color: "#6b3a87"
                           }}
                         />{" "}
                         <span>Settings</span>
@@ -354,9 +341,7 @@ export const NavBar = () => {
                     </Link>
                     <Link>
                       {" "}
-                      <div className={styles.showProfilePink}>
-                        Get 10% Off
-                      </div>{" "}
+                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
                     </Link>
                   </div>
                 )}
@@ -364,15 +349,13 @@ export const NavBar = () => {
             )}
             <li className={styles.loginlinks}>
               <Link to={"/user/bag"} className={styles.accname}>
-                <IconContext.Provider
-                  value={{ color: "#B53788", size: "2.3em" }}
-                >
+                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
                   <Badge
                     badgeContent={bag && bag.length}
                     color="secondary"
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "left",
+                      horizontal: "left"
                     }}
                   >
                     <GiShoppingBag />
@@ -391,9 +374,7 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-                <MenuIcon
-                  style={{ width: "28px", height: "14px", color: "white" }}
-                />
+                <MenuIcon style={{ width: "28px", height: "14px", color: "white" }} />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
@@ -401,57 +382,55 @@ export const NavBar = () => {
           <Link className={styles.foc} to={"/skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>SKINCARE</span>
+              <div className={styles.clrspn}>SKINCARE</div>
             </li>
           </Link>
           <Link className={styles.foc}>
             <li to={"/makeup"}>
-              <span className={styles.clrspn}>MAKEUP</span>
+              <div className={styles.clrspn}>MAKEUP</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/haircare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>HAIRCARE</span>
+              <div className={styles.clrspn}>HAIRCARE</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/perfumes"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>PERFUME</span>
+              <div className={styles.clrspn}>PERFUME</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/men-skincare"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>MEN'S SKINCARE</span>
+              <div className={styles.clrspn}>MEN'S SKINCARE</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/men-cologne"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>MEN'S COLOGNE</span>
+              <div className={styles.clrspn}>MEN'S COLOGNE</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/home-scents"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>HOME SCENTS</span>
+              <div className={styles.clrspn}>HOME SCENTS</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/natural-beauty"}>
             {" "}
             <li>
-              <span className={styles.clrspn}>NATURAL BEAUTY</span>
+              <div className={styles.clrspn}>NATURAL BEAUTY</div>
             </li>
           </Link>
           <Link className={styles.foc} to={"/specials"}>
             {" "}
             <li className={styles.li1}>
               <span>
-                <CardGiftcardIcon
-                  style={{ width: "30px", height: "15px", color: "white" }}
-                />
+                <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
@@ -460,9 +439,7 @@ export const NavBar = () => {
             {" "}
             <li className={styles.li1}>
               <span>
-                <StarIcon
-                  style={{ width: "30px", height: "15px", color: "white" }}
-                />
+                <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
               </span>
               <span className={styles.clrspns}>NEW</span>
             </li>
@@ -470,14 +447,68 @@ export const NavBar = () => {
         </ul>
       </div>
       <div className={styles.navbarmenu2}>
-        <MenuIcon
-          style={{
-            width: "50px",
-            height: "50px",
-            color: "white",
-            cursor: "pointer",
-          }}
-        />
+        <div onClick={handleNav} className={styles.ham2}>
+          {!navOpen ? (
+            <MenuIcon
+              style={{
+                width: "50px",
+                height: "50px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          ) : (
+            <CloseIcon
+              style={{
+                width: "50px",
+                height: "50px",
+                color: "white",
+                cursor: "pointer"
+              }}
+            />
+          )}
+
+          {navOpen && (
+            <div className={styles.medianav2}>
+              <Link style={{textDecoration:"none"}} to={"/brands"}>
+                <div className={styles.mediaCat}>Shop by brands</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/skincare"}>
+                {" "}
+                <div className={styles.mediaCat}>Skincare</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/perfumes"}>
+                {" "}
+                <div className={styles.mediaCat}>Perfume</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/home-scents"}>
+                {" "}
+                <div className={styles.mediaCat}>Home Scents</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/makeup"}>
+                {" "}
+                <div className={styles.mediaCat}>Makeup</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/men-skincare"}>
+                {" "}
+                <div className={styles.mediaCat}>Men's skincare</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/specials"}>
+                {" "}
+                <div className={styles.mediaCat}>Specials</div>
+              </Link>
+              <Link style={{textDecoration:"none"}} to={"/haircare"}>
+                {" "}
+                <div className={styles.mediaCat}>haircare</div>
+              </Link>
+              <Link style={{textDecoration:"none"}}>
+                {" "}
+                <div className={styles.mediaCat}>What's New</div>
+              </Link>
+            </div>
+          )}
+        </div>
+
         <div className={styles.navform2}>
           <div>
             <input

@@ -21,7 +21,7 @@ export const Top40 = () => {
         return (
           
             <div className={styles.prodDiv}>
-            <Link to={`/products/${el.id}`}>  <>
+            <Link to={`/products/${el._id}`}>  <>
               <a>
                 <span className={styles.prodname}>{el.prod_name}</span>
                 <p className={styles.desc}>

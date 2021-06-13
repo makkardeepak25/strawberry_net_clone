@@ -204,10 +204,10 @@ export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch
     dispatch(signinRequest())
     axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
    
-        alert('userUpdate')
+        // alert('userUpdate')
       
         dispatch(userdataUpdate(res.data))
-        
+        // dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
         dispatch(signINFailure(err))
@@ -244,24 +244,6 @@ export const getlogout=()=>(dispatch)=>{
 export const setPaymentSucceeded=()=>(dispatch)=>{
    return dispatch(paymentSuccess(true))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export const removeItem=(id=localStorage.getItem("userId"),payload)=>(dispatch)=>{
     dispatch(signinRequest())
