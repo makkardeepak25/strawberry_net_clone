@@ -17,7 +17,7 @@ export function Bag() {
   let total = 0;
   cart &&
     cart.map(el => {
-      total = total + Number(parseInt(el.size[0].price.replace(/,/g, ""))) * el.qty;
+      total = total + Number(parseInt(el.size[0].price)) * el.qty;
     });
   let newCustomeroff = (0.1 * total).toFixed(2);
   let standardShip = 757.3;
@@ -122,9 +122,9 @@ export function Bag() {
                             </div>
                             <div>{el.prod_description}</div>
                             <div>{el.size[0].size}</div>
-                            <div>{Number(parseInt(el.size[0].price.replace(/,/g, "")))}</div>
+                            <div>{Number(parseInt(el.size[0].price))}</div>
                           </div>
-                          <select defaultValue={el.qty} value={quant} onChange={e => handleChange(e, el.id)}>
+                          <select value={el.qty} onChange={e => handleChange(e, el.id)}>
                             <option value={1}>Qty.1</option>
                             <option value={2}>Qty.2</option>
                             <option value={3}>Qty.3</option>
@@ -147,7 +147,7 @@ export function Bag() {
                             <option value={20}>Qty.20</option>
                           </select>
                           <div style={{ marginLeft: "10%" }}>
-                            {Number(parseInt(el.size[0].price.replace(/,/g, ""))) * Number(el.qty)}
+                            {Number(parseInt(el.size[0].price)) * Number(el.qty)}
                           </div>
                           <br />
                           <div onClick={() => removeFromBag(el.id)} className={styles.removeprod}>

@@ -28,7 +28,8 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case LOGIN_SUCCESS:{
       
-            setUser("userId",payload.id)
+            setUser("userId",payload._id)
+            console.log(payload._id)
             return{
                 
                  ...state,
@@ -78,8 +79,9 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case USERDATA_REQUEST:{
             return {
-                isLoading:true,
                 ...state,
+                isLoading:true,
+               
             }
         }
         case USERDATA_SUCCESS:{
@@ -93,9 +95,10 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case USERDATA_FAILURE:{
             return{
+                ...state,
                 isError:true,
-                isLoading:false,
-                 ...state
+                isLoading:false
+              
                 
             }
         }
@@ -126,8 +129,9 @@ export const authReducer=(state=initState,{type,payload})=>{
         case IMAGE_URL_REQUEST:{
             alert("IMAGE_URL_REQUEST")
             return {
+                ...state,
                 isLoading:true,
-                ...state
+              
             }
         }
         case IMAGE_URL_SUCCESS:{

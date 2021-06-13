@@ -20,7 +20,7 @@ export const BestDeals = () => {
     return (
         <>
         {data.slice(8,12).map(el => {
-                    return <Link to={`${el.category}/products/${el.id}`}><div className={styles.prodDeals}>
+                    return <Link to={`${el.category}/products/${el._id}`}><div className={styles.prodDeals}>
                     <a>
                       <span className={styles.prodname}>{el.prod_name}</span>
                       <p className={styles.desc}>

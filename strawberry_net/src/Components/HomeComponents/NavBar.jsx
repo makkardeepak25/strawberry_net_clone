@@ -392,7 +392,7 @@ export const NavBar = () => {
             <li className={styles.li1}>
               <span>
                 <MenuIcon
-                  style={{ width: "30px", height: "15px", color: "white" }}
+                  style={{ width: "28px", height: "14px", color: "white" }}
                 />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
