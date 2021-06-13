@@ -47,7 +47,7 @@
     border: 1px solid black;
  
     border-right: 1px solid white;
-    overflow-y: scroll;
+  
     max-height: 300px;
 }
 /* filter end */

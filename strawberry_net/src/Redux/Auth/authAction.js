@@ -215,10 +215,10 @@ export const userUpdate =(id=localStorage.getItem("userId"),payload)=> (dispatch
     dispatch(signinRequest())
     axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g,"")}`,payload).then((res)=>{
    
-        alert('userUpdate')
+        // alert('userUpdate')
       
         dispatch(userdataUpdate(res.data))
-        
+        // dispatch(userDataSuccess(res.data))
     })
     .catch(err=>
         dispatch(signINFailure(err))
