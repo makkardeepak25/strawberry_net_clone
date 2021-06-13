@@ -53,7 +53,7 @@ const Product = () => {
 
 
     const GetProduct=()=>{
-        axios.get(`https://6wwnt.sse.codesandbox.io/products/${id}`)
+        axios.get(`https://api-strawberrynet.herokuapp.com/products/${id}`)
         .then(res=>{
         //    console.log(res.data);
            setProduct(res.data)
@@ -80,10 +80,10 @@ const Product = () => {
     }
     const addtoBag=()=>{
         const bag=user&&user.bag
-         const isPresent= bag.length>0&& bag.map((el)=> el.id===addProduct.id?{...el, qty:Number(el.qty)+Number(qty)}:el)
+         const isPresent= bag.length>0&& bag.map((el)=> el._id===addProduct._id?{...el, qty:Number(el.qty)+Number(qty)}:el)
         // const isPresent= bag.length>0&& bag.find((el)=> el.id===product.id)
      
-         const isPresentObject= bag.length>0&& bag.filter((el)=> el.id===addProduct.id&&{...el, qty:Number(el.qty)+Number(qty)})
+         const isPresentObject= bag.length>0&& bag.filter((el)=> el._id===addProduct._id&&{...el, qty:Number(el.qty)+Number(qty)})
         console.log(isPresentObject[0]);
          const userdata={
 
@@ -95,8 +95,10 @@ const Product = () => {
             ...user,
             bag:bag.length > 0?[...isPresent]:[addProduct]
         }
-        isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
+         isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
         // AddToCard(userdata)
+        console.log(userdata);
+        console.log(userdata1);
     }
 
 

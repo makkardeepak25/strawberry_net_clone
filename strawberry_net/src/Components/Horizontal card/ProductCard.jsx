@@ -9,7 +9,7 @@ const ProductCard = ({...prod}) => {
    var price= prod.size[0].price
  const history= useHistory()
  const redirect=()=>{
-     history.push(`/${prod.category}/products/${prod.id}`)
+     history.push(`/${prod.category}/products/${prod._id}`)
  }
  const addProduct={
     ...prod,
@@ -62,7 +62,7 @@ React.useEffect(()=>{
                 <button>Click to View</button>
             </div>
             <div className={styles.prod_price}>
-                <h2> {fixed(prod.size[0].price)}</h2>
+                <h2> {prod.size[0].price}</h2>
                 <h6>Extra 5% Off</h6>
             </div>
             <div className={styles.bag}>

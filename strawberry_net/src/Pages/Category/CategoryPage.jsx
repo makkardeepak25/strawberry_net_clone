@@ -11,15 +11,16 @@ const CategoryPage = () => {
     const [product,setProduct]=useState([])
     const [sort,setSort]=useState("")
     const history=useHistory()
+    const b="category=${category}&_sort=prod_name&_order=${sort}"
    function getProduct(){
-    axios.get(`https://6wwnt.sse.codesandbox.io/products?category=${category}&_sort=prod_name&_order=${sort}`)
+    axios.get(`https://api-strawberrynet.herokuapp.com/products?category=${category}`)
     .then(res=>{
        console.log(res.data);
        setProduct(res.data)
-       res.data.length<1&&history.push("/404/product-not-available")
+      
     })
     .catch(err=>{
-          history.push("/404/product-not-available")
+           history.push("/404/product-not-available")
     })
    }
 

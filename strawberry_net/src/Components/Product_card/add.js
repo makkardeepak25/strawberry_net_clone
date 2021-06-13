@@ -1,5 +1,5 @@
 export function fixed(value){
-    let b= value.split(",")
+    let b= value.split("")
     let c=b[1].split("")
     let d=[b[0],...c].join("")
     //console.log(d);
