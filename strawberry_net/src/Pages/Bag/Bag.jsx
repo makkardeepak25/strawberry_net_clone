@@ -124,7 +124,7 @@ export function Bag() {
                             <div>{el.size[0].size}</div>
                             <div>{Number(parseInt(el.size[0].price))}</div>
                           </div>
-                          <select defaultValue={el.qty} value={quant} onChange={e => handleChange(e, el.id)}>
+                          <select value={el.qty} onChange={e => handleChange(e, el.id)}>
                             <option value={1}>Qty.1</option>
                             <option value={2}>Qty.2</option>
                             <option value={3}>Qty.3</option>
