@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+}
+.products{
+  
+    width: 100%;
+}
+.products > h1{
+    margin: 10px;
+}
+
+.cards{
+   padding: 20px;
+    margin: auto;
+   height: 70vh;
+   overflow: hidden;
+}
+
+.pagination{
+   
+    padding: 10px 15px;
+}
+.pagination > button{
+   margin: 5px;
+   width: 10px;
+   padding: 0%;
+}
+
+.filter{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+   
+}
+.filter > div> select {
+    padding: 5px;
+    margin: 10px;
+}
