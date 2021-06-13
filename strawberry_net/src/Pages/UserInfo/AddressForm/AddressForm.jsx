@@ -6,6 +6,7 @@ import { states } from './states';
 import { countries } from '../countries';
 import {v4 as uuid} from 'uuid'
 import { userUpdate } from '../../../Redux/Auth/authAction';
+import { useHistory } from 'react-router-dom';
 
 
 const initAddress ={
@@ -26,7 +27,7 @@ const initAddress ={
 
 }
 
-export const AddressForm = () => {
+export const AddressForm = ({handleClose}) => {
 
     const [addressForm,setAddressForm] = React.useState(initAddress)
     const { address_tittle,f_name,l_name, company, country, locality,city,state,pincode,countryCode,phone,defaultAdd} =addressForm
@@ -52,10 +53,12 @@ export const AddressForm = () => {
 
 
     const dispatch = useDispatch()
-    
+    const history = useHistory()
     const  handleSubmit = (e)=>{
         e.preventDefault()        
         dispatch(userUpdate(user.id,{addresses:[...user.addresses,addressForm]}))
+
+        handleClose()
    
     }
     return (
