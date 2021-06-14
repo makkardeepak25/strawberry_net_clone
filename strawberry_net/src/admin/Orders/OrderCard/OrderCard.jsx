@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import styles from "./OrderCard.module.css"
+const OrderCard = ({...order}) => {
+  const history =useHistory()
 
-const OrderCard = () => {
+  const redirect=()=>{
+      history.push(`/admin/orders/${order.userID}/${order.orderId}`)
+  }
+
     return (
-        <div>
-            
+        <div onClick={redirect} className={styles.orderCard}>
+            <div><h4>#{order.orderId}</h4></div>
+            <div><h4>{order.bag.length}</h4></div>
+            <div><h4>{order.orderTot}</h4></div>
+            <div><h4 style={{color:"green"}} >{order.orderstatus}</h4></div>
+            <div><h4>{order.date}</h4></div>
         </div>
     );
 };
