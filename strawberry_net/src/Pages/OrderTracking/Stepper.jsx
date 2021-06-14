@@ -12,6 +12,11 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import DoneOutlineSharpIcon from "@material-ui/icons/DoneOutlineSharp";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getUserDetails } from "../../Redux/Auth/authAction";
+import axios from "axios";
+import { Spinner } from "../../Components/Spinner";
 const useQontoStepIconStyles = makeStyles({
   root: {
     color: "#eaeaf0",
@@ -156,7 +161,8 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1)
-  }
+  },
+  
 }));
 
 // +(date.toDateString())
@@ -164,42 +170,66 @@ function getSteps() {
   return ["Processing", "Shipped", "Delivered"];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 1:
-      return "Proccessing";
-    case 2:
-      return "Shipped";
-    case 3:
-      return "Delivered";
-    default:
-      return "Not Confirm Yet";
-  }
-}
+
 
 export default function CustomizedSteppers() {
+  const {id} = useParams()
+
+  const userId = useSelector(state => state.auth.userId)
+
+  const [order,setOrder]=React.useState({})
+  const [isLoading,setisLoading]=React.useState(false)
+  const [isError,setisError]=React.useState(false)
+
+
+  const getOrderData=()=>{
+    setisLoading(true)
+    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles/${userId.replace(/"/g,"")}`).then((res)=>{
+      setOrder(res.data.orders.find(item=>item.orderId===id))
+      setisLoading(false)
+    })
+    .catch((err)=>{
+      setisError(true)
+      setisLoading(false)
+    })
+  }
+ 
+
+  React.useEffect(()=>{getOrderData()},[])
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [status, setStatus] = React.useState("Proccessing");
-  const [dates, setDates] = React.useState([]);
+
+
+ 
+ const {orderStatus,date} =order
+  
+
+ 
+  const obj ={
+    "Processing":1,
+    "Shipped":2,
+    "Delivered":3,
+
+  }
+  const dates ={
+  }
+   dates[orderStatus]=date
+
+ 
   const steps = getSteps();
-  const date = new Date();
-  var hrdate = date.toDateString();
+ 
+  
+  React.useEffect(() =>{
+    setActiveStep(obj[orderStatus])
+   
+  },[orderStatus])
 
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setDates([...dates, hrdate]);
-  };
 
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
 
-  return (
+
+  return isLoading?<Spinner />:(
     <div className={classes.root}>
       <Stepper
         alternativeLabel
@@ -211,47 +241,14 @@ export default function CustomizedSteppers() {
             <StepLabel StepIconComponent={ColorlibStepIcon}>
               <div>
                 {label}
-                <h6>{dates[i] && dates[i]}</h6>
+                <br />
+               {dates[label] && dates[label] }
               </div>
             </StepLabel>
           </Step>
         ))}
       </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div>
-            <Typography className={classes.instructions}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Reset
-            </Button>
-          </div>
-        ) : (
-          <div>
-            <Typography className={classes.instructions}>
-              {getStepContent(activeStep)}
-            </Typography>
-            <div>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={classes.button}
-              >
-                Back
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </div>
-          </div>
-        )}
-      </div>
+     
     </div>
   );
 }
