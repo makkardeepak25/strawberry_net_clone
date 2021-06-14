@@ -9,7 +9,7 @@ import {Rating} from "@material-ui/lab";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 import {useDispatch,useSelector} from "react-redux"
-import { getUserDetails, userUpdate } from '../../Redux/Auth/authAction';
+import { getUserDetails, removeItem, userUpdate } from '../../Redux/Auth/authAction';
 const Product = () => {
     const {id}=useParams();
     console.log(id)
@@ -75,14 +75,13 @@ const Product = () => {
         
         const id=product.id
      //console.log(id,product);
-     dispatch(userUpdate(id,product))
+     dispatch(removeItem(id,product))
 
     }
     const addtoBag=()=>{
         const bag=user&&user.bag
          const isPresent= bag.length>0&& bag.map((el)=> el._id===addProduct._id?{...el, qty:Number(el.qty)+Number(qty)}:el)
         // const isPresent= bag.length>0&& bag.find((el)=> el.id===product.id)
-     
          const isPresentObject= bag.length>0&& bag.filter((el)=> el._id===addProduct._id&&{...el, qty:Number(el.qty)+Number(qty)})
         console.log(isPresentObject[0]);
          const userdata={

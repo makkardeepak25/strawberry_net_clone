@@ -11,8 +11,8 @@ export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
   const isLoading = useSelector(state => state.auth.isLoading);
-
   const dispatch = useDispatch();
+  let paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess);
   const history= useHistory()
   const cart = user.bag && user.bag;
   const name = user.f_name;
@@ -171,7 +171,7 @@ export function Bag() {
                   <div className={styles.bordbot} />
                   <div className={styles.summary}>
                     <div className={`${styles.flexsum} ${styles.bolditem}`}>
-                      <div>Item Total: {cart.length} item(s)‎</div>
+                      <div>Item Total: {cart&&cart.length} item(s)‎</div>
                       <div>INR {total}</div>
                     </div>
                     <div className={`${styles.flexsum} ${styles.extraoff}`}>

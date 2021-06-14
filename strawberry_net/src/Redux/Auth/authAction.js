@@ -220,9 +220,11 @@ export const priceUpdate = (id=localStorage.getItem("userId"),payload) => (dispa
     dispatch(signinRequest())
     axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id}`,payload).then((res)=>{
         
-        alert(`Your details has been successfully saved into our server`)
+        // alert(`Your details has been successfully saved into our server`)
        
         dispatch(userDataSuccess(res.data))
+        dispatch(getUserDetails(id))
+
     })
     .catch(err=>
         dispatch(signINFailure(err))
