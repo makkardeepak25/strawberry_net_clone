@@ -72,7 +72,7 @@ export const BillingAddress = () => {
         <div className={styles.right}>
             
             { 
-                addresses.map((item, index) =>
+               addresses && addresses.map((item, index) =>
                     <div key={index} className={styles.addressCont}>
                        <div className={styles.lineone}>
                            <p style={{fontSize:'24px',marginRight:'20px'}}>{item.address_tittle}</p>
