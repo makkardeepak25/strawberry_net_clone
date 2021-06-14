@@ -60,7 +60,7 @@ export default function PaymentForm() {
         try {
             const {id} = paymentMethod
             setisLoading(true)
-            const response = await axios.post("http://localhost:4000/payment", {
+            const response = await axios.post("https://stripepaymentstraw.herokuapp.com/payment", {
                 amount: 1000,
                 id
             })
