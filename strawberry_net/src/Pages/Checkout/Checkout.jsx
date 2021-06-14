@@ -9,6 +9,7 @@ import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
 import { Checkbox } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid } from "uuid";
+import { GiConsoleController } from "react-icons/gi";
 
 const GreenCheckbox = withStyles({
   root: {
@@ -32,7 +33,7 @@ export function Checkout() {
   // const isLoading=useSelector(state=>state.auth.isLoading)
   const isAuth = useSelector(state => state.auth.isAuth);
   const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
-  console.log(paymentConfirmation)
+  // console.log(paymentConfirmation)
   const addressAvail = user && user.addresses;
   const [promCode, setPromCode] = React.useState(false);
   const [state, setState] = React.useState({});
@@ -91,8 +92,10 @@ export function Checkout() {
     orderStatus: "Processing",
     orderId: orderid,
     date: today.toLocaleDateString(),
-    payment:paymentConfirmation? "Success":"Due"
+    payment: paymentConfirmation ? "Success" : "Due",
+    userId:user._id
   };
+  // console.log(payload)
   const Addtouser = () => {
     const order = user && user.orders;
     order[0] = payload;
