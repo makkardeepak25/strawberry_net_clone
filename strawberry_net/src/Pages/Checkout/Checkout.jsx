@@ -95,7 +95,8 @@ export function Checkout() {
     payment: paymentConfirmation ? "Success" : "Due",
     userId:user._id
   };
-  console.log(payload)
+
+  // console.log(payload)
   const Addtouser = () => {
     const order = user && user.orders;
     order.push(payload);
