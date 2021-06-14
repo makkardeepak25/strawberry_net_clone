@@ -36,12 +36,12 @@ export function Checkout() {
   const addressAvail = user && user.addresses;
   const [promCode, setPromCode] = React.useState(false);
   const [state, setState] = React.useState({});
-  console.log(addressAvail);
+  // console.log(addressAvail);
   const dispatch = useDispatch();
   const cart = user.bag && user.bag;
   const name = user.f_name;
   let promoDisc = 0;
-  console.log(user);
+  // console.log(user);
   const [promo, setPromo] = React.useState("");
   const handlePromo = () => {
     if (promo === "STRAW5") {
@@ -55,7 +55,7 @@ export function Checkout() {
     .toString()
     .replace("-", "")
     .substring(0, 8);
-  console.log(orderid);
+  // console.log(orderid);
   let total = 0;
   cart &&
     cart.map(el => {
@@ -88,6 +88,7 @@ export function Checkout() {
     bag: cart,
     promoDiscount: promoDisc,
     address: addressAvail && addressAvail[0],
+    orderStatus: "Processing",
     orderId: orderid,
     date: today.toLocaleDateString(),
     payment:paymentConfirmation? "Success":"Due"
@@ -98,10 +99,9 @@ export function Checkout() {
     dispatch(priceUpdate(order));
     console.log(user);
   };
-  console.log(payload);
   React.useEffect(
     () => {
-      if (cart) {
+      if (cart && (paymentConfirmation==true)) {
         Addtouser();
       }
     },
@@ -175,8 +175,8 @@ export function Checkout() {
                     {addressAvail.map((item, index) => (
                       <div key={index} className={styles.addressCont}>
                         <div className={styles.lineone}>
-                          <p style={{ fontSize: "24px", marginRight: "20px" }}>{item.address_tittle}</p>
-                          <GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />
+                          {/* <p style={{ fontSize: "24px", marginRight: "20px" }}>{item.address_tittle}</p> */}
+                          {/* <GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" /> */}
                           <h6>Default billing address</h6>
                         </div>
 
@@ -264,7 +264,7 @@ export function Checkout() {
         </div>
       </div>
     </div>
-    // }
+    {/* } */}
     
     </>
   );
