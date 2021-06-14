@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomizedSteppers from './demo'
+import CustomizedSteppers from './Stepper'
 
 export const OrderTracking = () => {
     return (
