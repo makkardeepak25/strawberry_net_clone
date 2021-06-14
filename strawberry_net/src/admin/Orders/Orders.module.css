@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+
+   
+}
+.orders{
+    width: 96%;
+    border: 1px solid black;
+   padding: 2%;
+}
+.header{
+    display: flex;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    justify-content: space-between;
+}
+.header > div{
+ text-align: left;
+ width: 200px;
+
+}

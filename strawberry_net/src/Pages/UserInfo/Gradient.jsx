@@ -8,7 +8,7 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import GradeOutlinedIcon from '@material-ui/icons/GradeOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 
-import { Setting } from './Settings/Setting';
+
 import styles from './Gradient.module.css';
 import { makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -28,11 +28,8 @@ const useStyles = makeStyles(
 
 export const Gradient = () => {
     const classes = useStyles();
-    const defaultFocus = React.useRef();
+ 
 
-    React.useEffect(() => {
-        defaultFocus.current.focus()
-    },[])
 
     return (
         <div className={styles.mainCont}>      
@@ -54,20 +51,20 @@ export const Gradient = () => {
                 POINTS
             </Link>
 
-            <Link className={styles.menuIcons}><ShoppingCartOutlinedIcon className={classes.root} />
+            <Link to={'/user/orders'} className={styles.menuIcons}><ShoppingCartOutlinedIcon className={classes.root} />
                 ORDERS
             </Link>
             <Link className={styles.menuIcons}><GradeOutlinedIcon className={classes.root} />
                 REVIEWS
             </Link>
-            <Link ref={defaultFocus} className={styles.menuIcons}><SettingsOutlinedIcon className={classes.root}/>
+            <Link to={'/user/setting'}   className={styles.menuIcons}><SettingsOutlinedIcon className={classes.root}/>
                 SETTINGS
             </Link>
             </div>
             
             
         </div>
-            <Setting/>
+         
 
         </div>  )
 }
