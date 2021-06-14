@@ -18,6 +18,7 @@ import Panel from "../../admin/Panel/Panel"
 import Profiles from '../../admin/Profiles/Profiles';
 import AdminProducts from '../../admin/Products/AdminProducts';
 import Orders from "../../admin/Orders/Orders"
+import { OrderTracking } from '../OrderTracking/OrderTracking';
 const Routes = () => {
   const userid = useSelector(state => state.auth.userId)
   //console.log(userid,"ROutes")
@@ -60,6 +61,12 @@ const Routes = () => {
            <Route exact path="/admin/orders">
            <Orders />
            </Route>
+
+          {/* Admin Panel Route Ended */}
+
+          <Route exact path="/user/ordertracking">
+            <OrderTracking/>
+          </Route>
 
 
 
