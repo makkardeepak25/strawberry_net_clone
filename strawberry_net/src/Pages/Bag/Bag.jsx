@@ -5,10 +5,13 @@ import CloseIcon from "@material-ui/icons/Close";
 import { getlogout, removeItem } from "../../Redux/Auth/authAction";
 import { Redirect } from "react-router";
 import { Link, useHistory } from "react-router-dom";
+import {Spinner} from "./../../Components/Spinner"
+
 export function Bag() {
   const user = useSelector(state => state.auth.user);
   const isAuth = useSelector(state => state.auth.isAuth);
   const isLoading = useSelector(state => state.auth.isLoading);
+
   const dispatch = useDispatch();
   const history= useHistory()
   const cart = user.bag && user.bag;
@@ -115,7 +118,9 @@ export function Bag() {
                   </p>
                   <p style={{ marginTop: "25px" }}>Goods shipped from Strawberrynet</p>
                   <div className={styles.bordbot} />
-                  {cart.length > 0 &&
+                  {isLoading ? (
+                    <Spinner />
+                  ) :<>{cart.length > 0 &&
                     cart.map(el => {
                       return (
                         <div className={styles.prodbag}>
@@ -161,7 +166,8 @@ export function Bag() {
                         </div>
                       );
                     })}
-
+</>}
+                  
                   <div className={styles.bordbot} />
                   <div className={styles.summary}>
                     <div className={`${styles.flexsum} ${styles.bolditem}`}>
