@@ -442,7 +442,7 @@ const history=useHistory()
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
           </Link>
-          <Link className={styles.foc} to={"/new-products"}>
+          <Link className={styles.foc} to={"/user/setting"}>
             {" "}
             <li className={styles.li1}>
               <span>

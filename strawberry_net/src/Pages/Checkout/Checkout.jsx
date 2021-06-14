@@ -95,10 +95,11 @@ export function Checkout() {
     payment: paymentConfirmation ? "Success" : "Due",
     userId:user._id
   };
+
   // console.log(payload)
   const Addtouser = () => {
     const order = user && user.orders;
-    order[0] = payload;
+    order.push(payload);
     dispatch(priceUpdate(order));
     console.log(user);
   };
