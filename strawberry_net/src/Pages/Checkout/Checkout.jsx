@@ -3,9 +3,9 @@ import styles from "./Checkout.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Addressform } from "./Addressform/Addressform";
-import { priceUpdate } from "../../Redux/Auth/authAction";
+import { priceUpdate, removeItem, userUpdate } from "../../Redux/Auth/authAction";
 import { PaymentMethods } from "../../Components/Payment/PaymentMethods";
-import {Spinner} from "./../../Components/Spinner"
+import { Spinner } from "./../../Components/Spinner";
 import { Checkbox } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid } from "uuid";
@@ -30,9 +30,9 @@ const useStyles = makeStyles({
 
 export function Checkout() {
   const user = useSelector(state => state.auth.user);
-  const isLoading=useSelector(state=>state.auth.isLoading)
+  const isLoading = useSelector(state => state.auth.isLoading);
   const isAuth = useSelector(state => state.auth.isAuth);
-  const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess);
+  let paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess);
   // console.log(paymentConfirmation)
   const addressAvail = user && user.addresses;
   const [promCode, setPromCode] = React.useState(false);
@@ -97,21 +97,33 @@ export function Checkout() {
     userId: user._id
   };
 
-  // console.log(payload)
+  console.log(user._id)
+  
+  // const OrderDetails = product => {
+  //   const id = product._id;
+  //   console.log(id, product);
+  //    dispatch(priceUpdate(id, product));
+  // };
   const Addtouser = () => {
-    const order = user && user.orders;
-    order.push(payload);
-    dispatch(priceUpdate(order));
-    console.log(user);
+    let order = user && user.orders;
+    let new_order = [...order, payload]
+    const userdata = {
+      ...user,
+      orders:new_order
+    }
+    dispatch(priceUpdate(userdata._id, userdata));
+    user.bag=[]
+    console.log(userdata);
+    console.log(user.bag)
+
   };
   React.useEffect(
     () => {
       if (cart && paymentConfirmation === true) {
         Addtouser();
-        user.bag = {};
       }
     },
-    [payload]
+    []
   );
   return (
     <>
@@ -145,33 +157,28 @@ export function Checkout() {
                       </ul>
                     </div>
                     <div className={styles.bordbot} />
-                    {isLoading ? (
-                      <Spinner />
-                    ) : (
-                      <>
-                        {cart.length > 0 &&
-                          cart.map(el => {
-                            return (
-                              <div className={styles.prodbag}>
-                                <img src={el.images[0]} alt="product" />
-                                <div style={{ width: "45%" }}>
-                                  <div>
-                                    <strong style={{ textTransform: "uppercase" }}>{el.prod_name}</strong>
-                                  </div>
-                                  <div>{el.prod_description}</div>
-                                  <div>{el.size[0].size}</div>
-                                  <div>{Number(parseInt(el.size[0].price.replace))}</div>
-                                </div>
-                                <div>Qty. {el.qty}</div>
-                                <div style={{ marginLeft: "10%" }}>{Number(parseInt(el.size[0].price)) * Number(el.qty)}</div>
-                                <br />
 
-                                <div className={styles.bordbott} />
+                    {cart.length > 0 &&
+                      cart.map(el => {
+                        return (
+                          <div className={styles.prodbag}>
+                            <img src={el.images[0]} alt="product" />
+                            <div style={{ width: "45%" }}>
+                              <div>
+                                <strong style={{ textTransform: "uppercase" }}>{el.prod_name}</strong>
                               </div>
-                            );
-                          })}
-                      </>
-                    )}
+                              <div>{el.prod_description}</div>
+                              <div>{el.size[0].size}</div>
+                              <div>{Number(parseInt(el.size[0].price.replace))}</div>
+                            </div>
+                            <div>Qty. {el.qty}</div>
+                            <div style={{ marginLeft: "10%" }}>{Number(parseInt(el.size[0].price)) * Number(el.qty)}</div>
+                            <br />
+
+                            <div className={styles.bordbott} />
+                          </div>
+                        );
+                      })}
 
                     <div className={styles.bordbot} />
                     <div className={`${styles.flexsums} ${styles.bolditem}`}>
