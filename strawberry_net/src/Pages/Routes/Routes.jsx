@@ -17,6 +17,12 @@ import { Gradient } from '../UserInfo/Gradient';
 import Panel from "../../admin/Panel/Panel"
 import Profiles from '../../admin/Profiles/Profiles';
 import AdminProducts from '../../admin/Products/AdminProducts';
+import Orders from "../../admin/Orders/Orders"
+import { OrderTracking } from '../OrderTracking/OrderTracking';
+import OrderList from '../Orders/OrderList';
+import { Setting } from '../UserInfo/Settings/Setting';
+
+
 const Routes = () => {
   const userid = useSelector(state => state.auth.userId)
   //console.log(userid,"ROutes")
@@ -56,9 +62,35 @@ const Routes = () => {
            <Route exact path="/admin/products">
            <AdminProducts/>
            </Route>
+           <Route exact path="/admin/orders">
+           <Orders />
+           </Route>
 
+          {/* Admin Panel Route Ended */}
 
+          <Route exact path="/user/ordertracking/:id">
+          <NavBar/>
+      <div style={{height:"150px"}}></div>
+      <Gradient/>
+            <OrderTracking/>
+            <Footer/>
+          </Route>
 
+          <Route exact path="/user/orders">
+          <NavBar/>
+      <div style={{height:"150px"}}></div>
+      <Gradient/>
+            <OrderList/>
+            <Footer/>
+          </Route>
+
+          <Route exact path="/user/setting">
+          <NavBar/>
+      <div style={{height:"150px"}}></div>
+            <Gradient/>
+            <Setting/>
+            <Footer/>
+          </Route>
 
 
            <Route exact path="/signin">
@@ -68,12 +100,7 @@ const Routes = () => {
              <Footer/>
            </Route>
 
-           <Route exact path="/userinfo">
-           <NavBar/>
-      <div style={{height:"150px"}}></div>
-          <Gradient/>
-          <Footer/>
-           </Route>
+          
 
            <Route path="/:category/bag">
            <NavBar/>
