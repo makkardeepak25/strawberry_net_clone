@@ -392,8 +392,8 @@ const history=useHistory()
               <div className={styles.clrspn}>SKINCARE</div>
             </li>
           </Link>
-          <Link className={styles.foc}>
-            <li to={"/makeup"}>
+          <Link className={styles.foc} to={"/makeup"}>
+            <li >
               <div className={styles.clrspn}>MAKEUP</div>
             </li>
           </Link>

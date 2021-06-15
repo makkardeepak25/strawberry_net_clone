@@ -47,13 +47,13 @@ export const OrderTracking = () => {
             <table className={styles.Maintable}>
                 
         <thead>
-               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{f_name} {l_name}</td> </tr>
-               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{date}</td> </tr>
+               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{f_name!=="" && l_name!==""?(f_name+" "+l_name):"N/A"} </td> </tr>
+               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{date!==""?date:"N/A"}</td> </tr>
                <tr>  <th className={styles.Thtable2}>Ship Date</th> <td className={styles.Tdtable1}>N/A</td></tr>
-               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{locality}</td></tr>
-               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{city}</td></tr>
+               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{locality!==""?locality:"N/A"}</td></tr>
+               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{city!==""?city:"N/A"}</td></tr>
                <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>Delhivery</td></tr>
-               <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>{addressId}</td> </tr>
+               <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>{addressId!==""?addressId:"N/A"}</td> </tr>
 
         </thead>
 
@@ -91,14 +91,14 @@ export const OrderTracking = () => {
 
                     <tr >
                         <th className={styles.Trackingbox3}>3/08/2020</th>
-                        <th>2:31 PM</th>
+                        <th>6:31 PM</th>
                         <th>Origin Scan</th>
                         <th>Chennai</th>
                     </tr>
 
                     <tr>
                         <th className={styles.Trackingbox3}>3/08/2020</th>
-                        <th>2:31 PM</th>
+                        <th>10:31 PM</th>
                         <th>Shipping into Received</th>
                         <th>Bangalore</th>
 
