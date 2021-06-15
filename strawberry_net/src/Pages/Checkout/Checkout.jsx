@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Checkout.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,7 +33,7 @@ export function Checkout() {
   const isLoading = useSelector(state => state.auth.isLoading);
   const isAuth = useSelector(state => state.auth.isAuth);
   let paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess);
-  // console.log(paymentConfirmation)
+   console.log(paymentConfirmation)
   const addressAvail = user && user.addresses;
   const [promCode, setPromCode] = React.useState(false);
   const [state, setState] = React.useState({});
@@ -106,7 +106,7 @@ export function Checkout() {
   // };
   const Addtouser = () => {
     let order = user && user.orders;
-    let new_order = [...order, payload]
+    let new_order = order.length>0? [...order, payload] : [payload]
     const userdata = {
       ...user,
       orders:new_order
@@ -117,10 +117,14 @@ export function Checkout() {
     console.log(user.bag)
 
   };
+
+ 
+
   React.useEffect(
     () => {
       if (cart && paymentConfirmation === true) {
-        Addtouser();
+           Addtouser();
+          
       }
     },
     []
