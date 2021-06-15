@@ -13,9 +13,9 @@ import Typography from "@material-ui/core/Typography";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import DoneOutlineSharpIcon from "@material-ui/icons/DoneOutlineSharp";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+
 import { getUserDetails } from "../../Redux/Auth/authAction";
-import axios from "axios";
+
 import { Spinner } from "../../Components/Spinner";
 const useQontoStepIconStyles = makeStyles({
   root: {
@@ -172,30 +172,12 @@ function getSteps() {
 
 
 
-export default function CustomizedSteppers() {
-  const {id} = useParams()
-
-  const userId = useSelector(state => state.auth.userId)
-
-  const [order,setOrder]=React.useState({})
-  const [isLoading,setisLoading]=React.useState(false)
-  const [isError,setisError]=React.useState(false)
+export default function CustomizedSteppers({order,isLoading,isError}) {
+  
 
 
-  const getOrderData=()=>{
-    setisLoading(true)
-    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles/${userId.replace(/"/g,"")}`).then((res)=>{
-      setOrder(res.data.orders.find(item=>item.orderId===id))
-      setisLoading(false)
-    })
-    .catch((err)=>{
-      setisError(true)
-      setisLoading(false)
-    })
-  }
+
  
-
-  React.useEffect(()=>{getOrderData()},[])
 
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);

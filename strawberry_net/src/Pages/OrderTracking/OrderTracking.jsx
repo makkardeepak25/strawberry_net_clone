@@ -1,30 +1,60 @@
 import React from 'react'
-import CustomizedSteppers from './demo'
+import CustomizedSteppers from './Stepper'
 import styles from "./OrderTracking.module.css"
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 export const OrderTracking = () => {
+    const {id} = useParams()
+    const [order,setOrder]=React.useState({})
+    
+    const userId = useSelector(state => state.auth.userId)
+    // const f_name = useSelector(state => state.auth.user.f_name)
+    // const l_name = useSelector(state => state.auth.user.l_name)
+
+ 
+    const [isLoading,setisLoading]=React.useState(false)
+     const [isError,setisError]=React.useState(false)
+    const getOrderData=()=>{
+        setisLoading(true)
+        return axios.get(`https://api-strawberrynet.herokuapp.com/profiles/${userId.replace(/"/g,"")}`).then((res)=>{
+          setOrder(res.data.orders.find(item=>item.orderId===id))
+          setisLoading(false)
+        })
+        .catch((err)=>{
+          setisError(true)
+          setisLoading(false)
+        })
+      }
+     
+    
+      React.useEffect(()=>{getOrderData()},[])
+      console.log(order.address)
+      const {date,orderId}=order
+      const {addressId,address_tittle,f_name,l_name,city,locality,pincode,state}=order.address
+      console.log(order)
     return (
         <div>
-            <div className={styles.Maindiv}>Status fro Order Id : 23344556667</div>
+            <div className={styles.Maindiv}>Status for Order Id : {orderId}</div>
             <hr/>
             <table className={styles.Maintable}>
                 
         <thead>
-               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>Mahi Makkar</td> </tr>
-               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>23/5/2020</td> </tr>
-               <tr>  <th className={styles.Thtable2}>Ship Date</th> <td className={styles.Tdtable1}>28/5/2020</td></tr>
-               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>Lorem ipsum dolor, 
-                   sit amet consectetur adipisicing elit. Nostrum fuga illo mollitia. Corrupti, commodi aut?</td></tr>
-               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>Mangalore</td></tr>
-               <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>Delhivery</td></tr>
-               <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>34455666677322333</td> </tr>
+               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{f_name} {l_name}</td> </tr>
+               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{date}</td> </tr>
+               <tr>  <th className={styles.Thtable2}>Ship Date</th> <td className={styles.Tdtable1}>N/A</td></tr>
+               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{locality}</td></tr>
+               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{city}</td></tr>
+               <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>Delivery</td></tr>
+               <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>{addressId}</td> </tr>
 
         </thead>
 
         
             </table>
             
-            <CustomizedSteppers/>
+            <CustomizedSteppers order={order} isLoading={isLoading} isError={isError}/>
 
             <div>
                 <table className={styles.Trackingbox2}>
