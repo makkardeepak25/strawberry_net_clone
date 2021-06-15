@@ -109,8 +109,8 @@ export const Signup = () => {
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Last Name" name="l_name" value={l_name} onChange={handleOnchange}></AuthInput>
            
-            <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange}></AuthInput>
-            <AuthInput required placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
+            <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange} required></AuthInput>
+            <AuthInput required type="password" placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
             {/* {
             isMatched? 
             ( */}
@@ -121,7 +121,7 @@ export const Signup = () => {
             (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
             </p>)} */}
-            <AuthInput placeholder="  Re-enter your Password"  onChange={handleMatch} required></AuthInput>
+            <AuthInput type="password" placeholder="  Re-enter your Password"  onChange={handleMatch} required></AuthInput>
             {
                 !isPasswordMatching && <div style={{color:'red'}}>The passwords do not match.</div>
             }
