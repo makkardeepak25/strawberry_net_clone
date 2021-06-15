@@ -45,6 +45,7 @@ export default function PaymentForm() {
     const dispatch = useDispatch()
 
     const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
+    
     console.log(paymentConfirmation)
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -70,6 +71,7 @@ export default function PaymentForm() {
                 setSuccess(true)
                 setisLoading(false)
                 dispatch(setPaymentSucceeded())
+
             }
 
         } catch (error) {
