@@ -10,6 +10,7 @@ import { Checkbox } from "@material-ui/core";
 import { withStyles, makeStyles } from "@material-ui/core/styles";
 import { v4 as uuid } from "uuid";
 import { GiConsoleController } from "react-icons/gi";
+import { TramRounded } from "@material-ui/icons";
 
 const GreenCheckbox = withStyles({
   root: {
@@ -110,23 +111,24 @@ export function Checkout() {
     const userdata = {
       ...user,
       orders: new_order,
-      
+      bag:[]
     }
     dispatch(priceUpdate(userdata._id, userdata));
-    console.log(userdata);
+    // console.log(userdata);
     
 
   };
 
-  
+  const[isAdd,setIsAdd]=React.useState(false)
   React.useEffect(
     () => {
-      if (cart && paymentConfirmation === true) {
+      if (cart && paymentConfirmation === true && isAdd===false) {
         Addtouser();
-        console.log(user.orders)
+        setIsAdd(true)
+        // console.log(user.orders)
       }
     },
-    []
+    [paymentConfirmation]
   );
   return (
     <>
