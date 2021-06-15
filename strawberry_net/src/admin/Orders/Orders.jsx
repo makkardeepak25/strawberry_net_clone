@@ -12,11 +12,19 @@ const [isLoading,setIsLoading]=useState(true)
         axios.get(`https://api-strawberrynet.herokuapp.com/profiles`)
         .then((res)=>{
             const data=res.data
-            for(let i=0;i<data.length;i++){
+            // for(let i=0;i<data.length;i++){
                 
-                for(let j=0;j<data[i].orders.length;i++){
-                     console.log(data[i].orders[j]);
-                    setOrders([...orders,data[i].orders[j]])
+            //     for(let j=0;j<data[i].orders.length;i++){
+            //          console.log(data[i].orders[j]);
+            //         setOrders([...orders,data[i].orders[j]])
+            //     }
+            // }
+
+            for(let i=0;i<data.length;i++){
+              
+                for(let j=0;j<data[i].orders.length;j++){
+                    console.log( data[i].f_name, data[i].orders[j]);
+                   orders.push(data[i].orders[j])
                 }
             }
         })
