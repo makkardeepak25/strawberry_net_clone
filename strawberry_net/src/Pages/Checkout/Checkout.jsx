@@ -109,18 +109,21 @@ export function Checkout() {
     let new_order = [...order, payload]
     const userdata = {
       ...user,
-      orders:new_order
+      orders: new_order,
+      
     }
     dispatch(priceUpdate(userdata._id, userdata));
-    user.bag=[]
     console.log(userdata);
-    console.log(user.bag)
+    
 
   };
+
+  
   React.useEffect(
     () => {
       if (cart && paymentConfirmation === true) {
         Addtouser();
+        console.log(user.orders)
       }
     },
     []
