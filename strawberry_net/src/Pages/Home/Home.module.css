@@ -3,40 +3,52 @@
 width: 90%;
 margin: auto;
 }
+.offerdaily{
+  width: 90%;
+  margin:auto;
+  margin-top: 30px;
+}
+.extraline{
+  display: grid;
+  grid-template-columns: 41% 18% 41%;
+  margin: auto;
+  margin-bottom: 15px;
+
+}
+.dailyspec{text-align: center;}
+.dailyspec>h3{
+  margin: 0px 5px;
+  color: #65318f;
+  text-transform: uppercase;
+}
+.endsin span{
+font-weight: bold;
+}
+.endsin strong{
+color: #e82e74;
+}
+.line{
+  margin-top: 10px;
+background-color: #0b0b0b;  
+height: 5px;
+}
+.lines{
+  margin-top: 10px;
+  background-color:#65318f;  
+  height: 5px;
+}
 .dailyspecial {
   padding-top: 25px;
   width: 85%;
   margin: auto;
 }
-.promopadding {
-  margin-top: 30px;
-  margin-bottom: 35px;
-}
-.promotitleline {
-  border-bottom: 5px solid #0b0b0b;
-  margin: 0 0 -15px;
-}
-.promotitle {
-  text-align: center;
-  font-size: 19px;
-  color: #2b2b2b;
-  font-weight: 700;
-  margin: 0;
-  margin-top: -20px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  width: 100%;
+.dealsdaily{
+  width: 90%;
+  margin:auto;
+  background-color: #ebe5f1;
+  padding:2% 5%;
 }
 
-.promotitle h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.promotitlediv {
-  padding: 0 20px;
-  display: inline-block;
-  background-color: #fff;
-}
 .dailymessage {
   font-size: 19px;
   letter-spacing: 1px;
@@ -64,60 +76,7 @@ margin: auto;
   font-family: Lato, sans-serif;
   margin: auto;
 }
-.containerfluid {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 7.5px;
-  padding-right: 7.5px;
-  width: 100%;
 
-}
-.promoblockpicks {
-  width: 100%;
-  /* margin: 35px 0 0; */
-  padding-bottom: 20px;
-  padding-top: 20px;
-  background-color: #ebe5f1;
-
-}
-.dailypromocounter{
-  width: 100%;
-}
-.container {
-  max-width: 1200px;
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  width: 100%;
-}
-.promotitlepad {
-  margin-top: 35px;
-  margin-bottom: 35px;
-}
-.promotitleline {
-  border-color:#401761;
-  margin: 0 0 -15px;
-}
-
-.promotitle {
-  color: #65318f;
-  text-align: center;
-  font-size: 17px;
-  font-weight: 700;
-  margin: 0;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-}
-.promotitledeals {
-  padding: 0 20px;
-  display: inline-block;
-  background-color: #ebe5f1;
-}
-.promotitle h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-}
 .bestbtn {
   border: 1px solid #d4d2d2;
   color: #0b0b0b;
@@ -157,7 +116,7 @@ margin: auto;
 
   }
 }
-@media (max-width: 1040px) {
+@media (max-width: 1080px) {
   .productgridlist{
     grid-template-columns: repeat(2, 1fr);
   }
