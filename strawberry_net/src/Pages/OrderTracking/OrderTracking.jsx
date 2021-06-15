@@ -91,14 +91,14 @@ export const OrderTracking = () => {
 
                     <tr >
                         <th className={styles.Trackingbox3}>3/08/2020</th>
-                        <th>2:31 PM</th>
+                        <th>6:31 PM</th>
                         <th>Origin Scan</th>
                         <th>Chennai</th>
                     </tr>
 
                     <tr>
                         <th className={styles.Trackingbox3}>3/08/2020</th>
-                        <th>2:31 PM</th>
+                        <th>10:31 PM</th>
                         <th>Shipping into Received</th>
                         <th>Bangalore</th>
 
