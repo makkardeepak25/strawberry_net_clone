@@ -189,7 +189,7 @@ export const getLogin =({email,password})=>(dispatch)=>{
 export const getUserDetails = (id=localStorage.getItem("userId"))=>(dispatch)=>{
     dispatch(userDataRequest())
   
-    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g,"")}`).then((res)=>{
+    return axios.get(`https://api-strawberrynet.herokuapp.com/profiles/${id}`).then((res)=>{
        
     
         dispatch(userDataSuccess(res.data))
