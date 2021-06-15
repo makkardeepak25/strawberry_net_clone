@@ -32,7 +32,10 @@ export const OrderTracking = () => {
       React.useEffect(()=>{getOrderData()},[])
       console.log(order.address)
       const {date,orderId}=order
-      const {addressId,address_tittle,f_name,l_name,city,locality,pincode,state}=order.address
+      var obj ={
+        addressId:"",address_tittle:"",f_name:"",l_name:"",city:"",locality:"",pincode:"",state:""
+      }
+      const {addressId,address_tittle,f_name,l_name,city,locality,pincode,state}=obj
       console.log(order)
     return (
         <div>
@@ -41,13 +44,13 @@ export const OrderTracking = () => {
             <table className={styles.Maintable}>
                 
         <thead>
-               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{f_name && f_name} {f_name && l_name}</td> </tr>
-               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{date && date}</td> </tr>
+               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{f_name} {l_name}</td> </tr>
+               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{date}</td> </tr>
                <tr>  <th className={styles.Thtable2}>Ship Date</th> <td className={styles.Tdtable1}>N/A</td></tr>
-               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{locality && locality}</td></tr>
-               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{city && city}</td></tr>
-               <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>Delivery</td></tr>
-               <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>{addressId && addressId}</td> </tr>
+               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{locality}</td></tr>
+               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{city}</td></tr>
+               <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>Delhivery</td></tr>
+               <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>{addressId}</td> </tr>
 
         </thead>
 
