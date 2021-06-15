@@ -173,13 +173,14 @@ export const getLogin = ({ email, password }) => dispatch => {
 
 export const getUserDetails = (id = localStorage.getItem("userId")) => dispatch => {
   dispatch(userDataRequest());
-
-  return axios
-    .get(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`)
-    .then(res => {
-      dispatch(userDataSuccess(res.data));
-    })
-    .catch(err => dispatch(userDataFailure(err)));
+  if (id) {
+    return axios
+      .get(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`)
+      .then(res => {
+        dispatch(userDataSuccess(res.data));
+      })
+      .catch(err => dispatch(userDataFailure(err)));
+  }
 };
 
 export const userUpdate = (id = localStorage.getItem("userId"), payload) => dispatch => {
