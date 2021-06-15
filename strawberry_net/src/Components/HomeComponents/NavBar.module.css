@@ -125,7 +125,9 @@
   border: 2px solid #521b76;
   text-align: center;
   width: 100%;
-  padding: 0px 3px;
+  padding: 0px 2px;
+  margin-top: 3px;
+
 }
 .inpsearch1 {
   width: 80%;
@@ -147,7 +149,7 @@
   color: #521b76;
 }
 .inpsearch2 {
-  width: 80%;
+  width: 60%;
   background-color: transparent;
   border: 0;
   box-shadow: none;
@@ -159,7 +161,7 @@
   color: #555;
   outline: none;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-  margin-top: 5px;
+  margin-top: 2px;
   padding: 5px;
 }
 
@@ -182,7 +184,7 @@
   margin-top: 4px;
 }
 .searchbtn2 {
-  height: 33px;
+  height: 20px;
   font-size: 18px;
   color: #521b76;
   /* padding: 0 10px; */
@@ -196,7 +198,7 @@
   white-space: nowrap;
   font-weight: bold;
   border-radius: 4px;
-  margin-top: 9px;
+  margin-top: 6px;
 }
 .navbarmenu1 {
   background: #623381;
@@ -209,7 +211,7 @@
   display: none;
   display: none;
   justify-content: space-between;
-  padding: 6px 20px;
+  padding: 0px 20px;
 }
 .mediaCat{
   color:#fff;
@@ -246,10 +248,10 @@ li {
   display: flex;
   letter-spacing: 0.015em;
   justify-content: space-around;
-  width: 100%;
+  width: 95%;
   height: 40px;
   margin: 0px;
-  padding-left: 14%;
+  padding-left: 15%;
 }
 .loginlinks {
   cursor: auto !important;

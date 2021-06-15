@@ -459,9 +459,10 @@ const history=useHistory()
             <MenuIcon
               style={{
                 width: "50px",
-                height: "50px",
+                height: "30px",
                 color: "white",
-                cursor: "pointer"
+                cursor: "pointer",
+              marginTop:"7px"
               }}
             />
           ) : (
