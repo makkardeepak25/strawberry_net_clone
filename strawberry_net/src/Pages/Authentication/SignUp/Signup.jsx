@@ -45,6 +45,9 @@ const iniState ={
     password:"",
     phone:"",
     birth_date:"",
+    birth_month:"",
+    location:"",
+    nickname:"",
     avatar:"",
     gender:"",
     points:0,
@@ -65,7 +68,7 @@ export const Signup = () => {
     const [sigupData,setSignUpdata]=React.useState(iniState)
     const [isMatched,SetIsMatched]=React.useState(true)
     const [hasregistered,setHasRegistered] = React.useState(false)
-    const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards} = sigupData
+    const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards,birth_month,location,nickname} = sigupData
     const handleOnchange=e=>{
         setSignUpdata({...sigupData,[e.target.name]:e.target.value})
         if(password=="secret-1"){
