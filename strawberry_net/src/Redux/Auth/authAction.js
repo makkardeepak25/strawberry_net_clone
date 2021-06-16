@@ -221,8 +221,7 @@ export const removeItem = (id = localStorage.getItem("userId"), payload) => disp
   dispatch(signinRequest());
   // dispatch(removeFromCart(payload))
   alert("Item Removing...");
-  return axios
-    .patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
+axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
     .then(res => {
       console.log(res.data);
       dispatch(userDataSuccess(res.data));

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Checkout.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Addressform } from "./Addressform/Addressform";
 import { priceUpdate, removeItem, userUpdate } from "../../Redux/Auth/authAction";
@@ -42,6 +42,8 @@ export function Checkout() {
   const dispatch = useDispatch();
   const cart = user.bag && user.bag;
   const name = user.f_name;
+  const history = useHistory()
+
   let promoDisc = 0;
   // console.log(user);
   const [promo, setPromo] = React.useState("");
@@ -115,7 +117,7 @@ export function Checkout() {
     }
     dispatch(priceUpdate(userdata._id, userdata));
     // console.log(userdata);
-    
+    history.push("/user/orders")
 
   };
 
