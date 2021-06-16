@@ -185,6 +185,7 @@
   background-color: #623380;
   border-radius: 15px;
   text-transform: uppercase;
+  cursor: pointer;
 }
 .backtohome:hover {
   background-color: #f1eff1;
