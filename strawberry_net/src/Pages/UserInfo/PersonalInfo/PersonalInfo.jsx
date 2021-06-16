@@ -198,9 +198,11 @@ export const PersonalInfo = () => {
     console.log(User)
   
     // !User||User ?<div>...loading</div>:
-    {console.log(isLoading)}
+    // {console.log(isLoading)}
     return isLoading?(<Spinner/>): (
-        <div className={styles.fullmainCont}>
+        <>
+        { 
+       User&& <div className={styles.fullmainCont}>
 
         
         <div className={classes.root,styles.mainCont}>
@@ -339,11 +341,14 @@ export const PersonalInfo = () => {
 
             
         </div>
-            {showButton && <div className={styles.saveButton}>
+            { showButton && <div className={styles.saveButton}>
                 <div>
                     <button onClick={handleSubmit}>Save</button>
                 </div>
             </div>}
+
         </div>
+        }
+        </>
     )
 }

@@ -69,11 +69,12 @@ const useStyles = makeStyles({
 });
 
 export default function OrderList() {
-    const Uorders = useSelector(state => state.auth.user.orders)
+    // const Uorders = useSelector(state => state.auth.user.orders)
+    const user = useSelector(state => state.auth.user)
     const isLoading = useSelector(state => state.auth.isLoading)
     console.log(isLoading)
 
-    const rows = Uorders
+    const rows = user&& user.orders
       const history = useHistory()
     const handletrack=(id)=>{
         history.replace(`/user/ordertracking/${id}`)
@@ -82,7 +83,9 @@ export default function OrderList() {
   const classes = useStyles();
 
   return  isLoading?<div><Spinner /></div>:(
-    <div>
+    <>
+    { 
+   user&& <div>
      
         <TableContainer>
       <Table className={classes.table} aria-label="customized table">
@@ -115,5 +118,7 @@ export default function OrderList() {
       </Table>
     </TableContainer>
     </div>
+    }
+    </>
   );
 }
