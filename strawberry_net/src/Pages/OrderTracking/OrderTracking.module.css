@@ -71,3 +71,9 @@
 .Colorclass{
     color: #ee2c72;
 }
+
+
+.tobecenter{
+    width:10%;
+    margin:10px auto;
+}

@@ -5,6 +5,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
+import { Spinner } from "../../Components/Spinner";
+
 export const OrderTracking = () => {
     const {id} = useParams()
     const [order,setOrder]=React.useState({})
@@ -40,7 +42,7 @@ export const OrderTracking = () => {
 
       const {addressId,address_tittle,f_name,l_name,city,locality,pincode,state}=address
       console.log(order)
-    return (
+    return isLoading?<div className={styles.tobecenter}><Spinner /></div>:(
         <div>
             <div className={styles.Maindiv}>Status for Order Id : {orderId}</div>
             <hr/>

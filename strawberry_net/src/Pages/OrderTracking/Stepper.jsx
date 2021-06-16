@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getUserDetails } from "../../Redux/Auth/authAction";
 
-import { Spinner } from "../../Components/Spinner";
 const useQontoStepIconStyles = makeStyles({
   root: {
     color: "#eaeaf0",
@@ -211,7 +210,7 @@ export default function CustomizedSteppers({order,isLoading,isError}) {
 
 
 
-  return isLoading?<Spinner />:(
+  return (
     <div className={classes.root}>
       <Stepper
         alternativeLabel
