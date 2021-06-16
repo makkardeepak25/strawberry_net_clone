@@ -21,7 +21,7 @@ export const Authentication = () => {
                
             </div>
             
-            <button className={styles.close_modal}><CancelIcon/></button>
+            {/* <button className={styles.close_modal}><CancelIcon/></button> */}
         
       </div>
     )

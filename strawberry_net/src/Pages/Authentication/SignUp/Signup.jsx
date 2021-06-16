@@ -140,7 +140,7 @@ export const Signup = () => {
   inputProps={{ 'aria-label': 'Checkbox A' }}
 />
            </div>
-                <div style={{fontSize:'15px',fontWeight:'normal'}}>
+                <div >
                     
                 Subscribe to our exclusive email offers
                 </div>
