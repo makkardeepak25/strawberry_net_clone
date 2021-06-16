@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 // import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 // import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Spinner } from "../../Components/Spinner";
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: "#fff",
@@ -69,6 +70,8 @@ const useStyles = makeStyles({
 
 export default function OrderList() {
     const Uorders = useSelector(state => state.auth.user.orders)
+    const isLoading = useSelector(state => state.auth.isLoading)
+    console.log(isLoading)
 
     const rows = Uorders
       const history = useHistory()
@@ -78,7 +81,7 @@ export default function OrderList() {
 
   const classes = useStyles();
 
-  return (
+  return  isLoading?<div><Spinner /></div>:(
     <div>
      
         <TableContainer>
