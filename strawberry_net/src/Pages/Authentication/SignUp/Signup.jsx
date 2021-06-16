@@ -45,6 +45,9 @@ const iniState ={
     password:"",
     phone:"",
     birth_date:"",
+    birth_month:"",
+    location:"",
+    nickname:"",
     avatar:"",
     gender:"",
     points:0,
@@ -65,7 +68,7 @@ export const Signup = () => {
     const [sigupData,setSignUpdata]=React.useState(iniState)
     const [isMatched,SetIsMatched]=React.useState(true)
     const [hasregistered,setHasRegistered] = React.useState(false)
-    const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards} = sigupData
+    const {f_name,l_name,email,password,phone,birth_date,avatar,points,addresses,wishlisht,orders,saved_cards,birth_month,location,nickname} = sigupData
     const handleOnchange=e=>{
         setSignUpdata({...sigupData,[e.target.name]:e.target.value})
         if(password=="secret-1"){
@@ -106,8 +109,8 @@ export const Signup = () => {
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Last Name" name="l_name" value={l_name} onChange={handleOnchange}></AuthInput>
            
-            <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange}></AuthInput>
-            <AuthInput required placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
+            <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange} required></AuthInput>
+            <AuthInput required type="password" placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
             {/* {
             isMatched? 
             ( */}
@@ -118,7 +121,7 @@ export const Signup = () => {
             (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
             </p>)} */}
-            <AuthInput placeholder="  Re-enter your Password"  onChange={handleMatch} required></AuthInput>
+            <AuthInput type="password" placeholder="  Re-enter your Password"  onChange={handleMatch} required></AuthInput>
             {
                 !isPasswordMatching && <div style={{color:'red'}}>The passwords do not match.</div>
             }
