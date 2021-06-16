@@ -33,6 +33,11 @@ const AuthButton = styled.button`
     color: white;
     height: 42px;
     margin: auto;
+    cursor: pointer;
+
+    &:hover{
+        background-color:#62338199;
+    }
     
 `
 
@@ -114,9 +119,9 @@ export const Signup = () => {
             {/* {
             isMatched? 
             ( */}
-            <p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5"}}>
+            {/* <p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5"}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
-            </p>
+            </p> */}
             {/* ):
             (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.

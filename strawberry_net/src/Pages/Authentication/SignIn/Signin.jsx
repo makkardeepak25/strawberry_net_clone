@@ -31,6 +31,11 @@ const AuthButton = styled.button`
     color: white;
     height: 42px;
     margin: auto;
+    cursor: pointer;
+
+    &:hover{
+        background-color:#62338199;
+    }
     
 `
 const initSignIn ={
