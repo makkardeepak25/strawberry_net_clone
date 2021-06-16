@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import styles from "./Product.module.css"
 import OfferTag from '../../Components/offer_lable/OfferTag';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from 'axios';
 import SimpleRating from "../../Components/Rating/ReadRating"
 import {Rating} from "@material-ui/lab";
@@ -12,32 +12,7 @@ import {useDispatch,useSelector} from "react-redux"
 import { getUserDetails, removeItem, userUpdate } from '../../Redux/Auth/authAction';
 const Product = () => {
     const {id}=useParams();
-    console.log(id)
-    // const product = {
-    //     id: "1",
-    //     prod_name: "ACADEMIE",
-    //     prod_description: "Men Eye Contour Gel",
-    //     size: [{size:"15ml/0.5oz",price:1300}],
-    //     prod_details: ["Formulated from unique blend of oak & birch natural extracts",
-    //         "  Offers tonifying, moisturizing calming & anti-oxydizing properties",
-    //         "Eliminates appearance of fine lines & wrinkles",
-    //         "Yeast extracts & acid complex enhance blood capillary network",
-    //         "Reduces puffiness & dark circles",
-    //         "Leaves eye zone velvety smooth & radiant"],
-    //     reviews: [{
-    //         title: "Nice",
-    //         rev_desc: "I love this product",
-    //         rating: 5,
-    //         date: "05-05-2021"
-    //     }],
-    //     ratings: 5,
-    //     images: [
-    //         "https://a.cdnsbn.com/images/products/20937521339.jpg",
-    //         "https://a.cdnsbn.com/images/products/20937521339-1.jpg",
-    //         "https://a.cdnsbn.com/images/products/20937521339-2.jpg"
-    //     ],
-    //     offer:14
-    // }
+
 
     let array = new Array(30).fill(0)
     
@@ -50,7 +25,7 @@ const Product = () => {
     const [size,setSize]=useState(0)
     const [product,setProduct]=useState({})
     const [qty,setQty]=useState("1")
-
+    const history= useHistory()
 
     const GetProduct=()=>{
         axios.get(`https://api-strawberrynet.herokuapp.com/products/${id}`)
@@ -70,15 +45,25 @@ const Product = () => {
     const dispatch=useDispatch()
    
   
- 
     const AddToCard=(product)=>{
-        
+    
         const id=product.id
-     //console.log(id,product);
-     dispatch(userUpdate(id,product))
-
+      
+     if(user){
+        dispatch(userUpdate(id,product))
+     }else{
+         history.replace("/signin")
+     }
+     
+    
     }
     const addtoBag=()=>{
+        if(!user){
+      console.log(user);
+        // AddToCard(userdata)
+        history.push("/signin")
+    } else{
+        console.log(user);
         const bag=user&&user.bag
          const isPresent= bag.length>0&& bag.map((el)=> el._id===addProduct._id?{...el, qty:Number(el.qty)+Number(qty)}:el)
         // const isPresent= bag.length>0&& bag.find((el)=> el.id===product.id)
@@ -95,9 +80,7 @@ const Product = () => {
             bag:bag.length > 0?[...isPresent]:[addProduct]
         }
          isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
-        // AddToCard(userdata)
-        console.log(userdata);
-        console.log(userdata1);
+    }
     }
 
 

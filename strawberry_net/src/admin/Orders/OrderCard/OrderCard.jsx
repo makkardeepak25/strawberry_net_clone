@@ -5,7 +5,7 @@ const OrderCard = ({...order}) => {
   const history =useHistory()
 
   const redirect=()=>{
-      history.push(`/admin/orders/${order.userID}/${order.orderId}`)
+      history.push(`/admin/orders/${order.userId}/${order.orderId}`)
   }
 
     return (
@@ -13,7 +13,7 @@ const OrderCard = ({...order}) => {
             <div><h4>#{order.orderId}</h4></div>
             <div><h4>{order.bag.length}</h4></div>
             <div><h4>{order.orderTot}</h4></div>
-            <div><h4 style={{color:"green"}} >{order.orderstatus}</h4></div>
+            <div><h4 style={{color:"green"}} >{order.orderStatus}</h4></div>
             <div><h4>{order.date}</h4></div>
         </div>
     );

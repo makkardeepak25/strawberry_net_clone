@@ -7,6 +7,7 @@ import {useDispatch,useSelector} from "react-redux"
 const ProductCard = ({...prod}) => {
    // console.log(prod);
    var price= prod.size[0].price
+   const [qty,setQty]=React.useState("1")
  const history= useHistory()
  const redirect=()=>{
      history.push(`/${prod.category}/products/${prod._id}`)
@@ -14,7 +15,7 @@ const ProductCard = ({...prod}) => {
  const addProduct={
     ...prod,
     size: [prod.size[0]],
-   qty:"1"
+   qty:qty
 }
 
 const user= useSelector((state)=>state.auth.user)
@@ -35,15 +36,35 @@ const AddToCard=(product)=>{
  
 
 }
+
+
+
 const addtoBag=()=>{
+    if(!user){
+  console.log(user);
+    // AddToCard(userdata)
+    history.push("/signin")
+} else{
+    //console.log(user);
     const bag=user&&user.bag
-    const userdata={
+     const isPresent= bag.length>0&& bag.map((el)=> el._id===addProduct._id?{...el, qty:Number(el.qty)+Number(qty)}:el)
+    // const isPresent= bag.length>0&& bag.find((el)=> el.id===product.id)
+     const isPresentObject= bag.length>0&& bag.filter((el)=> el._id===addProduct._id&&{...el, qty:Number(el.qty)+Number(qty)})
+    console.log(isPresentObject[0]);
+     const userdata={
 
         ...user,
-       bag:bag.length>0?[...bag,addProduct]:[addProduct]
+        bag:bag.length > 0?[...isPresent,addProduct]:[addProduct]
     }
-     AddToCard(userdata)
+    const userdata1={
+
+        ...user,
+        bag:bag.length > 0?[...isPresent]:[addProduct]
+    }
+     isPresentObject[0]?AddToCard(userdata1):AddToCard(userdata)
 }
+}
+
 React.useEffect(()=>{
     const id= localStorage.getItem("userId")
     

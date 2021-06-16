@@ -21,7 +21,7 @@ import Orders from "../../admin/Orders/Orders";
 import { OrderTracking } from "../OrderTracking/OrderTracking";
 import OrderList from "../Orders/OrderList";
 import { Setting } from "../UserInfo/Settings/Setting";
-
+import SingleOrder from "../../admin/Orders/OrderCard/SingleOrder/SingleOrder";
 const Routes = () => {
   const userid = useSelector(state => state.auth.userId);
   //console.log(userid,"ROutes")
@@ -62,6 +62,9 @@ const Routes = () => {
         </Route>
         <Route exact path="/admin/orders">
           <Orders />
+        </Route>
+        <Route exact path="/admin/orders/:userId/:orderId">
+         <SingleOrder/>
         </Route>
 
         {/* Admin Panel Route Ended */}
