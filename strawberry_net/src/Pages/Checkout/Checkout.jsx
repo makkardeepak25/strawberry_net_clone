@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Checkout.module.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Addressform } from "./Addressform/Addressform";
 import { priceUpdate, removeItem, userUpdate } from "../../Redux/Auth/authAction";
@@ -117,7 +117,7 @@ export function Checkout() {
     }
     dispatch(priceUpdate(userdata._id, userdata));
     // console.log(userdata);
-    history.push("/user/orders")
+    // history.push("/user/orders")
 
   };
 
@@ -132,6 +132,10 @@ export function Checkout() {
     },
     [paymentConfirmation]
   );
+
+  if (cart.length == 0) {
+    return <Redirect to="/user/bag"/>
+  }
   return (
     <>
       {/* {isLoading?<Spinner/>: */}
