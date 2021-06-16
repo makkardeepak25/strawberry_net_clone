@@ -31,7 +31,7 @@
 }
 .subscription_div>div:nth-child(1){
     width: 1%;
-    margin: 10%;
+    margin: 5%;
     font-size: 15px;
     line-height: 1.5;
     /* background-color: blue; */
@@ -39,7 +39,7 @@
 
 .subscription_div>div:nth-child(2){
     width: 80%;
-    margin: 10%;
+    margin-left: 10%;
     font-size: 15px;
     line-height: 1.5;
     /* background-color: blue; */
