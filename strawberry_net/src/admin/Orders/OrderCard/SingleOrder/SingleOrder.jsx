@@ -49,7 +49,7 @@ const SingleOrder = () => {
                   <div className={styles.card_img}>
                       <img src={item.images[0]} alt="" />
                       <div >
-                          <h5>Brand: {item.prod_name}</h5>
+                          <h3>Brand: {item.prod_name}</h3>
                           <h5> Description {item.prod_description}</h5>
                       </div>
 
@@ -70,7 +70,7 @@ const SingleOrder = () => {
                  <div> <h5>Total:</h5> <h5  className={styles.color}>{order.Item_Total}</h5> </div>
                  <div> <h5>Extra 10% OFF:</h5> <h5 className={styles.color}>{order.newCustomerOff}</h5> </div>
                  <div> <h5>Standerd Shipping :</h5> <h5 className={styles.color}>{order.shipmentFee}</h5> </div>
-                {order.promoDiscount&& <div> <h5>PromoCode Discount</h5> <h5 className={styles.color}>{order.promoDiscount}</h5> </div>}
+                {order.promoDiscount? <div> <h5>PromoCode Discount</h5> <h5 className={styles.color}>{order.promoDiscount}</h5> </div> : <div> </div>}
                 <div> <h3>Grand Total :</h3> <h3 className={styles.color}>{order.orderTot}</h3> </div>
               </div>
               </div> }
