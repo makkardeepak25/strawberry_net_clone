@@ -29,13 +29,13 @@ const Panel = () => {
     if (orders[i].orderStatus == "Processing") {
       processArray.push(orders[i]);
     }
-    if (orders[i].orderStatus == "Shipping") {
+    if (orders[i].orderStatus == "Shipped") {
       shipArray.push(orders[i]);
     }
     if (orders[i].orderStatus == "Cancelled") {
       cancelArray.push(orders[i]);
     }
-    if (orders[i].orderStatus == "Delhivered") {
+    if (orders[i].orderStatus == "Delivered") {
       delArray.push(orders[i]);
     }
   }
@@ -62,7 +62,7 @@ const Panel = () => {
             <h1>{shipArray.length}</h1>
           </div>
           <div className={styles.orderBox}>
-            <div>Delhivered Orders</div>
+            <div>Delivered Orders</div>
             <h1>{delArray.length}</h1>
           </div>
           <div className={styles.orderBox}>
