@@ -1,0 +1,16 @@
+.orderCard{
+    display: flex;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    justify-content: space-between;
+    height: 10vh;
+    cursor: pointer;
+}
+.orderCard > div{
+    text-align: left;
+ width: 200px;
+
+}
+.orderCard > div > h4{
+    margin: 10px 0px;
+}
