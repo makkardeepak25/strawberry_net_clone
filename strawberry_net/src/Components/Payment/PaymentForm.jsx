@@ -8,7 +8,7 @@ import PaymentSucces from "./PaymentSucces";
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 import { useDispatch, useSelector } from "react-redux";
 import { setPaymentSucceeded } from "../../Redux/Auth/authAction";
-import { useHistory } from "react-router-dom";
+
 
 
 const CARD_OPTIONS = {
@@ -46,7 +46,7 @@ export default function PaymentForm() {
     const dispatch = useDispatch()
 
     const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
-    const history= useHistory()
+   
     console.log(paymentConfirmation)
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -72,7 +72,7 @@ export default function PaymentForm() {
                 setSuccess(true)
                 setisLoading(false)
                 dispatch(setPaymentSucceeded())
-                history.replace('/user/orders')
+              
 
             }
 
@@ -87,6 +87,12 @@ export default function PaymentForm() {
     }
 }
 
+// const history= useHistory()
+//     const handleSuccess =()=>{
+      
+
+// history.replace('/user/orders')
+//     }
     return (
         <>
         {!success ? 
