@@ -133,7 +133,7 @@ export function Checkout() {
     [paymentConfirmation]
   );
 
-  if (cart.length == 0) {
+  if (cart&&cart.length == 0) {
     return <Redirect to="/user/bag"/>
   }
   return (
