@@ -90,7 +90,7 @@ export const AddressForm = ({handleClose}) => {
           </div>
           <div><input type="text" placeholder="City/town *" value={city}  name="city" onChange={handleOnChange}/></div>
          <div> 
-             {user.location==="Indiaa"?<select id="" value={state}  name="state" onChange={handleOnChange}>
+             {user.location==="India"?<select id="" value={state}  name="state" onChange={handleOnChange}>
              
              {states.map((item,i)=><option key={i} value={item}>{item}</option>)}
             

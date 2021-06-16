@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPaymentSucceeded } from "../../Redux/Auth/authAction";
 
 
+
 const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
@@ -45,7 +46,7 @@ export default function PaymentForm() {
     const dispatch = useDispatch()
 
     const paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess)
-    
+   
     console.log(paymentConfirmation)
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -55,7 +56,7 @@ export default function PaymentForm() {
         })
 
 
-        
+       
 
     if(!error) {
         try {
@@ -71,6 +72,7 @@ export default function PaymentForm() {
                 setSuccess(true)
                 setisLoading(false)
                 dispatch(setPaymentSucceeded())
+              
 
             }
 
@@ -85,6 +87,12 @@ export default function PaymentForm() {
     }
 }
 
+// const history= useHistory()
+//     const handleSuccess =()=>{
+      
+
+// history.replace('/user/orders')
+//     }
     return (
         <>
         {!success ? 

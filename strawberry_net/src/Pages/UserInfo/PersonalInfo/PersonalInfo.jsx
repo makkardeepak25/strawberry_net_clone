@@ -11,6 +11,7 @@ import {countries} from '../countries';
 import axios from 'axios';
 import { API_KEY } from '../../..';
 import {Spinner} from '../../../Components/Spinner'
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -87,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
   
 
 export const PersonalInfo = () => { 
+    const history= useHistory()
     const classes = useStyles();
     const [formData,setFormData] =React.useState(initUser)
    
@@ -137,10 +139,15 @@ export const PersonalInfo = () => {
           .then((res) => {
               
            setImageURL(res.data.data.link)
-            alert('uploaded Successfully')
+            alert('Image Successfully Uploaded')
             console.log(res.data.data.link)
         })
-          .catch((err) => alert(err));
+          .catch((err) =>{
+              
+               alert("You are Redirecting to http://127.0.0.2:3000/")
+               window.open('http://127.0.0.2:3000/user/setting')
+             
+            });
       };
 
     
@@ -199,7 +206,7 @@ export const PersonalInfo = () => {
         
         <div className={classes.root,styles.mainCont}>
            { console.log(imageurl)}
-          <Avatar className={classes.large}  alt="" src={imageurl?imageurl:User.avatar}/>
+          <Avatar className={classes.large}  alt="No image" src={imageurl?imageurl:User?User.avatar:""}/>
        
             <div className={styles.UploadButton}>
             <input type="file" style={{display:'none'}} className={styles.customeFileInput} onChange={ShowUrlImage}  ref={imageRef} />
@@ -239,7 +246,7 @@ export const PersonalInfo = () => {
                         <label htmlFor="" style={{width:'120px'}} >Country Code</label>
                         <select name="countryCode" defaultValue={User.countryCode} id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                 
-                        <option value={countryCode} selected>{location} {User.countryCode}</option>
+                    {  countryCode!=="" && <option value={countryCode} selected>{location} {User.countryCode}</option>}
                 
                 {
                     countries.map(item=>
@@ -279,7 +286,7 @@ export const PersonalInfo = () => {
                 <label htmlFor="" style={{width:'70px'}}>Day</label>
                         <select name="birth_date" defaultValue={User.birth_date}  id="" style={{width:'20%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                             
-                        <option value={User.birth_date} selected>{User.birth_date}</option>
+                      {User.birth_date!=="" &&  <option value={User.birth_date} selected>{User.birth_date}</option>}
                             {
                                  days.map((item,i)=><option value={i+1}>{i+1}</option>)
                             }
@@ -287,7 +294,7 @@ export const PersonalInfo = () => {
                         <div style={{width:'25%'}} ></div>
                         <label htmlFor="" style={{width:'60px'}} >Month</label>
                         <select name="birth_month" defaultValue={User.birth_month}  id="" style={{width:'35%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
-                        <option value={User.birth_month} selected>{User.birth_month}</option>
+                        {User.birth_month && <option value={User.birth_month} selected>{User.birth_month}</option>}
                             {
                                 months.map((item)=><option value={item}>{item}</option>)
                             }
@@ -320,7 +327,7 @@ export const PersonalInfo = () => {
                 </div>
                 <div className={styles.inputCont} > 
                 <select name="location" defaultValue={User.location}  id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
-                <option value={User.location} selected>{User.location}</option>
+                {User.location && <option value={User.location} selected>{User.location}</option>}
                 {
                     countries.map(item=>
                         <option value={item.label}>{item.label}</option>
