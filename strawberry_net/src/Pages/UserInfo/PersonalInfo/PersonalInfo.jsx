@@ -4,7 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import styled from 'styled-components';
 import { useDispatch,useSelector } from 'react-redux';
 
-
 import styles from './PersonalInfo.module.css';
 import { GetimageUrl, userUpdate } from '../../../Redux/Auth/authAction';
 import {countries} from '../countries';
@@ -13,7 +12,7 @@ import { API_KEY } from '../../..';
 import {Spinner} from '../../../Components/Spinner'
 import { useHistory } from 'react-router-dom';
 
-
+console.log(process.env.REACT_APP_API_KEY)
 
 const initUser ={
     f_name:"",
