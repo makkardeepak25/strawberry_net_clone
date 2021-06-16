@@ -29,7 +29,7 @@ const Panel = () => {
     if (orders[i].orderStatus == "Processing") {
       processArray.push(orders[i]);
     }
-    if (orders[i].orderStatus == "Shipping") {
+    if (orders[i].orderStatus == "Shipped") {
       shipArray.push(orders[i]);
     }
     if (orders[i].orderStatus == "Cancelled") {

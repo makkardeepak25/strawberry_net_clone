@@ -46,7 +46,7 @@ export const MayLike = () => {
         {data.map(el => {
           return (
             <div className={styles.prodDiv}>
-              <Link to={`/products/${el._id}`}>
+              <Link to={`${el.category}/products/${el._id}`}>
                 {" "}
                 <>
                   <a>
