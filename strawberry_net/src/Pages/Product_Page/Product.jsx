@@ -75,7 +75,7 @@ const Product = () => {
         
         const id=product.id
      //console.log(id,product);
-     dispatch(removeItem(id,product))
+     dispatch(userUpdate(id,product))
 
     }
     const addtoBag=()=>{
