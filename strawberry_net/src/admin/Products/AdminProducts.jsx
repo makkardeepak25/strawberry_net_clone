@@ -4,14 +4,16 @@ import {Button} from "@material-ui/core"
 import SideBar from '../SideBar/SideBar';
 import styles from "./AdminProducts.module.css"
 import Card from "../Card/Card"
+import Loader from '../Loader/Loader';
 const AdminProducts = () => {
 const [products,setProducts]=useState([])
 const [pagination, SetPagination]=useState([])
 const [page,setPage]=useState(1)
 const [category,setCategory]=useState("")
 const [isError,setIsError]=useState(false)
+const [isLoading,setIsLoading]=useState(false)
     const getproducts=()=>{
-
+           setIsLoading(true)
         axios.get(`https://api-strawberrynet.herokuapp.com/products`)
         .then((res)=>{
           setProducts(res.data)
@@ -19,6 +21,9 @@ const [isError,setIsError]=useState(false)
         })
         .catch((err)=>{
             setIsError(true)
+        })
+        .finally(()=>{
+            setIsLoading(false)
         })
     }
 
@@ -85,6 +90,9 @@ handlePage(page)
                </div>
 
             </div>
+            {
+                isLoading&& <Loader />
+            }
         </div>
     );
 };

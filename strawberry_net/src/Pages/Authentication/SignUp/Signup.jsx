@@ -33,6 +33,11 @@ const AuthButton = styled.button`
     color: white;
     height: 42px;
     margin: auto;
+    cursor: pointer;
+
+    &:hover{
+        background-color:#62338199;
+    }
     
 `
 
@@ -109,14 +114,14 @@ export const Signup = () => {
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Last Name" name="l_name" value={l_name} onChange={handleOnchange}></AuthInput>
            
-            <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange} required></AuthInput>
+            <AuthInput type="email" placeholder="  Email Address" name="email" value={email} onChange={handleOnchange} required></AuthInput>
             <AuthInput required type="password" placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
             {/* {
             isMatched? 
             ( */}
-            <p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5"}}>
+            {/* <p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5"}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
-            </p>
+            </p> */}
             {/* ):
             (<p style={{marginTop:'0',marginBottom:'0',lineHeight:"1.5",color:'red'}}>
             Please enter a minimum of 8 characters, including at least 1 letter and 1 number.
@@ -140,7 +145,7 @@ export const Signup = () => {
   inputProps={{ 'aria-label': 'Checkbox A' }}
 />
            </div>
-                <div style={{fontSize:'15px',fontWeight:'normal'}}>
+                <div >
                     
                 Subscribe to our exclusive email offers
                 </div>

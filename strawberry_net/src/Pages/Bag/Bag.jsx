@@ -101,13 +101,14 @@ export function Bag() {
         <h1 className={styles.pagetitle}>Shopping bag</h1>
         <div className={styles.shopbag}>
           <div className={styles.cart}>
+          {cart && cart.length > 0 ? (
+              <>
             <div className={styles.country}>
               <span>
                 Deliver to: <strong>Country Name</strong>
               </span>
             </div>
-            {cart && cart.length > 0 && (
-              <>
+          
                 <div className={styles.bagData}>
                   <p>Spend INR2,554.30 more for a reduced standard shipping fee at INR379.​</p>
                   <div className={styles.shipBar}>
@@ -214,7 +215,10 @@ export function Bag() {
                   </ul>
                 </div>
               </>
-            )}
+            ) : <div className={styles.emptybag}>
+              <div className={styles.addprods}>Bag is Empty! Add some Products</div>
+            <Link to={"/"}><button className={styles.backtohome}>Go to Home Page</button></Link>
+            </div>}
           </div>
           <div className={styles.checksignout}>
             <div className={styles.checkoutbag}>

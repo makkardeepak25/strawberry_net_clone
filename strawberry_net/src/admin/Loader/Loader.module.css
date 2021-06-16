@@ -1,0 +1,13 @@
+.container{
+display: grid;
+place-content: center;
+background-color: rgba(204, 201, 201, 0.207);
+
+width: 110%;
+height: 99vh;
+position: fixed;
+}
+.container > div{
+  
+    
+}
