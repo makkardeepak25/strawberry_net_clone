@@ -13,7 +13,7 @@ let initState ={
     isError: false,
     isAuth:localStorage.getItem("userId")?true:false,
     userId:localStorage.getItem("userId") ||"",
-    user:{},
+    user:undefined,
 
 }
 console.log(initState.isAuth);

@@ -185,8 +185,8 @@ export const getUserDetails = (id = localStorage.getItem("userId")) => dispatch 
 
 export const userUpdate = (id = localStorage.getItem("userId"), payload) => dispatch => {
   dispatch(signinRequest());
-  axios
-    .patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
+  if(id){
+  axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
     .then(res => {
       // alert('userUpdate')
 
@@ -194,6 +194,7 @@ export const userUpdate = (id = localStorage.getItem("userId"), payload) => disp
       dispatch(getUserDetails(id));
     })
     .catch(err => dispatch(signINFailure(err)));
+  }
 };
 export const priceUpdate = (id = localStorage.getItem("userId"), payload) => dispatch => {
   dispatch(signinRequest());
