@@ -109,7 +109,7 @@ export const Signup = () => {
             <AuthInput placeholder="  First Name" name="f_name" value={f_name} onChange={handleOnchange}></AuthInput>
             <AuthInput placeholder="  Last Name" name="l_name" value={l_name} onChange={handleOnchange}></AuthInput>
            
-            <AuthInput placeholder="  Email Address" name="email" value={email} onChange={handleOnchange} required></AuthInput>
+            <AuthInput type="email" placeholder="  Email Address" name="email" value={email} onChange={handleOnchange} required></AuthInput>
             <AuthInput required type="password" placeholder="  Password" name="password" value={password} onChange={handleOnchange} required></AuthInput>
             {/* {
             isMatched? 

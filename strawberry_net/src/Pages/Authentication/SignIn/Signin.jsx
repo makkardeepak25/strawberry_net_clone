@@ -76,7 +76,7 @@ export const Signin = () => {
 
     return isLoading?(   <CircularProgress disableShrink classes={{root: classes.root}}/>) :(
         <form className={styles.signupform} onSubmit={handleClick}>
-        <AuthInput placeholder="Email Address" name="email" value={email} onChange={handleChange} required></AuthInput>
+        <AuthInput type="email" placeholder="Email Address" name="email" value={email} onChange={handleChange} required></AuthInput>
         <AuthInput type="password" placeholder="Password" name="password" password={password} onChange={handleChange} required></AuthInput>
         <h4 className={styles.signin_Text}>Forgot Password</h4>
         <AuthButton >SignIn</AuthButton>
