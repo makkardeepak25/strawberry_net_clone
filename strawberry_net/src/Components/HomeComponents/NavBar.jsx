@@ -105,6 +105,149 @@ const history=useHistory()
           <ul className={styles.menunavright}>
             {!isAuth ? (
               <li className={styles.loginlinks}>
+                <Link to={"/signin"} className={styles.accname}>
+                  <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
+                    <FaUserCircle />
+                  </IconContext.Provider>
+                  <span className={styles.aaccname}>Sign in</span>
+                </Link>
+              </li>
+            ) : (
+              <li className={styles.loginlinks} onMouseOver={showProfileBox} onMouseLeave={hideProfileBox}>
+                <Link className={styles.accname}>
+                  <img
+                    className={styles.logimg}
+                    src={avatar?avatar:"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
+                    alt="strawlog"
+                  />
+                  <span className={styles.aaccname}>{name}</span>
+                </Link>
+                {flag && (
+                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
+                    <Link>
+                      {" "}
+                      <div className={styles.showProfileOptions}>
+                        <PermIdentityOutlinedIcon
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            color: "#6b3a87"
+                          }}
+                        />{" "}
+                        <span>Account</span>
+                      </div>
+                    </Link>
+                    <Link>
+                      {" "}
+                      <div className={styles.showProfileOptions}>
+                        <AcUnitIcon
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            color: "#6b3a87"
+                          }}
+                        />{" "}
+                        <span>Wishlist</span>
+                      </div>{" "}
+                    </Link>
+                    <Link>
+                      {" "}
+                      <div className={styles.showProfileOptionss}>
+                        <ControlPointDuplicateIcon
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            color: "#6b3a87"
+                          }}
+                        />{" "}
+                        <span>Point Rewards</span>
+                      </div>
+                    </Link>
+                      <Link to={"/user/orders"}>
+                      {" "}
+                      <div className={styles.showProfileOptionsor}>
+                        <ListAltIcon
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            color: "#6b3a87"
+                          }}
+                        />{" "}
+                        <span>Orders</span>
+                      </div>{" "}
+                    </Link>
+                    <Link>
+                      {" "}
+                      <div className={styles.showProfileOptions}>
+                        <StarBorderIcon
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            color: "#6b3a87"
+                          }}
+                        />{" "}
+                        <span>Reviews</span>
+                      </div>{" "}
+                    </Link>
+                    <Link to={"/user/setting"}>
+                      {" "}
+                      <div className={styles.showProfileOptions}>
+                        <SettingsIcon
+                          style={{
+                            width: "15px",
+                            height: "15px",
+                            color: "#6b3a87"
+                          }}
+                        />{" "}
+                        <span>Settings</span>
+                      </div>{" "}
+                    </Link>
+                    <Link>
+                      {" "}
+                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
+                      </Link>
+                      <button onClick={handleLogout} className={styles.signoutbtn}>Sign Out</button>
+                  </div>
+                )}
+              </li>
+            )}
+
+            <li className={styles.loginlinks}>
+              <a className={styles.accname} >
+                <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
+                  <AiFillHeart />
+                </IconContext.Provider>
+                <span className={styles.aaccname}>Wishlist</span>
+              </a>
+            </li>
+            <li className={styles.loginlinks}>
+              <Link to={"/user/bag"} className={styles.accname}>
+                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
+                  <Badge
+                    badgeContent={bag && bag.length}
+                    color="secondary"
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "left"
+                    }}
+                  >
+                    <GiShoppingBag />
+                  </Badge>
+                </IconContext.Provider>
+                <span className={styles.aaccname}>Bag</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className={styles.container1}>
+        <Link to={"/"}>
+          <img src="https://www.reviewsxp.com/image/Stawberrynet.jpg" className={styles.navbrand1} />
+        </Link>
+        <div className={styles.mediaUser}>
+          <ul className={styles.menunavright}>
+            {!isAuth ? (
+              <li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname} href="#">
                   <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
                     <FaUserCircle />
@@ -163,7 +306,7 @@ const history=useHistory()
                         <span>Point Rewards</span>
                       </div>
                     </Link>
-                    <Link>
+                    <Link to={"/user/orders"}>
                       {" "}
                       <div className={styles.showProfileOptionsor}>
                         <ListAltIcon
@@ -189,150 +332,7 @@ const history=useHistory()
                         <span>Reviews</span>
                       </div>{" "}
                     </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <SettingsIcon
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            color: "#6b3a87"
-                          }}
-                        />{" "}
-                        <span>Settings</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
-                      </Link>
-                      <button onClick={handleLogout} className={styles.signoutbtn}>Sign Out</button>
-                  </div>
-                )}
-              </li>
-            )}
-
-            <li className={styles.loginlinks}>
-              <a className={styles.accname} href="#">
-                <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
-                  <AiFillHeart />
-                </IconContext.Provider>
-                <span className={styles.aaccname}>Wishlist</span>
-              </a>
-            </li>
-            <li className={styles.loginlinks}>
-              <Link to={"/user/bag"} className={styles.accname}>
-                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
-                  <Badge
-                    badgeContent={bag && bag.length}
-                    color="secondary"
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "left"
-                    }}
-                  >
-                    <GiShoppingBag />
-                  </Badge>
-                </IconContext.Provider>
-                <span className={styles.aaccname}>Bag</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div className={styles.container1}>
-        <Link to={"/"}>
-          <img src="https://www.reviewsxp.com/image/Stawberrynet.jpg" className={styles.navbrand1} />
-        </Link>
-        <div className={styles.mediaUser}>
-          <ul className={styles.menunavright}>
-            {!isAuth ? (
-              <li className={styles.loginlinks}>
-                <Link to={"/signin"} className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
-                    <FaUserCircle />
-                  </IconContext.Provider>
-                  <span className={styles.aaccname}>Sign in</span>
-                </Link>
-              </li>
-            ) : (
-              <li className={styles.loginlinks} onMouseOver={showProfileBox} onMouseLeave={hideProfileBox}>
-                <Link className={styles.accname}>
-                  <img
-                    className={styles.logimg}
-                    src={"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
-                    alt="strawlog"
-                  />
-                  <span className={styles.aaccname}>{name}</span>
-                </Link>
-                {flag && (
-                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <PermIdentityOutlinedIcon
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            color: "#6b3a87"
-                          }}
-                        />{" "}
-                        <span>Account</span>
-                      </div>
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <AcUnitIcon
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            color: "#6b3a87"
-                          }}
-                        />{" "}
-                        <span>Wishlist</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptionss}>
-                        <ControlPointDuplicateIcon
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            color: "#6b3a87"
-                          }}
-                        />{" "}
-                        <span>Point Rewards</span>
-                      </div>
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptionsor}>
-                        <ListAltIcon
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            color: "#6b3a87"
-                          }}
-                        />{" "}
-                        <span>Orders</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
-                      {" "}
-                      <div className={styles.showProfileOptions}>
-                        <StarBorderIcon
-                          style={{
-                            width: "15px",
-                            height: "15px",
-                            color: "#6b3a87"
-                          }}
-                        />{" "}
-                        <span>Reviews</span>
-                      </div>{" "}
-                    </Link>
-                    <Link>
+                    <Link to={"/user/setting"}>
                       {" "}
                       <div className={styles.showProfileOptions}>
                         <SettingsIcon
@@ -442,7 +442,7 @@ const history=useHistory()
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
           </Link>
-          <Link className={styles.foc} to={"/user/setting"}>
+          <Link className={styles.foc} to={"/new"}>
             {" "}
             <li className={styles.li1}>
               <span>
