@@ -197,9 +197,8 @@ export const PersonalInfo = () => {
 
     console.log(User)
   
-    // !User||User ?<div>...loading</div>:
-    // {console.log(isLoading)}
-    return isLoading?(<Spinner/>): (
+   
+    return isLoading?(<div className={styles.tobecenter}><Spinner/></div>): (
         <>
         { 
        User&& <div className={styles.fullmainCont}>
@@ -247,7 +246,7 @@ export const PersonalInfo = () => {
                         <label htmlFor="" style={{width:'120px'}} >Country Code</label>
                         <select name="countryCode" defaultValue={User.countryCode} id="" style={{width:'30%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                 
-                    {  countryCode!=="" && <option value={countryCode} selected>{location} {User.countryCode}</option>}
+                    {/* {  User.countryCode!=="" && <option value={countryCode} selected>{location} {User.countryCode}</option>} */}
                 
                 {
                     countries.map(item=>
@@ -270,7 +269,7 @@ export const PersonalInfo = () => {
                 <div className={styles.inputCont}>
                     <select defaultValue={User.gender} name="gender" id="" style={{width:'100%'}} className={styles.selectBox} onFocus={handleOnFocus} onChange={handleOnChange}>
                     <option value="Please Select">Please Select</option>
-                        <option value={User.gender} selected>{User.gender}</option>
+                       {User.gender && <option value={User.gender} selected>{User.gender}</option>}
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         
