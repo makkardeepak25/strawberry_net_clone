@@ -62,7 +62,8 @@ const Panel = () => {
             <h1>{shipArray.length < 10 ? `0${shipArray.length}` : shipArray.length}</h1>
           </div>
           <div className={styles.orderBox}>
-            <div>Delhivered Orders</div>
+
+            <div>Delivered Orders</div>
             <h1>{delArray.length<10? `0${delArray.length}`:delArray.length}</h1>
           </div>
           <div className={styles.orderBox}>
