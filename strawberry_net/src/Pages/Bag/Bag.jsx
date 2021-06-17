@@ -14,8 +14,8 @@ export function Bag() {
   const dispatch = useDispatch();
   let paymentConfirmation = useSelector(state => state.auth.isPaymentSuccess);
   const history= useHistory()
-  const cart = user.bag && user.bag;
-  const name = user.f_name;
+  const cart = user&& user.bag && user.bag;
+  const name = user&&user.f_name;
   console.log(user);
 
   let total = 0;
@@ -97,7 +97,8 @@ export function Bag() {
 
   return (
     <div>
-      <div className={styles.container}>
+      { 
+     user&& <div className={styles.container}>
         <h1 className={styles.pagetitle}>Shopping bag</h1>
         <div className={styles.shopbag}>
           <div className={styles.cart}>
@@ -236,6 +237,7 @@ export function Bag() {
           </div>
         </div>
       </div>
+}
     </div>
   );
 }
