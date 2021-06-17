@@ -5,6 +5,7 @@ import SideBar from "../SideBar/SideBar";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import { convert } from "./orders";
+import MyChart from "./Chart/Chart"
 const Panel = () => {
   const [total, setTotal] = React.useState([]);
   const [processing,setProcessing]=useState([])
@@ -81,6 +82,10 @@ const [isLoading,setIsloding]=useState(false)
              <div> <h3>Delivered Orders</h3> <h1>{convert(delivered.length)}</h1> </div>
              <div> <h3>Cancel <br/>Orders</h3> <h1>00</h1> </div>
              <div> <h3>Total <br /> Orders</h3> <h1>{convert(total.length)}</h1> </div>
+           </div>
+
+           <div>
+           <MyChart />
            </div>
         </div>
       </div>
