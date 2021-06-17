@@ -46,8 +46,9 @@ const Panel = () => {
   return (
     <div className={styles.admin_panel}>
       <SideBar prop="dashboard" />
-
+      
       <div className={styles.main_panel}>
+        <h1>DASHBOARD</h1>
         <div className={styles.main_flex}>
           <div className={styles.orderBox}>
             <div>Cancelled Orders</div>

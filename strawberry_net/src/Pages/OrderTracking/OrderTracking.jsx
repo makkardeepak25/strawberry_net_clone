@@ -32,7 +32,7 @@ export const OrderTracking = () => {
      
     
       React.useEffect(()=>{getOrderData()},[])
-      console.log(order.address,"Addddddddddddddddddddddddddddddddddddddddd")
+   
       const {date,orderId}=order
       var address =order.address ?order.address :{
         addressId:"N/A",address_tittle:"N/A",f_name:"N/A",l_name:"N/A",city:"N/A",locality:"N/A",pincode:"N/A",state:"N/A"

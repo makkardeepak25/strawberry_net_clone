@@ -4,11 +4,15 @@ import SideBar from "../../../SideBar/SideBar";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../Loader/Loader";
+import {Button} from "@material-ui/core"
 const SingleOrder = () => {
   const { userId, orderId } = useParams();
   const [orders, setOrders] = useState([]);
-  const [order, setOrder] = useState("");
+  const [order, setOrder] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
+  const [status,setStatus]=useState(order? order.orderStatus:undefined)
+  const [change,setChange]=useState(false)
+
   const getUser = () => {
     setIsLoading(true);
     axios
@@ -29,6 +33,48 @@ const SingleOrder = () => {
         setIsLoading(false);
       });
   };
+  const updatedOrder={
+    ...order,
+    orderStatus: status
+  }
+  const updatedOrders= orders.map((ord)=> ord.orderId===orderId?updatedOrder:ord )
+
+  const updateUserOrder=()=>{
+    console.log(updatedOrders);
+  }
+const newOrder={
+  orders: updatedOrder
+}
+  
+  const updateStatus=(payload)=>{
+    setIsLoading(true);
+    axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${userId}`,payload)
+    .then((res)=>{
+      console.log(res.data);
+     // setOrder(res.data)
+     const data = res.data.orders;
+     setOrders(data);
+     for (let i = 0; i < data.length; i++) {
+       console.log(data[i]);
+       if (data[i].orderId === orderId) {
+         setOrder(data[i]);
+       }
+     }
+
+    })
+    .catch(()=>{
+
+    })
+    .finally(()=>{
+      setIsLoading(false)
+      setChange(false)
+    })
+  }
+  
+  useEffect(()=>{
+  updateStatus(newOrder)
+  },[status])
+
   useEffect(() => {
     getUser();
   }, []);
@@ -37,61 +83,38 @@ const SingleOrder = () => {
     <div className={styles.container}>
       <SideBar prop="orders" />
 
-      <div className={styles.order}>
-        <h1>Order ID :#{orderId}</h1>
-        <div>
-          <h5> Order Date: {order.date}</h5>
-          <div className={styles.order_info}>
-            <div className={styles.prod_cards}>
-              {order!="" && order.bag.map((item) => (
-                <div className={styles.item_card}>
-                  <div>Product ID: {item._id}</div>
-                  <div className={styles.card_img}>
-                      <img src={item.images[0]} alt="" />
-                      <div >
-                          <h3>Brand: {item.prod_name}</h3>
-                          <h5> Description {item.prod_description}</h5>
-                      </div>
+    { order&& <div  className={styles.order}>
+            <div className={styles.Maindiv}>Status for Order Id : {orderId}</div>
+            <hr/>
+            <table className={styles.Maintable}>
+                
+        <thead>
+               <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{order.address.f_name} {order.address.l_name}  </td> </tr>
+               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{order.date}</td> </tr>
+               <tr>  <th className={styles.Thtable2}>Country</th> <td className={styles.Tdtable1}>{order.address.country}</td></tr>
+               <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{order.address.locality}</td></tr>
+               <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{order.address.city}</td></tr>
+               <tr> <th className={styles.Thtable2}>Pincode</th><td className={styles.Tdtable1}>{order.address.pincode}</td></tr>
+               <tr> <th className={styles.Thtable2}>Mobile</th><td className={styles.Tdtable1}>{order.address.phone}</td></tr>
+               <tr> <th className={styles.Thtable2}> Order Status</th><td className={styles.Tdtable1}> {!change? order.orderStatus :
+               <select className={styles.select_tag} name="" value={status} onChange={(e)=>setStatus(e.target.value)} id="">
+                 <option value="Processing"> Processing </option>
+                 <option value="Shipped"> Shipped </option>
+                 <option value="Delivered"> Delivered </option>
+               </select> }
+               <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>setChange(true)} >CHANGE STATUS</Button>
+                </td> </tr>
 
-                    
-                    <div className={styles.qty}>
-                    <h4> Quantity:  {item.qty}</h4>
-                    </div>
-                   
-                       
-                  </div>
-                </div>
-              ))}
-            { order!==""&& <div className={styles.main} >
-                  <div>
+        </thead>
 
-                  </div>
-              <div className={styles.cost}>
-                 <div> <h5>Total:</h5> <h5  className={styles.color}>{order.Item_Total}</h5> </div>
-                 <div> <h5>Extra 10% OFF:</h5> <h5 className={styles.color}>{order.newCustomerOff}</h5> </div>
-                 <div> <h5>Standerd Shipping :</h5> <h5 className={styles.color}>{order.shipmentFee}</h5> </div>
-                {order.promoDiscount? <div> <h5>PromoCode Discount</h5> <h5 className={styles.color}>{order.promoDiscount}</h5> </div> : <div> </div>}
-                <div> <h3>Grand Total :</h3> <h3 className={styles.color}>{order.orderTot}</h3> </div>
-              </div>
-              </div> }
-             
-            </div>
-           {order !="" && <div className={styles.address}>
-              <div>
-                <h4>
-                  Name: {order.address.f_name} {order.address.l_name}
-                </h4>
-                <h4>Address: {order.address.address_tittle}</h4>
-              </div>
-            </div> }
-          </div>
-     
-     <div>
+        
+            </table>
+            
+        
 
-     </div>
-
+           
         </div>
-      </div>
+}
       {isLoading && <Loader />}
     </div>
   );

@@ -1,3 +1,4 @@
+
 .container{
     display: flex;
  
@@ -5,10 +6,26 @@
 }
 .orders{
     width: 100%;
-  
+   color: #201f1f;
    padding: 2%;
    height: 82vh;
    
+}
+.orders > h1{
+    font-size: 25px;
+    margin:0px auto;
+    background-image: linear-gradient(to right, #96307D 0%, #52246D 120%);
+   
+    padding: 15px 15px 15px 20px;
+    font-family: Lato,sans-serif;
+    color: white;
+    width: 50%;
+    text-align: center;
+}
+.page_no{
+    display: flex;
+    justify-content: space-between;
+    color: #201f1f;
 }
 .table{
     height: 80%;

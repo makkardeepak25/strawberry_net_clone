@@ -48,7 +48,7 @@ handlePage(page)
             <div className={styles.products}>
 
 
-          <h1>Products</h1>
+          <h1>PRODUCTS</h1>
           <div className={styles.filter}>
                  
                  <div></div>

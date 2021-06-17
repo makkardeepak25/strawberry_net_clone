@@ -34,5 +34,17 @@
 }
 .filter > div> select {
     padding: 5px;
-    margin: 10px;
+    margin: 5px;
+}
+.products > h1{
+    font-size: 25px;
+    margin:20px auto;
+    margin-bottom: 5px;
+    background-image: linear-gradient(to right, #96307D 0%, #52246D 120%);
+   
+    padding: 15px 15px 15px 20px;
+    font-family: Lato,sans-serif;
+    color: white;
+    width: 50%;
+    text-align: center;
 }
