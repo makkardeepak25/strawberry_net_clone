@@ -72,7 +72,7 @@ export default function OrderList() {
     // const Uorders = useSelector(state => state.auth.user.orders)
     const user = useSelector(state => state.auth.user)
     const isLoading = useSelector(state => state.auth.isLoading)
-    console.log(isLoading)
+    console.log(user)
 
     const rows = user&& user.orders
       const history = useHistory()

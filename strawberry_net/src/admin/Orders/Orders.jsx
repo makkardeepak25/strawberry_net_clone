@@ -67,9 +67,8 @@ getorders()
             <SideBar prop="orders"/>
 
            <div className={styles.orders}>
-                <h1>Oders</h1>
-               <h5>{date!=""&& formateDate(date)}</h5>
-               <h5>{newDate.toLocaleDateString()}</h5>
+                <h1>ORDERS</h1>
+            <div className={styles.page_no}> <h3>PAGE:{page+1}</h3>  <h3>Date:{date!==""?formateDate(date):newDate.toLocaleDateString()}</h3> </div>
                 <div className={styles.table}>
                     <div className={styles.header}>
                        <div><h4>Order ID</h4></div>
