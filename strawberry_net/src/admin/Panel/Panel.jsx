@@ -1,45 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Panel.module.css";
 import { Button } from "@material-ui/core";
 import SideBar from "../SideBar/SideBar";
 import axios from "axios";
+import Loader from "../Loader/Loader";
+import { convert } from "./orders";
 const Panel = () => {
-  const [orders, setOrders] = React.useState([]);
+  const [total, setTotal] = React.useState([]);
+  const [processing,setProcessing]=useState([])
+  const [shipped,setShipped]=useState([])
+  const [delivered,setDelivered]=useState([])
+const [isLoading,setIsloding]=useState(false)
   const getorders = () => {
+    const orders=[]
+    setIsloding(true)
     axios
       .get(`https://api-strawberrynet.herokuapp.com/profiles`)
       .then(res => {
+        // const data = res.data;
+        // for (let i = 0; i < data.length; i++) {
+        //   for (let j = 0; j < data[i].orders.length; i++) {
+
+        //      orders.push(data[i].orders[j])
+        //      setTotal(orders)
+        //      console.log(data[i].f_name,data[i].orders[j]);
+        //      if(data[i].orders[j].orderStatus==="Processing"){
+        //       processing.push(data[i].orders[j])
+        //      }
+        //      if(data[i].orders[j].orderStatus==="Shipped"){
+        //       shipped.push(data[i].orders[j])
+        //      }
+        //      if(data[i].orders[j].orderStatus==="Delivered"){
+        //       delivered.push(data[i].orders[j])
+        //      }
+        //   }
+        // }
         const data = res.data;
+    
+
         for (let i = 0; i < data.length; i++) {
-          for (let j = 0; j < data[i].orders.length; i++) {
-            console.log(data[i].orders[j]);
-            orders.push(data[i].orders[j]);
+          for (let j = 0; j < data[i].orders.length; j++) {
+          
+                // console.log(data[i].f_name, data[i].orders[j]);
+                        orders.push(data[i].orders[j])
+             setTotal(orders)
+             
+             if(data[i].orders[j].orderStatus==="Processing"){
+              processing.push(data[i].orders[j])
+             }
+             if(data[i].orders[j].orderStatus==="Shipped"){
+              shipped.push(data[i].orders[j])
+             }
+             if(data[i].orders[j].orderStatus==="Delivered"){
+              delivered.push(data[i].orders[j])
+             }
           }
         }
+        setIsloding(false)
       })
-      .catch(err => {});
+      .catch(err => {})
+      .finally(()=>{
+       
+      });
   };
-  console.log(orders);
-  let processArray = [];
-  let shipArray = [];
-  let cancelArray = [];
-  let delArray = [];
 
-  for (var i = 0; i < orders.length; i++) {
-    if (orders[i].orderStatus == "Processing") {
-      processArray.push(orders[i]);
-    }
-    if (orders[i].orderStatus == "Shipped") {
-      shipArray.push(orders[i]);
-    }
-    if (orders[i].orderStatus == "Cancelled") {
-      cancelArray.push(orders[i]);
-    }
-    if (orders[i].orderStatus == "Delivered") {
-      delArray.push(orders[i]);
-    }
-  }
-  console.log(processArray);
+ 
   React.useEffect(() => {
     getorders();
   }, []);
@@ -50,29 +75,18 @@ const Panel = () => {
       <div className={styles.main_panel}>
         <h1>DASHBOARD</h1>
         <div className={styles.main_flex}>
-          <div className={styles.orderBox}>
-            <div>Cancelled Orders</div>
-            <h1>{cancelArray.length < 10 ? `0${cancelArray.length}` : cancelArray.length}</h1>
-          </div>
-          <div className={styles.orderBox}>
-            <div>Processing Orders</div>
-            <h1>{processArray.length < 10 ? `0${processArray.length}` : processArray.length}</h1>
-          </div>
-          <div className={styles.orderBox}>
-            <div>Shipping Orders</div>
-            <h1>{shipArray.length < 10 ? `0${shipArray.length}` : shipArray.length}</h1>
-          </div>
-          <div className={styles.orderBox}>
-
-            <div>Delivered Orders</div>
-            <h1>{delArray.length<10? `0${delArray.length}`:delArray.length}</h1>
-          </div>
-          <div className={styles.orderBox}>
-            <div>Total Orders</div>
-            <h1>{orders.length<10? `0${orders.length}`:orders.length}</h1>
-          </div>
+           <div className={styles.order_boxes}>
+             <div> <h3>Processing Orders</h3> <h1>{convert(processing.length)}</h1> </div>
+             <div> <h3>Shipped Orders</h3> <h1>{convert(shipped.length)}</h1> </div>
+             <div> <h3>Delivered Orders</h3> <h1>{convert(delivered.length)}</h1> </div>
+             <div> <h3>Cancel <br/>Orders</h3> <h1>00</h1> </div>
+             <div> <h3>Total <br /> Orders</h3> <h1>{convert(total.length)}</h1> </div>
+           </div>
         </div>
       </div>
+      {
+        isLoading&&<Loader/>
+      }
     </div>
   );
 };
