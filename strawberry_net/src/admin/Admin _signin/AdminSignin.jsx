@@ -23,7 +23,7 @@ if(admin){
             </div>
             <div>
             <TextField onChange={(e)=>setInput(e.target.value) } className={styles.input} id="outlined-basic" label="Admin Name" variant="outlined" />
-            <br />
+              <div className={styles.divider}></div>
              <Button onClick={redirect} className={styles.btn} variant="contained" color="secondary">SIGN IN</Button>
             </div>
         </div>
