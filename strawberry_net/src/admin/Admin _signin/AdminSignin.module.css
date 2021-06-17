@@ -9,12 +9,16 @@
     margin: auto;
     
 }
+
+.divider{
+    height: 20px;
+}
 .input{
     width: 300px;
-    margin: 10px 0px;
+    
 }
 
 .btn{
-    width: 300px;
-    margin: 20px 0px;
+ width: 300px;
+   margin: 20px 0px;
 }
