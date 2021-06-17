@@ -25,7 +25,7 @@ const Panel = () => {
   let cancelArray = [];
   let delArray = [];
 
-  for (var i = 0; i < orders.length; i++) {
+  for (var i = 0; i < (orders && orders.length); i++) {
     if (orders[i].orderStatus == "Processing") {
       processArray.push(orders[i]);
     }
