@@ -6,6 +6,8 @@ import axios from "axios";
 import Loader from "../../../Loader/Loader";
 import {Button} from "@material-ui/core"
 import Pro_card from "../pro_card/Pro_card";
+import CustomizedSteppers from "../../../../Pages/OrderTracking/Stepper"
+
 const SingleOrder = () => {
   const { userId, orderId } = useParams();
   const [orders, setOrders] = useState([]);
@@ -85,7 +87,7 @@ orders: updatedOrders.length!==0?updatedOrders: orders
       <SideBar prop="orders" />
 
     { order&& <div  className={styles.order}>
-            <div className={styles.Maindiv}>Status for Order Id : {orderId}</div>
+            <div className={styles.Maindiv}>ORDER ID : {orderId}</div>
             <hr/>
             <table className={styles.Maintable}>
                 
@@ -112,6 +114,7 @@ orders: updatedOrders.length!==0?updatedOrders: orders
 
         
             </table>
+            <CustomizedSteppers order={order} />
             
             <div>
               {

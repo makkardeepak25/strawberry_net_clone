@@ -40,8 +40,8 @@ if(!admin){
                   <div onClick={()=>redirects("/admin/profiles")} className={active==="profiles"?styles.active_tab:styles.tab}> <h3>USERS</h3> </div>
                   <div onClick={()=>redirects("/admin/products")} className={active==="products"?styles.active_tab:styles.tab}> <h3>PRODUCTS</h3> </div>
                   <div onClick={()=>redirects("/admin/orders")} className={active==="orders"?styles.active_tab:styles.tab}> <h3>ORDERS</h3> </div>
-                  <div onClick={()=>redirects("/admin/dashboard")} className={styles.tab}> <h3>USERS</h3> </div>
-                  <div onClick={()=>redirects("/admin/dashboard")} className={styles.tab}> <h3>USERS</h3> </div>
+                  {/* <div onClick={()=>redirects("/admin/dashboard")} className={styles.tab}> <h3>USERS</h3> </div>
+                  <div onClick={()=>redirects("/admin/dashboard")} className={styles.tab}> <h3>USERS</h3> </div> */}
 
               </div>
 
