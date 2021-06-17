@@ -1,6 +1,10 @@
 .admin_panel{
   width: 320px;
 }
+.user_img > img {
+    width: 100%;
+    border-radius: 50px;
+}
 .side_panel{
     width: 250px;
     height: 100vh;
