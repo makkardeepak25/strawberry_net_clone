@@ -69,6 +69,7 @@ const [isLoading,setIsloding]=useState(false)
   React.useEffect(() => {
     getorders();
   }, []);
+  
   return (
     <div className={styles.admin_panel}>
       <SideBar prop="dashboard" />
