@@ -15,9 +15,7 @@ const Orders = () => {
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState("all");
   const newDate = new Date();
-  function ass(a, b) {
-    return b.date - a.date;
-  }
+
   const getorders = () => {
     const order = [];
     setIsLoading(true);
@@ -25,13 +23,7 @@ const Orders = () => {
       .get(`https://api-strawberrynet.herokuapp.com/profiles`)
       .then((res) => {
         const data = res.data;
-        // for(let i=0;i<data.length;i++){
-
-        //     for(let j=0;j<data[i].orders.length;i++){
-        //          console.log(data[i].orders[j]);
-        //         setOrders([...orders,data[i].orders[j]])
-        //     }
-        // }
+    
 
         for (let i = 0; i < data.length; i++) {
           for (let j = 0; j < data[i].orders.length; j++) {

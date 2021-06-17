@@ -17,6 +17,7 @@
     "material-ui-flags": "^1.2.4",
     "mongoose": "^5.11.15",
     "react": "^17.0.2",
+    "react-charts": "^2.0.0-beta.7",
     "react-dom": "^17.0.2",
     "react-google-recaptcha": "^2.1.0",
     "react-icons": "^4.2.0",
