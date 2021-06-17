@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../Loader/Loader";
 import {Button} from "@material-ui/core"
+import Pro_card from "../pro_card/Pro_card";
 const SingleOrder = () => {
   const { userId, orderId } = useParams();
   const [orders, setOrders] = useState([]);
@@ -12,7 +13,7 @@ const SingleOrder = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status,setStatus]=useState(order? order.orderStatus:undefined)
   const [change,setChange]=useState(false)
-
+   const [user,setUser]=useState(undefined)
   const getUser = () => {
     setIsLoading(true);
     axios
@@ -20,6 +21,7 @@ const SingleOrder = () => {
       .then((res) => {
         console.log(res.data);
         const data = res.data.orders;
+        setUser(res.data)
         setOrders(data);
         for (let i = 0; i < data.length; i++) {
           console.log(data[i]);
@@ -39,15 +41,15 @@ const SingleOrder = () => {
   }
   const updatedOrders= orders.map((ord)=> ord.orderId===orderId?updatedOrder:ord )
 
-  const updateUserOrder=()=>{
-    console.log(updatedOrders);
-  }
+
 const newOrder={
-  orders: updatedOrder
+  ...user,
+orders: updatedOrders.length!==0?updatedOrders: orders
 }
   
   const updateStatus=(payload)=>{
-    setIsLoading(true);
+    console.log(payload);
+   setIsLoading(true);
     axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${userId}`,payload)
     .then((res)=>{
       console.log(res.data);
@@ -71,9 +73,7 @@ const newOrder={
     })
   }
   
-  useEffect(()=>{
-  updateStatus(newOrder)
-  },[status])
+  
 
   useEffect(() => {
     getUser();
@@ -102,7 +102,9 @@ const newOrder={
                  <option value="Shipped"> Shipped </option>
                  <option value="Delivered"> Delivered </option>
                </select> }
-               <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>setChange(true)} >CHANGE STATUS</Button>
+              {!status? <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>setChange(true)} >CHANGE STATUS</Button>
+
+              : <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>updateStatus(newOrder)} >UPDATE STATUS</Button> }
                 </td> </tr>
 
         </thead>
@@ -110,6 +112,11 @@ const newOrder={
         
             </table>
             
+            <div>
+              {
+                order.bag.map((prod)=> <Pro_card   {...prod}/> )
+              }
+            </div>
         
 
            

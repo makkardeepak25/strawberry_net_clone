@@ -40,8 +40,8 @@ export function Checkout() {
   const [state, setState] = React.useState({});
   // console.log(addressAvail);
   const dispatch = useDispatch();
-  const cart = user.bag && user.bag;
-  const name = user.f_name;
+  const cart = user&& user.bag && user.bag;
+  const name = user&&user.f_name;
   const history = useHistory()
 
   let promoDisc = 0;
@@ -97,10 +97,10 @@ export function Checkout() {
     orderId: orderid,
     date: today.toLocaleDateString(),
     payment: paymentConfirmation ? "Success" : "Due",
-    userId: user._id
+    userId: user&&user._id
   };
 
-  console.log(user._id)
+  // console.log(user._id)
   
   // const OrderDetails = product => {
   //   const id = product._id;
@@ -113,7 +113,7 @@ export function Checkout() {
     const userdata = {
       ...user,
       orders: new_order,
-      bag:[]
+       bag:[]
     }
     dispatch(priceUpdate(userdata._id, userdata));
     // console.log(userdata);
@@ -139,8 +139,9 @@ export function Checkout() {
   return (
     <>
       {/* {isLoading?<Spinner/>: */}
-      <div>
-        <div className={styles.container}>
+       <div>
+         {
+       user&& <div className={styles.container}>
           <h1 className={styles.pagetitle}>CHECKOUT</h1>
 
           <div className={styles.shopbag}>
@@ -290,6 +291,7 @@ export function Checkout() {
             )}
           </div>
         </div>
+}
       </div>
       {/* } */}
     </>

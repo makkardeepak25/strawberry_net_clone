@@ -13,6 +13,7 @@ const [isLoading,setIsLoading]=useState(true)
 const [all,setAll]=useState("")
 const [date,setDate]=useState("")
 const [page,setPage]=useState(0)
+const [filter,setFilter]=useState("all")
 const newDate = new Date()
 function ass (a, b)
 {
@@ -35,15 +36,26 @@ function ass (a, b)
             for(let i=0;i<data.length;i++){
               
                 for(let j=0;j<data[i].orders.length;j++){
-                    console.log( data[i].f_name, data[i].orders[j]);
+                   
                     // all.push(data[i].orders[j])
-                    if(date!==""){
-                        if(data[i].orders[j].date==formateDate(date)){
+                    if(filter==="all"){
+                        if(date!=="" ){
+                            if(data[i].orders[j].date==formateDate(date)){
+                                order.push(data[i].orders[j])
+                            }
+                        } else if(data[i].orders[j].date==newDate.toLocaleDateString() ){
                             order.push(data[i].orders[j])
                         }
-                    } else if(data[i].orders[j].date==newDate.toLocaleDateString()){
-                        order.push(data[i].orders[j])
+                    } else{
+                        if(date!=="" && data[i].orders[j].orderStatus==filter){
+                            if(data[i].orders[j].date==formateDate(date)){
+                                order.push(data[i].orders[j])
+                            }
+                        } else if(data[i].orders[j].date==newDate.toLocaleDateString()  && data[i].orders[j].orderStatus==filter){
+                            order.push(data[i].orders[j])
+                        }
                     }
+                
                   
                 }
             }
@@ -61,14 +73,21 @@ function ass (a, b)
   
 useEffect(()=>{
 getorders()
-},[date,page])
+},[date,page,filter])
     return (
         <div className={styles.container}>
             <SideBar prop="orders"/>
 
            <div className={styles.orders}>
                 <h1>ORDERS</h1>
-            <div className={styles.page_no}> <h3>PAGE:{page+1}</h3>  <h3>Date:{date!==""?formateDate(date):newDate.toLocaleDateString()}</h3> </div>
+            <div className={styles.page_no}> <h3>PAGE:{page+1}</h3> 
+            <select className={styles.select_filter} name="" onChange={(e)=>setFilter(e.target.value)}   id="">
+            <option value="all"> All </option>
+                 <option value="Processing"> Processing </option>
+                 <option value="Shipped"> Shipped </option>
+                 <option value="Delivered"> Delivered </option>
+               </select>
+             <h3>Date:{date!==""?formateDate(date):newDate.toLocaleDateString()}</h3> </div>
                 <div className={styles.table}>
                     <div className={styles.header}>
                        <div><h4>Order ID</h4></div>

@@ -60,3 +60,9 @@
 
     justify-content: space-between;
 }
+
+.select_filter{
+  padding: 5px;
+  height: 40px;
+  margin-top: 10px;
+}
