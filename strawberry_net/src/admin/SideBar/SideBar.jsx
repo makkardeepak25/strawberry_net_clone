@@ -16,7 +16,7 @@ console.log("sidebar",prop,active);
                
                <div className={styles.user}>
                    <div className={styles.user_img}>
-
+                      <img src="https://www.clipartmax.com/png/middle/171-1717870_stockvader-predicted-cron-for-may-user-profile-icon-png.png" alt="" />
                    </div>
 
                    <h1>Admin Name</h1>

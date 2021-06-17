@@ -70,6 +70,7 @@ orders: updatedOrders.length!==0?updatedOrders: orders
     .finally(()=>{
       setIsLoading(false)
       setChange(false)
+      setStatus(undefined)
     })
   }
   
@@ -118,6 +119,13 @@ orders: updatedOrders.length!==0?updatedOrders: orders
               }
             </div>
         
+        <div className={styles.order_info}>
+          <div  className={styles.order_div}><h3>Total:</h3> <h3>{order.Item_Total}</h3> </div>
+          <div className={styles.order_div}><h3>New Customer Off:</h3> <h3>{order.newCustomerOff}</h3> </div>
+          <div className={styles.order_div}><h3>PromoCode  Off:</h3> <h3>{order.promoDiscount}</h3> </div>
+          <div className={styles.order_div}><h3>Shipment Fee:</h3> <h3>{order.shipmentFee}</h3> </div>
+          <div className={styles.order_div}><h4>Grand Total:</h4> <h4>{order.orderTot}</h4> </div>
+        </div>
 
            
         </div>
