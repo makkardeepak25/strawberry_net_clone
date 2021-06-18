@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Loader from "../../../Loader/Loader";
 import {Button} from "@material-ui/core"
+import Pro_card from "../pro_card/Pro_card";
+import CustomizedSteppers from "../../../../Pages/OrderTracking/Stepper"
+
 const SingleOrder = () => {
   const { userId, orderId } = useParams();
   const [orders, setOrders] = useState([]);
@@ -12,7 +15,7 @@ const SingleOrder = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status,setStatus]=useState(order? order.orderStatus:undefined)
   const [change,setChange]=useState(false)
-
+   const [user,setUser]=useState(undefined)
   const getUser = () => {
     setIsLoading(true);
     axios
@@ -20,6 +23,7 @@ const SingleOrder = () => {
       .then((res) => {
         console.log(res.data);
         const data = res.data.orders;
+        setUser(res.data)
         setOrders(data);
         for (let i = 0; i < data.length; i++) {
           console.log(data[i]);
@@ -39,15 +43,15 @@ const SingleOrder = () => {
   }
   const updatedOrders= orders.map((ord)=> ord.orderId===orderId?updatedOrder:ord )
 
-  const updateUserOrder=()=>{
-    console.log(updatedOrders);
-  }
+
 const newOrder={
-  orders: updatedOrder
+  ...user,
+orders: updatedOrders.length!==0?updatedOrders: orders
 }
   
   const updateStatus=(payload)=>{
-    setIsLoading(true);
+    console.log(payload);
+   setIsLoading(true);
     axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${userId}`,payload)
     .then((res)=>{
       console.log(res.data);
@@ -68,12 +72,11 @@ const newOrder={
     .finally(()=>{
       setIsLoading(false)
       setChange(false)
+      setStatus(undefined)
     })
   }
   
-  useEffect(()=>{
-  updateStatus(newOrder)
-  },[status])
+  
 
   useEffect(() => {
     getUser();
@@ -84,7 +87,7 @@ const newOrder={
       <SideBar prop="orders" />
 
     { order&& <div  className={styles.order}>
-            <div className={styles.Maindiv}>Status for Order Id : {orderId}</div>
+            <div className={styles.Maindiv}>ORDER ID : {orderId}</div>
             <hr/>
             <table className={styles.Maintable}>
                 
@@ -102,15 +105,30 @@ const newOrder={
                  <option value="Shipped"> Shipped </option>
                  <option value="Delivered"> Delivered </option>
                </select> }
-               <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>setChange(true)} >CHANGE STATUS</Button>
+              {!status? <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>setChange(true)} >CHANGE STATUS</Button>
+
+              : <Button className={styles.change_btn} variant="contained" color="primary" onClick={()=>updateStatus(newOrder)} >UPDATE STATUS</Button> }
                 </td> </tr>
 
         </thead>
 
         
             </table>
+            <CustomizedSteppers order={order} />
             
+            <div>
+              {
+                order.bag.map((prod)=> <Pro_card   {...prod}/> )
+              }
+            </div>
         
+        <div className={styles.order_info}>
+          <div  className={styles.order_div}><h3>Total:</h3> <h3>{order.Item_Total}</h3> </div>
+          <div className={styles.order_div}><h3>New Customer Off:</h3> <h3>{order.newCustomerOff}</h3> </div>
+          <div className={styles.order_div}><h3>PromoCode  Off:</h3> <h3>{order.promoDiscount}</h3> </div>
+          <div className={styles.order_div}><h3>Shipment Fee:</h3> <h3>{order.shipmentFee}</h3> </div>
+          <div className={styles.order_div}><h4>Grand Total:</h4> <h4>{order.orderTot}</h4> </div>
+        </div>
 
            
         </div>
