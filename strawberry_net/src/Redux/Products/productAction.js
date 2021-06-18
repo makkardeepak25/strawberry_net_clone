@@ -26,7 +26,6 @@ export const getProdData = () => dispatch => {
     Axios.get("https://api-strawberrynet.herokuapp.com/products")
         .then(res => {
             dispatch(getProdSuccess(res.data));
-            console.log(res.data)
       })
       .catch(err => {
         dispatch(getProdFailure(err));
@@ -59,7 +58,6 @@ export const getSearchData = (title) => dispatch => {
     Axios.get(`https://api-strawberrynet.herokuapp.com/products?prod_name=${title}`)
         .then(res => {
         dispatch(getSearchSuccess(res.data));
-        console.log(res.data)
       })
       .catch(err => {
         dispatch(getSearchFailure(err));
