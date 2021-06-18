@@ -153,7 +153,6 @@ export const getSignIn = payload => dispatch => {
     .post("https://api-strawberrynet.herokuapp.com/profiles", payload)
     .then(res => {
       dispatch(signinSuccess(res.data.id));
-      console.log(res.data.id);
     })
     .catch(err => dispatch(signINFailure(err)));
 };
@@ -188,7 +187,6 @@ export const userUpdate = (id = localStorage.getItem("userId"), payload) => disp
   if(id){
   axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
     .then(res => {
-      // alert('userUpdate')
 
       dispatch(userdataUpdate(res.data));
       dispatch(getUserDetails(id));
@@ -225,14 +223,12 @@ export const removeItem = (id = localStorage.getItem("userId"), payload) => disp
   return axios
     .patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
     .then(res => {
-      console.log(res.data);
       dispatch(userDataSuccess(res.data));
       dispatch(getUserDetails(id));
     })
     .catch(err => dispatch(signINFailure(err)));
 };
 
-//imageRef.current.files[0]
 
 export const GetimageUrl = payload => async dispatch => {
   dispatch(imageUrlRequest());
@@ -247,7 +243,6 @@ export const GetimageUrl = payload => async dispatch => {
     .then(res => {
       imageUrlSuccess(res.data.data.link);
       alert("uploaded Successfully");
-      console.log(res.data.data.link);
     })
     .catch(err => imageUrlFailure(err));
 };
