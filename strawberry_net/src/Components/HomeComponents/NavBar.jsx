@@ -98,7 +98,8 @@ const history=useHistory()
                 </a>
               </li>
               <li>
-                <a className={styles.ordertrack}> Order Tracking</a>
+              <Link to={'/user/orders'}>
+                <a className={styles.ordertrack}> Order Tracking</a></Link>
               </li>
             </ul>
           </nav>

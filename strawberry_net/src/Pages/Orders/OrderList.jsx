@@ -72,16 +72,24 @@ export default function OrderList() {
     // const Uorders = useSelector(state => state.auth.user.orders)
     const user = useSelector(state => state.auth.user)
     const isLoading = useSelector(state => state.auth.isLoading)
+    const isAuth = useSelector(state => state.auth.isAuth)
+    const history = useHistory()
+    React.useEffect(() => {
+      !isAuth && history.replace("/signin")
+    },[])
+
     console.log(user)
 
     const rows = user&& user.orders
-      const history = useHistory()
+      
     const handletrack=(id)=>{
         history.replace(`/user/ordertracking/${id}`)
     }
 
   const classes = useStyles();
-
+  React.useEffect(() => {
+    window.scrollTo(0,0);
+  },[])
   return  isLoading?<div><Spinner /></div>:(
     <>
     { 

@@ -38,9 +38,11 @@ export const OrderTracking = () => {
         
      
             getOrderData() 
-        
+        window.scrollTo(0,0);
           
     },[ ])
+    
+    
   
     
     
