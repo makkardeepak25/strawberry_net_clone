@@ -30,12 +30,22 @@ export const OrderTracking = () => {
         })
       }
      
-    
-      React.useEffect(()=>{getOrderData()},[])
-   
       const {date,orderId}=order
+
+     
+      React.useEffect(()=>{
+        
+        
+     
+            getOrderData() 
+        
+          
+    },[ ])
+  
+    
+    
       var address =order.address ?order.address :{
-        addressId:"N/A",address_tittle:"N/A",f_name:"N/A",l_name:"N/A",city:"N/A",locality:"N/A",pincode:"N/A",state:"N/A"
+        addressId:"",address_tittle:"",f_name:"",l_name:"",city:"",locality:"",pincode:"",state:""
       } 
 
 
@@ -50,11 +60,11 @@ export const OrderTracking = () => {
                 
         <thead>
                <tr> <th className={styles.Thtable2}>Customer Name</th> <td className={styles.Tdtable1}>{f_name!=="" && l_name!==""?(f_name+" "+l_name):"N/A"} </td> </tr>
-               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{date!==""?date:"N/A"}</td> </tr>
+               <tr> <th className={styles.Thtable2}>Order Date</th> <td className={styles.Tdtable1}>{ orderId && date!==""?date:"N/A"}</td> </tr>
                <tr>  <th className={styles.Thtable2}>Ship Date</th> <td className={styles.Tdtable1}>N/A</td></tr>
                <tr>  <th className={styles.Thtable2}>Shipping Address</th> <td className={styles.Tdtable1}>{locality!==""?locality:"N/A"}</td></tr>
                <tr> <th className={styles.Thtable2}>Destination</th><td className={styles.Tdtable1}>{city!==""?city:"N/A"}</td></tr>
-               <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>Delhivery</td></tr>
+               <tr> <th className={styles.Thtable2}>Carrier</th><td className={styles.Tdtable1}>{city!==""?"Delhivery":"N/A"}</td></tr>
                <tr> <th className={styles.Thtable2}>Carrier Tracking Number </th><td className={styles.Tdtable1}>{addressId!==""?addressId:"N/A"}</td> </tr>
 
         </thead>
@@ -64,7 +74,7 @@ export const OrderTracking = () => {
             
             <CustomizedSteppers order={order} isLoading={isLoading} isError={isError}/>
 
-            <div>
+            {/* <div>
                 <table className={styles.Trackingbox2}>
                 <thead>
                     <tr className={styles.Colorclass} >
@@ -107,7 +117,7 @@ export const OrderTracking = () => {
                     </tr>
                 </tbody>
                 </table>
-            </div>
+            </div> */}
 
         </div>
     )

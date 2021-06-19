@@ -6,6 +6,9 @@ import CancelIcon from '@material-ui/icons/Cancel';
 
 export const Authentication = () => {
     const [showSignup,setShowsignup]=React.useState(false)
+    React.useEffect(() => {
+        window.scrollTo(0,0);
+      },[])
     return (
       <div className={styles.auth_modal_cont}>
             <div className={styles.auth_modal}>
