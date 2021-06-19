@@ -11,7 +11,7 @@ const redirect=()=>{
      history.replace("/admin/dashboard")
 }
 const admin=localStorage.getItem("admin")
-console.log(admin);
+// console.log(admin);
 if(admin){
   return <Redirect to="/admin/dashboard"/>
 }

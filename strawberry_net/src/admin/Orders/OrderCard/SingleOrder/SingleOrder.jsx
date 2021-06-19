@@ -21,12 +21,12 @@ const SingleOrder = () => {
     axios
       .get(`https://api-strawberrynet.herokuapp.com/profiles/${userId}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         const data = res.data.orders;
         setUser(res.data)
         setOrders(data);
         for (let i = 0; i < data.length; i++) {
-          console.log(data[i]);
+          // console.log(data[i]);
           if (data[i].orderId === orderId) {
             setOrder(data[i]);
           }
@@ -50,7 +50,7 @@ orders: updatedOrders.length!==0?updatedOrders: orders
 }
   
   const updateStatus=(payload)=>{
-    console.log(payload);
+    // console.log(payload);
    setIsLoading(true);
     axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${userId}`,payload)
     .then((res)=>{
@@ -59,7 +59,7 @@ orders: updatedOrders.length!==0?updatedOrders: orders
      const data = res.data.orders;
      setOrders(data);
      for (let i = 0; i < data.length; i++) {
-       console.log(data[i]);
+      //  console.log(data[i]);
        if (data[i].orderId === orderId) {
          setOrder(data[i]);
        }
