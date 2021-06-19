@@ -12,7 +12,7 @@ import { API_KEY } from '../../..';
 import {Spinner} from '../../../Components/Spinner'
 import { useHistory } from 'react-router-dom';
 
-console.log(process.env.REACT_APP_API_KEY)
+// console.log(process.env.REACT_APP_API_KEY)
 
 const initUser ={
     f_name:"",
@@ -106,7 +106,7 @@ export const PersonalInfo = () => {
     const isLoading = useSelector((state)=>state.auth.isLoading)
     const avataring_image = useSelector((state)=>state.auth)
     
-    console.log(userId,"Inside Personal Info")
+    // console.log(userId,"Inside Personal Info")
   
    
     
@@ -139,7 +139,7 @@ export const PersonalInfo = () => {
               
            setImageURL(res.data.data.link)
             alert('Image Successfully Uploaded')
-            console.log(res.data.data.link)
+            // console.log(res.data.data.link)
         })
           .catch((err) =>{
               

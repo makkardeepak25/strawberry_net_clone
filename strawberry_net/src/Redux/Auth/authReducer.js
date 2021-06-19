@@ -16,7 +16,7 @@ let initState ={
     user:undefined,
 
 }
-console.log(initState.isAuth);
+// console.log(initState.isAuth);
 
 export const authReducer=(state=initState,{type,payload})=>{
     switch(type){
@@ -29,7 +29,7 @@ export const authReducer=(state=initState,{type,payload})=>{
         case LOGIN_SUCCESS:{
       
             setUser("userId",payload._id)
-            console.log(payload._id)
+            // console.log(payload._id)
             return{
                 
                  ...state,
@@ -57,7 +57,6 @@ export const authReducer=(state=initState,{type,payload})=>{
         }
         case LOGOUT_SUCCESS:{
             removeUser()
-            
             return{
                 
                  ...state,
