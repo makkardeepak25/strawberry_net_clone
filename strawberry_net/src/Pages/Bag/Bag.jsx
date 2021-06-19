@@ -17,6 +17,9 @@ export function Bag() {
   const cart = user&& user.bag && user.bag;
   const name = user&&user.f_name;
   console.log(user);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  },[])
 
   let total = 0;
   cart &&
@@ -94,6 +97,8 @@ export function Bag() {
       history.replace("/")
   }
 
+
+ 
 
   return (
     <div>
