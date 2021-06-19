@@ -32,7 +32,7 @@ export const NavBar = () => {
   const [navOpen, setNavOpen] = React.useState(false);
 const history=useHistory()
   const bag = user && user.bag;
-  console.log("bag", bag);
+  // console.log("bag", bag);
 
   //const cart = user&&user.bag
   const name = user && user.f_name;
@@ -40,7 +40,7 @@ const history=useHistory()
 
   const { category } = useParams();
 
-  console.log("navbar", category);
+  // console.log("navbar", category);
   const handleChange = e => {
     setBrand(e.target.value);
   };
