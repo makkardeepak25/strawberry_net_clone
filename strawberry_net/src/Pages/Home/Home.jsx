@@ -18,7 +18,6 @@ export const Home = () => {
 
   return (
     <div className={styles.home}>
-
       <Banner />
       <div className={styles.offerdaily}>
         <div className={styles.extraline}>
@@ -55,13 +54,15 @@ export const Home = () => {
           <BestDeals />
         </div>
         <div className={styles.textright}>
-                <button className={styles.bestbtn}>
-                  View All{" "}
-                  <span className={styles.arrclr}>
-                    <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
-                  </span>
-                </button>
-              </div>
+          <button className={styles.bestbtn}>
+            View All{" "}
+            <span className={styles.arrclr}>
+              <ArrowForwardIosIcon
+                style={{ width: "13px", height: "13px", marginTop: "5px" }}
+              />
+            </span>
+          </button>
+        </div>
       </div>
       <div className={styles.offerdaily}>
         <div className={styles.extraline}>
@@ -72,16 +73,18 @@ export const Home = () => {
           <div className={styles.line} />
         </div>
         <div className={styles.productgridlist}>
-        <Top40 />
+          <Top40 />
         </div>
         <div className={styles.textright}>
-            <button className={styles.bestbtn}>
-              View All{" "}
-              <span className={styles.arrclr}>
-                <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
-              </span>
-            </button>
-          </div>
+          <button className={styles.bestbtn}>
+            View All{" "}
+            <span className={styles.arrclr}>
+              <ArrowForwardIosIcon
+                style={{ width: "13px", height: "13px", marginTop: "5px" }}
+              />
+            </span>
+          </button>
+        </div>
       </div>
       <div className={styles.offerdaily}>
         <div className={styles.extraline}>
@@ -95,19 +98,21 @@ export const Home = () => {
           <span className={styles.maxitem}>Max. 3 per order</span>
         </div>
         <div className={styles.productgridlist}>
-            <BestSellers />
-          </div>
+          <BestSellers />
+        </div>
         <div className={styles.textright}>
-            <button className={styles.bestbtn}>
-              View All{" "}
-              <span className={styles.arrclr}>
-                <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
-              </span>
-            </button>
-          </div>
+          <button className={styles.bestbtn}>
+            View All{" "}
+            <span className={styles.arrclr}>
+              <ArrowForwardIosIcon
+                style={{ width: "13px", height: "13px", marginTop: "5px" }}
+              />
+            </span>
+          </button>
+        </div>
       </div>
-      
-       <div className={styles.offerdaily}>
+
+      <div className={styles.offerdaily}>
         <div className={styles.extraline}>
           <div className={styles.line} />
           <div className={styles.dailyspec}>
@@ -119,19 +124,21 @@ export const Home = () => {
           <span className={styles.maxitem}>Max. 3 per order</span>
         </div>
         <div className={styles.productgridlist}>
-            <NewArrivals />
-          </div>
+          <NewArrivals />
+        </div>
         <div className={styles.textright}>
-            <button className={styles.bestbtn}>
-              View All{" "}
-              <span className={styles.arrclr}>
-                <ArrowForwardIosIcon style={{ width: "13px", height: "13px", marginTop: "5px" }} />
-              </span>
-            </button>
-          </div>
+          <button className={styles.bestbtn}>
+            View All{" "}
+            <span className={styles.arrclr}>
+              <ArrowForwardIosIcon
+                style={{ width: "13px", height: "13px", marginTop: "5px" }}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
-       <div className={styles.offerdaily}>
+      <div className={styles.offerdaily}>
         <div className={styles.extraline}>
           <div className={styles.line} />
           <div className={styles.dailyspec}>
@@ -140,10 +147,9 @@ export const Home = () => {
           <div className={styles.line} />
         </div>
         <div className={styles.maylike}>
-            <MayLike />
-          </div>
+          <MayLike />
+        </div>
       </div>
-
     </div>
   );
 };

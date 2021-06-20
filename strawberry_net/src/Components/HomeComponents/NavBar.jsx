@@ -26,22 +26,22 @@ export const NavBar = () => {
   const [brand, setBrand] = React.useState({});
   const dispatch = useDispatch();
   const [flag, setFlag] = React.useState(false);
-  const user = useSelector(state => state.auth.user);
-  const isAuth = useSelector(state => state.auth.isAuth); //dont change this
+  const user = useSelector((state) => state.auth.user);
+  const isAuth = useSelector((state) => state.auth.isAuth); //dont change this
   const [userAuth, setUserAuth] = React.useState(isAuth);
   const [navOpen, setNavOpen] = React.useState(false);
-const history=useHistory()
+  const history = useHistory();
   const bag = user && user.bag;
   console.log("bag", bag);
 
   //const cart = user&&user.bag
   const name = user && user.f_name;
-  const avatar = user && user.avatar
+  const avatar = user && user.avatar;
 
   const { category } = useParams();
 
   console.log("navbar", category);
-  const handleChange = e => {
+  const handleChange = (e) => {
     setBrand(e.target.value);
   };
   const handleNav = () => {
@@ -60,10 +60,10 @@ const history=useHistory()
     setFlag(false);
   };
 
-  const handleLogout=()=>{
-    dispatch(getlogout())
-    history.replace("/")
-}
+  const handleLogout = () => {
+    dispatch(getlogout());
+    history.replace("/");
+  };
   useEffect(() => {
     const id = localStorage.getItem("userId");
     id && dispatch(getUserDetails(id));
@@ -98,8 +98,9 @@ const history=useHistory()
                 </a>
               </li>
               <li>
-              <Link to={'/user/orders'}>
-                <a className={styles.ordertrack}> Order Tracking</a></Link>
+                <Link to={"/user/orders"}>
+                  <a className={styles.ordertrack}> Order Tracking</a>
+                </Link>
               </li>
             </ul>
           </nav>
@@ -107,24 +108,37 @@ const history=useHistory()
             {!isAuth ? (
               <li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname}>
-                  <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
+                  <IconContext.Provider
+                    value={{ color: "#B53788", size: "2.5em" }}
+                  >
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
                 </Link>
               </li>
             ) : (
-              <li className={styles.loginlinks} onMouseOver={showProfileBox} onMouseLeave={hideProfileBox}>
+              <li
+                className={styles.loginlinks}
+                onMouseOver={showProfileBox}
+                onMouseLeave={hideProfileBox}
+              >
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
-                    src={avatar?avatar:"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
+                    src={
+                      avatar
+                        ? avatar
+                        : "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
+                    }
                     alt="strawlog"
                   />
                   <span className={styles.aaccname}>{name}</span>
                 </Link>
                 {flag && (
-                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
+                  <div
+                    className={styles.showProfileOn}
+                    onMouseLeave={hideProfileBox}
+                  >
                     <Link>
                       {" "}
                       <div className={styles.showProfileOptions}>
@@ -132,7 +146,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Account</span>
@@ -145,7 +159,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Wishlist</span>
@@ -158,20 +172,20 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Point Rewards</span>
                       </div>
                     </Link>
-                      <Link to={"/user/orders"}>
+                    <Link to={"/user/orders"}>
                       {" "}
                       <div className={styles.showProfileOptionsor}>
                         <ListAltIcon
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Orders</span>
@@ -184,7 +198,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Reviews</span>
@@ -197,7 +211,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Settings</span>
@@ -205,17 +219,26 @@ const history=useHistory()
                     </Link>
                     <Link>
                       {" "}
-                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
-                      </Link>
-                      <button onClick={handleLogout} className={styles.signoutbtn}>Sign Out</button>
+                      <div className={styles.showProfilePink}>
+                        Get 10% Off
+                      </div>{" "}
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className={styles.signoutbtn}
+                    >
+                      Sign Out
+                    </button>
                   </div>
                 )}
               </li>
             )}
 
             <li className={styles.loginlinks}>
-              <a className={styles.accname} >
-                <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
+              <a className={styles.accname}>
+                <IconContext.Provider
+                  value={{ color: "#B53788", size: "2.5em" }}
+                >
                   <AiFillHeart />
                 </IconContext.Provider>
                 <span className={styles.aaccname}>Wishlist</span>
@@ -223,13 +246,15 @@ const history=useHistory()
             </li>
             <li className={styles.loginlinks}>
               <Link to={"/user/bag"} className={styles.accname}>
-                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
+                <IconContext.Provider
+                  value={{ color: "#B53788", size: "2.3em" }}
+                >
                   <Badge
                     badgeContent={bag && bag.length}
                     color="secondary"
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "left"
+                      horizontal: "left",
                     }}
                   >
                     <GiShoppingBag />
@@ -243,31 +268,47 @@ const history=useHistory()
       </div>
       <div className={styles.container1}>
         <Link to={"/"}>
-          <img src="https://www.reviewsxp.com/image/Stawberrynet.jpg" className={styles.navbrand1} />
+          <img
+            src="https://www.reviewsxp.com/image/Stawberrynet.jpg"
+            className={styles.navbrand1}
+          />
         </Link>
         <div className={styles.mediaUser}>
           <ul className={styles.menunavright}>
             {!isAuth ? (
               <li className={styles.loginlinks}>
                 <Link to={"/signin"} className={styles.accname} href="#">
-                  <IconContext.Provider value={{ color: "#B53788", size: "2.5em" }}>
+                  <IconContext.Provider
+                    value={{ color: "#B53788", size: "2.5em" }}
+                  >
                     <FaUserCircle />
                   </IconContext.Provider>
                   <span className={styles.aaccname}>Sign in</span>
                 </Link>
               </li>
             ) : (
-              <li className={styles.loginlinks} onMouseOver={showProfileBox} onMouseLeave={hideProfileBox}>
+              <li
+                className={styles.loginlinks}
+                onMouseOver={showProfileBox}
+                onMouseLeave={hideProfileBox}
+              >
                 <Link className={styles.accname}>
                   <img
                     className={styles.logimg}
-                    src={avatar?avatar:"https://a.cdnsbn.com/images/common/Strawbaby_default.png"}
+                    src={
+                      avatar
+                        ? avatar
+                        : "https://a.cdnsbn.com/images/common/Strawbaby_default.png"
+                    }
                     alt="strawlog"
                   />
                   <span className={styles.aaccname}>{name}</span>
                 </Link>
                 {flag && (
-                  <div className={styles.showProfileOn} onMouseLeave={hideProfileBox}>
+                  <div
+                    className={styles.showProfileOn}
+                    onMouseLeave={hideProfileBox}
+                  >
                     <Link>
                       {" "}
                       <div className={styles.showProfileOptions}>
@@ -275,7 +316,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Account</span>
@@ -288,7 +329,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Wishlist</span>
@@ -301,7 +342,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Point Rewards</span>
@@ -314,7 +355,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Orders</span>
@@ -327,7 +368,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Reviews</span>
@@ -340,7 +381,7 @@ const history=useHistory()
                           style={{
                             width: "15px",
                             height: "15px",
-                            color: "#6b3a87"
+                            color: "#6b3a87",
                           }}
                         />{" "}
                         <span>Settings</span>
@@ -348,22 +389,31 @@ const history=useHistory()
                     </Link>
                     <Link>
                       {" "}
-                      <div className={styles.showProfilePink}>Get 10% Off</div>{" "}
-                      </Link>
-                      <button onClick={handleLogout} className={styles.signoutbtn}>Sign Out</button>
+                      <div className={styles.showProfilePink}>
+                        Get 10% Off
+                      </div>{" "}
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className={styles.signoutbtn}
+                    >
+                      Sign Out
+                    </button>
                   </div>
                 )}
               </li>
             )}
             <li className={styles.loginlinks}>
               <Link to={"/user/bag"} className={styles.accname}>
-                <IconContext.Provider value={{ color: "#B53788", size: "2.3em" }}>
+                <IconContext.Provider
+                  value={{ color: "#B53788", size: "2.3em" }}
+                >
                   <Badge
                     badgeContent={bag && bag.length}
                     color="secondary"
                     anchorOrigin={{
                       vertical: "top",
-                      horizontal: "left"
+                      horizontal: "left",
                     }}
                   >
                     <GiShoppingBag />
@@ -382,7 +432,9 @@ const history=useHistory()
             {" "}
             <li className={styles.li1}>
               <span>
-                <MenuIcon style={{ width: "28px", height: "14px", color: "white" }} />
+                <MenuIcon
+                  style={{ width: "28px", height: "14px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspns}>SHOP BY BRAND</span>
             </li>
@@ -394,7 +446,7 @@ const history=useHistory()
             </li>
           </Link>
           <Link className={styles.foc} to={"/makeup"}>
-            <li >
+            <li>
               <div className={styles.clrspn}>MAKEUP</div>
             </li>
           </Link>
@@ -438,7 +490,9 @@ const history=useHistory()
             {" "}
             <li className={styles.li1}>
               <span>
-                <CardGiftcardIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <CardGiftcardIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspn}>SPECIALS</span>
             </li>
@@ -447,7 +501,9 @@ const history=useHistory()
             {" "}
             <li className={styles.li1}>
               <span>
-                <StarIcon style={{ width: "30px", height: "15px", color: "white" }} />
+                <StarIcon
+                  style={{ width: "30px", height: "15px", color: "white" }}
+                />
               </span>
               <span className={styles.clrspns}>NEW</span>
             </li>
@@ -463,7 +519,7 @@ const history=useHistory()
                 height: "30px",
                 color: "white",
                 cursor: "pointer",
-              marginTop:"7px"
+                marginTop: "7px",
               }}
             />
           ) : (
@@ -472,45 +528,45 @@ const history=useHistory()
                 width: "50px",
                 height: "50px",
                 color: "white",
-                cursor: "pointer"
+                cursor: "pointer",
               }}
             />
           )}
 
           {navOpen && (
             <div className={styles.medianav2}>
-              <Link style={{textDecoration:"none"}} to={"/brands"}>
+              <Link style={{ textDecoration: "none" }} to={"/brands"}>
                 <div className={styles.mediaCat}>Shop by brands</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/skincare"}>
+              <Link style={{ textDecoration: "none" }} to={"/skincare"}>
                 {" "}
                 <div className={styles.mediaCat}>Skincare</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/perfumes"}>
+              <Link style={{ textDecoration: "none" }} to={"/perfumes"}>
                 {" "}
                 <div className={styles.mediaCat}>Perfume</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/home-scents"}>
+              <Link style={{ textDecoration: "none" }} to={"/home-scents"}>
                 {" "}
                 <div className={styles.mediaCat}>Home Scents</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/makeup"}>
+              <Link style={{ textDecoration: "none" }} to={"/makeup"}>
                 {" "}
                 <div className={styles.mediaCat}>Makeup</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/men-skincare"}>
+              <Link style={{ textDecoration: "none" }} to={"/men-skincare"}>
                 {" "}
                 <div className={styles.mediaCat}>Men's skincare</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/specials"}>
+              <Link style={{ textDecoration: "none" }} to={"/specials"}>
                 {" "}
                 <div className={styles.mediaCat}>Specials</div>
               </Link>
-              <Link style={{textDecoration:"none"}} to={"/haircare"}>
+              <Link style={{ textDecoration: "none" }} to={"/haircare"}>
                 {" "}
                 <div className={styles.mediaCat}>haircare</div>
               </Link>
-              <Link style={{textDecoration:"none"}}>
+              <Link style={{ textDecoration: "none" }}>
                 {" "}
                 <div className={styles.mediaCat}>What's New</div>
               </Link>

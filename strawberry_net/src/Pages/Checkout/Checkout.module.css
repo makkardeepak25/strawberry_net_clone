@@ -192,13 +192,11 @@
   /* align-content: center; */
   line-height: 1;
 }
-.lineone h6{
+.lineone h6 {
   font-weight: 1000;
   font-size: 20px;
   margin: 0;
   padding-top: 14px;
-
-
 }
 
 .linetwo {

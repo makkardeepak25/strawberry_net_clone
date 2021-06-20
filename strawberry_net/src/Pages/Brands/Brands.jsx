@@ -1,5 +1,5 @@
-import React from "react"
+import React from "react";
 
-export const Brands=()=>{
-    return <div></div>
-}
+export const Brands = () => {
+  return <div></div>;
+};

@@ -1,67 +1,81 @@
-import React from "react"
-import styles from "./Addressform.module.css"
-import { useSelector,useDispatch } from "react-redux"
-import { states } from './../../UserInfo/AddressForm/states';
-import { countries } from './../../UserInfo/countries';
-import {v4 as uuid} from 'uuid'
-import { userUpdate } from './../../../Redux/Auth/authAction';
+import React from "react";
+import styles from "./Addressform.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { states } from "./../../UserInfo/AddressForm/states";
+import { countries } from "./../../UserInfo/countries";
+import { v4 as uuid } from "uuid";
+import { userUpdate } from "./../../../Redux/Auth/authAction";
 
-const initAddress ={
-    addressId:uuid(),
-    f_name:"",
-    l_name:"",
-     company:"",
-     country:"India",
-     locality:"",
-    city:"",
-    state:"",
-    pincode:"",
-    countryCode:"",
-    phone:"",
- 
-    defaultAdd:false,
+const initAddress = {
+  addressId: uuid(),
+  f_name: "",
+  l_name: "",
+  company: "",
+  country: "India",
+  locality: "",
+  city: "",
+  state: "",
+  pincode: "",
+  countryCode: "",
+  phone: "",
 
-}
+  defaultAdd: false,
+};
 
-export const Addressform=()=>{
+export const Addressform = () => {
+  const [addressForm, setAddressForm] = React.useState(initAddress);
+  const {
+    f_name,
+    l_name,
+    company,
+    country,
+    locality,
+    city,
+    state,
+    pincode,
+    countryCode,
+    phone,
+    defaultAdd,
+  } = addressForm;
 
-    const [addressForm,setAddressForm] = React.useState(initAddress)
-    const { f_name,l_name, company, country, locality,city,state,pincode,countryCode,phone,defaultAdd} =addressForm
-   
-    const user = useSelector(state => state.auth.user)
- 
-    React.useEffect(()=>{
-   
-    console.log(user,"From AddressForm")
-    
-   },[])
+  const user = useSelector((state) => state.auth.user);
 
-    const handleOnChange=(e)=>{
-        setAddressForm({...addressForm,["f_name"]:user.f_name,["l_name"]:user.l_name,["phone"]:user.phone,[e.target.name]:e.target.value})
-        
-        
-    }
+  React.useEffect(() => {
+    console.log(user, "From AddressForm");
+  }, []);
 
-    const phonecode =React.useRef()
-    React.useEffect(()=>{
-        setAddressForm({...addressForm,["countryCode"]:phonecode.current.value})
-    },[country])
+  const handleOnChange = (e) => {
+    setAddressForm({
+      ...addressForm,
+      ["f_name"]: user.f_name,
+      ["l_name"]: user.l_name,
+      ["phone"]: user.phone,
+      [e.target.name]: e.target.value,
+    });
+  };
 
+  const phonecode = React.useRef();
+  React.useEffect(() => {
+    setAddressForm({
+      ...addressForm,
+      ["countryCode"]: phonecode.current.value,
+    });
+  }, [country]);
 
-    const dispatch = useDispatch()
-    
-    const  handleSubmit = (e)=>{
-      e.preventDefault()
-        dispatch(userUpdate(user.id,{addresses:[...user.addresses,addressForm]}))
-   
-    }
-    return(
-        <div style={{background:"white",padding:"30px 0px"}}>
-            <h1 className={styles.Addheading}>Shipping Information</h1>
-            <h3 className={styles.Addheading1}>Shipping Address</h3>
-        <div className={styles.addressformCont}>
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      userUpdate(user.id, { addresses: [...user.addresses, addressForm] })
+    );
+  };
+  return (
+    <div style={{ background: "white", padding: "30px 0px" }}>
+      <h1 className={styles.Addheading}>Shipping Information</h1>
+      <h3 className={styles.Addheading1}>Shipping Address</h3>
+      <div className={styles.addressformCont}>
         <div className={styles.addressForm}>
-          
           <div>
             <input
               type="text"
@@ -168,9 +182,7 @@ export const Addressform=()=>{
                 type="text"
                 name="countryCode"
                 value={
-                  "+" +
-                  countries.find((item) => item.label == country)
-                    .phone
+                  "+" + countries.find((item) => item.label == country).phone
                 }
                 onChange={handleOnChange}
                 ref={phonecode}
@@ -186,14 +198,13 @@ export const Addressform=()=>{
                 name="phone"
                 onChange={handleOnChange}
               />
-              
             </div>
-        
           </div>
-          <button onClick={handleSubmit} className={styles.checkoutbagbtn1}>SAVE & CONTINUE</button>   
+          <button onClick={handleSubmit} className={styles.checkoutbagbtn1}>
+            SAVE & CONTINUE
+          </button>
         </div>
-       
       </div>
-      </div>
-    )
-}
+    </div>
+  );
+};

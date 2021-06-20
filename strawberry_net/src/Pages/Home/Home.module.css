@@ -1,40 +1,40 @@
-
-.home{
-width: 90%;
-margin: auto;
-}
-.offerdaily{
+.home {
   width: 90%;
-  margin:auto;
+  margin: auto;
+}
+.offerdaily {
+  width: 90%;
+  margin: auto;
   margin-top: 30px;
 }
-.extraline{
+.extraline {
   display: grid;
   grid-template-columns: 41% 18% 41%;
   margin: auto;
   margin-bottom: 15px;
-
 }
-.dailyspec{text-align: center;}
-.dailyspec>h3{
+.dailyspec {
+  text-align: center;
+}
+.dailyspec > h3 {
   margin: 0px 5px;
   color: #65318f;
   text-transform: uppercase;
 }
-.endsin span{
-font-weight: bold;
+.endsin span {
+  font-weight: bold;
 }
-.endsin strong{
-color: #e82e74;
+.endsin strong {
+  color: #e82e74;
 }
-.line{
+.line {
   margin-top: 10px;
-background-color: #0b0b0b;  
-height: 5px;
+  background-color: #0b0b0b;
+  height: 5px;
 }
-.lines{
+.lines {
   margin-top: 10px;
-  background-color:#65318f;  
+  background-color: #65318f;
   height: 5px;
 }
 .dailyspecial {
@@ -42,11 +42,11 @@ height: 5px;
   width: 85%;
   margin: auto;
 }
-.dealsdaily{
+.dealsdaily {
   width: 90%;
-  margin:auto;
+  margin: auto;
   background-color: #ebe5f1;
-  padding:2% 5%;
+  padding: 2% 5%;
 }
 
 .dailymessage {
@@ -95,7 +95,7 @@ height: 5px;
   white-space: nowrap;
   text-decoration: none;
 }
-.bestbtn>.arrclr{
+.bestbtn > .arrclr {
   color: #e82e74;
   font-size: 85%;
 }
@@ -105,25 +105,23 @@ height: 5px;
   margin: 0 0 -15px;
 }
 
-.promotitledeal{
+.promotitledeal {
   padding: 0 20px;
   display: inline-block;
   background-color: white;
 }
 @media (max-width: 1200px) {
-  .productgridlist{
+  .productgridlist {
     grid-template-columns: repeat(3, 1fr);
-
   }
 }
 @media (max-width: 1080px) {
-  .productgridlist{
+  .productgridlist {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 670px) {
-  .productgridlist{
+  .productgridlist {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-

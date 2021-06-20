@@ -9,8 +9,6 @@ import { getProdData } from "../../Redux/Products/productAction";
 export const DailySpecial = () => {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.prod.products);
- 
-
 
   React.useEffect(() => {
     dispatch(getProdData());

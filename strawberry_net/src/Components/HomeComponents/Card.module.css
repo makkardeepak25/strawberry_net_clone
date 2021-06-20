@@ -11,7 +11,7 @@
   height: 500px;
   position: relative;
   padding: 10px;
-  margin: 10px 0px 0px 7px;;
+  margin: 10px 0px 0px 7px;
   display: block;
   font-family: Lato, sans-serif;
   letter-spacing: 0.03em;
@@ -20,14 +20,15 @@
   width: 270px;
   height: 500px;
   position: relative;
-  padding: 10px 0px ;
+  padding: 10px 0px;
   margin: 10px 0px 0px 7px;
   display: block;
   font-family: Lato, sans-serif;
   letter-spacing: 0.03em;
   border-top: 8px solid #662d91;
   border-bottom: 8px solid #e2195c;
-  background-image: linear-gradient(#662d91, #e2195c), linear-gradient(#662d91, #e2195c);
+  background-image: linear-gradient(#662d91, #e2195c),
+    linear-gradient(#662d91, #e2195c);
   background-size: 8px 100%;
   background-position: 0 0, 100% 0;
   background-repeat: no-repeat;
@@ -129,12 +130,12 @@
   text-align: right;
 }
 
-.wishlist{
+.wishlist {
   position: absolute;
   top: 5%;
   left: 85%;
 }
-.offers{
+.offers {
   position: absolute;
   top: 67%;
   font-size: 14px;

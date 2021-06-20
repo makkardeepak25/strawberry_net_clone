@@ -1,10 +1,10 @@
 import React from "react";
-import ReactDOM from "react-dom"
+import ReactDOM from "react-dom";
 
-const PayPalButton =window.paypal.Buttons.driver("react", { React, ReactDOM });
+const PayPalButton = window.paypal.Buttons.driver("react", { React, ReactDOM });
 
 export default function PaypalOption() {
-  const createOrder = (data, actions) =>{
+  const createOrder = (data, actions) => {
     return actions.order.create({
       purchase_units: [
         {
@@ -27,6 +27,3 @@ export default function PaypalOption() {
     />
   );
 }
-
-
-

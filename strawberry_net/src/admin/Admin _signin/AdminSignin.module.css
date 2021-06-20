@@ -1,24 +1,22 @@
-.container{
-   padding-top: 150px;
+.container {
+  padding-top: 150px;
 }
-.container > div > img{
-    width: 300px;
+.container > div > img {
+  width: 300px;
 }
-.container > div{
-    width: 300px;
-    margin: auto;
-    
-}
-
-.divider{
-    height: 20px;
-}
-.input{
-    width: 300px;
-    
+.container > div {
+  width: 300px;
+  margin: auto;
 }
 
-.btn{
- width: 300px;
-   margin: 20px 0px;
+.divider {
+  height: 20px;
+}
+.input {
+  width: 300px;
+}
+
+.btn {
+  width: 300px;
+  margin: 20px 0px;
 }

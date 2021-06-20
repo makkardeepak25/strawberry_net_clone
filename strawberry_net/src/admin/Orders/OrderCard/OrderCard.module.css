@@ -1,21 +1,20 @@
-.orderCard{
-    display: flex;
-    border-bottom: 1px solid gray;
-   height: 50px;
-   cursor: pointer;
-    /* width: 90%;
+.orderCard {
+  display: flex;
+  border-bottom: 1px solid gray;
+  height: 50px;
+  cursor: pointer;
+  /* width: 90%;
     justify-content: space-between;
     height: 10vh;
     cursor: pointer;
     border: 1px solid black;
     margin: auto; */
 }
-.orderCard > div{
-    text-align: left;
- width: 200px;
-
+.orderCard > div {
+  text-align: left;
+  width: 200px;
 }
-.orderCard > div > h4{
-    margin: 10px 0px;
-    font-weight: 600;
+.orderCard > div > h4 {
+  margin: 10px 0px;
+  font-weight: 600;
 }

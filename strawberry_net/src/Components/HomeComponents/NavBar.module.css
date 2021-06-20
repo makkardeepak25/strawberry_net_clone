@@ -128,7 +128,6 @@
   width: 100%;
   padding: 0px 2px;
   margin-top: 3px;
-
 }
 .inpsearch1 {
   width: 80%;
@@ -214,17 +213,16 @@
   justify-content: space-between;
   padding: 0px 20px;
 }
-.mediaCat{
-  color:#fff;
+.mediaCat {
+  color: #fff;
   font-size: larger;
   margin: 25px 7px;
   text-transform: uppercase;
   cursor: pointer;
   width: 100%;
-
 }
-.mediaCat:hover{
-  color:#e1c6f3 ;
+.mediaCat:hover {
+  color: #e1c6f3;
 }
 .menucont {
   width: 95%;
@@ -290,31 +288,29 @@ li {
   font-weight: 400;
   text-decoration: none;
   /* color: white; */
-
 }
-.menucont li:hover{
+.menucont li:hover {
   background-color: white;
-  color: #521B76;
+  color: #521b76;
 }
 
 .clrspns {
   font-size: 12px;
   font-weight: 400;
   text-decoration: none;
-  
 }
-.clrspn:hover{
-  color: #521B76;
+.clrspn:hover {
+  color: #521b76;
 }
 
 .clrspns:hover {
-  color: #521B76;
+  color: #521b76;
 }
 .li1 {
   display: flex;
   justify-content: space-evenly;
 }
-.navbrand1{
+.navbrand1 {
   display: none;
   width: 80%;
   height: 90px;
@@ -322,7 +318,7 @@ li {
   cursor: pointer;
 }
 
-.mediaUser{
+.mediaUser {
   display: none;
   padding-top: 10px;
 }
@@ -333,12 +329,13 @@ li {
     grid-template-columns: repeat(1, 1fr);
   }
 }
-ul .foc{
+ul .foc {
   text-decoration: none;
   color: #fff;
   padding: 0px 4px;
 }
-ul .foc:focus,ul .foc:hover {
+ul .foc:focus,
+ul .foc:hover {
   background-color: #fff;
   color: #521b76;
   text-decoration: underline;
@@ -390,8 +387,8 @@ ul .foc:focus,ul .foc:hover {
   font-weight: 500;
   text-align: center;
 }
-.container1{
-  display:none;
+.container1 {
+  display: none;
 }
 
 .showProfileOptions {
@@ -422,7 +419,7 @@ ul .foc:focus,ul .foc:hover {
   margin: 0px 10px;
   cursor: pointer;
 }
-.signoutbtn{
+.signoutbtn {
   color: white;
   background-color: hotpink;
   margin: 10px 27px;
@@ -450,10 +447,10 @@ ul .foc:focus,ul .foc:hover {
   text-align: left;
 }
 @media (max-width: 750px) {
-  .navbrand{
+  .navbrand {
     display: none;
   }
-  .navbrand1{
+  .navbrand1 {
     display: block;
   }
   .container1 {
@@ -464,11 +461,10 @@ ul .foc:focus,ul .foc:hover {
   .container {
     display: none;
   }
-.mediaUser{
-  display: block;
-
-}
-.navright{
-  display: none;
-}
+  .mediaUser {
+    display: block;
+  }
+  .navright {
+    display: none;
+  }
 }

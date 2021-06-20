@@ -1,23 +1,22 @@
 body {
   margin: 0;
-  font-family: Lato,sans-serif;
+  font-family: Lato, sans-serif;
 }
-button,input:focus,select:focus{
+button,
+input:focus,
+select:focus {
   outline: none;
 }
 
-
 code {
-  font-family: Lato,sans-serif;
+  font-family: Lato, sans-serif;
 }
 
-
-
 .StripeElement--webkit-autofill {
-	background: transparent !important;
+  background: transparent !important;
 }
 
 .StripeElement {
-	width: 100%;
-	padding: 11px 15px 11px 0;
+  width: 100%;
+  padding: 11px 15px 11px 0;
 }

@@ -73,18 +73,26 @@ export const Footer = () => {
               <ul className={styles.textsz}>
                 <Link>
                   {" "}
-                  <li>Shipping&tax&emsp;<span>|</span>&ensp;</li>
+                  <li>
+                    Shipping&tax&emsp;<span>|</span>&ensp;
+                  </li>
                 </Link>
                 <Link>
-                  <li>Returns Policy&emsp;<span>|</span>&ensp;</li>
+                  <li>
+                    Returns Policy&emsp;<span>|</span>&ensp;
+                  </li>
                 </Link>
                 <Link>
                   {" "}
-                  <li>FAQ&emsp;<span>|</span>&ensp;</li>
+                  <li>
+                    FAQ&emsp;<span>|</span>&ensp;
+                  </li>
                 </Link>
                 <Link>
                   {" "}
-                  <li>Contact us&emsp;<span>|</span>&ensp;</li>
+                  <li>
+                    Contact us&emsp;<span>|</span>&ensp;
+                  </li>
                 </Link>
               </ul>
             </div>
@@ -205,13 +213,12 @@ export const Footer = () => {
             </div>
           </div>
           <div className={styles.hr2}></div>
-          <div  className={styles.bottomline}>
-          <p>
+          <div className={styles.bottomline}>
+            <p>
               Privacy & Security | Terms & Conditions | Point Rewards Program
               Terms & Conditions{" "}
             </p>
-            <p>
-            1998 - 2021 © StrawberryNET.com All Rights Reserved.</p>
+            <p>1998 - 2021 © StrawberryNET.com All Rights Reserved.</p>
           </div>
         </div>
       </div>

@@ -1,64 +1,64 @@
-.card_container{
-    height: 150px;
-   
-    width: 100%;
-    display: flex;
-    border-bottom: 1px solid gray;
+.card_container {
+  height: 150px;
+
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid gray;
 }
 
-.product_info{
-    width: 50%;
+.product_info {
+  width: 50%;
   margin-top: 30px;
   cursor: pointer;
 }
-.product_info > h4{
-    margin: 5px;
+.product_info > h4 {
+  margin: 5px;
 }
-.product_info > p{
-    margin: 5px;
+.product_info > p {
+  margin: 5px;
 }
-.product_img{
-    width: 15%;
-    cursor: pointer;
+.product_img {
+  width: 15%;
+  cursor: pointer;
 }
-.product_img>img{
-    width: 100px;
-   
+.product_img > img {
+  width: 100px;
 
-    margin: 5% 10%;
+  margin: 5% 10%;
 }
-.product_img > button{
-    border: 0px;
-    background-color: orange;
-    margin-left: 15%;
-    cursor: pointer;
+.product_img > button {
+  border: 0px;
+  background-color: orange;
+  margin-left: 15%;
+  cursor: pointer;
 }
-.prod_price{
-    background-image: url(https://a.cdnsbn.com/images/common/oitem_bg.gif);
-    width: 20%;
-    color: white;
-    display: grid;
-    place-content: center;
+.prod_price {
+  background-image: url(https://a.cdnsbn.com/images/common/oitem_bg.gif);
+  width: 20%;
+  color: white;
+  display: grid;
+  place-content: center;
 }
-.prod_price > h2,.prod_price>h6{
-    text-align: center;
-    margin: 0px;
+.prod_price > h2,
+.prod_price > h6 {
+  text-align: center;
+  margin: 0px;
 }
-.prod_price>h6{
-    color: orange;
-    font-size: small;
+.prod_price > h6 {
+  color: orange;
+  font-size: small;
 }
-.bag{
-    display: grid;
-    place-content: center;
-    padding: 0px 3.5%;
+.bag {
+  display: grid;
+  place-content: center;
+  padding: 0px 3.5%;
 }
-.bag> button{
-    width: 60px;
-    cursor: pointer;
-    font-size: 11px;
-    background-color: #00A69C;
-    border: 0px;
-    color: white;
-    box-shadow: 1px 1px 4px 1px gray;
+.bag > button {
+  width: 60px;
+  cursor: pointer;
+  font-size: 11px;
+  background-color: #00a69c;
+  border: 0px;
+  color: white;
+  box-shadow: 1px 1px 4px 1px gray;
 }

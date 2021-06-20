@@ -1,102 +1,100 @@
-  .prodDiv {
-    width: 180px;
-    height: 300px;
-    position: relative;
-    padding: 10px;
-    margin: 10px 10px;
-    display: block;
-    font-family: Lato, sans-serif;
-    letter-spacing: 0.03em;
-  }
-  .prodDiv:first-child{
-      margin-left: 70px;
-  }
- 
- 
-  .prodDiv:hover {
-    box-shadow: 0 2px 5px 2px rgb(0 0 0 / 18%);
-    z-index: 1024;
-    border-radius: 3px;
-    padding: 5px;
-    background-color: #fff;
-  }
-  .imgProd {
-    position: absolute;
-    top: 5%;
-    left: 15%;
-    width: 130px;
-    margin: auto;
-  }
-  .prodname {
-    color: #0e0e0e;
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 5px;
-    line-height: 1.2;
-    max-height: 36px;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    display: -webkit-box;
-    position: absolute;
-    left: 7%;
-    top: 52%;
-    text-transform: uppercase;
-  }
-  .desc {
-    color: #0e0e0e;
-    font-size: 11px;
-    font-weight: 400;
-    margin-bottom: 5px;
-    line-height: 1.4;
-    max-height: 36px;
-    text-align: left;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: block;
-    display: -webkit-box;
-    position: absolute;
-    left: 7%;
-    top: 57%;
-  }
-  .prodprice {
-    color: #363636;
-    font-weight: 900;
-    font-size: 22px;
-    display: block;
-    position: absolute;
-    top: 80%;
-    left: 7%;
-  }
-  .extraoff {
-    height: 33px;
-    color: #ee2c72;
-    position: absolute;
-    text-align: center;
-    font-weight: 700;
-    display: block;
-    top: 90%;
-    left: 20%;
-  }
-  .textright {
-    text-align: right;
-  }
-  
-  .wishlist{
-    position: absolute;
-    top: 5%;
-    left: 85%;
-  }
-  .offers{
-    position: absolute;
-    top: 73%;
-    font-size: 14px;
-    font-weight: 500;
-    left: 8%;
-    color: #ee2c72;
-  }
-  
+.prodDiv {
+  width: 180px;
+  height: 300px;
+  position: relative;
+  padding: 10px;
+  margin: 10px 10px;
+  display: block;
+  font-family: Lato, sans-serif;
+  letter-spacing: 0.03em;
+}
+.prodDiv:first-child {
+  margin-left: 70px;
+}
+
+.prodDiv:hover {
+  box-shadow: 0 2px 5px 2px rgb(0 0 0 / 18%);
+  z-index: 1024;
+  border-radius: 3px;
+  padding: 5px;
+  background-color: #fff;
+}
+.imgProd {
+  position: absolute;
+  top: 5%;
+  left: 15%;
+  width: 130px;
+  margin: auto;
+}
+.prodname {
+  color: #0e0e0e;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  max-height: 36px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  position: absolute;
+  left: 7%;
+  top: 52%;
+  text-transform: uppercase;
+}
+.desc {
+  color: #0e0e0e;
+  font-size: 11px;
+  font-weight: 400;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  max-height: 36px;
+  text-align: left;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  display: -webkit-box;
+  position: absolute;
+  left: 7%;
+  top: 57%;
+}
+.prodprice {
+  color: #363636;
+  font-weight: 900;
+  font-size: 22px;
+  display: block;
+  position: absolute;
+  top: 80%;
+  left: 7%;
+}
+.extraoff {
+  height: 33px;
+  color: #ee2c72;
+  position: absolute;
+  text-align: center;
+  font-weight: 700;
+  display: block;
+  top: 90%;
+  left: 20%;
+}
+.textright {
+  text-align: right;
+}
+
+.wishlist {
+  position: absolute;
+  top: 5%;
+  left: 85%;
+}
+.offers {
+  position: absolute;
+  top: 73%;
+  font-size: 14px;
+  font-weight: 500;
+  left: 8%;
+  color: #ee2c72;
+}

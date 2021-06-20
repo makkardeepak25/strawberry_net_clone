@@ -23,7 +23,6 @@ const Orders = () => {
       .get(`https://api-strawberrynet.herokuapp.com/profiles`)
       .then((res) => {
         const data = res.data;
-    
 
         for (let i = 0; i < data.length; i++) {
           for (let j = 0; j < data[i].orders.length; j++) {
@@ -90,7 +89,7 @@ const Orders = () => {
             <div>
               <h4>Cost</h4>
             </div>
-            <div  className={styles.filter_container}>
+            <div className={styles.filter_container}>
               <h4>Status</h4>
               <select
                 className={styles.select_filter}
@@ -116,7 +115,6 @@ const Orders = () => {
                 <OrderCard key={order.orderId} {...order} />
               ))}
           </div>
-          
         </div>
         {
           <div className={styles.pagination}>

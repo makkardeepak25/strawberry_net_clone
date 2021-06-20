@@ -1,65 +1,51 @@
-.mainCont{
-    
-    
+.mainCont {
 }
 
-.gradeHeader{
-    margin-top: -22px;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    min-height: 120px;
-    background: #623381;
-    background: -moz-linear-gradient(left, #623381 30%, #c62f7a 100%);
-    background: -webkit-linear-gradient(left, #623381 30%,#c62f7a 100%);
-    background: linear-gradient(to right, #623381 30%,#c62f7a 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#623381', endColorstr='#c62f7a',GradientType=1 );
-   
-
+.gradeHeader {
+  margin-top: -22px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 120px;
+  background: #623381;
+  background: -moz-linear-gradient(left, #623381 30%, #c62f7a 100%);
+  background: -webkit-linear-gradient(left, #623381 30%, #c62f7a 100%);
+  background: linear-gradient(to right, #623381 30%, #c62f7a 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#623381', endColorstr='#c62f7a',GradientType=1 );
 }
-.menuIcons{
-  
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 17px;
-    font-weight: 300;
-    text-decoration: none;
-   
+.menuIcons {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 300;
+  text-decoration: none;
 }
-.menuIcons:hover{
-    text-decoration: underline;
-    font-weight: 600;   
-  
+.menuIcons:hover {
+  text-decoration: underline;
+  font-weight: 600;
 }
 
-.menuIcons:focus{
-    text-decoration: underline;
-    font-weight: 600;   
-    outline: none;
-    
+.menuIcons:focus {
+  text-decoration: underline;
+  font-weight: 600;
+  outline: none;
 }
-.menuIcons link:active{
-    text-decoration: underline;
-    font-weight: 400;  
-    
+.menuIcons link:active {
+  text-decoration: underline;
+  font-weight: 400;
 }
-.iconList{
-
-    /* background-color: black; */
-    margin: auto;
-    width: 50%;
-    display: flex;
-    gap: 10%;
-   
+.iconList {
+  /* background-color: black; */
+  margin: auto;
+  width: 50%;
+  display: flex;
+  gap: 10%;
 }
-
-
 
 @media only screen and (max-width: 960px) {
-.iconList{
-
+  .iconList {
     /* background-color: black; */
     margin: auto;
     width: 50%;
@@ -67,9 +53,8 @@
     flex-direction: column;
     gap: 20px;
     padding-bottom: 20px;
-   
-}
-.gradeHeader{
+  }
+  .gradeHeader {
     margin-top: 0px;
-}
+  }
 }

@@ -24,17 +24,14 @@ import { Setting } from "../UserInfo/Settings/Setting";
 import SingleOrder from "../../admin/Orders/OrderCard/SingleOrder/SingleOrder";
 import AdminSignin from "../../admin/Admin _signin/AdminSignin";
 const Routes = () => {
-  const userid = useSelector(state => state.auth.userId);
+  const userid = useSelector((state) => state.auth.userId);
   //console.log(userid,"ROutes")
   const dispatch = useDispatch();
 
-  React.useEffect(
-    () => {
-      console.log("route", userid);
-      dispatch(getUserDetails(userid));
-    },
-    [userid]
-  );
+  React.useEffect(() => {
+    console.log("route", userid);
+    dispatch(getUserDetails(userid));
+  }, [userid]);
 
   // const user = useSelector(state => state.auth.user)
   // console.log(user)
@@ -50,7 +47,7 @@ const Routes = () => {
         </Route>
 
         {/* Admin Panel Route */}
-      
+
         <Route exact path="/admin/dashboard">
           <Panel />
         </Route>
@@ -65,13 +62,13 @@ const Routes = () => {
         <Route exact path="/admin/orders">
           <Orders />
         </Route>
-       
+
         <Route exact path="/admin/orders/:userId/:orderId">
-         <SingleOrder/>
+          <SingleOrder />
         </Route>
 
         <Route exact path="/admin/signin">
-         <AdminSignin/>
+          <AdminSignin />
         </Route>
         {/* Admin Panel Route Ended */}
 

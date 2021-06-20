@@ -17,22 +17,22 @@ const useQontoStepIconStyles = makeStyles({
     color: "#eaeaf0",
     display: "flex",
     height: 22,
-    alignItems: "center"
+    alignItems: "center",
   },
   active: {
-    color: "#784af4"
+    color: "#784af4",
   },
   circle: {
     width: 8,
     height: 8,
     borderRadius: "50%",
-    backgroundColor: "currentColor"
+    backgroundColor: "currentColor",
   },
   completed: {
     color: "#784af4",
     zIndex: 1,
-    fontSize: 18
-  }
+    fontSize: 18,
+  },
 });
 
 function QontoStepIcon(props) {
@@ -42,7 +42,7 @@ function QontoStepIcon(props) {
   return (
     <div
       className={clsx(classes.root, {
-        [classes.active]: active
+        [classes.active]: active,
       })}
     >
       {completed ? (
@@ -62,30 +62,30 @@ QontoStepIcon.propTypes = {
   /**
    * Mark the step as completed. Is passed to child components.
    */
-  completed: PropTypes.bool
+  completed: PropTypes.bool,
 };
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
-    top: 22
+    top: 22,
   },
   active: {
     "& $line": {
       backgroundImage:
-        "linear-gradient(to right, #623381 80%,#c62f7a 80%,#ccc 30%)"
-    }
+        "linear-gradient(to right, #623381 80%,#c62f7a 80%,#ccc 30%)",
+    },
   },
   completed: {
     "& $line": {
-      backgroundImage: "linear-gradient(to right, #623381 30%,#c62f7a 100%)"
-    }
+      backgroundImage: "linear-gradient(to right, #623381 30%,#c62f7a 100%)",
+    },
   },
   line: {
     height: 3,
     border: 0,
     backgroundColor: "#eaeaf0",
-    borderRadius: 1
-  }
+    borderRadius: 1,
+  },
 })(StepConnector);
 
 const useColorlibStepIconStyles = makeStyles({
@@ -98,15 +98,15 @@ const useColorlibStepIconStyles = makeStyles({
     display: "flex",
     borderRadius: "50%",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   active: {
     backgroundImage: "yellow",
-    boxShadow: "linear-gradient(to right, #623381 30%,#c62f7a 100%)"
+    boxShadow: "linear-gradient(to right, #623381 30%,#c62f7a 100%)",
   },
   completed: {
-    backgroundImage: "linear-gradient(to right, #623381 30%,#c62f7a 100%)"
-  }
+    backgroundImage: "linear-gradient(to right, #623381 30%,#c62f7a 100%)",
+  },
 });
 
 function ColorlibStepIcon(props) {
@@ -116,14 +116,14 @@ function ColorlibStepIcon(props) {
   const icons = {
     1: <SettingsIcon />,
     2: <LocalShippingIcon />,
-    3: <DoneOutlineSharpIcon />
+    3: <DoneOutlineSharpIcon />,
   };
 
   return (
     <div
       className={clsx(classes.root, {
         [classes.active]: active,
-        [classes.completed]: completed
+        [classes.completed]: completed,
       })}
     >
       {icons[String(props.icon)]}
@@ -143,20 +143,20 @@ ColorlibStepIcon.propTypes = {
   /**
    * The label displayed in the step icon.
    */
-  icon: PropTypes.node
+  icon: PropTypes.node,
 };
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%"
+    width: "100%",
   },
   button: {
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
   },
   instructions: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  }
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 // +(date.toDateString())

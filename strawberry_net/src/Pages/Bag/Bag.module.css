@@ -162,13 +162,13 @@
   border-top: 5px solid #623380;
   border-left: 5px solid #623380;
   border-right: 5px solid #e82e74;
-  border-bottom: 5px solid #e82e74 ;
-  background-image: linear-gradient(to right, #ebe5f1,#e9d2f8  ); 
+  border-bottom: 5px solid #e82e74;
+  background-image: linear-gradient(to right, #ebe5f1, #e9d2f8);
   text-transform: uppercase;
   border-radius: 10px;
   height: 280px;
 }
-.emptybag>.addprods {
+.emptybag > .addprods {
   margin: 70px 2% 10px auto;
   width: 80%;
   font-size: 30px;
@@ -177,7 +177,7 @@
   opacity: none;
 }
 .backtohome {
-  margin: 10px 24% ;
+  margin: 10px 24%;
   width: 50%;
   font-size: 25px;
   font-weight: bold;

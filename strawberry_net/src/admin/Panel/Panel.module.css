@@ -1,29 +1,28 @@
-.admin_panel{
+.admin_panel {
   display: flex;
 }
 
-.main_panel{
+.main_panel {
   width: 100%;
 }
-.main_panel > h1{
+.main_panel > h1 {
   font-size: 25px;
-  margin:20px auto;
-  background-image: linear-gradient(to right, #96307D 0%, #52246D 120%);
- 
+  margin: 20px auto;
+  background-image: linear-gradient(to right, #96307d 0%, #52246d 120%);
+
   padding: 15px 15px 15px 20px;
-  font-family: Lato,sans-serif;
+  font-family: Lato, sans-serif;
   color: white;
   width: 50%;
   text-align: center;
 }
 
-.order_boxes{
+.order_boxes {
   display: flex;
   width: 90%;
   margin: auto;
-  
 }
-.order_boxes div{
+.order_boxes div {
   border-left: 5px solid #52246d;
   border-top: 5px solid #52246d;
   border-bottom: 5px solid #ee2c72;
@@ -31,11 +30,11 @@
   margin: 10px;
   width: 20%;
   height: 100px;
-border-radius: 10px;
-background-color: #96307c1f;
+  border-radius: 10px;
+  background-color: #96307c1f;
 }
-.order_boxes div h3,.order_boxes div h1{
+.order_boxes div h3,
+.order_boxes div h1 {
   margin: 10px;
   color: rgb(41, 40, 40);
-
 }

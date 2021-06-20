@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import styles from "./Card.module.css";
 
-export const Card = ({prod_name,prod_description,size,images,}) => {
+export const Card = ({ prod_name, prod_description, size, images }) => {
   // const [data, setData] = React.useState([]);
   // const getData = () => {
   //   axios.get("https://6wwnt.sse.codesandbox.io/products").then(res => {

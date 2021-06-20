@@ -1,161 +1,144 @@
-.main_div{
-  
-    padding: 0px 40px
+.main_div {
+  padding: 0px 40px;
 }
-.category_title{
-   
-    width: 98%;
-  
+.category_title {
+  width: 98%;
 }
-.category_title> p{
-    color: #C7007D;
-    font-size: 12px;
-    margin: 0px;
+.category_title > p {
+  color: #c7007d;
+  font-size: 12px;
+  margin: 0px;
 }
-.category_title > h1{
-    margin: 5px 0px;
-    font-size: 35px;
+.category_title > h1 {
+  margin: 5px 0px;
+  font-size: 35px;
 }
-.category_title > div{
-    display: flex;
- 
-    justify-content: space-between;
+.category_title > div {
+  display: flex;
+
+  justify-content: space-between;
 }
-.category_title > div > img{
-    height: 60px;
-    padding-top: 18px;
+.category_title > div > img {
+  height: 60px;
+  padding-top: 18px;
 }
 
-.container{
-    display: flex;
-
-
+.container {
+  display: flex;
 }
 /* filter */
-.filter_container{
-    width: 22%;
-    border-right: 1px solid gray;
-    padding:5px;
+.filter_container {
+  width: 22%;
+  border-right: 1px solid gray;
+  padding: 5px;
 }
 
-.by_brand > h3{
-    margin: 0px;
+.by_brand > h3 {
+  margin: 0px;
 }
 
+.checkbox {
+  border: 1px solid black;
 
-.checkbox{
-    border: 1px solid black;
- 
-    border-right: 1px solid white;
-  
-    max-height: 300px;
+  border-right: 1px solid white;
+
+  max-height: 300px;
 }
 /* filter end */
-.product_container{
-    width: 74%;
-    /* border: 1px solid black; */
-    padding: 1% 0% 1% 1%
+.product_container {
+  width: 74%;
+  /* border: 1px solid black; */
+  padding: 1% 0% 1% 1%;
 }
-.top_brands{
-    height: 180px;
-  
-    width: 100%;
-    background-color: #70378D;
-    color: white;
+.top_brands {
+  height: 180px;
+
+  width: 100%;
+  background-color: #70378d;
+  color: white;
   margin-bottom: 20px;
 }
-.top_brand_title{
-    padding: 10px 0px;
-    text-align: center;
-    font-weight: 600;
-    background-color: #52246D;
+.top_brand_title {
+  padding: 10px 0px;
+  text-align: center;
+  font-weight: 600;
+  background-color: #52246d;
 }
-.top_brands > table{
-    width: 100%;
-   
+.top_brands > table {
+  width: 100%;
 }
 
-
-
-.top_brands > table > tbody > tr > td{
-
-   font-size: 16px ;
-    cursor: pointer;
-    padding: 7px;
+.top_brands > table > tbody > tr > td {
+  font-size: 16px;
+  cursor: pointer;
+  padding: 7px;
 }
-td:hover{
-    color:#C7007D;
+td:hover {
+  color: #c7007d;
 }
 .all_brand_btn {
-    text-align: right;
+  text-align: right;
 }
-.all_brand_btn > button{
-    margin: 0px 10px;
-    border-radius: 5px;
-    border: 0px;
-    padding: 5px;
-    background-color: white;
-    cursor: pointer;
+.all_brand_btn > button {
+  margin: 0px 10px;
+  border-radius: 5px;
+  border: 0px;
+  padding: 5px;
+  background-color: white;
+  cursor: pointer;
 }
-.all_brand_btn > button:hover{
-    background-color: rgb(233, 226, 226);
+.all_brand_btn > button:hover {
+  background-color: rgb(233, 226, 226);
 }
-.divider{
-    background-color: gray;
-    height: 2px;
-    margin: 20px 0px;
-}
-
-.brand_title{
-    background-image: linear-gradient(to right,#623381  40%, #C42F7A 100%);
-    padding: 5px;
-}
-.brand_title > h4{
-    margin: 0px;
-    color: white;
+.divider {
+  background-color: gray;
+  height: 2px;
+  margin: 20px 0px;
 }
 
-.view{
-
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+.brand_title {
+  background-image: linear-gradient(to right, #623381 40%, #c42f7a 100%);
+  padding: 5px;
+}
+.brand_title > h4 {
+  margin: 0px;
+  color: white;
 }
 
-.sort_by{
-    padding: 20px 0px;
-    display: flex;
-    
+.view {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
-.sort_by > h6{
-    
-    margin: 0px ;
+
+.sort_by {
+  padding: 20px 0px;
+  display: flex;
 }
-.by_list{
-   
-    
+.sort_by > h6 {
+  margin: 0px;
 }
-.by_list > h6{
-    margin: 0px;
-    text-align: center;
-    color: #70378D;
+.by_list {
 }
-.list{
-    border: 1px solid #70378D;
-    margin: 2px 10px 6px 10px; 
-    font-size: 26px;
-    color: #70378D;
-    cursor: pointer;
+.by_list > h6 {
+  margin: 0px;
+  text-align: center;
+  color: #70378d;
 }
-.sort_by :nth-child(1){
- 
+.list {
+  border: 1px solid #70378d;
+  margin: 2px 10px 6px 10px;
+  font-size: 26px;
+  color: #70378d;
+  cursor: pointer;
+}
+.sort_by :nth-child(1) {
 }
 .sort_by > select {
-    color: #70378D;
-    border: 1px solid #52246D;
-    padding: 10px;
-    margin: 0px 10px;
-    font-weight: 600;
+  color: #70378d;
+  border: 1px solid #52246d;
+  padding: 10px;
+  margin: 0px 10px;
+  font-weight: 600;
 }
-

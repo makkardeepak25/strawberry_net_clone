@@ -17,237 +17,268 @@ import {
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
-  PAYMENT_SUCCESS
+  PAYMENT_SUCCESS,
 } from "./authActionTypes";
 
-export const loginRequest = payload => {
+export const loginRequest = (payload) => {
   return {
     type: LOGIN_REQUEST,
-    payload
+    payload,
   };
 };
-export const loginSuccess = payload => {
+export const loginSuccess = (payload) => {
   return {
     type: LOGIN_SUCCESS,
-    payload
+    payload,
   };
 };
-export const loginFailure = payload => {
+export const loginFailure = (payload) => {
   return {
     type: LOGIN_FAILURE,
-    payload
+    payload,
   };
 };
 
-export const logoutRequest = payload => {
+export const logoutRequest = (payload) => {
   return {
     type: LOGOUT_REQUEST,
-    payload
+    payload,
   };
 };
-export const logoutSuccess = payload => {
+export const logoutSuccess = (payload) => {
   return {
     type: LOGOUT_SUCCESS,
-    payload
+    payload,
   };
 };
-export const logoutFailure = payload => {
+export const logoutFailure = (payload) => {
   return {
     type: LOGOUT_FAILURE,
-    payload
+    payload,
   };
 };
 
 export const signinRequest = () => {
   return {
-    type: SIGNIN_REQUEST
+    type: SIGNIN_REQUEST,
   };
 };
-export const signinSuccess = payload => {
+export const signinSuccess = (payload) => {
   return {
     type: SIGNIN_SUCCESS,
-    payload
+    payload,
   };
 };
-export const signINFailure = payload => {
+export const signINFailure = (payload) => {
   return {
     type: SIGNIN_FAILURE,
-    payload
+    payload,
   };
 };
 
-export const userdataUpdateRequest = payload => {
+export const userdataUpdateRequest = (payload) => {
   return {
     type: USERDATA_UPDATE,
-    payload
+    payload,
   };
 };
-export const userdataUpdate = payload => {
+export const userdataUpdate = (payload) => {
   return {
     type: USERDATA_UPDATE,
-    payload
+    payload,
   };
 };
-export const userdataUpdateFailure = payload => {
+export const userdataUpdateFailure = (payload) => {
   return {
     type: USERDATA_UPDATE,
-    payload
+    payload,
   };
 };
-export const removeFromCart = payload => {
+export const removeFromCart = (payload) => {
   console.log(payload);
   return {
     type: REMOVE_FROM_CART,
-    payload
+    payload,
   };
 };
 
-export const userDataRequest = payload => {
+export const userDataRequest = (payload) => {
   return {
     type: USERDATA_REQUEST,
-    payload
+    payload,
   };
 };
-export const userDataSuccess = payload => {
+export const userDataSuccess = (payload) => {
   return {
     type: USERDATA_SUCCESS,
-    payload
+    payload,
   };
 };
-export const userDataFailure = payload => {
+export const userDataFailure = (payload) => {
   return {
     type: USERDATA_FAILURE,
-    payload
+    payload,
   };
 };
 
-export const imageUrlRequest = payload => {
+export const imageUrlRequest = (payload) => {
   return {
     type: IMAGE_URL_REQUEST,
-    payload
+    payload,
   };
 };
-export const imageUrlSuccess = payload => {
+export const imageUrlSuccess = (payload) => {
   return {
     type: IMAGE_URL_SUCCESS,
-    payload
+    payload,
   };
 };
-export const imageUrlFailure = payload => {
+export const imageUrlFailure = (payload) => {
   return {
     type: IMAGE_URL_FAILURE,
-    payload
+    payload,
   };
 };
 
-export const paymentSuccess = payload => {
+export const paymentSuccess = (payload) => {
   return {
     type: PAYMENT_SUCCESS,
-    payload
+    payload,
   };
 };
 
-export const getSignIn = payload => dispatch => {
+export const getSignIn = (payload) => (dispatch) => {
   dispatch(signinRequest());
   return axios
     .post("https://api-strawberrynet.herokuapp.com/profiles", payload)
-    .then(res => {
+    .then((res) => {
       dispatch(signinSuccess(res.data.id));
       console.log(res.data.id);
     })
-    .catch(err => dispatch(signINFailure(err)));
+    .catch((err) => dispatch(signINFailure(err)));
 };
 
-export const getLogin = ({ email, password }) => dispatch => {
-  dispatch(loginRequest());
+export const getLogin =
+  ({ email, password }) =>
+  (dispatch) => {
+    dispatch(loginRequest());
 
-  return axios
-    .get(`https://api-strawberrynet.herokuapp.com/profiles?email=${email}&password=${password}`, { email, password })
-    .then(res => {
-      dispatch(loginSuccess(res.data[0]));
-    })
-    .catch(err => {
-      dispatch(loginFailure(err));
-    });
-};
-
-export const getUserDetails = (id = localStorage.getItem("userId")) => dispatch => {
-  dispatch(userDataRequest());
-  if (id) {
     return axios
-      .get(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`)
-      .then(res => {
-        dispatch(userDataSuccess(res.data));
+      .get(
+        `https://api-strawberrynet.herokuapp.com/profiles?email=${email}&password=${password}`,
+        { email, password }
+      )
+      .then((res) => {
+        dispatch(loginSuccess(res.data[0]));
       })
-      .catch(err => dispatch(userDataFailure(err)));
-  }
-};
+      .catch((err) => {
+        dispatch(loginFailure(err));
+      });
+  };
 
-export const userUpdate = (id = localStorage.getItem("userId"), payload) => dispatch => {
-  dispatch(signinRequest());
-  if(id){
-  axios.patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
-    .then(res => {
-      // alert('userUpdate')
+export const getUserDetails =
+  (id = localStorage.getItem("userId")) =>
+  (dispatch) => {
+    dispatch(userDataRequest());
+    if (id) {
+      return axios
+        .get(
+          `https://api-strawberrynet.herokuapp.com/profiles/${id.replace(
+            /"/g,
+            ""
+          )}`
+        )
+        .then((res) => {
+          dispatch(userDataSuccess(res.data));
+        })
+        .catch((err) => dispatch(userDataFailure(err)));
+    }
+  };
 
-      dispatch(userdataUpdate(res.data));
-      dispatch(getUserDetails(id));
-    })
-    .catch(err => dispatch(signINFailure(err)));
-  }
-};
-export const priceUpdate = (id = localStorage.getItem("userId"), payload) => dispatch => {
-  dispatch(signinRequest());
-  axios
-    .patch(`https://api-strawberrynet.herokuapp.com/profiles/${id}`, payload)
-    .then(res => {
-      // alert(`Your details has been successfully saved into our server`)
+export const userUpdate =
+  (id = localStorage.getItem("userId"), payload) =>
+  (dispatch) => {
+    dispatch(signinRequest());
+    if (id) {
+      axios
+        .patch(
+          `https://api-strawberrynet.herokuapp.com/profiles/${id.replace(
+            /"/g,
+            ""
+          )}`,
+          payload
+        )
+        .then((res) => {
+          // alert('userUpdate')
 
-      dispatch(userDataSuccess(res.data));
-      dispatch(getUserDetails(id));
-    })
-    .catch(err => dispatch(signINFailure(err)));
-};
+          dispatch(userdataUpdate(res.data));
+          dispatch(getUserDetails(id));
+        })
+        .catch((err) => dispatch(signINFailure(err)));
+    }
+  };
+export const priceUpdate =
+  (id = localStorage.getItem("userId"), payload) =>
+  (dispatch) => {
+    dispatch(signinRequest());
+    axios
+      .patch(`https://api-strawberrynet.herokuapp.com/profiles/${id}`, payload)
+      .then((res) => {
+        // alert(`Your details has been successfully saved into our server`)
 
-export const getlogout = () => dispatch => {
+        dispatch(userDataSuccess(res.data));
+        dispatch(getUserDetails(id));
+      })
+      .catch((err) => dispatch(signINFailure(err)));
+  };
+
+export const getlogout = () => (dispatch) => {
   dispatch(logoutRequest());
   return dispatch(logoutSuccess());
 };
 
-export const setPaymentSucceeded = () => dispatch => {
+export const setPaymentSucceeded = () => (dispatch) => {
   return dispatch(paymentSuccess(true));
 };
 
-export const removeItem = (id = localStorage.getItem("userId"), payload) => dispatch => {
-  dispatch(signinRequest());
-  // dispatch(removeFromCart(payload))
-  // alert("Item Removing...");
-  return axios
-    .patch(`https://api-strawberrynet.herokuapp.com/profiles/${id.replace(/"/g, "")}`, payload)
-    .then(res => {
-      console.log(res.data);
-      dispatch(userDataSuccess(res.data));
-      dispatch(getUserDetails(id));
-    })
-    .catch(err => dispatch(signINFailure(err)));
-};
+export const removeItem =
+  (id = localStorage.getItem("userId"), payload) =>
+  (dispatch) => {
+    dispatch(signinRequest());
+    // dispatch(removeFromCart(payload))
+    // alert("Item Removing...");
+    return axios
+      .patch(
+        `https://api-strawberrynet.herokuapp.com/profiles/${id.replace(
+          /"/g,
+          ""
+        )}`,
+        payload
+      )
+      .then((res) => {
+        console.log(res.data);
+        dispatch(userDataSuccess(res.data));
+        dispatch(getUserDetails(id));
+      })
+      .catch((err) => dispatch(signINFailure(err)));
+  };
 
 //imageRef.current.files[0]
 
-export const GetimageUrl = payload => async dispatch => {
+export const GetimageUrl = (payload) => async (dispatch) => {
   dispatch(imageUrlRequest());
   await axios({
     method: "post",
     url: "https://api.imgur.com/3/image",
     headers: {
-      Authorization: "Client-ID fc509ad5b921bf3"
+      Authorization: "Client-ID fc509ad5b921bf3",
     },
-    data: payload
+    data: payload,
   })
-    .then(res => {
+    .then((res) => {
       imageUrlSuccess(res.data.data.link);
       alert("uploaded Successfully");
       console.log(res.data.data.link);
     })
-    .catch(err => imageUrlFailure(err));
+    .catch((err) => imageUrlFailure(err));
 };

@@ -1,62 +1,53 @@
-.auth_modal_cont{
-    margin-top: 100px !important;
-    margin: auto;
-    width: 400px;
-    height: 787px;
-    position: relative;
-    box-shadow:3px 3px 10px 10px rgba(128, 128, 128, 0.349);
+.auth_modal_cont {
+  margin-top: 100px !important;
+  margin: auto;
+  width: 400px;
+  height: 787px;
+  position: relative;
+  box-shadow: 3px 3px 10px 10px rgba(128, 128, 128, 0.349);
 }
 
-
-.auth_modal{
-    width: 100%;
-    height: 100%;        
-    /* background-color: darkgrey; */
-    /* overflow-y: scroll; */
-    position: absolute;
-    
-   
+.auth_modal {
+  width: 100%;
+  height: 100%;
+  /* background-color: darkgrey; */
+  /* overflow-y: scroll; */
+  position: absolute;
 }
-.auth_modal_form_div{
-    height: 5%;
-    margin:10% 10% 0 10%; /* margin:T R B L  */
-    border-bottom: 0.5px solid rgb(107, 58, 135);
-    display: flex;
-    justify-content:space-between ; 
-    
-    
+.auth_modal_form_div {
+  height: 5%;
+  margin: 10% 10% 0 10%; /* margin:T R B L  */
+  border-bottom: 0.5px solid rgb(107, 58, 135);
+  display: flex;
+  justify-content: space-between;
 }
-.auth_modal_form_div>button{
-    width: 50%;
-    color: #623381;
-    border: none;
-    background: none;
-    font-size: 20px;
-    font-weight: 700;
-    height: 100%;
+.auth_modal_form_div > button {
+  width: 50%;
+  color: #623381;
+  border: none;
+  background: none;
+  font-size: 20px;
+  font-weight: 700;
+  height: 100%;
 }
-.auth_modal_form_div>button:focus{
-    border-bottom: 3px solid rgb(107, 58, 135);
+.auth_modal_form_div > button:focus {
+  border-bottom: 3px solid rgb(107, 58, 135);
 }
 
-.close_modal{
-    position: absolute;
-     top: -18px;
-    right:-11px;
-    z-index:2;
-    cursor: pointer;
-    /* width: 36px;
+.close_modal {
+  position: absolute;
+  top: -18px;
+  right: -11px;
+  z-index: 2;
+  cursor: pointer;
+  /* width: 36px;
     height: 36px; */
-   /* border-radius: 18px; */
-   border:none;
-   background: none;
-   /* background-color: darkturquoise; */
-  
-    
-    
-       
+  /* border-radius: 18px; */
+  border: none;
+  background: none;
+  /* background-color: darkturquoise; */
 }
-.close_modal:focus{
-    outline: none;
-    /* background-color: red; */
-}   
+.close_modal:focus {
+  outline: none;
+  /* background-color: red; */
+}

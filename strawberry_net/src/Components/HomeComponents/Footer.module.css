@@ -29,13 +29,10 @@
   gap: 100px;
 }
 
-@media(max-width:900px){
-
-  .row{
-    grid-template-columns: repeat(2,1fr);
-
+@media (max-width: 900px) {
+  .row {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
 }
 .connect {
   font-size: 24px;
@@ -301,13 +298,13 @@
   display: block;
   height: 0px;
 }
-.textsz li>span{
+.textsz li > span {
   color: #ee2c72;
 }
-.textsz li:hover{
+.textsz li:hover {
   color: #e1b9f5;
 }
-.country:hover{
+.country:hover {
   color: #e1b9f5;
 }
 
@@ -317,25 +314,13 @@
   letter-spacing: 0.09em;
   font-size: 14px;
   gap: 4%;
-
 }
 
-@media (max-width:1080px){
-
-
-  .gridmainbox{
-
-    grid-template-columns:repeat(3,1fr) ;
-
+@media (max-width: 1080px) {
+  .gridmainbox {
+    grid-template-columns: repeat(3, 1fr);
   }
- 
 }
-
-
-
-
-
-
 
 .gridmainbox1grid {
   display: grid;
@@ -356,13 +341,12 @@
 .gridmainbox2margin {
   margin-bottom: 8px;
   font-weight: 300;
-  letter-spacing: .09em;
-    font-size: 14px;
-    font-family: Lato,sans-serif;
-    cursor: pointer;
-
+  letter-spacing: 0.09em;
+  font-size: 14px;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
 }
-.gridmainbox2margin:hover{
+.gridmainbox2margin:hover {
   color: #e1b9f5;
 }
 
@@ -410,6 +394,6 @@
   width: 100%;
 }
 
-.bottomline{
-  letter-spacing: .09em;
+.bottomline {
+  letter-spacing: 0.09em;
 }

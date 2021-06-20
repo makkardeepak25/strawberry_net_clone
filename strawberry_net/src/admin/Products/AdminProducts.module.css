@@ -1,50 +1,47 @@
-.container{
-    display: flex;
+.container {
+  display: flex;
 }
-.products{
-  
-    width: 100%;
+.products {
+  width: 100%;
 }
-.products > h1{
-    margin: 10px;
-}
-
-.cards{
-   padding: 20px;
-    margin: auto;
-   height: 70vh;
-   overflow: hidden;
+.products > h1 {
+  margin: 10px;
 }
 
-.pagination{
-   
-    padding: 10px 15px;
-}
-.pagination > button{
-   margin: 5px;
-   width: 10px;
-   padding: 0%;
+.cards {
+  padding: 20px;
+  margin: auto;
+  height: 70vh;
+  overflow: hidden;
 }
 
-.filter{
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 20px;
-   
+.pagination {
+  padding: 10px 15px;
 }
-.filter > div> select {
-    padding: 5px;
-    margin: 5px;
+.pagination > button {
+  margin: 5px;
+  width: 10px;
+  padding: 0%;
 }
-.products > h1{
-    font-size: 25px;
-    margin:20px auto;
-    margin-bottom: 5px;
-    background-image: linear-gradient(to right, #96307D 0%, #52246D 120%);
-   
-    padding: 15px 15px 15px 20px;
-    font-family: Lato,sans-serif;
-    color: white;
-    width: 50%;
-    text-align: center;
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.filter > div > select {
+  padding: 5px;
+  margin: 5px;
+}
+.products > h1 {
+  font-size: 25px;
+  margin: 20px auto;
+  margin-bottom: 5px;
+  background-image: linear-gradient(to right, #96307d 0%, #52246d 120%);
+
+  padding: 15px 15px 15px 20px;
+  font-family: Lato, sans-serif;
+  color: white;
+  width: 50%;
+  text-align: center;
 }

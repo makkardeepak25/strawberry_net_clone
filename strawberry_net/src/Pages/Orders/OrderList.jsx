@@ -19,19 +19,19 @@ const StyledTableCell = withStyles((theme) => ({
     backgroundColor: "#fff",
     color: "#623381",
     fontSize: "18px",
-    fontWeight: 900
+    fontWeight: 900,
   },
   body: {
-    fontSize: 14
-  }
+    fontSize: 14,
+  },
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
     "&:nth-of-type(odd)": {
-      backgroundColor: theme.palette.action.hover
-    }
-  }
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
 }))(TableRow);
 
 // function createData(name, date, orderStatus, orderTot, orderId) {
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
   table: {
     minWidth: 700,
     width: "60%",
-    margin: "auto"
+    margin: "auto",
   },
   btns: {
     backgroundColor: "#623381",
@@ -60,73 +60,90 @@ const useStyles = makeStyles({
     border: "none",
     width: "100px",
     height: "30px",
-    fontWeight: "800"
+    fontWeight: "800",
   },
   icons: {
     color: "#623381",
-    fontWeight: "900"
-  }
+    fontWeight: "900",
+  },
 });
 
 export default function OrderList() {
-    // const Uorders = useSelector(state => state.auth.user.orders)
-    const user = useSelector(state => state.auth.user)
-    const isLoading = useSelector(state => state.auth.isLoading)
-    const isAuth = useSelector(state => state.auth.isAuth)
-    const history = useHistory()
-    React.useEffect(() => {
-      !isAuth && history.replace("/signin")
-    },[])
+  // const Uorders = useSelector(state => state.auth.user.orders)
+  const user = useSelector((state) => state.auth.user);
+  const isLoading = useSelector((state) => state.auth.isLoading);
+  const isAuth = useSelector((state) => state.auth.isAuth);
+  const history = useHistory();
+  React.useEffect(() => {
+    !isAuth && history.replace("/signin");
+  }, []);
 
-    console.log(user)
+  console.log(user);
 
-    const rows = user&& user.orders
-      
-    const handletrack=(id)=>{
-        history.replace(`/user/ordertracking/${id}`)
-    }
+  const rows = user && user.orders;
+
+  const handletrack = (id) => {
+    history.replace(`/user/ordertracking/${id}`);
+  };
 
   const classes = useStyles();
   React.useEffect(() => {
-    window.scrollTo(0,0);
-  },[])
-  return  isLoading?<div><Spinner /></div>:(
-    <>
-    { 
-   user&& <div>
-     
-        <TableContainer>
-      <Table className={classes.table} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell></StyledTableCell>
-            <StyledTableCell align="right">Date</StyledTableCell>
-            <StyledTableCell align="right">Status</StyledTableCell>
-            <StyledTableCell align="right">Price</StyledTableCell>
-            <StyledTableCell align="right">Order Number</StyledTableCell>
-            <StyledTableCell align="right"></StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows && rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                <KeyboardArrowDownIcon className={classes.icons} />
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.date}</StyledTableCell>
-              <StyledTableCell align="right">{row.orderStatus}</StyledTableCell>
-              <StyledTableCell align="right">{row.orderTot} ₹</StyledTableCell>
-              <StyledTableCell align="right">{row.orderId}</StyledTableCell>
-              <StyledTableCell align="right">
-                <button className={classes.btns} onClick={(e)=>handletrack(row.orderId)}>Track It</button>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    window.scrollTo(0, 0);
+  }, []);
+  return isLoading ? (
+    <div>
+      <Spinner />
     </div>
-    }
+  ) : (
+    <>
+      {user && (
+        <div>
+          <TableContainer>
+            <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell></StyledTableCell>
+                  <StyledTableCell align="right">Date</StyledTableCell>
+                  <StyledTableCell align="right">Status</StyledTableCell>
+                  <StyledTableCell align="right">Price</StyledTableCell>
+                  <StyledTableCell align="right">Order Number</StyledTableCell>
+                  <StyledTableCell align="right"></StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows &&
+                  rows.map((row) => (
+                    <StyledTableRow key={row.name}>
+                      <StyledTableCell component="th" scope="row">
+                        <KeyboardArrowDownIcon className={classes.icons} />
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {row.date}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {row.orderStatus}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {row.orderTot} ₹
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        {row.orderId}
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                        <button
+                          className={classes.btns}
+                          onClick={(e) => handletrack(row.orderId)}
+                        >
+                          Track It
+                        </button>
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      )}
     </>
   );
 }
