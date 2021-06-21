@@ -28,7 +28,7 @@ export const BestDeals = () => {
                         <span> {el.size[0].size}</span>
                       </p>
                     </a>
-                      <img className={styles.imgProd} src={el.images[0]} />
+                      <img className={styles.imgProd} src={el.images[0]} alt="car" />
                       {el.offer ? <div className={styles.offers}>Save {el.offer}%</div>:null}
                     <div className={styles.prodprice}>Rs&nbsp;{el.size[0].price}</div>
                     <button className={styles.bagbtn}>Add to bag</button>

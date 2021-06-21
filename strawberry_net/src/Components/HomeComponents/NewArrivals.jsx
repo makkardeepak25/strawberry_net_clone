@@ -29,7 +29,7 @@ export const NewArrivals = () => {
               </p>
             </a>
             {el.offer ? <div className={styles.offers}>Save {el.offer}%</div> : null}
-            <img className={styles.imgProd} src={el.images[0]} />
+            <img className={styles.imgProd} src={el.images[0]} alt="car"/>
             <div className={styles.prodprice}>Rs&nbsp;{el.size[0].price}</div>
             <button className={styles.bagbtn}>Add to bag</button>
               <div className={styles.extraoff}>Extra 8% Off on US$80</div>

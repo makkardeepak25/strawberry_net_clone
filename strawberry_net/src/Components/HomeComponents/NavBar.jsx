@@ -72,7 +72,7 @@ const history=useHistory()
     <div className={styles.navbar}>
       <div className={styles.container}>
         <Link to={"/"}>
-          <img src="/strawIcon.png" className={styles.navbrand} />
+          <img src="/strawIcon.png" className={styles.navbrand} alt="strawicon"/>
         </Link>
         <div className={styles.navform1}>
           <div>
@@ -242,7 +242,7 @@ const history=useHistory()
       </div>
       <div className={styles.container1}>
         <Link to={"/"}>
-          <img src="https://www.reviewsxp.com/image/Stawberrynet.jpg" className={styles.navbrand1} />
+          <img src="https://www.reviewsxp.com/image/Stawberrynet.jpg" className={styles.navbrand1} alt="stricon"/>
         </Link>
         <div className={styles.mediaUser}>
           <ul className={styles.menunavright}>
@@ -374,7 +374,6 @@ const history=useHistory()
           </ul>
         </div>
       </div>
-
       <div className={styles.navbarmenu1}>
         <ul className={styles.menucont}>
           <Link className={styles.foc} to={"/brands"}>

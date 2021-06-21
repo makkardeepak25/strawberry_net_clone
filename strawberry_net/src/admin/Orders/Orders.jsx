@@ -10,7 +10,7 @@ import { Button } from "@material-ui/core";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [all, setAll] = useState("");
+  // const [all, setAll] = useState("");
   const [date, setDate] = useState("");
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState("all");
@@ -23,8 +23,6 @@ const Orders = () => {
       .get(`https://api-strawberrynet.herokuapp.com/profiles`)
       .then((res) => {
         const data = res.data;
-    
-
         for (let i = 0; i < data.length; i++) {
           for (let j = 0; j < data[i].orders.length; j++) {
             // all.push(data[i].orders[j])
@@ -60,7 +58,7 @@ const Orders = () => {
         setIsLoading(false);
       });
   };
-  console.log(orders);
+  // console.log(orders);
 
   useEffect(() => {
     getorders();
