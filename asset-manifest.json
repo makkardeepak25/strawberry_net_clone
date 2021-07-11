@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/strawberry_net_clone/static/css/main.62aae426.chunk.css",
+    "main.js": "/strawberry_net_clone/static/js/main.13603aaa.chunk.js",
+    "main.js.map": "/strawberry_net_clone/static/js/main.13603aaa.chunk.js.map",
+    "runtime-main.js": "/strawberry_net_clone/static/js/runtime-main.a714d716.js",
+    "runtime-main.js.map": "/strawberry_net_clone/static/js/runtime-main.a714d716.js.map",
+    "static/css/2.0ec12911.chunk.css": "/strawberry_net_clone/static/css/2.0ec12911.chunk.css",
+    "static/js/2.1e818878.chunk.js": "/strawberry_net_clone/static/js/2.1e818878.chunk.js",
+    "static/js/2.1e818878.chunk.js.map": "/strawberry_net_clone/static/js/2.1e818878.chunk.js.map",
+    "static/js/3.c9642615.chunk.js": "/strawberry_net_clone/static/js/3.c9642615.chunk.js",
+    "static/js/3.c9642615.chunk.js.map": "/strawberry_net_clone/static/js/3.c9642615.chunk.js.map",
+    "index.html": "/strawberry_net_clone/index.html",
+    "static/css/2.0ec12911.chunk.css.map": "/strawberry_net_clone/static/css/2.0ec12911.chunk.css.map",
+    "static/css/main.62aae426.chunk.css.map": "/strawberry_net_clone/static/css/main.62aae426.chunk.css.map",
+    "static/js/2.1e818878.chunk.js.LICENSE.txt": "/strawberry_net_clone/static/js/2.1e818878.chunk.js.LICENSE.txt",
+    "static/media/styles.css": "/strawberry_net_clone/static/media/revicons.e8746a62.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a714d716.js",
+    "static/css/2.0ec12911.chunk.css",
+    "static/js/2.1e818878.chunk.js",
+    "static/css/main.62aae426.chunk.css",
+    "static/js/main.13603aaa.chunk.js"
+  ]
+}
