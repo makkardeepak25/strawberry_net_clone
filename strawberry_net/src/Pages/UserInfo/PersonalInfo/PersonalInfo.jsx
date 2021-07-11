@@ -138,7 +138,7 @@ export const PersonalInfo = () => {
           .then((res) => {
               
            setImageURL(res.data.data.link)
-            alert('Image Successfully Uploaded')
+            alert('Save Your Changes')
             // console.log(res.data.data.link)
         })
           .catch((err) =>{

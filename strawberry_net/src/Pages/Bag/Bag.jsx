@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./Bag.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import CloseIcon from "@material-ui/icons/Close";
-import { getlogout, removeItem } from "../../Redux/Auth/authAction";
+import { getlogout, removeItem, setPaymentSucceeded } from "../../Redux/Auth/authAction";
 import { Redirect } from "react-router";
 import { Link, useHistory } from "react-router-dom";
 import {Spinner} from "./../../Components/Spinner"
@@ -18,6 +18,7 @@ export function Bag() {
   const name = user&&user.f_name;
   console.log(user);
   useEffect(() => {
+    dispatch(setPaymentSucceeded(false));
     window.scrollTo(0, 0);
   },[])
 

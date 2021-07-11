@@ -170,7 +170,7 @@ export const authReducer=(state=initState,{type,payload})=>{
             return {
                
                 ...state,
-                isPaymentSuccess:true,
+                isPaymentSuccess:payload,
             }
         }
         default:{

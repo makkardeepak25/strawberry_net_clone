@@ -212,8 +212,8 @@ export const getlogout = () => dispatch => {
   return dispatch(logoutSuccess());
 };
 
-export const setPaymentSucceeded = () => dispatch => {
-  return dispatch(paymentSuccess(true));
+export const setPaymentSucceeded = (payload) => dispatch => {
+  return dispatch(paymentSuccess(payload));
 };
 
 export const removeItem = (id = localStorage.getItem("userId"), payload) => dispatch => {

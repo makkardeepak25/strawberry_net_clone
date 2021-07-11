@@ -71,7 +71,7 @@ export default function PaymentForm() {
                 console.log("Successful payment")
                 setSuccess(true)
                 setisLoading(false)
-                dispatch(setPaymentSucceeded())
+                dispatch(setPaymentSucceeded(true))
               
 
             }
