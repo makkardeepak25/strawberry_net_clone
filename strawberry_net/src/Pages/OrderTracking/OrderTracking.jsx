@@ -30,7 +30,7 @@ export const OrderTracking = () => {
         })
       }
      
-      const {date,orderId}=order
+      const {date,orderId}=order && order
 
      
       React.useEffect(()=>{
@@ -56,7 +56,7 @@ export const OrderTracking = () => {
       console.log(order)
     return isLoading?<div className={styles.tobecenter}><Spinner /></div>:(
         <div>
-            <div className={styles.Maindiv}>Status for Order Id : {orderId}</div>
+            <div className={styles.Maindiv}>Status for Order Id : {id}</div>
             <hr/>
             <table className={styles.Maintable}>
                 

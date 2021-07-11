@@ -54,26 +54,31 @@ export default function PaymentForm() {
       card: elements.getElement(CardElement),
     });
 
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        setisLoading(true);
-        const response = await axios.post("http://localhost:4000/payment", {
-          amount: 1000,
-          id,
-        });
+   
 
-        if (response.data.success) {
-          // console.log("Successful payment")
-          setSuccess(true);
-          setisLoading(false);
-          dispatch(setPaymentSucceeded());
+    if(!error) {
+        try {
+            const {id} = paymentMethod
+            setisLoading(true)
+            const response = await axios.post("https://stripepaymentstraw.herokuapp.com/payment", {
+                amount: 1000,
+                id
+            })
+
+            if(response.data.success) {
+                console.log("Successful payment")
+                setSuccess(true)
+                setisLoading(false)
+                dispatch(setPaymentSucceeded(true))
+              
+
+            }
+
+        } catch (error) {
+            console.log("Error", error)
+            setisError(true)
+            setisLoading(false)
         }
-      } catch (error) {
-        console.log("Error", error);
-        setisError(true);
-        setisLoading(false);
-      }
     } else {
       console.log(error.message);
       setisInvalid(true);

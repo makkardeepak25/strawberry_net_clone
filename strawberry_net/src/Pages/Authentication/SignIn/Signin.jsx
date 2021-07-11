@@ -73,7 +73,7 @@ export const Signin = () => {
            dispatch(getLogin(signInForm))
 
             
-    history.replace('/')
+    history.replace('/user/setting') 
         
     }
     

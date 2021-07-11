@@ -8,7 +8,7 @@ export const Banner = () => {
     <div className={styles.banner}>
       <Carousel
         showArrows={false}
-        interval={5000}
+        interval={1000}
         infiniteLoop={true}
         transitionTime={10}
         autoPlay={true}

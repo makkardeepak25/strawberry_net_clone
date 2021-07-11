@@ -3,16 +3,14 @@
     border-bottom: 1px solid gray;
    height: 50px;
    cursor: pointer;
-    /* width: 90%;
+   width: 100%;
     justify-content: space-between;
-    height: 10vh;
-    cursor: pointer;
-    border: 1px solid black;
-    margin: auto; */
+
 }
 .orderCard > div{
     text-align: left;
  width: 200px;
+
 
 }
 .orderCard > div > h4{
