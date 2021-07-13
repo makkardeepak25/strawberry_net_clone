@@ -14,7 +14,7 @@ const Product = () => {
     const {id}=useParams();
 
 
-    let array = new Array(30).fill(0)
+    let array = new Array(4).fill(0)
     
     const [activeTab, setActiveTab] = useState("details")
 
