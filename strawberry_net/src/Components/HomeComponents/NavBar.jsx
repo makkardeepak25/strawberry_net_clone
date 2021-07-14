@@ -43,14 +43,17 @@ const history=useHistory()
   // console.log("navbar", category);
   const handleChange = e => {
     setBrand(e.target.value);
+    
+   
   };
   const handleNav = () => {
     setNavOpen(!navOpen);
   };
 
   const handleClick = () => {
+   
     localStorage.setItem("searchKey", JSON.stringify(brand));
-    dispatch(getSearchData(brand));
+    dispatch(getSearchData(brand.toLowerCase()));
   };
 
   const showProfileBox = () => {

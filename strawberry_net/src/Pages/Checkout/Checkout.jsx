@@ -242,7 +242,7 @@ export function Checkout() {
                       type="text"
                       className={styles.promInput}
                       onChange={e => {
-                        setPromo(e.target.value);
+                        setPromo(e.target.value.toUpperCase());
                       }}
                     />
                   </div>
