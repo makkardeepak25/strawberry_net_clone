@@ -11,6 +11,11 @@ export function Searchbar(){
     const searchData = useSelector(state => state.prod.searchProd)
     let searchKey = localStorage.getItem("searchKey")
     searchKey=JSON.parse(searchKey)
+    React.useEffect(() => {
+        document.title = "Strawberrynet.com";
+        window.scrollTo(0, 0);
+      }, []);
+    
     return(
         <div className={styles.Maindiv}>
             <div className={styles.Div1}>Search Results</div>
