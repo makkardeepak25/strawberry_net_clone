@@ -52,15 +52,18 @@ const Product = () => {
      if(user){
         dispatch(userUpdate(id,product))
      }else{
+         alert("You are not logged In")
          history.replace("/signin")
      }
      
     
     }
     const addtoBag=()=>{
+     
         if(!user){
-      console.log(user);
+    //   console.log(user,"Line 6333333");
         // AddToCard(userdata)
+        alert("You are not logged In")
         history.push("/signin")
     } else{
         console.log(user);
