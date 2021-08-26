@@ -42,7 +42,8 @@ Start the server
 
 ## Live Demo
 
-    https://strawberynetclone.netlify.app
+    
+    [Live Demo](https://strawberynetclone.netlify.app)
     
 
 ## Contributors
