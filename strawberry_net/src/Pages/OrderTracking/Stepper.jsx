@@ -85,6 +85,7 @@ const ColorlibConnector = withStyles({
     }
   },
   line: {
+   
     height: 3,
     border: 0,
     backgroundColor: "#eaeaf0",

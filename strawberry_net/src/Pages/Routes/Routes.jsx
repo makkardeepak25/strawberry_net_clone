@@ -41,17 +41,18 @@ const Routes = () => {
 
   return (
     <div>
-      <Switch>
+     <Switch>
         <Route exact path="/">
+         
           <NavBar />
           <div style={{ height: "150px" }} />
           <Home />
           <Footer />
         </Route>
 
-        {/* Admin Panel Route */}
+
       
-        <Route exact path="/admin/dashboard">
+       <Route exact path="/admin/dashboard">
           <Panel />
         </Route>
 
@@ -73,7 +74,7 @@ const Routes = () => {
         <Route exact path="/admin/signin">
          <AdminSignin/>
         </Route>
-        {/* Admin Panel Route Ended */}
+
 
         <Route exact path="/user/ordertracking/:id">
           <NavBar />
@@ -142,8 +143,8 @@ const Routes = () => {
 
         <Route>
           <h1>404 | Product Not Found</h1>
-        </Route>
-      </Switch>
+        </Route> 
+      </Switch> 
     </div>
   );
 };

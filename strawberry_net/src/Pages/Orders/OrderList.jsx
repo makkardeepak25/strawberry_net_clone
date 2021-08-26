@@ -118,7 +118,9 @@ export default function OrderList() {
               <StyledTableCell align="right">{row.orderTot} ₹</StyledTableCell>
               <StyledTableCell align="right">{row.orderId}</StyledTableCell>
               <StyledTableCell align="right">
-                <button className={classes.btns} onClick={(e)=>handletrack(row.orderId)}>Track It</button>
+                <a href={`/user/ordertracking/${row.orderId}`}>
+                <button className={classes.btns} onClick={(e)=>handletrack(row.orderId)}>Track It</button></a>
+                {/* <button className={classes.btns} onClick={(e)=>handletrack(row.orderId)}>Track It</button></a> */}
               </StyledTableCell>
             </StyledTableRow>
           ))}
