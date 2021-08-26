@@ -42,7 +42,8 @@ Start the server
 
 ## Live Demo
 
-    - [Strawberrynet.com clone Demo](https://strawberynetclone.netlify.app)
+  
+    - [Live Demo](https://strawberynetclone.netlify.app)
     
 
 ## Contributors
