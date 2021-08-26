@@ -40,6 +40,11 @@ Start the server
 
    - [Strawberrynet.com clone Demo](https://masai-course.s3.ap-south-1.amazonaws.com/users/768/submissions/107532/253481/a50f9f85d8c91701b3d4a313551ec0bc/Strawberry_record.mp4)
 
+## Live Demo
+
+    - [Strawberrynet.com clone Demo](https://strawberynetclone.netlify.app)
+    
+
 ## Contributors
 
 - [Deepak Makkar](https://github.com/makkardeepak25)
