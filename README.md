@@ -37,8 +37,8 @@ Start the server
 ## Presentation
 
 
-
-   - [Strawberrynet.com clone Demo](https://strawberynetclone.netlify.app)
+   - [Strawberrynet.com clone Live](https://strawberynetclone.netlify.app)
+   - [Strawberrynet.com clone Demo](https://masai-course.s3.ap-south-1.amazonaws.com/users/768/submissions/107532/253481/a50f9f85d8c91701b3d4a313551ec0bc/Strawberry_record.mp4)
 
     
 
