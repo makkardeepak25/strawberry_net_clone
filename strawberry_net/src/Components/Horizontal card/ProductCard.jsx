@@ -42,6 +42,7 @@ const AddToCard=(product)=>{
 const addtoBag=()=>{
     if(!user){
   console.log(user);
+  alert("You are not logged In")
     // AddToCard(userdata)
     history.push("/signin")
 } else{
